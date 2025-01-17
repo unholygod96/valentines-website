@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Surprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Happy Valentine's Week ❤️</h1>
+        <div id="countdown">Countdown: <span id="timer"></span></div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#rose-day">Rose Day</a></li>
+            <li><a href="#propose-day">Propose Day</a></li>
+            <li><a href="#chocolate-day">Chocolate Day</a></li>
+            <li><a href="#teddy-day">Teddy Day</a></li>
+            <li><a href="#promise-day">Promise Day</a></li>
+            <li><a href="#hug-day">Hug Day</a></li>
+            <li><a href="#kiss-day">Kiss Day</a></li>
+            <li><a href="#valentines-day">Valentine's Day</a></li>
+            <li><a href="#photo-collage">Photo Collage</a></li>
+        </ul>
+    </nav>
+
+    <section id="valentines-week">
+        <div class="tab-content" id="rose-day">
+            <h2>Rose Day 🌹</h2>
+            <p>Roses are red, violets are blue, my heart is filled with love for you!</p>
+            <img src="images/rose-day.jpg" alt="Rose Day">
+        </div>
+        <div class="tab-content" id="propose-day">
+            <h2>Propose Day 💍</h2>
+            <p>From the moment I met you, I knew my heart belonged to you.</p>
+            <button onclick="showProposal()">Click for a Surprise</button>
+        </div>
+        <!-- Add other days similarly -->
+    </section>
+
+    <section id="photo-collage">
+        <h2>Our Memories Together 📸</h2>
+        <div id="collage-area">
+            <input type="file" id="photo-upload" multiple>
+            <div id="collage"></div>
+        </div>
+    </section>
+
+    <section id="proposal">
+        <h2>A Special Question 💖</h2>
+        <p>Click the stars to reveal the message...</p>
+        <div id="hidden-message">Will you be my Valentine? ❤️</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

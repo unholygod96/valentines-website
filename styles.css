@@ -1,0 +1,148 @@
+/* General Styling */
+body {
+    background-color: #ffe6e6;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #d63384;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #ffb3b3;
+    padding: 20px;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar */
+nav ul {
+    list-style: none;
+    padding: 0;
+    background: #ff66b2;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e60073;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #ff3385;
+}
+
+/* Section Styling */
+section {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Valentine's Week Tabs */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 2px solid #ff66b2;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 20px;
+}
+
+.tab-content img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+/* Proposal Section */
+#proposal {
+    background: #ff9999;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 24px;
+    display: none;
+}
+
+#hidden-message {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff3366;
+}
+
+/* Photo Collage */
+#photo-collage {
+    background: #ffcccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#collage img {
+    width: 150px;
+    margin: 10px;
+    border-radius: 10px;
+}
+/* Falling Hearts Animation */
+@keyframes fall {
+    0% { transform: translateY(-100px) scale(1); opacity: 1; }
+    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+/* Falling Hearts Animation */
+@keyframes fall {
+    0% { transform: translateY(-100px) scale(1); opacity: 1; }
+    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+/* Smooth Transition Effect */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Glowing Button & Link Effects */
+button, nav a {
+    transition: 0.3s;
+    box-shadow: 0 0 10px transparent;
+}
+
+button:hover, nav a:hover {
+    box-shadow: 0 0 15px #ff4d94;
+    transform: scale(1.05);
+}
+
+
+
