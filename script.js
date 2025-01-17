@@ -65,4 +65,33 @@ function createHeart() {
 
 // Generate Hearts Every 0.5 Seconds
 setInterval(createHeart, 500);
+// Cute Greeting Messages
+const greetings = [
+    "Hello, my love! 💖",
+    "How's my beautiful queen today? 👑",
+    "Hey there, cutie! 🥰",
+    "Missed you! 💕",
+    "Hope you're having a wonderful day! 🌸"
+];
+
+// Function to Show a Random Greeting
+function showGreeting() {
+    const greetingPopup = document.getElementById("greeting-popup");
+    const greetingMessage = document.getElementById("greeting-message");
+
+    // Pick a random greeting
+    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    greetingMessage.innerText = randomGreeting;
+
+    // Show the popup
+    greetingPopup.style.display = "block";
+
+    // Hide it after a few seconds
+    setTimeout(() => {
+        greetingPopup.style.display = "none";
+    }, 6000);
+}
+
+// Run when the page loads
+window.onload = showGreeting;
 
