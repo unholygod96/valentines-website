@@ -7,10 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Greeting Popup -->
-<div id="greeting-popup">
-    <p id="greeting-message">Hello, beautiful! 💖</p>
+<!-- Full-Screen Landing Page -->
+<div id="landing-screen">
+    <h1 id="greeting-text">Hello, my love! 💖</h1>
+    <p id="question-text">How much do you love me? 💕</p>
+    
+    <!-- User Input Field -->
+    <input type="text" id="love-input" placeholder="Type your answer here..." />
+    
+    <!-- Proceed Button -->
+    <button id="proceed-btn" onclick="checkAnswer()">Proceed</button>
 </div>
+
+<!-- Main Website Content (Initially Hidden) -->
+<div id="main-website" style="display: none;">
+
     <header>
         <h1>Happy Valentine's Week ❤️</h1>
         <div id="countdown">Countdown: <span id="timer"></span></div>
