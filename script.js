@@ -74,24 +74,19 @@ const greetings = [
     "Hope you're having a wonderful day! 🌸"
 ];
 
-// Function to Show a Random Greeting
-function showGreeting() {
-    const greetingPopup = document.getElementById("greeting-popup");
-    const greetingMessage = document.getElementById("greeting-message");
-
-    // Pick a random greeting
-    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-    greetingMessage.innerText = randomGreeting;
-
-    // Show the popup
-    greetingPopup.style.display = "block";
-
-    // Hide it after a few seconds
-    setTimeout(() => {
-        greetingPopup.style.display = "none";
-    }, 6000);
+// Function to Check the Answer and Reveal the Main Site
+function checkAnswer() {
+    let userInput = document.getElementById("love-input").value.toLowerCase();
+    
+    if (userInput.includes("infinity") || userInput.includes("a lot") || userInput.length > 10) {
+        document.getElementById("landing-screen").style.opacity = "0"; // Fade out
+        setTimeout(() => {
+            document.getElementById("landing-screen").style.display = "none"; // Hide landing
+            document.getElementById("main-website").style.display = "block"; // Show main site
+        }, 1000); // 1-second fade-out effect
+    } else {
+        alert("Hmm, that's not enough love! Try again! 😜");
+    }
 }
 
-// Run when the page loads
-window.onload = showGreeting;
 
