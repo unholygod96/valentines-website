@@ -42,70 +42,74 @@ body {
     display: none;
 }
 
-/* Countdown Box */
-#countdown-container {
-    margin-top: 20px;
-    padding: 15px;
-    background: #ffb3b3;
-    border-radius: 10px;
-    font-size: 22px;
-}
-
-#reset-countdown {
-    background: #ff4d94;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Tab Sections */
-.tab-content {
-    display: none;
-    padding: 20px;
-    background: rgba(255, 192, 203, 0.9);
-    border-radius: 10px;
-}
-
+/* Section Styling */
 .tab-content img {
-    width: 200px;
+    width: 150px;
+    height: 150px;
     margin-top: 10px;
-}
-
-/* Love Letter */
-#love-letter-container {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-#love-letter-container:not(.hidden) {
-    opacity: 1;
-}
-
-/* Music Button */
-#music-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #ff3366;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
     border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.tab-content img:hover {
+    transform: scale(1.2);
+}
+
+/* Valentine's Day Heartfelt Button */
+#hidden-love-letter {
+    font-size: 30px;
+    color: #ff4d94;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#music-btn:hover {
-    background: #ff6699;
+#hidden-love-letter:hover {
+    transform: scale(1.1);
 }
 
-/* Volume Slider */
+#love-letter-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 192, 203, 0.9);
+    border-radius: 10px;
+    color: #d63384;
+    font-size: 18px;
+}
+
+#proposal-btn {
+    padding: 10px;
+    background-color: #ff4d94;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#proposal-animation {
+    margin-top: 20px;
+}
+
+#proposal-animation img {
+    width: 250px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Music Controls */
+#music-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #ff4d94;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
 #volume-slider {
     position: fixed;
-    bottom: 20px;
-    left: 150px;
+    bottom: 10px;
+    left: 120px;
+    width: 150px;
 }
