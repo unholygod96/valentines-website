@@ -5,45 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Surprise</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+
+<!-- Hidden Love Letter Button -->
+<div id="hidden-love-letter" onclick="revealLetter()" style="display: none;">💌 Open Love Letter</div>
 
 <!-- Full-Screen Landing Page -->
 <div id="landing-screen">
     <h1 id="greeting-text">Hello, my love! 💖</h1>
     <p id="question-text">How much do you love me? 💕</p>
-    
-    <!-- User Input Field -->
     <input type="text" id="love-input" placeholder="Type your answer here..." />
-    
-    <!-- Proceed Button -->
     <button id="proceed-btn" onclick="checkAnswer()">Proceed</button>
 </div>
 
 <!-- Main Website Content (Initially Hidden) -->
 <div id="main-website" style="display: none;">
 
-    <!-- Falling Hearts Animation -->
-    <script src="script.js"></script>
-
-    <!-- Hidden Love Letter Section -->
-    <div id="love-letter-container">
-        <button onclick="revealLetter()">💌 Open Love Letter</button>
-        <p id="love-letter" style="display: none;">My Love, every day with you is special, but today I wanted to remind you how much I adore you... 💖</p>
-    </div>
-
     <!-- Background Music -->
     <audio id="bg-music" loop>
-        <source src="music/love-song.mp3" type="audio/mp3">
+        <source src="music/double-take.mp3" type="audio/mp3">
     </audio>
     <button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
 
+    <!-- Countdown Timer -->
     <header>
         <h1>Happy Valentine's Week ❤️</h1>
+        <h2>Countdown for you to be my Valentine:</h2>
         <div id="countdown">Countdown: <span id="timer"></span></div>
     </header>
     
-    <nav>
+    <!-- Menu Button to Reveal Tabs -->
+    <button id="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="valentine-menu" style="display: none;">
         <ul>
             <li><a href="#rose-day">Rose Day</a></li>
             <li><a href="#propose-day">Propose Day</a></li>
@@ -60,13 +55,39 @@
     <section id="valentines-week">
         <div class="tab-content" id="rose-day">
             <h2>Rose Day 🌹</h2>
-            <p>Roses are red, violets are blue, my heart is filled with love for you!</p>
-            <img src="images/rose-day.jpg" alt="Rose Day">
+            <p>You remind me of roses, always beautiful and enchanting...</p>
+            <img src="images/roses.jpg" alt="Virtual Bouquet">
         </div>
         <div class="tab-content" id="propose-day">
             <h2>Propose Day 💍</h2>
-            <p>From the moment I met you, I knew my heart belonged to you.</p>
-            <button onclick="showProposal()">Click for a Surprise</button>
+            <p>Will you be mine forever? 💖</p>
+            <button onclick="showSurprise()">Click here for a surprise</button>
+        </div>
+        <div class="tab-content" id="chocolate-day">
+            <h2>Chocolate Day 🍫</h2>
+            <p>You’re sweeter than all the chocolates in the world!</p>
+        </div>
+        <div class="tab-content" id="teddy-day">
+            <h2>Teddy Day 🧸</h2>
+            <p>You are my teddy bear, warm and cuddly! 🥰</p>
+        </div>
+        <div class="tab-content" id="promise-day">
+            <h2>Promise Day 💞</h2>
+            <p>Promises I’ll always keep for you...</p>
+            <input type="file" id="upload-promise-images" multiple>
+        </div>
+        <div class="tab-content" id="hug-day">
+            <h2>Hug Day 🤗</h2>
+            <p>Sending you the biggest virtual hug! ❤️</p>
+        </div>
+        <div class="tab-content" id="kiss-day">
+            <h2>Kiss Day 💋</h2>
+            <p>Can’t wait to kiss you again! 😘</p>
+        </div>
+        <div class="tab-content" id="valentines-day">
+            <h2>Valentine's Day 💖</h2>
+            <p>Celebrating our love today and forever...</p>
+            <div id="hidden-love-letter" onclick="revealLetter()">💌 Find the hidden surprise</div>
         </div>
     </section>
 
@@ -77,16 +98,8 @@
             <div id="collage"></div>
         </div>
     </section>
-
-    <section id="proposal">
-        <h2>A Special Question 💖</h2>
-        <p>Click the stars to reveal the message...</p>
-        <div id="hidden-message">Will you be my Valentine? ❤️</div>
-    </section>
-
-</div> <!-- ✅ Properly Closing #main-website div -->
+</div> <!-- Closing main website div -->
 
 <script src="script.js"></script>
-
 </body>
 </html>
