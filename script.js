@@ -88,5 +88,16 @@ function checkAnswer() {
         alert("Hmm, that's not enough love! Try again! 😜");
     }
 }
+// Background Music Controls
+function toggleMusic() {
+    let music = document.getElementById("bg-music");
+    if (music.paused) {
+        music.play();
+        document.getElementById("music-btn").innerText = "🔊 Playing";
+    } else {
+        music.pause();
+        document.getElementById("music-btn").innerText = "🎶 Play Music";
+    }
+}
 
 
