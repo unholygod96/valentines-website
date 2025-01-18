@@ -1,4 +1,4 @@
-/* General Styling */
+/* General Styles */
 body {
     background-color: #ffe6e6;
     font-family: 'Arial', sans-serif;
@@ -9,22 +9,40 @@ body {
 }
 
 /* Countdown Timer */
-#countdown {
-    font-size: 20px;
-    color: red;
-    font-weight: bold;
+#countdown-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 192, 203, 0.8);
+    border-radius: 10px;
+    width: 60%;
+    max-width: 400px;
+    margin: auto;
 }
 
-/* Love Letter Styling */
-#hidden-love-letter {
+#reset-countdown {
+    padding: 10px;
+    background: #ff3366;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Hidden Love Letter */
+#hidden-heart {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#love-letter-container {
     display: none;
-    background: pink;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 192, 203, 0.95);
     padding: 20px;
     border-radius: 10px;
-    font-size: 18px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Menu Button */
@@ -32,61 +50,50 @@ body {
     position: fixed;
     top: 15px;
     left: 15px;
-    background: red;
+    background: #ff3366;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    padding: 10px;
     cursor: pointer;
 }
 
-#valentine-menu {
+/* Tabs */
+#tabs-container {
     display: none;
     position: fixed;
     top: 50px;
     left: 15px;
-    background: white;
+    background: rgba(255, 192, 203, 0.95);
     padding: 10px;
+    border-radius: 8px;
+}
+
+.tab-link {
+    display: block;
+    background: #e60073;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Proposal Animation */
-@keyframes zoomIn {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+.tab-content {
+    display: none;
 }
 
-/* Background Music Button */
+.tab-content.active {
+    display: block;
+}
+
+/* Music Button */
 #music-btn {
     position: fixed;
     bottom: 20px;
     left: 20px;
     background: #ff3366;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-#music-btn:hover {
-    background: #ff6699;
-}
-
-/* Photo Collage */
-#collage img {
-    transition: transform 0.3s ease-in-out;
-}
-
-#collage img:hover {
-    transform: scale(1.2);
 }
