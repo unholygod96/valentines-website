@@ -99,5 +99,23 @@ function toggleMusic() {
         document.getElementById("music-btn").innerText = "🎶 Play Music";
     }
 }
+// Falling Hearts Effect
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.classList.add("heart");
+    document.body.appendChild(heart);
+
+    // Random Position & Animation Speed
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+// Generate Hearts Every 0.5 Seconds
+setInterval(createHeart, 500);
 
 
