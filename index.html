@@ -46,6 +46,33 @@
     </div>
 </div>
 
+<!-- Valentine's Week Sections -->
+<div id="rose-day" class="tab-content hidden">
+    <h2>Rose Day 🌹</h2>
+    <p>You remind me of the most beautiful roses, delicate yet strong, always bringing joy to my heart. Just like a rose, you bloom with love and kindness. Every time I see a rose, I think of your radiant beauty and the love we share. 💖</p>
+    <img src="images/rose-bouquet-1.png" alt="Virtual Bouquet">
+    <img src="images/rose-bouquet-2.png" alt="Virtual Bouquet">
+</div>
+
+<div id="propose-day" class="tab-content hidden">
+    <h2>Propose Day 💍</h2>
+    <p>My love, from the moment I met you, I knew my heart was yours forever. Will you continue to be my forever Valentine? 💖</p>
+    <button onclick="showProposalAnimation()">Click here for a surprise</button>
+    <div id="proposal-animation" class="hidden">
+        <img src="images/ring-animation.gif" alt="Ring Proposal Animation">
+        <img src="images/kinderjoy.png" alt="Kinderjoy">
+    </div>
+</div>
+
+<div id="chocolate-day" class="tab-content hidden">
+    <h2>Chocolate Day 🍫</h2>
+    <p>You are the sweetest part of my life, even sweeter than all the chocolates in the world. Just like chocolate, you make everything better and add a little bit of magic to my days. 💕</p>
+    <img src="images/chocolate-bournville.png" alt="Bournville">
+    <img src="images/chocolate-cadbury.png" alt="Cadbury">
+    <img src="images/chocolate-kitkat.png" alt="KitKat">
+    <img src="images/chocolate-kinderjoy.png" alt="Kinderjoy">
+</div>
+
 <!-- Background Music -->
 <audio id="bg-music" loop>
     <source src="music/double-take.mp3" type="audio/mp3">
@@ -54,49 +81,8 @@
 
 <!-- JavaScript -->
 <script>
-    // Love Letter Reveal
-    document.getElementById("hidden-love-letter").addEventListener("click", function () {
-        document.getElementById("love-letter-container").style.display = "block";
-    });
-
-    // Countdown Timer
-    function startCountdown(targetDate) {
-        setInterval(() => {
-            let now = new Date().getTime();
-            let distance = targetDate - now;
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }, 1000);
-    }
-    startCountdown(new Date("Feb 14, 2025 00:00:00").getTime());
-
-    document.getElementById("reset-countdown").addEventListener("click", function () {
-        let newDate = prompt("Enter a new date for the countdown (YYYY-MM-DD):", "2025-02-14");
-        if (newDate) {
-            startCountdown(new Date(newDate + "T00:00:00").getTime());
-        }
-    });
-
-    // Toggle Menu
-    document.getElementById("menu-btn").addEventListener("click", function () {
-        let menu = document.getElementById("menu-dropdown");
-        menu.classList.toggle("hidden");
-    });
-
-    // Background Music
-    function toggleMusic() {
-        let music = document.getElementById("bg-music");
-        let musicBtn = document.getElementById("music-btn");
-        if (music.paused) {
-            music.play();
-            musicBtn.innerText = "🔊 Playing";
-        } else {
-            music.pause();
-            musicBtn.innerText = "🎶 Play Music";
-        }
+    function showProposalAnimation() {
+        document.getElementById("proposal-animation").classList.remove("hidden");
     }
 </script>
 
@@ -115,6 +101,16 @@
     }
     .hidden {
         display: none;
+    }
+    .tab-content {
+        background: rgba(255, 192, 203, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .tab-content img {
+        width: 200px;
+        margin: 10px;
     }
 </style>
 
