@@ -8,17 +8,19 @@
 </head>
 <body>
 
-<!-- Love Letter (Hidden Heart Button) -->
-<footer>
-    <p>Made with ❤️ by someone who loves you</p>
-    <span id="hidden-heart">❤️</span>
-</footer>
+<!-- Hidden Love Letter Button -->
+<div id="valentines-day-tab">
+    <p>Find the hidden surprise... 💌</p>
+    <span id="hidden-love-letter">💖</span>
+</div>
 <div id="love-letter-container">
     <p id="love-letter">
         Happy Valentine’s Day! 💖  
         I don’t know when you’re seeing this, but thank you for being such an amazing girlfriend.  
         I love you so much, and I miss you. I can’t wait to see you!  
         You are the best thing that has ever happened to me, and I don’t know what I’d do without you.  
+        Your laughter brightens my days, your kindness warms my heart, and your love completes me.  
+        Every moment with you is a treasure, and I can't wait to create more beautiful memories together. 💕  
     </p>
 </div>
 
@@ -31,17 +33,10 @@
 
 <!-- Menu Button -->
 <button id="menu-btn">☰ Open Menu</button>
-
-<!-- Valentine's Week Tabs -->
-<div id="tabs-container">
+<div id="menu-dropdown">
     <button class="tab-link" onclick="openTab('rose-day')">🌹 Rose Day</button>
     <button class="tab-link" onclick="openTab('propose-day')">💍 Propose Day</button>
     <button class="tab-link" onclick="openTab('chocolate-day')">🍫 Chocolate Day</button>
-    <button class="tab-link" onclick="openTab('teddy-day')">🧸 Teddy Day</button>
-    <button class="tab-link" onclick="openTab('promise-day')">🤝 Promise Day</button>
-    <button class="tab-link" onclick="openTab('hug-day')">🤗 Hug Day</button>
-    <button class="tab-link" onclick="openTab('kiss-day')">💋 Kiss Day</button>
-    <button class="tab-link" onclick="openTab('valentines-day')">❤️ Valentine's Day</button>
 </div>
 
 <!-- Background Music -->
@@ -50,62 +45,14 @@
 </audio>
 <button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
 
-<!-- CSS Styling -->
-<style>
-    body {
-        background-color: #ffe6e6;
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-        color: #d63384;
-    }
-    
-    #hidden-heart {
-        font-size: 24px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-    
-    #hidden-heart:hover {
-        transform: scale(1.2);
-    }
-    
-    #love-letter-container {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 192, 203, 0.95);
-        padding: 20px;
-        border-radius: 10px;
-    }
-    
-    #countdown-container {
-        text-align: center;
-        padding: 20px;
-        background: rgba(255, 192, 203, 0.8);
-        border-radius: 10px;
-        width: 60%;
-        max-width: 400px;
-        margin: auto;
-    }
-    
-    #reset-countdown {
-        padding: 10px;
-        background: #ff3366;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-</style>
-
 <!-- JavaScript -->
 <script>
-    document.getElementById("hidden-heart").addEventListener("dblclick", function () {
+    // Love Letter Reveal
+    document.getElementById("hidden-love-letter").addEventListener("click", function () {
         document.getElementById("love-letter-container").style.display = "block";
     });
-    
+
+    // Countdown Timer
     function startCountdown(targetDate) {
         setInterval(() => {
             let now = new Date().getTime();
@@ -118,10 +65,31 @@
         }, 1000);
     }
     startCountdown(new Date("Feb 14, 2025 00:00:00").getTime());
-    
+
+    document.getElementById("reset-countdown").addEventListener("click", function () {
+        let newDate = prompt("Enter a new date for the countdown (YYYY-MM-DD):", "2025-02-14");
+        if (newDate) {
+            startCountdown(new Date(newDate + "T00:00:00").getTime());
+        }
+    });
+
+    // Toggle Menu
+    document.getElementById("menu-btn").addEventListener("click", function () {
+        let menu = document.getElementById("menu-dropdown");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    });
+
+    // Background Music
     function toggleMusic() {
         let music = document.getElementById("bg-music");
-        music.paused ? music.play() : music.pause();
+        let musicBtn = document.getElementById("music-btn");
+        if (music.paused) {
+            music.play();
+            musicBtn.innerText = "🔊 Playing";
+        } else {
+            music.pause();
+            musicBtn.innerText = "🎶 Play Music";
+        }
     }
 </script>
 
