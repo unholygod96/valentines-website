@@ -10,7 +10,7 @@
 
 <!-- Hidden Love Letter Button -->
 <div id="valentines-day-tab">
-    <p>Find the hidden surprise... 💌</p>
+    <p>Find the secret message... 💌</p>
     <span id="hidden-love-letter">💖</span>
 </div>
 <div id="love-letter-container">
@@ -33,7 +33,7 @@
 
 <!-- Menu Button -->
 <button id="menu-btn">☰ Open Menu</button>
-<div id="menu-dropdown">
+<div id="menu-dropdown" class="hidden">
     <div class="menu-grid">
         <button class="tab-link" onclick="openTab('rose-day')">🌹 Rose Day</button>
         <button class="tab-link" onclick="openTab('propose-day')">💍 Propose Day</button>
@@ -83,7 +83,7 @@
     // Toggle Menu
     document.getElementById("menu-btn").addEventListener("click", function () {
         let menu = document.getElementById("menu-dropdown");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        menu.classList.toggle("hidden");
     });
 
     // Background Music
@@ -106,6 +106,15 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 10px;
+        position: fixed;
+        top: 50px;
+        left: 10px;
+        background: rgba(255, 192, 203, 0.95);
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .hidden {
+        display: none;
     }
 </style>
 
