@@ -19,9 +19,7 @@
         Happy Valentine’s Day! 💖  
         I don’t know when you’re seeing this, but thank you for being such an amazing girlfriend.  
         I love you so much, and I miss you. I can’t wait to see you!  
-        You are the best thing that has ever happened to me, and I don’t know what I’d do without you.  
-        Your laughter brightens my days, your kindness warms my heart, and your love completes me.  
-        Every moment with you is a treasure, and I can't wait to create more beautiful memories together. 💕  
+        Your laughter brightens my days, your kindness warms my heart, and your love completes me. 💕  
     </p>
 </div>
 
@@ -50,9 +48,8 @@
 <!-- Valentine's Week Sections -->
 <div id="rose-day" class="tab-content hidden">
     <h2>Rose Day 🌹</h2>
-    <p>You remind me of the most beautiful roses, delicate yet strong, always bringing joy to my heart. Just like a rose, you bloom with love and kindness. Every time I see a rose, I think of your radiant beauty and the love we share. 💖</p>
-    <img src="https://imgur.com/PAhioge" alt="Virtual Bouquet" loading="lazy">
-    <img src="https://imgur.com/PAhioge" alt="Virtual Bouquet" loading="lazy">
+    <p>You remind me of the most beautiful roses, delicate yet strong, always bringing joy to my heart. 💖</p>
+    <img src="https://imgur.com/PAhioge" alt="Virtual Bouquet">
 </div>
 
 <div id="propose-day" class="tab-content hidden">
@@ -60,8 +57,7 @@
     <p>My love, from the moment I met you, I knew my heart was yours forever. Will you continue to be my forever Valentine? 💖</p>
     <button id="proposal-btn">Click here for a surprise</button>
     <div id="proposal-animation" class="hidden">
-        <img src="https://imgur.com/8PIgxxz" alt="Ring Proposal Animation" loading="lazy">
-        <img src="images/kinderjoy.png" alt="Kinderjoy" loading="lazy">
+        <img src="https://imgur.com/8PIgxxz" alt="Ring Proposal Animation">
     </div>
 </div>
 
@@ -70,72 +66,7 @@
     <source src="music/double-take.mp3" type="audio/mp3">
 </audio>
 <button id="music-btn">🎶 Play Music</button>
-
-<!-- JavaScript -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("menu-btn").addEventListener("click", function() {
-            document.getElementById("menu-dropdown").classList.toggle("hidden");
-        });
-
-        document.querySelectorAll(".tab-link").forEach(button => {
-            button.addEventListener("click", function() {
-                document.querySelectorAll(".tab-content").forEach(tab => {
-                    tab.classList.add("hidden");
-                });
-                document.getElementById(this.getAttribute("data-tab")).classList.remove("hidden");
-            });
-        });
-
-        document.getElementById("proposal-btn").addEventListener("click", function() {
-            document.getElementById("proposal-animation").classList.remove("hidden");
-        });
-
-        document.getElementById("hidden-love-letter").addEventListener("click", function() {
-            document.getElementById("love-letter-container").classList.remove("hidden");
-        });
-
-        function startCountdown(targetDate) {
-            setInterval(() => {
-                let now = new Date().getTime();
-                let distance = targetDate - now;
-                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }, 1000);
-        }
-        startCountdown(new Date("Feb 14, 2025 00:00:00").getTime());
-    });
-</script>
-
-<style>
-    .menu-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-        position: fixed;
-        top: 50px;
-        left: 10px;
-        background: rgba(255, 192, 203, 0.95);
-        border-radius: 8px;
-    }
-    .hidden {
-        display: none;
-    }
-    .tab-content {
-        background: rgba(255, 192, 203, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-    }
-    .tab-content img {
-        width: 200px;
-        margin: 10px;
-    }
-</style>
+<input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5" title="Volume">
 
 </body>
 </html>
