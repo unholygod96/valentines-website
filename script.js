@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+            let timerElement = document.getElementById("timer");
+            if (timerElement) {
+                timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
         }, 1000);
     }
     startCountdown();
@@ -29,97 +33,120 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Surprise Proposal Animation
-    document.getElementById("proposal").addEventListener("click", function () {
-        document.getElementById("hidden-message").style.display = "block";
-    });
+    let proposalSection = document.getElementById("proposal");
+    if (proposalSection) {
+        proposalSection.addEventListener("click", function () {
+            let hiddenMessage = document.getElementById("hidden-message");
+            if (hiddenMessage) {
+                hiddenMessage.style.display = "block";
+            }
+        });
+    }
 
     // Photo Collage Uploader
-    document.getElementById("photo-upload").addEventListener("change", function (event) {
-        let collageArea = document.getElementById("collage");
-        collageArea.innerHTML = ""; // Clear previous images
-        Array.from(event.target.files).forEach(file => {
-            let img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-            img.style.width = "150px";
-            img.style.margin = "10px";
-            img.style.borderRadius = "10px";
-            collageArea.appendChild(img);
+    let photoUpload = document.getElementById("photo-upload");
+    if (photoUpload) {
+        photoUpload.addEventListener("change", function (event) {
+            let collageArea = document.getElementById("collage");
+            if (collageArea) {
+                collageArea.innerHTML = ""; // Clear previous images
+                Array.from(event.target.files).forEach(file => {
+                    let img = document.createElement("img");
+                    img.src = URL.createObjectURL(file);
+                    img.style.width = "150px";
+                    img.style.margin = "10px";
+                    img.style.borderRadius = "10px";
+                    collageArea.appendChild(img);
+                });
+            }
         });
-    });
-});
-// Falling Hearts Effect
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("heart");
-    document.body.appendChild(heart);
+    }
 
-    // Random Position & Animation Speed
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+    // Falling Hearts Effect (Only One Version)
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+        document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
+        // Random Position & Animation Speed
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
 
-// Generate Hearts Every 0.5 Seconds
-setInterval(createHeart, 500);
-// Cute Greeting Messages
-const greetings = [
-    "Hello, my love! 💖",
-    "How's my beautiful queen today? 👑",
-    "Hey there, cutie! 🥰",
-    "Missed you! 💕",
-    "Hope you're having a wonderful day! 🌸"
-];
-
-// Function to Check the Answer and Reveal the Main Site
-function checkAnswer() {
-    let userInput = document.getElementById("love-input").value.toLowerCase();
-    
-    if (userInput.includes("infinity") || userInput.includes("a lot") || userInput.length > 10) {
-        document.getElementById("landing-screen").style.opacity = "0"; // Fade out
         setTimeout(() => {
-            document.getElementById("landing-screen").style.display = "none"; // Hide landing
-            document.getElementById("main-website").style.display = "block"; // Show main site
-        }, 1000); // 1-second fade-out effect
-    } else {
-        alert("Hmm, that's not enough love! Try again! 😜");
+            heart.remove();
+        }, 5000);
     }
-}
-// Background Music Controls
-function toggleMusic() {
-    let music = document.getElementById("bg-music");
-    if (music.paused) {
-        music.play();
-        document.getElementById("music-btn").innerText = "🔊 Playing";
-    } else {
-        music.pause();
-        document.getElementById("music-btn").innerText = "🎶 Play Music";
+    setInterval(createHeart, 500); // Run only once
+
+    // Cute Greeting Messages
+    const greetings = [
+        "Hello, my love! 💖",
+        "How's my beautiful queen today? 👑",
+        "Hey there, cutie! 🥰",
+        "Missed you! 💕",
+        "Hope you're having a wonderful day! 🌸"
+    ];
+
+    function showGreeting() {
+        let greetingPopup = document.getElementById("greeting-popup");
+        if (greetingPopup) {
+            let randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            greetingPopup.innerText = randomGreeting;
+            greetingPopup.style.display = "block";
+            setTimeout(() => {
+                greetingPopup.style.display = "none";
+            }, 6000);
+        }
     }
-}
-// Falling Hearts Effect
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.classList.add("heart");
-    document.body.appendChild(heart);
+    showGreeting();
 
-    // Random Position & Animation Speed
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random speed
+    // Function to Check the Answer and Reveal the Main Site
+    function checkAnswer() {
+        let userInput = document.getElementById("love-input")?.value.toLowerCase();
+        
+        if (userInput && (userInput.includes("infinity") || userInput.includes("a lot") || userInput.length > 10)) {
+            let landingScreen = document.getElementById("landing-screen");
+            let mainWebsite = document.getElementById("main-website");
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
+            if (landingScreen && mainWebsite) {
+                landingScreen.style.opacity = "0"; // Fade out
+                setTimeout(() => {
+                    landingScreen.style.display = "none"; // Hide landing
+                    mainWebsite.style.display = "block"; // Show main site
+                }, 1000); // 1-second fade-out effect
+            }
+        } else {
+            alert("Hmm, that's not enough love! Try again! 😜");
+        }
+    }
 
-// Generate Hearts Every 0.5 Seconds
-setInterval(createHeart, 500);
-// Reveal the Love Letter
-function revealLetter() {
-    document.getElementById("love-letter").style.display = "block";
-}
+    // Background Music Controls
+    function toggleMusic() {
+        let music = document.getElementById("bg-music");
+        let musicBtn = document.getElementById("music-btn");
+        
+        if (music && musicBtn) {
+            if (music.paused) {
+                music.play();
+                musicBtn.innerText = "🔊 Playing";
+            } else {
+                music.pause();
+                musicBtn.innerText = "🎶 Play Music";
+            }
+        }
+    }
 
+    // Reveal the Love Letter
+    function revealLetter() {
+        let loveLetter = document.getElementById("love-letter");
+        if (loveLetter) {
+            loveLetter.style.display = "block";
+        }
+    }
 
+    // Make functions globally accessible
+    window.checkAnswer = checkAnswer;
+    window.toggleMusic = toggleMusic;
+    window.revealLetter = revealLetter;
+});
