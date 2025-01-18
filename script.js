@@ -17,6 +17,14 @@ function startCountdown(targetDate) {
 }
 startCountdown(new Date("Feb 14, 2025 00:00:00").getTime());
 
+// Countdown Reset
+document.getElementById("reset-countdown").addEventListener("click", function () {
+    let newDate = prompt("Enter a new date for the countdown (YYYY-MM-DD):", "2025-02-14");
+    if (newDate) {
+        startCountdown(new Date(newDate + "T00:00:00").getTime());
+    }
+});
+
 // Menu Toggle
 document.getElementById("menu-btn").addEventListener("click", function () {
     let menu = document.getElementById("tabs-container");
@@ -31,8 +39,16 @@ function openTab(tabId) {
     });
 }
 
-// Music Controls
+// Background Music Controls
 function toggleMusic() {
     let music = document.getElementById("bg-music");
-    music.paused ? music.play() : music.pause();
+    let musicBtn = document.getElementById("music-btn");
+
+    if (music.paused) {
+        music.play();
+        musicBtn.innerText = "🔊 Playing";
+    } else {
+        music.pause();
+        musicBtn.innerText = "🎶 Play Music";
+    }
 }
