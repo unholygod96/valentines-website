@@ -34,14 +34,16 @@
 <!-- Menu Button -->
 <button id="menu-btn">☰ Open Menu</button>
 <div id="menu-dropdown">
-    <button class="tab-link" onclick="openTab('rose-day')">🌹 Rose Day</button>
-    <button class="tab-link" onclick="openTab('propose-day')">💍 Propose Day</button>
-    <button class="tab-link" onclick="openTab('chocolate-day')">🍫 Chocolate Day</button>
-    <button class="tab-link" onclick="openTab('teddy-day')">🧸 Teddy Day</button>
-    <button class="tab-link" onclick="openTab('promise-day')">🤝 Promise Day</button>
-    <button class="tab-link" onclick="openTab('hug-day')">🤗 Hug Day</button>
-    <button class="tab-link" onclick="openTab('kiss-day')">💋 Kiss Day</button>
-    <button class="tab-link" onclick="openTab('valentines-day')">❤️ Valentine's Day</button>
+    <div class="menu-grid">
+        <button class="tab-link" onclick="openTab('rose-day')">🌹 Rose Day</button>
+        <button class="tab-link" onclick="openTab('propose-day')">💍 Propose Day</button>
+        <button class="tab-link" onclick="openTab('chocolate-day')">🍫 Chocolate Day</button>
+        <button class="tab-link" onclick="openTab('teddy-day')">🧸 Teddy Day</button>
+        <button class="tab-link" onclick="openTab('promise-day')">🤝 Promise Day</button>
+        <button class="tab-link" onclick="openTab('hug-day')">🤗 Hug Day</button>
+        <button class="tab-link" onclick="openTab('kiss-day')">💋 Kiss Day</button>
+        <button class="tab-link" onclick="openTab('valentines-day')">❤️ Valentine's Day</button>
+    </div>
 </div>
 
 <!-- Background Music -->
@@ -97,6 +99,15 @@
         }
     }
 </script>
+
+<style>
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+</style>
 
 </body>
 </html>
