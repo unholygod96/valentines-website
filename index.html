@@ -5,100 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Surprise</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
-<!-- Hidden Love Letter Button -->
-<div id="hidden-love-letter" onclick="revealLetter()" style="display: none;">💌 Open Love Letter</div>
+<!-- Love Letter (Hidden Heart Button) -->
+<footer>
+    <p>Made with ❤️ by someone who loves you</p>
+    <span id="hidden-heart">❤️</span> 
+</footer>
 
-<!-- Full-Screen Landing Page -->
-<div id="landing-screen">
-    <h1 id="greeting-text">Hello, my love! 💖</h1>
-    <p id="question-text">How much do you love me? 💕</p>
-    <input type="text" id="love-input" placeholder="Type your answer here..." />
-    <button id="proceed-btn" onclick="checkAnswer()">Proceed</button>
+<!-- Love Letter Container -->
+<div id="love-letter-container">
+    <p id="love-letter">
+        Happy Valentine’s Day! 💖  
+        I don’t know when you’re seeing this, but thank you for being such an amazing girlfriend.  
+        I love you so much, and I miss you. I can’t wait to see you!  
+        You are the best thing that has ever happened to me, and I don’t know what I’d do without you.  
+    </p>
 </div>
 
-<!-- Main Website Content (Initially Hidden) -->
-<div id="main-website" style="display: none;">
+<!-- Countdown Timer -->
+<div id="countdown-container">
+    <h2>Countdown for you to be my Valentine ❤️</h2>
+    <div id="countdown">00d 00h 00m 00s</div>
+    <button id="reset-countdown">Reset Timer</button>
+</div>
 
-    <!-- Background Music -->
-    <audio id="bg-music" loop>
-        <source src="music/double-take.mp3" type="audio/mp3">
-    </audio>
-    <button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+<!-- Menu Button -->
+<button id="menu-btn">☰ Open Menu</button>
 
-    <!-- Countdown Timer -->
-    <header>
-        <h1>Happy Valentine's Week ❤️</h1>
-        <h2>Countdown for you to be my Valentine:</h2>
-        <div id="countdown">Countdown: <span id="timer"></span></div>
-    </header>
-    
-    <!-- Menu Button to Reveal Tabs -->
-    <button id="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-    <nav id="valentine-menu" style="display: none;">
-        <ul>
-            <li><a href="#rose-day">Rose Day</a></li>
-            <li><a href="#propose-day">Propose Day</a></li>
-            <li><a href="#chocolate-day">Chocolate Day</a></li>
-            <li><a href="#teddy-day">Teddy Day</a></li>
-            <li><a href="#promise-day">Promise Day</a></li>
-            <li><a href="#hug-day">Hug Day</a></li>
-            <li><a href="#kiss-day">Kiss Day</a></li>
-            <li><a href="#valentines-day">Valentine's Day</a></li>
-            <li><a href="#photo-collage">Photo Collage</a></li>
-        </ul>
-    </nav>
+<!-- Valentine's Week Tabs -->
+<div id="tabs-container">
+    <button class="tab-link" onclick="openTab('rose-day')">🌹 Rose Day</button>
+    <button class="tab-link" onclick="openTab('propose-day')">💍 Propose Day</button>
+    <button class="tab-link" onclick="openTab('chocolate-day')">🍫 Chocolate Day</button>
+    <button class="tab-link" onclick="openTab('teddy-day')">🧸 Teddy Day</button>
+    <button class="tab-link" onclick="openTab('promise-day')">🤝 Promise Day</button>
+    <button class="tab-link" onclick="openTab('hug-day')">🤗 Hug Day</button>
+    <button class="tab-link" onclick="openTab('kiss-day')">💋 Kiss Day</button>
+    <button class="tab-link" onclick="openTab('valentines-day')">❤️ Valentine's Day</button>
+</div>
 
-    <section id="valentines-week">
-        <div class="tab-content" id="rose-day">
-            <h2>Rose Day 🌹</h2>
-            <p>You remind me of roses, always beautiful and enchanting...</p>
-            <img src="images/roses.jpg" alt="Virtual Bouquet">
-        </div>
-        <div class="tab-content" id="propose-day">
-            <h2>Propose Day 💍</h2>
-            <p>Will you be mine forever? 💖</p>
-            <button onclick="showSurprise()">Click here for a surprise</button>
-        </div>
-        <div class="tab-content" id="chocolate-day">
-            <h2>Chocolate Day 🍫</h2>
-            <p>You’re sweeter than all the chocolates in the world!</p>
-        </div>
-        <div class="tab-content" id="teddy-day">
-            <h2>Teddy Day 🧸</h2>
-            <p>You are my teddy bear, warm and cuddly! 🥰</p>
-        </div>
-        <div class="tab-content" id="promise-day">
-            <h2>Promise Day 💞</h2>
-            <p>Promises I’ll always keep for you...</p>
-            <input type="file" id="upload-promise-images" multiple>
-        </div>
-        <div class="tab-content" id="hug-day">
-            <h2>Hug Day 🤗</h2>
-            <p>Sending you the biggest virtual hug! ❤️</p>
-        </div>
-        <div class="tab-content" id="kiss-day">
-            <h2>Kiss Day 💋</h2>
-            <p>Can’t wait to kiss you again! 😘</p>
-        </div>
-        <div class="tab-content" id="valentines-day">
-            <h2>Valentine's Day 💖</h2>
-            <p>Celebrating our love today and forever...</p>
-            <div id="hidden-love-letter" onclick="revealLetter()">💌 Find the hidden surprise</div>
-        </div>
-    </section>
+<!-- Valentine's Week Sections -->
+<div class="tab-content" id="rose-day">
+    <h2>🌹 Rose Day</h2>
+    <p>Just like a rose, your beauty never fades.</p>
+    <img src="images/rose-bouquet.jpg" alt="Bouquet of Roses">
+</div>
 
-    <section id="photo-collage">
-        <h2>Our Memories Together 📸</h2>
-        <div id="collage-area">
-            <input type="file" id="photo-upload" multiple>
-            <div id="collage"></div>
-        </div>
-    </section>
-</div> <!-- Closing main website div -->
+<div class="tab-content" id="propose-day">
+    <h2>💍 Propose Day</h2>
+    <p>From the moment I met you, I knew my heart belonged to you.</p>
+    <button id="proposal-btn">Click for a Surprise</button>
+    <div id="proposal-surprise">💍 Will you be my Valentine forever? 💕</div>
+</div>
+
+<!-- Background Music -->
+<audio id="bg-music" loop>
+    <source src="music/double-take.mp3" type="audio/mp3">
+</audio>
+<button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
 
 <script src="script.js"></script>
 </body>
