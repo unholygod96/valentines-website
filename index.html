@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Falling Hearts Container -->
-<div id="hearts-container"></div>
 
 <!-- Full-Screen Landing Page -->
 <div id="landing-screen">
@@ -24,17 +22,21 @@
 
 <!-- Main Website Content (Initially Hidden) -->
 <div id="main-website" style="display: none;">
-<!-- Hidden Love Letter Section -->
-<div id="love-letter-container">
-    <button onclick="revealLetter()">💌 Open Love Letter</button>
-    <p id="love-letter" style="display: none;">My Love, every day with you is special, but today I wanted to remind you how much I adore you... 💖</p>
-</div>
 
-<!-- Background Music -->
-<audio id="bg-music" loop>
-    <source src="music/love-song.mp3" type="audio/mp3">
-</audio>
-<button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+    <!-- Falling Hearts Animation -->
+    <script src="script.js"></script>
+
+    <!-- Hidden Love Letter Section -->
+    <div id="love-letter-container">
+        <button onclick="revealLetter()">💌 Open Love Letter</button>
+        <p id="love-letter" style="display: none;">My Love, every day with you is special, but today I wanted to remind you how much I adore you... 💖</p>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="music/love-song.mp3" type="audio/mp3">
+    </audio>
+    <button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
 
     <header>
         <h1>Happy Valentine's Week ❤️</h1>
@@ -66,7 +68,6 @@
             <p>From the moment I met you, I knew my heart belonged to you.</p>
             <button onclick="showProposal()">Click for a Surprise</button>
         </div>
-        <!-- Add other days similarly -->
     </section>
 
     <section id="photo-collage">
@@ -83,6 +84,9 @@
         <div id="hidden-message">Will you be my Valentine? ❤️</div>
     </section>
 
-    <script src="script.js"></script>
+</div> <!-- ✅ Properly Closing #main-website div -->
+
+<script src="script.js"></script>
+
 </body>
 </html>
