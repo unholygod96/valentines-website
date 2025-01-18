@@ -8,195 +8,62 @@ body {
     padding: 0;
 }
 
-/* Header Styling */
-header {
-    background-color: #ffb3b3;
-    padding: 20px;
-    font-size: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation Bar */
-nav ul {
-    list-style: none;
-    padding: 0;
-    background: #ff66b2;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    display: inline;
-    margin: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #e60073;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background-color: #ff3385;
-}
-
-/* Section Styling */
-section {
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Valentine's Week Tabs */
-.tab-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    padding: 20px;
-    border: 2px solid #ff66b2;
-    border-radius: 10px;
-    background-color: #fff;
-    margin: 20px;
-}
-
-.tab-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.tab-content img {
-    width: 200px;
-    border-radius: 10px;
-}
-
-/* Proposal Section */
-#proposal {
-    background: #ff9999;
-    padding: 30px;
-    border-radius: 10px;
-    font-size: 24px;
-    display: none;
-}
-
-#hidden-message {
-    display: none;
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff3366;
-}
-
-/* Photo Collage */
-#photo-collage {
-    background: #ffcccc;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-#collage img {
-    width: 150px;
-    margin: 10px;
-    border-radius: 10px;
-}
-
-/* Falling Hearts Animation (Only One Copy Now) */
-@keyframes fall {
-    0% { transform: translateY(-100px) scale(1); opacity: 1; }
-    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-}
-
-.heart {
-    position: fixed;
+/* Countdown Timer */
+#countdown {
+    font-size: 20px;
     color: red;
-    font-size: 20px;
-    animation: fall linear infinite;
+    font-weight: bold;
 }
 
-/* Smooth Transition Effect */
-button, nav a {
-    transition: 0.3s;
-    box-shadow: 0 0 10px transparent;
-}
-
-button:hover, nav a:hover {
-    box-shadow: 0 0 15px #ff4d94;
-    transform: scale(1.05);
-}
-
-/* Greeting Popup Styling */
-#greeting-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 192, 203, 0.95);
-    padding: 20px 30px;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+/* Love Letter Styling */
+#hidden-love-letter {
     display: none;
-    animation: fadeIn 1.5s ease-out, fadeOut 1.5s ease-in 5s;
-}
-
-/* Full-Screen Landing Page */
-#landing-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    font-size: 24px;
-    transition: opacity 1s ease-in-out;
-}
-
-/* Input Box */
-#love-input {
-    margin-top: 10px;
-    padding: 10px;
+    background: pink;
+    padding: 20px;
+    border-radius: 10px;
     font-size: 18px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu Button */
+#menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: red;
+    color: white;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    text-align: center;
-}
-
-/* Proceed Button */
-#proceed-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 20px;
-    background: #ff3366;
-    color: white;
-    border: none;
-    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-#proceed-btn:hover {
-    background: #ff6699;
-}
-
-/* Hide the main website initially */
-#main-website {
+#valentine-menu {
     display: none;
+    position: fixed;
+    top: 50px;
+    left: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Music Button Styling */
+/* Proposal Animation */
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Background Music Button */
 #music-btn {
     position: fixed;
     bottom: 20px;
@@ -215,16 +82,11 @@ button:hover, nav a:hover {
     background: #ff6699;
 }
 
-/* Love Letter Section */
-#love-letter-container {
-    text-align: center;
-    margin-top: 20px;
+/* Photo Collage */
+#collage img {
+    transition: transform 0.3s ease-in-out;
 }
 
-#love-letter {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff3366;
-    padding: 10px;
-    display: none;
+#collage img:hover {
+    transform: scale(1.2);
 }
