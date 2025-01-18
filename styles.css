@@ -8,6 +8,40 @@ body {
     padding: 0;
 }
 
+/* Hidden Love Letter Button */
+.hidden-love-letter {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ff3366;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hidden-love-letter:hover {
+    transform: scale(1.2);
+}
+
+/* Countdown Box */
+#countdown-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffb3b3;
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+#reset-countdown {
+    background: #ff4d94;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 /* Menu Button */
 #menu-btn {
     position: fixed;
@@ -22,6 +56,7 @@ body {
     cursor: pointer;
 }
 
+/* Menu Dropdown */
 #menu-dropdown {
     position: fixed;
     top: 50px;
@@ -38,78 +73,36 @@ body {
     gap: 10px;
 }
 
-.hidden {
+/* Tab Sections */
+.tab-content {
     display: none;
-}
-
-/* Section Styling */
-.tab-content img {
-    width: 150px;
-    height: 150px;
-    margin-top: 10px;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.tab-content img:hover {
-    transform: scale(1.2);
-}
-
-/* Valentine's Day Heartfelt Button */
-#hidden-love-letter {
-    font-size: 30px;
-    color: #ff4d94;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#hidden-love-letter:hover {
-    transform: scale(1.1);
-}
-
-#love-letter-container {
-    margin-top: 20px;
     padding: 20px;
-    background-color: rgba(255, 192, 203, 0.9);
+    background: rgba(255, 192, 203, 0.9);
     border-radius: 10px;
-    color: #d63384;
-    font-size: 18px;
 }
 
-#proposal-btn {
-    padding: 10px;
-    background-color: #ff4d94;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#proposal-animation {
-    margin-top: 20px;
-}
-
-#proposal-animation img {
-    width: 250px;
-    height: auto;
+.tab-content img {
+    width: 200px;
     margin-top: 10px;
 }
 
-/* Music Controls */
+/* Music Button */
 #music-btn {
     position: fixed;
-    bottom: 10px;
-    left: 10px;
-    background-color: #ff4d94;
+    bottom: 20px;
+    left: 20px;
+    background: #ff3366;
     color: white;
     border: none;
     padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
+/* Volume Slider */
 #volume-slider {
     position: fixed;
-    bottom: 10px;
-    left: 120px;
-    width: 150px;
+    bottom: 20px;
+    left: 150px;
 }
