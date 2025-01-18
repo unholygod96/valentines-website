@@ -11,7 +11,7 @@
 <!-- Hidden Love Letter Button -->
 <div id="valentines-day-tab">
     <p>Find the secret message... 💌</p>
-    <span id="hidden-love-letter">💖</span>
+    <span id="hidden-love-letter" style="cursor: pointer;">💖</span>
 </div>
 <div id="love-letter-container" class="hidden">
     <p id="love-letter">
@@ -92,6 +92,19 @@
     document.getElementById("hidden-love-letter").addEventListener("click", function() {
         document.getElementById("love-letter-container").classList.remove("hidden");
     });
+
+    function startCountdown(targetDate) {
+        setInterval(() => {
+            let now = new Date().getTime();
+            let distance = targetDate - now;
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+    startCountdown(new Date("Feb 14, 2025 00:00:00").getTime());
 </script>
 
 <style>
