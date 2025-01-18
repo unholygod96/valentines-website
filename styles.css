@@ -56,11 +56,20 @@ section {
 /* Valentine's Week Tabs */
 .tab-content {
     display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
     padding: 20px;
     border: 2px solid #ff66b2;
     border-radius: 10px;
     background-color: #fff;
     margin: 20px;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .tab-content img {
@@ -96,7 +105,8 @@ section {
     margin: 10px;
     border-radius: 10px;
 }
-/* Falling Hearts Animation */
+
+/* Falling Hearts Animation (Only One Copy Now) */
 @keyframes fall {
     0% { transform: translateY(-100px) scale(1); opacity: 1; }
     100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
@@ -108,32 +118,8 @@ section {
     font-size: 20px;
     animation: fall linear infinite;
 }
-/* Falling Hearts Animation */
-@keyframes fall {
-    0% { transform: translateY(-100px) scale(1); opacity: 1; }
-    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-}
 
-.heart {
-    position: fixed;
-    color: red;
-    font-size: 20px;
-    animation: fall linear infinite;
-}
 /* Smooth Transition Effect */
-.tab-content {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.tab-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-/* Glowing Button & Link Effects */
 button, nav a {
     transition: 0.3s;
     box-shadow: 0 0 10px transparent;
@@ -143,6 +129,7 @@ button:hover, nav a:hover {
     box-shadow: 0 0 15px #ff4d94;
     transform: scale(1.05);
 }
+
 /* Greeting Popup Styling */
 #greeting-popup {
     position: fixed;
@@ -208,6 +195,7 @@ button:hover, nav a:hover {
 #main-website {
     display: none;
 }
+
 /* Music Button Styling */
 #music-btn {
     position: fixed;
@@ -226,18 +214,7 @@ button:hover, nav a:hover {
 #music-btn:hover {
     background: #ff6699;
 }
-/* Falling Hearts Animation */
-@keyframes fall {
-    0% { transform: translateY(-100px) scale(1); opacity: 1; }
-    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-}
 
-.heart {
-    position: fixed;
-    color: red;
-    font-size: 20px;
-    animation: fall linear infinite;
-}
 /* Love Letter Section */
 #love-letter-container {
     text-align: center;
@@ -251,6 +228,3 @@ button:hover, nav a:hover {
     padding: 10px;
     display: none;
 }
-
-
-
