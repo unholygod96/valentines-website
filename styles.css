@@ -238,6 +238,19 @@ button:hover, nav a:hover {
     font-size: 20px;
     animation: fall linear infinite;
 }
+/* Love Letter Section */
+#love-letter-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#love-letter {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff3366;
+    padding: 10px;
+    display: none;
+}
 
 
 
