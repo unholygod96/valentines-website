@@ -208,6 +208,24 @@ button:hover, nav a:hover {
 #main-website {
     display: none;
 }
+/* Music Button Styling */
+#music-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #ff3366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#music-btn:hover {
+    background: #ff6699;
+}
 
 
 
