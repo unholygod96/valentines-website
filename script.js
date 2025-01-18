@@ -117,5 +117,9 @@ function createHeart() {
 
 // Generate Hearts Every 0.5 Seconds
 setInterval(createHeart, 500);
+// Reveal the Love Letter
+function revealLetter() {
+    document.getElementById("love-letter").style.display = "block";
+}
 
 
