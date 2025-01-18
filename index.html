@@ -13,7 +13,7 @@
     <p>Find the secret message... 💌</p>
     <span id="hidden-love-letter">💖</span>
 </div>
-<div id="love-letter-container">
+<div id="love-letter-container" class="hidden">
     <p id="love-letter">
         Happy Valentine’s Day! 💖  
         I don’t know when you’re seeing this, but thank you for being such an amazing girlfriend.  
@@ -57,33 +57,41 @@
 <div id="propose-day" class="tab-content hidden">
     <h2>Propose Day 💍</h2>
     <p>My love, from the moment I met you, I knew my heart was yours forever. Will you continue to be my forever Valentine? 💖</p>
-    <button onclick="showProposalAnimation()">Click here for a surprise</button>
+    <button id="proposal-btn">Click here for a surprise</button>
     <div id="proposal-animation" class="hidden">
         <img src="images/ring-animation.gif" alt="Ring Proposal Animation">
         <img src="images/kinderjoy.png" alt="Kinderjoy">
     </div>
 </div>
 
-<div id="chocolate-day" class="tab-content hidden">
-    <h2>Chocolate Day 🍫</h2>
-    <p>You are the sweetest part of my life, even sweeter than all the chocolates in the world. Just like chocolate, you make everything better and add a little bit of magic to my days. 💕</p>
-    <img src="images/chocolate-bournville.png" alt="Bournville">
-    <img src="images/chocolate-cadbury.png" alt="Cadbury">
-    <img src="images/chocolate-kitkat.png" alt="KitKat">
-    <img src="images/chocolate-kinderjoy.png" alt="Kinderjoy">
-</div>
-
 <!-- Background Music -->
 <audio id="bg-music" loop>
     <source src="music/double-take.mp3" type="audio/mp3">
 </audio>
-<button id="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+<button id="music-btn">🎶 Play Music</button>
 
 <!-- JavaScript -->
 <script>
-    function showProposalAnimation() {
+    document.getElementById("menu-btn").addEventListener("click", function() {
+        document.getElementById("menu-dropdown").classList.toggle("hidden");
+    });
+
+    document.querySelectorAll(".tab-link").forEach(button => {
+        button.addEventListener("click", function() {
+            document.querySelectorAll(".tab-content").forEach(tab => {
+                tab.classList.add("hidden");
+            });
+            document.getElementById(this.getAttribute("onclick").replace("openTab(", "").replace(")", "")).classList.remove("hidden");
+        });
+    });
+
+    document.getElementById("proposal-btn").addEventListener("click", function() {
         document.getElementById("proposal-animation").classList.remove("hidden");
-    }
+    });
+
+    document.getElementById("hidden-love-letter").addEventListener("click", function() {
+        document.getElementById("love-letter-container").classList.remove("hidden");
+    });
 </script>
 
 <style>
@@ -96,7 +104,6 @@
         top: 50px;
         left: 10px;
         background: rgba(255, 192, 203, 0.95);
-        padding: 10px;
         border-radius: 8px;
     }
     .hidden {
