@@ -53,41 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Background Music Control
-    const audioElement = document.getElementById("background-music");
-    document.getElementById("toggle-music").addEventListener("click", function () {
-        if (audioElement.paused) {
-            audioElement.play();
-            this.textContent = "🔇";
-        } else {
-            audioElement.pause();
-            this.textContent = "🎵";
-        }
-    });
+    // Custom Timer Functionality
+    let customTimerInterval;
+    let customTimerSeconds = 0;
+    let isCustomTimerRunning = false;
 
-    // Photo Upload and Collage Creation
-    document.getElementById("photo-upload").addEventListener("change", function (event) {
-        const files = event.target.files;
-        const collage = document.getElementById("collage");
-        collage.innerHTML = ''; // Clear existing images
-
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            if (file.type.startsWith('image/')) {
-                const img = document.createElement('img');
-                img.file = file;
-                collage.appendChild(img);
-
-                const reader = new FileReader();
-                reader.onload = (function(aImg) { 
-                    return function(e) { 
-                        aImg.src = e.target.result; 
-                    }; 
-                })(img);
-                reader.readAsDataURL(file);
-            }
-        }
-    });
-
-    // Show first tab content by default
-    document.querySelector(".tab-content").style.display = "block";
+    function updateCustomTimer() {
+        const hours = Math.floor(customTimerSeconds / 3600);
+        const minutes = Math.floor((customTimerSeconds % 3600) / 60);
+        const seconds = customTimerSeconds % 60;
+        document.getElementById("custom-timer-display").textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0'
