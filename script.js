@@ -28,19 +28,25 @@ document.addEventListener("DOMContentLoaded", function () {
         const now = new Date().getTime();
         const timeLeft = countdownDate - now;
 
+        // Calculate days, hours, minutes, seconds
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-        document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        // Display result
+        document.getElementById("timer").innerHTML =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
+        // If timeLeft < 0, countdown is over
         if (timeLeft < 0) {
             clearInterval(countdownTimer);
             document.getElementById("timer").innerHTML = "Happy Valentine's Day!";
         }
     }
 
+    // Immediately update countdown & continue every second
+    updateCountdown();
     countdownTimer = setInterval(updateCountdown, 1000);
 
     // Reset Countdown Functionality
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (newDate) {
             countdownDate = new Date(newDate).getTime();
             clearInterval(countdownTimer);
+            updateCountdown(); // Show updated countdown right away
             countdownTimer = setInterval(updateCountdown, 1000);
         }
     });
@@ -91,12 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set Timer from Input Field
     document.getElementById("set-timer").addEventListener("click", function () {
-        // Retrieve user input from the text field
         const inputField = document.getElementById("timer-input");
         const inputValue = inputField.value.trim();
 
         if (inputValue) {
-            // Example formats: HH:MM:SS or MM:SS or SS
             const parts = inputValue.split(":").map(x => parseInt(x, 10) || 0);
 
             let hours = 0;
@@ -117,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 seconds = parts[0];
             }
 
-            // Calculate total seconds
             customTimerSeconds = (hours * 3600) + (minutes * 60) + seconds;
             updateCustomTimer();
         }
