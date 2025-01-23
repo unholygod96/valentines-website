@@ -212,3 +212,16 @@ nav ul li a {
 .hidden {
     display: none;
 }
+
+/* Celebration Styling */
+#timer-header.celebrate {
+    font-size: 2.5rem;
+    color: #ff1493;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: celebrate 1s ease-in-out infinite alternate;
+}
+
+@keyframes celebrate {
+    from {transform: scale(1);}
+    to {transform: scale(1.1);}
+}
