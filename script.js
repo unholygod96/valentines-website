@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // Custom Timer (now a countdown timer)
+    // Custom Timer (now with overlay)
     let customTimerInterval = null;
     let customTimerSeconds = 0;
 
@@ -29,19 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (customTimerSeconds <= 0) {
             clearInterval(customTimerInterval);
             customTimerInterval = null;
-            const timerContainer = document.getElementById("timer-container");
-            const timerHeader = document.getElementById("timer-header");
             
-            // Hide all elements except the header
-            Array.from(timerContainer.children).forEach(child => {
-                if (child !== timerHeader) {
-                    child.style.display = 'none';
-                }
-            });
-
-            // Update and style the header
-            timerHeader.textContent = "It's time to celebrate! 🎉";
-            timerHeader.classList.add('celebrate');
+            // Get the customized header text
+            const customHeader = document.getElementById("timer-header").textContent;
+            
+            // Show the overlay with the custom header
+            const overlay = document.getElementById("timer-end-overlay");
+            const overlayHeader = document.getElementById("overlay-header");
+            overlayHeader.textContent = customHeader;
+            overlay.classList.remove("hidden");
+            overlay.classList.add("show");
+            
             return;
         }
 
@@ -79,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const timerContainer = document.getElementById("timer-container");
         const timerHeader = document.getElementById("timer-header");
         timerHeader.textContent = "Custom Timer";
-        timerHeader.classList.remove('celebrate');
         Array.from(timerContainer.children).forEach(child => {
             child.style.display = '';
         });
@@ -99,6 +96,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             updateCustomTimer();
         }
+    });
+
+    // Close Overlay Button
+    document.getElementById("close-overlay").addEventListener("click", function() {
+        const overlay = document.getElementById("timer-end-overlay");
+        overlay.classList.remove("show");
+        overlay.classList.add("hidden");
+        
+        // Reset the timer container to its original state
+        const timerContainer = document.getElementById("timer-container");
+        const timerHeader = document.getElementById("timer-header");
+        timerHeader.textContent = "Custom Timer";
+        Array.from(timerContainer.children).forEach(child => {
+            child.style.display = '';
+        });
     });
 
     // Photo Upload and Collage Creation
