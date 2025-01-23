@@ -21,26 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // Custom Timer
+    // Custom Timer (now a countdown timer)
     let customTimerInterval = null;
     let customTimerSeconds = 0;
 
     function updateCustomTimer() {
+        if (customTimerSeconds <= 0) {
+            clearInterval(customTimerInterval);
+            customTimerInterval = null;
+            document.getElementById("custom-timer-display").textContent = "Time's up!";
+            return;
+        }
+
         const hours = Math.floor(customTimerSeconds / 3600);
         const minutes = Math.floor((customTimerSeconds % 3600) / 60);
         const seconds = customTimerSeconds % 60;
 
         document.getElementById("custom-timer-display").textContent =
             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        customTimerSeconds--;
     }
 
     // Start Timer
     document.getElementById("start-timer").addEventListener("click", function () {
-        if (!customTimerInterval) {
-            customTimerInterval = setInterval(function () {
-                customTimerSeconds++;
-                updateCustomTimer();
-            }, 1000);
+        if (!customTimerInterval && customTimerSeconds > 0) {
+            customTimerInterval = setInterval(updateCustomTimer, 1000);
         }
     });
 
@@ -53,9 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Reset Timer
     document.getElementById("reset-timer").addEventListener("click", function () {
         clearInterval(customTimerInterval);
-        customTimerSeconds = 0;
         customTimerInterval = null;
-        updateCustomTimer();
+        customTimerSeconds = 0;
+        document.getElementById("custom-timer-display").textContent = "00:00:00";
     });
 
     // Set Timer from Input
