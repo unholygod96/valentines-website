@@ -92,9 +92,33 @@ nav ul li a {
 }
 
 /* Countdown Styling */
+#countdown-container {
+    margin-top: 20px;
+}
+
+#countdown-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
 #countdown {
     font-size: 1.2rem;
-    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#reset-countdown {
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#reset-countdown:hover {
+    background-color: #ff1493;
 }
 
 /* Tab Content Styling */
