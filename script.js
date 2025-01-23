@@ -29,7 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (customTimerSeconds <= 0) {
             clearInterval(customTimerInterval);
             customTimerInterval = null;
-            document.getElementById("custom-timer-display").textContent = "Time's up!";
+            const timerContainer = document.getElementById("timer-container");
+            const timerHeader = document.getElementById("timer-header");
+            
+            // Hide all elements except the header
+            Array.from(timerContainer.children).forEach(child => {
+                if (child !== timerHeader) {
+                    child.style.display = 'none';
+                }
+            });
+
+            // Update and style the header
+            timerHeader.textContent = "It's time to celebrate! 🎉";
+            timerHeader.classList.add('celebrate');
             return;
         }
 
@@ -62,6 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
         customTimerInterval = null;
         customTimerSeconds = 0;
         document.getElementById("custom-timer-display").textContent = "00:00:00";
+        
+        // Reset the timer container to its original state
+        const timerContainer = document.getElementById("timer-container");
+        const timerHeader = document.getElementById("timer-header");
+        timerHeader.textContent = "Custom Timer";
+        timerHeader.classList.remove('celebrate');
+        Array.from(timerContainer.children).forEach(child => {
+            child.style.display = '';
+        });
     });
 
     // Set Timer from Input
