@@ -88,9 +88,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set Timer from Input
     document.getElementById("set-timer").addEventListener("click", function () {
         const inputField = document.getElementById("timer-input");
+        const calendarInput = document.getElementById("calendar-input");
         const inputValue = inputField.value.trim();
+        const calendarValue = calendarInput.value;
 
-        if (inputValue) {
+        if (calendarValue) {
+            const targetDate = new Date(calendarValue);
+            const now = new Date();
+            customTimerSeconds = Math.floor((targetDate - now) / 1000);
+            if (customTimerSeconds < 0) {
+                customTimerSeconds = 0;
+            }
+        } else if (inputValue) {
             const parts = inputValue.split(":").map(x => parseInt(x, 10) || 0);
 
             let hours = 0;
@@ -112,8 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             customTimerSeconds = hours * 3600 + minutes * 60 + seconds;
-            updateCustomTimer();
         }
+        updateCustomTimer();
     });
 
     // Photo Upload and Collage Creation
