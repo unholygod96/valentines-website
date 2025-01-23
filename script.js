@@ -11,11 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".tab-content").forEach(tab => {
                 tab.style.display = "none";
             });
-            document.querySelector(this.getAttribute("href")).style.display = "block";
+            const target = this.getAttribute("href");
+            document.querySelector(target).style.display = "block";
         });
     });
 
-    // Love Letter Button Functionality
+    // Love Letter Button
     document.getElementById("love-letter-button").addEventListener("click", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
@@ -28,46 +29,44 @@ document.addEventListener("DOMContentLoaded", function () {
         const now = new Date().getTime();
         const timeLeft = countdownDate - now;
 
-        // Calculate days, hours, minutes, seconds
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-        // Display result
-        document.getElementById("timer").innerHTML =
-            `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-        // If timeLeft < 0, countdown is over
-        if (timeLeft < 0) {
+        if (timeLeft > 0) {
+            document.getElementById("timer").innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        } else {
             clearInterval(countdownTimer);
             document.getElementById("timer").innerHTML = "Happy Valentine's Day!";
         }
     }
 
-    // Immediately update countdown & continue every second
+    // Immediately show the countdown & update every second
     updateCountdown();
     countdownTimer = setInterval(updateCountdown, 1000);
 
-    // Reset Countdown Functionality
-    document.getElementById("reset-countdown").addEventListener("click", function() {
+    // Reset Countdown
+    document.getElementById("reset-countdown").addEventListener("click", function () {
         const newDate = prompt("Enter new countdown date (YYYY-MM-DD HH:MM:SS):");
         if (newDate) {
             countdownDate = new Date(newDate).getTime();
             clearInterval(countdownTimer);
-            updateCountdown(); // Show updated countdown right away
+            updateCountdown(); 
             countdownTimer = setInterval(updateCountdown, 1000);
         }
     });
 
-    // Custom Timer Functionality
-    let customTimerInterval;
+    // Custom Timer
+    let customTimerInterval = null;
     let customTimerSeconds = 0;
 
     function updateCustomTimer() {
         const hours = Math.floor(customTimerSeconds / 3600);
         const minutes = Math.floor((customTimerSeconds % 3600) / 60);
         const seconds = customTimerSeconds % 60;
+
         document.getElementById("custom-timer-display").textContent =
             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
@@ -96,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCustomTimer();
     });
 
-    // Set Timer from Input Field
+    // Set Timer from Input
     document.getElementById("set-timer").addEventListener("click", function () {
         const inputField = document.getElementById("timer-input");
         const inputValue = inputField.value.trim();
@@ -109,20 +108,20 @@ document.addEventListener("DOMContentLoaded", function () {
             let seconds = 0;
 
             if (parts.length === 3) {
-                // Format HH:MM:SS
+                // HH:MM:SS
                 hours = parts[0];
                 minutes = parts[1];
                 seconds = parts[2];
             } else if (parts.length === 2) {
-                // Format MM:SS
+                // MM:SS
                 minutes = parts[0];
                 seconds = parts[1];
             } else if (parts.length === 1) {
-                // Format SS
+                // SS
                 seconds = parts[0];
             }
 
-            customTimerSeconds = (hours * 3600) + (minutes * 60) + seconds;
+            customTimerSeconds = hours * 3600 + minutes * 60 + seconds;
             updateCustomTimer();
         }
     });
