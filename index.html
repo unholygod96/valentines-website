@@ -5,109 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Surprise</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Happy Valentine's Week ❤️</h1>
+        <div id="countdown">Countdown: <span id="timer"></span></div>
+        <button id="menu-button">☰</button>
+        <audio id="background-music" loop>
+            <source src="double-take.mp3" type="audio/mpeg">
+        </audio>
+        <button id="toggle-music">🎵</button>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#rose-day">Rose Day</a></li>
+            <li><a href="#propose-day">Propose Day</a></li>
+            <li><a href="#chocolate-day">Chocolate Day</a></li>
+            <li><a href="#teddy-day">Teddy Day</a></li>
+            <li><a href="#promise-day">Promise Day</a></li>
+            <li><a href="#hug-day">Hug Day</a></li>
+            <li><a href="#kiss-day">Kiss Day</a></li>
+            <li><a href="#valentines-day">Valentine's Day</a></li>
+            <li><a href="#photo-collage">Photo Collage</a></li>
+        </ul>
+    </nav>
 
-<!-- Hidden Love Letter Button -->
-<div id="valentines-day-tab">
-    <p>Find the secret message... 💌</p>
-    <span id="hidden-love-letter" class="hidden-love-letter">💖</span>
-</div>
-<div id="love-letter-container" class="hidden">
-    <p id="love-letter">
-        Happy Valentine’s Day! 💖  
-        I don’t know when you’re seeing this, but thank you for being such an amazing girlfriend.  
-        I love you so much, and I miss you. I can’t wait to see you!  
-        You are the best thing that ever happened to me, and I honestly don’t know what I would do without you.  
-        Your laughter brightens my days, your kindness warms my heart, and your love completes me. 💕
-    </p>
-</div>
-
-<!-- Countdown Timer -->
-<div id="countdown-container">
-    <h2>Count down for you to be my valentine ❤️</h2>
-    <div id="countdown">00d 00h 00m 00s</div>
-    <button id="reset-countdown">Reset Timer</button>
-</div>
-
-<!-- Menu Button -->
-<button id="menu-btn">☰ Open Menu</button>
-<div id="menu-dropdown" class="hidden">
-    <div class="menu-grid">
-        <button class="tab-link" data-tab="rose-day">🌹 Rose Day</button>
-        <button class="tab-link" data-tab="propose-day">💍 Propose Day</button>
-        <button class="tab-link" data-tab="chocolate-day">🍫 Chocolate Day</button>
-        <button class="tab-link" data-tab="teddy-day">🧸 Teddy Day</button>
-        <button class="tab-link" data-tab="promise-day">🤝 Promise Day</button>
-        <button class="tab-link" data-tab="hug-day">🤗 Hug Day</button>
-        <button class="tab-link" data-tab="kiss-day">💋 Kiss Day</button>
-        <button class="tab-link" data-tab="valentines-day">❤️ Valentine's Day</button>
+    <div id="love-letter-container">
+        <button id="love-letter-button">💌</button>
+        <div id="love-letter" class="hidden">
+            <p>My dearest, you are my heart's greatest treasure...</p>
+        </div>
     </div>
-</div>
 
-<!-- Valentine's Week Sections -->
-<div id="rose-day" class="tab-content hidden">
-    <h2>Rose Day 🌹</h2>
-    <p>You remind me of the most beautiful roses, delicate yet strong, always bringing joy to my heart. 💖</p>
-    <div id="rose-day-flowers"></div> <!-- Images will be added here -->
-</div>
+    <section id="valentines-week">
+        <div class="tab-content" id="rose-day">
+            <h2>Rose Day 🌹</h2>
+            <p>Roses are red, violets are blue, my heart is filled with love for you!</p>
+            <img src="images/rose-day.jpg" alt="A beautiful red rose for Rose Day">
+        </div>
+        <div class="tab-content" id="propose-day">
+            <h2>Propose Day 💍</h2>
+            <p>From the moment I met you, I knew my heart belonged to you.</p>
+            <button onclick="showProposal()">Click for a Surprise</button>
+        </div>
+        <div class="tab-content" id="chocolate-day">
+            <h2>Chocolate Day 🍫</h2>
+            <p>Sweet like chocolate, that's how you make me feel every day.</p>
+            <img src="images/chocolate-day.jpg" alt="Delicious chocolates for Chocolate Day">
+        </div>
+        <div class="tab-content" id="teddy-day">
+            <h2>Teddy Day 🧸</h2>
+            <p>Soft, cuddly, and full of love - just like my feelings for you.</p>
+            <img src="images/teddy-day.jpg" alt="Cute teddy bear for Teddy Day">
+        </div>
+        <div class="tab-content" id="promise-day">
+            <h2>Promise Day 🤝</h2>
+            <p>I promise to love you, cherish you, and stand by you always.</p>
+            <img src="images/promise-day.jpg" alt="Hands joined together symbolizing a promise">
+        </div>
+        <div class="tab-content" id="hug-day">
+            <h2>Hug Day 🤗</h2>
+            <p>A warm hug from you is all I need to feel complete.</p>
+            <img src="images/hug-day.jpg" alt="A loving couple hugging">
+        </div>
+        <div class="tab-content" id="kiss-day">
+            <h2>Kiss Day 💋</h2>
+            <p>Every kiss with you feels like our first - magical and full of love.</p>
+            <img src="images/kiss-day.jpg" alt="A romantic kiss silhouette">
+        </div>
+        <div class="tab-content" id="valentines-day">
+            <h2>Valentine's Day ❤️</h2>
+            <p>Today and every day, I celebrate our love. Happy Valentine's Day!</p>
+            <img src="images/valentines-day.jpg" alt="Heart-shaped decorations for Valentine's Day">
+        </div>
+    </section>
 
-<div id="propose-day" class="tab-content hidden">
-    <h2>Propose Day 💍</h2>
-    <p contenteditable="true">My love, from the moment I met you, I knew my heart was yours forever. Will you continue to be my forever Valentine? 💖</p>
-    <button id="proposal-btn">Click here for a surprise</button>
-    <div id="proposal-animation" class="hidden">
-        <img src="https://imgur.com/8PIgxxz" alt="Ring Proposal Animation">
-        <img src="https://imgur.com/KinderJoy" alt="Kinder Joy Surprise">
-    </div>
-</div>
+    <section id="photo-collage">
+        <h2>Our Memories Together 📸</h2>
+        <div id="collage-area">
+            <input type="file" id="photo-upload" multiple accept="image/*">
+            <div id="collage"></div>
+        </div>
+    </section>
 
-<div id="chocolate-day" class="tab-content hidden">
-    <h2>Chocolate Day 🍫</h2>
-    <div id="chocolate-images"></div> <!-- Chocolate images -->
-    <p>Sweet like chocolates and as warm as the love I have for you.</p>
-</div>
+    <section id="proposal">
+        <h2>A Special Question 💖</h2>
+        <p>Click the stars to reveal the message...</p>
+        <div id="hidden-message">Will you be my Valentine? ❤️</div>
+    </section>
 
-<div id="teddy-day" class="tab-content hidden">
-    <h2>Teddy Day 🧸</h2>
-    <div id="teddy-images"></div> <!-- Teddy images -->
-    <p>Just like teddies, I feel safe, comfortable, and loved with you. I can't wait to bring you one soon!</p>
-</div>
-
-<div id="promise-day" class="tab-content hidden">
-    <h2>Promise Day 🤝</h2>
-    <div id="promise-images"></div> <!-- Your images will go here -->
-    <p contenteditable="true">I promise to love you, support you, and cherish every moment with you, now and always. 💖</p>
-</div>
-
-<div id="hug-day" class="tab-content hidden">
-    <h2>Hug Day 🤗</h2>
-    <p>I miss you so much and I’m sending all the virtual hugs I can. I love you, I love you, I love you!</p>
-</div>
-
-<div id="kiss-day" class="tab-content hidden">
-    <h2>Kiss Day 💋</h2>
-    <p>Every time I think of you, I can't help but miss kissing you. I can't wait to feel your lips again, because you are hot to me!</p>
-</div>
-
-<!-- Valentine's Day Hidden Love Letter -->
-<div id="valentines-day-content" class="tab-content hidden">
-    <p>Here’s the hidden love letter! 💌</p>
-</div>
-
-<!-- Photo Collages and Memories Section -->
-<div id="photo-collages">
-    <h2>Our Memories Together 📸</h2>
-    <div id="memories-grid"></div> <!-- Image grid goes here -->
-</div>
-
-<!-- Background Music -->
-<audio id="bg-music" loop>
-    <source src="music/double-take.mp3" type="audio/mp3">
-</audio>
-<button id="music-btn">🎶 Play Music</button>
-<input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5" title="Volume">
-
+    <script src="script.js"></script>
 </body>
 </html>
