@@ -21,8 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // (Countdown logic removed from HTML, so we do nothing with it here.)
-
     // Custom Timer
     let customTimerInterval = null;
     let customTimerSeconds = 0;
@@ -90,4 +88,44 @@ document.addEventListener("DOMContentLoaded", function () {
             updateCustomTimer();
         }
     });
+
+    // Photo Upload and Collage Creation
+    document.getElementById("photo-upload").addEventListener("change", function (event) {
+        const files = event.target.files;
+        const collage = document.getElementById("collage");
+        collage.innerHTML = ''; // Clear existing images
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.file = file;
+                collage.appendChild(img);
+
+                const reader = new FileReader();
+                reader.onload = (function(aImg) { 
+                    return function(e) { 
+                        aImg.src = e.target.result; 
+                    }; 
+                })(img);
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    // Background Music Control
+    const audioElement = document.getElementById("background-music");
+    document.getElementById("toggle-music").addEventListener("click", function () {
+        if (audioElement.paused) {
+            audioElement.play();
+            this.textContent = "🔇";
+        } else {
+            audioElement.pause();
+            this.textContent = "🎵";
+        }
+    });
 });
+
+function showProposal() {
+    alert("Will you be my Valentine? 💖");
+}
