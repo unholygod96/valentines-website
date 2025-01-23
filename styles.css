@@ -107,7 +107,11 @@ nav ul li a {
     margin-bottom: 10px;
 }
 
-#reset-countdown, #start-timer, #pause-timer, #reset-timer, #set-timer {
+#reset-countdown, 
+#start-timer, 
+#pause-timer, 
+#reset-timer, 
+#set-timer {
     background-color: #ff3366;
     color: white;
     border: none;
