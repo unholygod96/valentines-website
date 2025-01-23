@@ -1,58 +1,86 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", function () {
-        document.getElementById("menu-dropdown").classList.toggle("hidden");
+    document.getElementById("menu-button").addEventListener("click", function () {
+        document.querySelector("nav ul").classList.toggle("hidden");
     });
 
     // Tab Switching Logic
-    document.querySelectorAll(".tab-link").forEach(button => {
-        button.addEventListener("click", function () {
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
             document.querySelectorAll(".tab-content").forEach(tab => {
-                tab.classList.add("hidden");
+                tab.style.display = "none";
             });
-            document.getElementById(button.dataset.tab).classList.remove("hidden");
+            document.querySelector(this.getAttribute("href")).style.display = "block";
         });
     });
 
     // Love Letter Button Functionality
-    document.getElementById("hidden-love-letter").addEventListener("click", function () {
-        document.getElementById("love-letter-container").classList.toggle("hidden");
+    document.getElementById("love-letter-button").addEventListener("click", function () {
+        document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // Countdown Timer - Reset Function
-    document.getElementById("reset-countdown").addEventListener("click", function () {
-        const countdown = document.getElementById("countdown");
-        countdown.innerHTML = "00d 00h 00m 00s"; // Reset countdown value
-    });
+    // Countdown Timer
+    function updateCountdown() {
+        const valentinesDay = new Date("February 14, 2024 00:00:00").getTime();
+        const now = new Date().getTime();
+        const timeLeft = valentinesDay - now;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (timeLeft < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("timer").innerHTML = "Happy Valentine's Day!";
+        }
+    }
+
+    const countdownTimer = setInterval(updateCountdown, 1000);
 
     // Background Music Control
-    const audioElement = document.getElementById("bg-music");
-    document.getElementById("music-btn").addEventListener("click", function () {
+    const audioElement = document.getElementById("background-music");
+    document.getElementById("toggle-music").addEventListener("click", function () {
         if (audioElement.paused) {
             audioElement.play();
+            this.textContent = "🔇";
         } else {
             audioElement.pause();
+            this.textContent = "🎵";
         }
     });
 
-    // Volume Slider
-    document.getElementById("volume-slider").addEventListener("input", function () {
-        audioElement.volume = this.value;
+    // Photo Upload and Collage Creation
+    document.getElementById("photo-upload").addEventListener("change", function (event) {
+        const files = event.target.files;
+        const collage = document.getElementById("collage");
+        collage.innerHTML = ''; // Clear existing images
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.file = file;
+                collage.appendChild(img);
+
+                const reader = new FileReader();
+                reader.onload = (function(aImg) { 
+                    return function(e) { 
+                        aImg.src = e.target.result; 
+                    }; 
+                })(img);
+                reader.readAsDataURL(file);
+            }
+        }
     });
 
-    // Photo Gallery Logic (Placeholder for images)
-    // Remember to upload your own photos later
-    const photoGrid = document.getElementById("memories-grid");
-    const photoCollages = [
-        // Example photos
-        "https://via.placeholder.com/150",
-        "https://via.placeholder.com/150",
-    ];
-
-    photoCollages.forEach(imgSrc => {
-        const imgElement = document.createElement("img");
-        imgElement.src = imgSrc;
-        imgElement.classList.add("collage-img");
-        photoGrid.appendChild(imgElement);
-    });
+    // Show first tab content by default
+    document.querySelector(".tab-content").style.display = "block";
 });
+
+function showProposal() {
+    alert("Will you be my Valentine? 💖");
+}
