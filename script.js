@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Countdown Timer
+    let countdownDate = new Date("February 14, 2024 00:00:00").getTime();
+    let countdownTimer;
+
     function updateCountdown() {
-        const valentinesDay = new Date("February 14, 2024 00:00:00").getTime();
         const now = new Date().getTime();
-        const timeLeft = valentinesDay - now;
+        const timeLeft = countdownDate - now;
 
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -39,7 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const countdownTimer = setInterval(updateCountdown, 1000);
+    countdownTimer = setInterval(updateCountdown, 1000);
+
+    // Reset Countdown Functionality
+    document.getElementById("reset-countdown").addEventListener("click", function() {
+        const newDate = prompt("Enter new countdown date (YYYY-MM-DD HH:MM:SS):");
+        if (newDate) {
+            countdownDate = new Date(newDate).getTime();
+            clearInterval(countdownTimer);
+            countdownTimer = setInterval(updateCountdown, 1000);
+        }
+    });
 
     // Background Music Control
     const audioElement = document.getElementById("background-music");
@@ -79,8 +91,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Show first tab content by default
     document.querySelector(".tab-content").style.display = "block";
-});
-
-function showProposal() {
-    alert("Will you be my Valentine? 💖");
-}
