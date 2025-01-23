@@ -21,42 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // Countdown Timer
-    let countdownDate = new Date("February 14, 2024 00:00:00").getTime();
-    let countdownTimer;
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const timeLeft = countdownDate - now;
-
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        if (timeLeft > 0) {
-            document.getElementById("timer").innerHTML =
-                `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        } else {
-            clearInterval(countdownTimer);
-            document.getElementById("timer").innerHTML = "Happy Valentine's Day!";
-        }
-    }
-
-    // Immediately show the countdown & update every second
-    updateCountdown();
-    countdownTimer = setInterval(updateCountdown, 1000);
-
-    // Reset Countdown
-    document.getElementById("reset-countdown").addEventListener("click", function () {
-        const newDate = prompt("Enter new countdown date (YYYY-MM-DD HH:MM:SS):");
-        if (newDate) {
-            countdownDate = new Date(newDate).getTime();
-            clearInterval(countdownTimer);
-            updateCountdown(); 
-            countdownTimer = setInterval(updateCountdown, 1000);
-        }
-    });
+    // (Countdown logic removed from HTML, so we do nothing with it here.)
 
     // Custom Timer
     let customTimerInterval = null;
