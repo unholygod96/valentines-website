@@ -91,23 +91,22 @@ nav ul li a {
     line-height: 1.5;
 }
 
-/* Countdown and Timer Styling */
-#countdown-container, #timer-container {
+/* Timer Container (After Countdown Removed) */
+#timer-container {
     margin-top: 20px;
 }
 
-#countdown-header, #timer-header {
+#timer-header {
     font-size: 1.5rem;
     margin-bottom: 10px;
     cursor: text;
 }
 
-#countdown, #custom-timer {
+#custom-timer {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
-#reset-countdown, 
 #start-timer, 
 #pause-timer, 
 #reset-timer, 
@@ -123,7 +122,6 @@ nav ul li a {
     margin: 0 5px;
 }
 
-#reset-countdown:hover, 
 #start-timer:hover, 
 #pause-timer:hover, 
 #reset-timer:hover, 
