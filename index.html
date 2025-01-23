@@ -10,9 +10,16 @@
     <header>
         <h1>Happy Valentine's Week ❤️</h1>
         <div id="countdown-container">
-            <h2>Countdown for you to be my valentine</h2>
+            <h2 id="countdown-header" contenteditable="true">Countdown for you to be my valentine</h2>
             <div id="countdown"><span id="timer"></span></div>
             <button id="reset-countdown">Reset Countdown</button>
+        </div>
+        <div id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Custom Timer</h2>
+            <div id="custom-timer"><span id="custom-timer-display">00:00:00</span></div>
+            <button id="start-timer">Start</button>
+            <button id="pause-timer">Pause</button>
+            <button id="reset-timer">Reset</button>
         </div>
         <button id="menu-button">☰</button>
         <audio id="background-music" loop>
