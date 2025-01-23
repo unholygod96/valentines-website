@@ -126,12 +126,12 @@ nav ul li a {
     background-color: #ff1493;
 }
 
-/* Timer Input Fields */
-#timer-input, #calendar-input {
+/* Calendar Input Field */
+#calendar-input {
     margin: 0 5px;
     padding: 5px;
     font-size: 1rem;
-    width: 150px;
+    width: 200px;
     border-radius: 5px;
     border: 1px solid #ccc;
     text-align: center;
