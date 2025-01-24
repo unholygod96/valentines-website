@@ -33,19 +33,37 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("love-letter").classList.toggle("hidden");
     });
 
-    // Custom Timer (now with overlay)
+    // Custom Timer with localStorage persistence
     let customTimerInterval = null;
     let customTimerSeconds = 0;
+
+    // Check if there's a saved timer when page loads
+    const savedEndTime = localStorage.getItem("timerEndTime");
+    const savedTimerHeader = localStorage.getItem("timerHeader");
+    if (savedEndTime) {
+        const now = new Date().getTime();
+        const endTime = parseInt(savedEndTime);
+        if (endTime > now) {
+            customTimerSeconds = Math.floor((endTime - now) / 1000);
+            if (savedTimerHeader) {
+                document.getElementById("timer-header").textContent = savedTimerHeader;
+            }
+            updateCustomTimer();
+            customTimerInterval = setInterval(updateCustomTimer, 1000);
+        } else {
+            localStorage.removeItem("timerEndTime");
+            localStorage.removeItem("timerHeader");
+        }
+    }
 
     function updateCustomTimer() {
         if (customTimerSeconds <= 0) {
             clearInterval(customTimerInterval);
             customTimerInterval = null;
+            localStorage.removeItem("timerEndTime");
+            localStorage.removeItem("timerHeader");
             
-            // Get the customized header text
             const customHeader = document.getElementById("timer-header").textContent;
-            
-            // Show the overlay with the custom header
             const overlay = document.getElementById("timer-end-overlay");
             const overlayHeader = document.getElementById("overlay-header");
             overlayHeader.textContent = customHeader;
@@ -74,8 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Pause Timer
     document.getElementById("pause-timer").addEventListener("click", function () {
-        clearInterval(customTimerInterval);
-        customTimerInterval = null;
+        if (customTimerInterval) {
+            clearInterval(customTimerInterval);
+            customTimerInterval = null;
+            // Save current state when paused
+            const now = new Date().getTime();
+            const endTime = now + (customTimerSeconds * 1000);
+            localStorage.setItem("timerEndTime", endTime.toString());
+        }
     });
 
     // Reset Timer
@@ -83,9 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(customTimerInterval);
         customTimerInterval = null;
         customTimerSeconds = 0;
+        localStorage.removeItem("timerEndTime");
+        localStorage.removeItem("timerHeader");
         document.getElementById("custom-timer-display").textContent = "00:00:00";
         
-        // Reset the timer container to its original state
         const timerContainer = document.getElementById("timer-container");
         const timerHeader = document.getElementById("timer-header");
         timerHeader.textContent = "Custom Timer";
@@ -103,10 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetDate = new Date(calendarValue);
             const now = new Date();
             customTimerSeconds = Math.floor((targetDate - now) / 1000);
-            if (customTimerSeconds < 0) {
-                customTimerSeconds = 0;
+            if (customTimerSeconds > 0) {
+                // Save the end time and header in localStorage
+                localStorage.setItem("timerEndTime", targetDate.getTime().toString());
+                localStorage.setItem("timerHeader", document.getElementById("timer-header").textContent);
+                updateCustomTimer();
+                if (!customTimerInterval) {
+                    customTimerInterval = setInterval(updateCustomTimer, 1000);
+                }
             }
-            updateCustomTimer();
         }
     });
 
