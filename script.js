@@ -4,16 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("nav").classList.toggle("active");
     });
 
-    // Tab Switching Logic
+    // Tab Switching Logic with Close Functionality
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
-            document.querySelectorAll(".tab-content").forEach(tab => {
-                tab.style.display = "none";
-            });
             const target = this.getAttribute("href");
-            document.querySelector(target).style.display = "block";
-            // Close menu after selection on mobile
+            const selectedContent = document.querySelector(target);
+            
+            // If content is already visible, hide it and return
+            if (selectedContent.style.display === "block") {
+                selectedContent.style.display = "none";
+            } else {
+                // Hide all tab content first
+                document.querySelectorAll(".tab-content").forEach(tab => {
+                    tab.style.display = "none";
+                });
+                // Show the selected content
+                selectedContent.style.display = "block";
+            }
+            
+            // Close the menu
             document.querySelector("nav").classList.remove("active");
         });
     });
