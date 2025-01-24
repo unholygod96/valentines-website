@@ -191,7 +191,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-function showProposal() {
-    alert("Will you be my Valentine? 💖");
-}
