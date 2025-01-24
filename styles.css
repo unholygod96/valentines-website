@@ -12,7 +12,7 @@ body {
 .menu-button {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;  /* Changed from right to left */
     z-index: 1000;
     background-color: #ff3366;
     color: white;
