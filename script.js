@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Menu Toggle
     document.getElementById("menu-button").addEventListener("click", function () {
-        document.querySelector("nav ul").classList.toggle("hidden");
+        document.querySelector("nav").classList.toggle("active");
     });
 
     // Tab Switching Logic
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             const target = this.getAttribute("href");
             document.querySelector(target).style.display = "block";
+            // Close menu after selection on mobile
+            document.querySelector("nav").classList.remove("active");
         });
     });
 
