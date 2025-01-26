@@ -1,1 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Chocolate Day 🍫</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chocolate Day Specific CSS -->
+    <link rel="stylesheet" href="chocolate-day.css">
+</head>
+<body class="chocolate-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Heart Rain -->
+    <div class="hearts">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
+    <!-- Chocolate Animation -->
+    <div class="chocolates-falling">
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+        <div class="chocolate">🍫</div>
+    </div>
+
+    <!-- Timer End Overlay -->
+    <div id="timer-end-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2 id="overlay-header"></h2>
+            <button id="close-overlay">Close ✨</button>
+        </div>
+    </div>
+
+    <header class="chocolate-day-header">
+        <h1>Sweet Like Chocolate! 🍫✨</h1>
+        <p class="header-subtitle">Because you deserve all the sweetness in the world! 💝</p>
+        
+        <div id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Counting sweet moments with you! 💫</h2>
+            <div id="custom-timer">
+                <span id="custom-timer-display">00:00:00</span>
+            </div>
+            <input type="datetime-local" id="calendar-input" />
+            <button id="start-timer">Start ✨</button>
+            <button id="pause-timer">Pause 💫</button>
+            <button id="reset-timer">Reset 🌟</button>
+            <button id="set-timer">Set Timer 💖</button>
+        </div>
+
+        <audio id="background-music" loop>
+            <source src="double-take.mp3" type="audio/mpeg">
+        </audio>
+        <button id="toggle-music">🎵</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Our Journey 🏡</a></li>
+            <li><a href="rose-day.html">Rose Day 🌹</a></li>
+            <li><a href="propose-day.html">Propose Day 💍</a></li>
+            <li><a href="chocolate-day.html" class="active">Chocolate Day 🍫</a></li>
+            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
+            <li><a href="promise-day.html">Promise Day 🤝</a></li>
+            <li><a href="hug-day.html">Hug Day 🤗</a></li>
+            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+        </ul>
+    </nav>
+
+    <main class="chocolate-day-main">
+        <section class="welcome-message">
+            <div class="message-bubble bounce">
+                <h2>Hey Sweetie! 🍫</h2>
+                <p>I've got something sweet for you...</p>
+                <div class="bounce-arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="chocolate-box">
+            <h2>Your Special Chocolate Box! 🎁</h2>
+            <div class="box-container">
+                <div class="chocolate-piece" data-flavor="dark">
+                    <div class="chocolate-front">
+                        <span>🍫</span>
+                        <p>Dark & Deep</p>
+                    </div>
+                    <div class="chocolate-back">
+                        <p>Deep like my love for you! 💝</p>
+                    </div>
+                </div>
+                <div class="chocolate-piece" data-flavor="milk">
+                    <div class="chocolate-front">
+                        <span>🍫</span>
+                        <p>Sweet & Smooth</p>
+                    </div>
+                    <div class="chocolate-back">
+                        <p>Smooth like your smile! ✨</p>
+                    </div>
+                </div>
+                <div class="chocolate-piece" data-flavor="white">
+                    <div class="chocolate-front">
+                        <span>🍫</span>
+                        <p>Pure & White</p>
+                    </div>
+                    <div class="chocolate-back">
+                        <p>Pure like your heart! 💖</p>
+                    </div>
+                </div>
+                <div class="chocolate-piece" data-flavor="truffle">
+                    <div class="chocolate-front">
+                        <span>🍫</span>
+                        <p>Special Truffle</p>
+                    </div>
+                    <div class="chocolate-back">
+                        <p>Special like you! 🌟</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-memories">
+            <h2>Our Sweet Moments 💝</h2>
+            <div class="memory-container">
+                <div class="memory-card">
+                    <h3>Our First Chocolate Share 🍫</h3>
+                    <p>Remember when we split that chocolate bar?</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Late Night Cravings 🌙</h3>
+                    <p>Those midnight chocolate runs!</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Sweet Surprises 🎁</h3>
+                    <p>Finding chocolates in unexpected places!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chocolate-facts">
+            <h2>Sweet Facts About Us! 🍫</h2>
+            <div class="facts-container">
+                <div class="fact-bubble">
+                    <p>Your smile is sweeter than any chocolate! ✨</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>You melt my heart like chocolate! 💝</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>Life is better with you and chocolate! 🍫</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-chocolate">
+            <h2>Make a Sweet Wish! ✨</h2>
+            <div class="wish-container">
+                <div class="magic-chocolate">🍫</div>
+                <div class="wish-text hidden">
+                    <p>Your wish is as sweet as you! 💫</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-notes">
+            <h2>Sweet Notes For You 💝</h2>
+            <div class="notes-container">
+                <div class="note sparkle">
+                    <p>You're sweeter than chocolate! 🍫</p>
+                </div>
+                <div class="note sparkle">
+                    <p>My life's sweetest treat is you! ✨</p>
+                </div>
+                <div class="note sparkle">
+                    <p>You make every day delicious! 💖</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="love-letter-container">
+        <button id="love-letter-button">💌</button>
+        <div id="love-letter" class="hidden">
+            <h3>My Sweet Love 🍫</h3>
+            <p>Hey sweetie pie!</p>
+            <p>You know what's sweeter than all the chocolate in the world? The way you make me feel! Every moment with you is like biting into the most delicious chocolate - sweet, exciting, and leaves me wanting more! 🍫✨</p>
+            <p>Just like how chocolate comes in different flavors, you bring different kinds of sweetness to my life - your smile, your laugh, your cute little messages, everything about you is simply delicious! 💝</p>
+            <p>You're my favorite flavor of happiness, my sweetest dream come true, and the most precious treat I could ever ask for! Life with you is like having an endless supply of the finest chocolate - it just keeps getting better! 🌟</p>
+            <p>Thank you for making my life so sweet!</p>
+            <p>Forever yours,<br>Your Chocolate Love 💕</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="chocolate-day.js"></script>
+</body>
+</html>
 
