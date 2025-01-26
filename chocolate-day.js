@@ -163,11 +163,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Love Letter Toggle
     const loveLetterButton = document.getElementById('love-letter-button');
     const loveLetter = document.getElementById('love-letter');
+    const closeLetter = document.getElementById('close-letter');
     
     loveLetterButton.addEventListener('click', function() {
-        loveLetter.classList.toggle('hidden');
-        if (!loveLetter.classList.contains('hidden')) {
-            createLetterSparkles(loveLetter);
+        loveLetter.classList.add('show');
+        createLetterSparkles(loveLetter);
+    });
+
+    closeLetter.addEventListener('click', function() {
+        loveLetter.classList.remove('show');
+    });
+
+    // Close letter when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!loveLetter.contains(event.target) && 
+            !loveLetterButton.contains(event.target) && 
+            loveLetter.classList.contains('show')) {
+            loveLetter.classList.remove('show');
         }
     });
 
