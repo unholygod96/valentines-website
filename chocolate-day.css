@@ -75,6 +75,23 @@
     filter: drop-shadow(0 0 5px rgba(139, 69, 19, 0.3));
 }
 
+@keyframes chocolateFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(720deg);
+    }
+}
+
 /* Chocolate Box Section */
 .chocolate-box {
     padding: 3rem 2rem;
@@ -84,48 +101,91 @@
 .box-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    gap: 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .chocolate-piece {
     background: linear-gradient(145deg, #8B4513, #CD853F);
-    padding: 2rem 1rem;
+    padding: 2rem;
     text-align: center;
     color: white;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: none;
-    position: relative;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.chocolate-piece::before {
-    content: '';
+.chocolate-piece h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.chocolate-piece p {
+    font-size: 1.1rem;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.corner-decoration {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 15px;
-    height: 15px;
-    background: linear-gradient(45deg, #ffffff33, transparent);
-    transform: rotate(45deg);
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+    transform-origin: top right;
+    transition: all 0.3s ease;
 }
 
-.chocolate-front {
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+.chocolate-piece:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Sweet Memories Section */
+.chocolate-piece:hover .corner-decoration {
+    transform: scale(1.2) rotate(45deg);
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #8b4513;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    color: #8b4513;
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    margin-top: 1rem;
+}
+
+/* Sweet Memories */
 .sweet-memories {
     padding: 3rem 2rem;
-    background: #fff5e6;
 }
 
 .memory-container {
@@ -149,10 +209,9 @@
     transform: translateY(-10px);
 }
 
-/* Chocolate Facts Section */
+/* Chocolate Facts */
 .chocolate-facts {
     padding: 3rem 2rem;
-    background: #fff5e6;
 }
 
 .facts-container {
@@ -172,10 +231,9 @@
     animation: float 3s ease-in-out infinite;
 }
 
-/* Interactive Chocolate Section */
+/* Interactive Chocolate */
 .interactive-chocolate {
     padding: 3rem 2rem;
-    background: #fff5e6;
 }
 
 .wish-container {
@@ -206,10 +264,9 @@
     transform: translateY(0);
 }
 
-/* Sweet Notes Section */
+/* Sweet Notes */
 .sweet-notes {
     padding: 3rem 2rem;
-    background: #fff5e6;
 }
 
 .notes-container {
@@ -234,26 +291,19 @@
 }
 
 /* Animations */
-@keyframes chocolateFall {
-    0% {
-        opacity: 0;
-        transform: translateY(-5vh) rotate(0deg);
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(105vh) rotate(720deg);
-    }
-}
-
 @keyframes floatText {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
 @keyframes float {
@@ -279,11 +329,13 @@
 .chocolate:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .box-container {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+}
+
+@media (max-width: 768px) {
     .chocolate-day-header h1 {
         font-size: 2rem;
     }
