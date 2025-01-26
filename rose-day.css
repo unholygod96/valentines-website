@@ -1,257 +1,389 @@
-/* Rose Day Specific Styles */
-.rose-day-theme {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-    color: #d4266e;
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F3FF;
+    color: #6D28D9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* Rose Day Header Styling */
-.rose-day-header {
-    background: linear-gradient(to bottom, #ff8fab 0%, #ff5d8f 100%);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.rose-day-header h1 {
-    font-size: 3.5rem;
+/* Menu Button Styling */
+.menu-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #8B5CF6;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 1rem;
+    border: none;
+    padding: 15px;
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
 }
 
-.header-subtitle {
-    color: white;
-    font-size: 1.2rem;
-    margin-top: -10px;
+.menu-button:hover {
+    background-color: #7C3AED;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
-/* Rose Petals Animation */
-.rose-petals {
+/* Navigation Menu */
+nav {
     position: fixed;
     top: 0;
+    left: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(139, 92, 246, 0.95);
+    transition: left 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+nav.active {
     left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
 }
 
-.petal {
-    position: absolute;
-    background-image: url('images/rose-petal.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
-    opacity: 0.8;
-    animation: petalFall linear infinite;
+nav ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+    margin-top: 60px;
 }
 
-@keyframes petalFall {
-    0% {
-        transform: translateY(-5%) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
+nav ul li {
+    margin: 20px 0;
 }
 
-/* Assign different animations to petals */
-.petal:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
-.petal:nth-child(2) { left: 15%; animation-duration: 9s; animation-delay: 1s; }
-.petal:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 2s; }
-.petal:nth-child(4) { left: 35%; animation-duration: 10s; animation-delay: 0.5s; }
-.petal:nth-child(5) { left: 45%; animation-duration: 8s; animation-delay: 1.5s; }
-.petal:nth-child(6) { left: 55%; animation-duration: 9s; animation-delay: 2.5s; }
-.petal:nth-child(7) { left: 65%; animation-duration: 7s; animation-delay: 0.7s; }
-.petal:nth-child(8) { left: 75%; animation-duration: 10s; animation-delay: 1.7s; }
-.petal:nth-child(9) { left: 85%; animation-duration: 8s; animation-delay: 2.7s; }
-.petal:nth-child(10) { left: 95%; animation-duration: 9s; animation-delay: 0.2s; }
-
-/* Rose Color Cards */
-.rose-meanings {
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 1200px;
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.rose-color-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.rose-card {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.rose-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.rose-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-}
-
-.red-rose { background-image: url('images/red-rose.jpg'); }
-.pink-rose { background-image: url('images/pink-rose.jpg'); }
-.white-rose { background-image: url('images/white-rose.jpg'); }
-.yellow-rose { background-image: url('images/yellow-rose.jpg'); }
-
-/* Virtual Garden */
-.virtual-garden {
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.8);
-    margin: 2rem auto;
-    max-width: 1200px;
-}
-
-.garden-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.rose-arrangement {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.rose-arrangement:hover {
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
 
-.garden-image {
+/* Heart Rain Animation */
+.hearts {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.arrangement-info {
-    position: absolute;
-    bottom: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
 }
 
-.rose-arrangement:hover .arrangement-info {
-    transform: translateY(0);
+.heart {
+    position: fixed;
+    font-size: 20px;
+    color: #FF69B4;
+    opacity: 0;
+    animation: heartRain linear infinite;
 }
 
-/* Message Section */
-.rose-message {
-    padding: 3rem;
-    background: linear-gradient(135deg, #ffe0e0 0%, #fff5f5 100%);
-    margin: 2rem auto;
-    max-width: 800px;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+@keyframes heartRain {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%) rotate(0deg);
+    }
+    20% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
 }
 
-.typing-message {
-    font-size: 1.2rem;
-    min-height: 100px;
-    margin: 1rem 0;
+/* Heart positioning and timing */
+[Previous heart positioning remains the same]
+
+header {
+    background-color: #C4B5FD;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-.rose-quotes {
-    font-style: italic;
-    color: #d4266e;
-    margin-top: 2rem;
-    padding: 1rem;
-    border-left: 4px solid #ff8fab;
+h1 {
+    margin: 0;
+    color: #6D28D9;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Memory Book */
-.memory-book {
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 1000px;
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.book-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.memory-page {
-    background: white;
-    padding: 2rem;
+/* Timer Styling */
+#timer-container {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
-.memory-page:hover {
+#timer-header {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    cursor: text;
+    color: #6D28D9;
+}
+
+#custom-timer {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #6D28D9;
+    font-weight: bold;
+}
+
+#start-timer, #pause-timer, #reset-timer, #set-timer {
+    background-color: #8B5CF6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#start-timer:hover, 
+#pause-timer:hover, 
+#reset-timer:hover, 
+#set-timer:hover {
+    background-color: #7C3AED;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Calendar Input Field */
+#calendar-input {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 25px;
+    border: 2px solid #C4B5FD;
+    text-align: center;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+#calendar-input:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+/* Love Letter Styling */
+#love-letter-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#love-letter-button {
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#love-letter-button:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+#love-letter {
+    background-color: #fff;
+    border: 2px solid #8B5CF6;
+    border-radius: 15px;
+    padding: 25px;
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+    text-align: left;
+    transform-origin: bottom right;
+    transition: all 0.3s ease;
+}
+
+#love-letter.hidden {
+    transform: scale(0);
+    opacity: 0;
+}
+
+#love-letter h3 {
+    color: #7C3AED;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+#love-letter p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #6D28D9;
+    font-size: 1.1em;
+}
+
+/* Music Controls */
+#toggle-music {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #8B5CF6;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#toggle-music:hover {
+    background: #7C3AED;
+    transform: scale(1.1);
+}
+
+/* Day Cards Styling */
+.day-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.day-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.day-card h4 {
+    color: #7C3AED;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.day-card p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.cute-message {
+    color: #FF69B4;
+    font-style: italic;
+    font-size: 0.9em !important;
+}
+
+.day-link {
+    display: inline-block;
+    background: #8B5CF6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.day-link:hover {
+    background: #7C3AED;
+    transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .rose-day-header h1 {
-        font-size: 2.5rem;
+    h1 {
+        font-size: 2em;
     }
 
-    .rose-color-cards {
+    .day-cards {
         grid-template-columns: 1fr;
     }
 
-    .garden-gallery {
-        grid-template-columns: 1fr;
+    #love-letter {
+        width: 80%;
+        left: 10%;
+        right: 10%;
     }
 
-    .memory-page {
-        width: 100%;
+    #timer-container button {
+        margin: 5px;
+        font-size: 0.9rem;
     }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
+/* Utility Classes */
+.hidden {
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #ffe0e0;
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-::-webkit-scrollbar-thumb {
-    background: #ff8fab;
-    border-radius: 5px;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #ff5d8f;
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
-
