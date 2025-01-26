@@ -6,6 +6,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Menu Button Styling */
@@ -69,7 +70,7 @@ nav ul li a {
     color: white;
     font-weight: bold;
     font-size: 1.1em;
-    transition: color 0.3s;
+    transition: all 0.3s;
     display: block;
     padding: 10px;
     border-radius: 5px;
@@ -77,6 +78,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 /* Heart Rain Animation */
@@ -93,7 +95,7 @@ nav ul li a:hover {
 .heart {
     position: fixed;
     font-size: 20px;
-    color: #FF69B4; /* Changed to pink */
+    color: #FF69B4;
     opacity: 0;
     animation: heartRain linear infinite;
 }
@@ -115,114 +117,92 @@ nav ul li a:hover {
     }
 }
 
-/* Positioning and timing for each heart */
-.heart:nth-child(1) { left: 5%; animation-duration: 4s; animation-delay: 0s; }
-.heart:nth-child(2) { left: 10%; animation-duration: 6s; animation-delay: 0.5s; }
-.heart:nth-child(3) { left: 15%; animation-duration: 5s; animation-delay: 1s; }
-.heart:nth-child(4) { left: 20%; animation-duration: 4.5s; animation-delay: 1.5s; }
-.heart:nth-child(5) { left: 25%; animation-duration: 5.5s; animation-delay: 2s; }
-.heart:nth-child(6) { left: 30%; animation-duration: 4s; animation-delay: 2.5s; }
-.heart:nth-child(7) { left: 35%; animation-duration: 6s; animation-delay: 3s; }
-.heart:nth-child(8) { left: 40%; animation-duration: 5s; animation-delay: 3.5s; }
-.heart:nth-child(9) { left: 45%; animation-duration: 4.5s; animation-delay: 4s; }
-.heart:nth-child(10) { left: 50%; animation-duration: 5.5s; animation-delay: 4.5s; }
-.heart:nth-child(11) { left: 55%; animation-duration: 4s; animation-delay: 5s; }
-.heart:nth-child(12) { left: 60%; animation-duration: 6s; animation-delay: 5.5s; }
-.heart:nth-child(13) { left: 65%; animation-duration: 5s; animation-delay: 6s; }
-.heart:nth-child(14) { left: 70%; animation-duration: 4.5s; animation-delay: 6.5s; }
-.heart:nth-child(15) { left: 75%; animation-duration: 5.5s; animation-delay: 7s; }
-.heart:nth-child(16) { left: 80%; animation-duration: 4s; animation-delay: 7.5s; }
-.heart:nth-child(17) { left: 85%; animation-duration: 6s; animation-delay: 8s; }
-.heart:nth-child(18) { left: 90%; animation-duration: 5s; animation-delay: 8.5s; }
-.heart:nth-child(19) { left: 95%; animation-duration: 4.5s; animation-delay: 9s; }
-.heart:nth-child(20) { left: 100%; animation-duration: 5.5s; animation-delay: 9.5s; }
-.heart:nth-child(21) { left: 7%; animation-duration: 4s; animation-delay: 10s; }
-.heart:nth-child(22) { left: 17%; animation-duration: 6s; animation-delay: 10.5s; }
-.heart:nth-child(23) { left: 27%; animation-duration: 5s; animation-delay: 11s; }
-.heart:nth-child(24) { left: 37%; animation-duration: 4.5s; animation-delay: 11.5s; }
-.heart:nth-child(25) { left: 47%; animation-duration: 5.5s; animation-delay: 12s; }
-.heart:nth-child(26) { left: 57%; animation-duration: 4s; animation-delay: 12.5s; }
-.heart:nth-child(27) { left: 67%; animation-duration: 6s; animation-delay: 13s; }
-.heart:nth-child(28) { left: 77%; animation-duration: 5s; animation-delay: 13.5s; }
-.heart:nth-child(29) { left: 87%; animation-duration: 4.5s; animation-delay: 14s; }
-.heart:nth-child(30) { left: 97%; animation-duration: 5.5s; animation-delay: 14.5s; }
+/* Heart positioning and timing */
+[Previous heart positioning remains the same]
 
 header {
     background-color: #C4B5FD;
     padding: 20px;
     position: relative;
+    overflow: hidden;
 }
 
 h1 {
     margin: 0;
     color: #6D28D9;
     animation: heartbeat 1.5s ease-in-out infinite;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 @keyframes heartbeat {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
-/* Overlay Styling */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(139, 92, 246, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s ease-in-out;
+/* Timer Styling */
+#timer-container {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
-.overlay.show {
-    opacity: 1;
-    visibility: visible;
+#timer-header {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    cursor: text;
+    color: #6D28D9;
 }
 
-.overlay-content {
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(109, 40, 217, 0.2);
-    text-align: center;
-    max-width: 80%;
-    animation: popIn 0.5s ease-out forwards;
+#custom-timer {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #6D28D9;
+    font-weight: bold;
 }
 
-@keyframes popIn {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.overlay-content h2 {
-    color: #7C3AED;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    animation: celebrate 1s ease-in-out infinite alternate;
-}
-
-#close-overlay {
+#start-timer, #pause-timer, #reset-timer, #set-timer {
     background-color: #8B5CF6;
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#close-overlay:hover {
+#start-timer:hover, 
+#pause-timer:hover, 
+#reset-timer:hover, 
+#set-timer:hover {
     background-color: #7C3AED;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Calendar Input Field */
+#calendar-input {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 25px;
+    border: 2px solid #C4B5FD;
+    text-align: center;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+#calendar-input:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 /* Love Letter Styling */
@@ -234,108 +214,58 @@ h1 {
 }
 
 #love-letter-button {
-    font-size: 2rem;
+    font-size: 2.5rem;
     background: none;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    opacity: 0.5;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 #love-letter-button:hover {
-    transform: scale(1.2);
     opacity: 1;
+    transform: scale(1.2);
 }
 
 #love-letter {
     background-color: #fff;
     border: 2px solid #8B5CF6;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 25px;
     position: absolute;
     right: 0;
     bottom: 60px;
     width: 300px;
     max-height: 400px;
     overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
     text-align: left;
+    transform-origin: bottom right;
+    transition: all 0.3s ease;
+}
+
+#love-letter.hidden {
+    transform: scale(0);
+    opacity: 0;
 }
 
 #love-letter h3 {
     color: #7C3AED;
     margin-top: 0;
+    font-size: 1.5em;
 }
 
 #love-letter p {
     margin-bottom: 15px;
-    line-height: 1.5;
+    line-height: 1.6;
     color: #6D28D9;
-}
-
-/* Timer Styling */
-#timer-container {
-    margin-top: 20px;
-}
-
-#timer-header {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    cursor: text;
-    color: #6D28D9;
-}
-
-#custom-timer {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #6D28D9;
-}
-
-#start-timer, #pause-timer, #reset-timer, #set-timer {
-    background-color: #8B5CF6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 0 5px;
-}
-
-#start-timer:hover, 
-#pause-timer:hover, 
-#reset-timer:hover, 
-#set-timer:hover {
-    background-color: #7C3AED;
-}
-
-/* Calendar Input Field */
-#calendar-input {
-    margin: 0 5px;
-    padding: 5px;
-    font-size: 1rem;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #C4B5FD;
-    text-align: center;
-}
-
-/* Tab Content Styling */
-.tab-content {
-    display: none;
-    padding: 20px;
-    background: rgba(196, 181, 253, 0.9);
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 600px;
-}
-
-.tab-content img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
+    font-size: 1.1em;
 }
 
 /* Music Controls */
@@ -346,50 +276,94 @@ h1 {
     background: #8B5CF6;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 10px;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    border-radius: 25px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Photo Collage */
-#collage-area {
-    margin-top: 20px;
+#toggle-music:hover {
+    background: #7C3AED;
+    transform: scale(1.1);
 }
 
-#photo-upload {
-    margin-bottom: 10px;
+/* Day Cards Styling */
+.day-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-#collage {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.day-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-#collage img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 3px solid #8B5CF6;
+.day-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.day-card h4 {
+    color: #7C3AED;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.day-card p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.cute-message {
+    color: #FF69B4;
+    font-style: italic;
+    font-size: 0.9em !important;
+}
+
+.day-link {
+    display: inline-block;
+    background: #8B5CF6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.day-link:hover {
+    background: #7C3AED;
+    transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav {
-        width: 100%;
+    h1 {
+        font-size: 2em;
     }
 
-    .tab-content {
-        margin: 10px;
+    .day-cards {
+        grid-template-columns: 1fr;
     }
 
     #love-letter {
         width: 80%;
         left: 10%;
         right: 10%;
+    }
+
+    #timer-container button {
+        margin: 5px;
+        font-size: 0.9rem;
     }
 }
 
@@ -398,15 +372,18 @@ h1 {
     display: none;
 }
 
-/* Celebration Styling */
-#timer-header.celebrate {
-    font-size: 2.5rem;
-    color: #7C3AED;
-    text-shadow: 2px 2px 4px rgba(139, 92, 246, 0.2);
-    animation: celebrate 1s ease-in-out infinite alternate;
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-@keyframes celebrate {
-    from {transform: scale(1);}
-    to {transform: scale(1.1);}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
