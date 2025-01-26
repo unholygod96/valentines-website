@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sweet Messages Array with proper timing
+    // Sweet Messages Array
     const sweetMessages = [
         { text: "You're", duration: 2000 },
         { text: "better", duration: 2000 },
-        { text: "sweetest", duration: 2000 },
         { text: "than chocolate!", duration: 2000 },
+        { text: "sweetest", duration: 2000 },
         { text: "delicious", duration: 2000 },
         { text: "you! ⭐", duration: 2000 }
     ];
 
-    const messageElement = document.getElementById('animated-message');
+    const messageElement = document.getElementById('sweet-message');
     let currentIndex = 0;
 
     function showMessage() {
@@ -19,12 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const currentMessage = sweetMessages[currentIndex];
 
-        // Clear previous message
+        // Clear previous message and add new one with fade effect
         messageElement.style.opacity = '0';
+        messageElement.style.transform = 'translateY(20px)';
         
         setTimeout(() => {
             messageElement.textContent = currentMessage.text;
             messageElement.style.opacity = '1';
+            messageElement.style.transform = 'translateY(0)';
             
             // Schedule next message
             setTimeout(() => {
@@ -143,6 +145,63 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < 8; i++) {
             const sparkle = document.createElement('div');
             sparkle.className = 'memory-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Interactive Magic Chocolate
+    const magicChocolate = document.querySelector('.magic-chocolate');
+    const wishText = document.querySelector('.wish-text');
+    
+    magicChocolate.addEventListener('click', function() {
+        this.style.transform = 'scale(1.5) rotate(720deg)';
+        createMagicSparkles(this);
+        
+        setTimeout(() => {
+            wishText.classList.remove('hidden');
+            wishText.classList.add('show');
+        }, 500);
+
+        setTimeout(() => {
+            this.style.transform = '';
+            wishText.classList.remove('show');
+            setTimeout(() => wishText.classList.add('hidden'), 300);
+        }, 3000);
+    });
+
+    // Create Magic Sparkles
+    function createMagicSparkles(element) {
+        for (let i = 0; i < 12; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'magic-sparkle';
+            sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
+            sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Sweet Notes Hover Effect
+    const notes = document.querySelectorAll('.note');
+    notes.forEach(note => {
+        note.addEventListener('mouseenter', function() {
+            this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
+            createNoteSparkles(this);
+        });
+
+        note.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+
+    // Create Note Sparkles
+    function createNoteSparkles(element) {
+        for (let i = 0; i < 6; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'note-sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
             sparkle.style.top = Math.random() * 100 + '%';
             element.appendChild(sparkle);
