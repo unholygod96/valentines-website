@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rose Day - Valentine's Week</title>
+    <!-- Common CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Rose Day Specific CSS -->
+    <link rel="stylesheet" href="rose-day.css">
 </head>
-<body>
+<body class="rose-day-theme">
     <!-- Menu Button -->
     <button id="menu-button" class="menu-button">☰</button>
 
@@ -44,6 +47,25 @@
         <div class="heart">❤</div>
     </div>
 
+    <!-- Rose Petals Animation -->
+    <div class="rose-petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
     <!-- Timer End Overlay -->
     <div id="timer-end-overlay" class="overlay hidden">
         <div class="overlay-content">
@@ -52,10 +74,13 @@
         </div>
     </div>
 
-    <header>
+    <header class="rose-day-header">
         <h1>Rose Day 🌹</h1>
+        <p class="header-subtitle">Where Love Blooms Like a Rose</p>
+        
+        <!-- Timer Section -->
         <div id="timer-container">
-            <h2 id="timer-header" contenteditable="true">Countdown to Next Moment</h2>
+            <h2 id="timer-header" contenteditable="true">Countdown to Our Next Rose Moment</h2>
             <div id="custom-timer">
                 <span id="custom-timer-display">00:00:00</span>
             </div>
@@ -65,16 +90,19 @@
             <button id="reset-timer">Reset</button>
             <button id="set-timer">Set Timer</button>
         </div>
+
+        <!-- Music Player -->
         <audio id="background-music" loop>
             <source src="double-take.mp3" type="audio/mpeg">
         </audio>
         <button id="toggle-music">🎵</button>
     </header>
-    
+
+    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="rose-day.html">Rose Day</a></li>
+            <li><a href="rose-day.html" class="active">Rose Day</a></li>
             <li><a href="propose-day.html">Propose Day</a></li>
             <li><a href="chocolate-day.html">Chocolate Day</a></li>
             <li><a href="teddy-day.html">Teddy Day</a></li>
@@ -85,82 +113,125 @@
         </ul>
     </nav>
 
-    <main class="main-content">
-        <section class="rose-day-content">
-            <div class="rose-meaning">
-                <h2>The Meaning of Rose Day</h2>
-                <p>Rose Day marks the beginning of Valentine's Week, where love blooms like the petals of a rose. Each color of rose carries its own special meaning:</p>
-                <div class="rose-colors">
-                    <div class="rose-type">
-                        <h3>Red Roses 🌹</h3>
-                        <p>Symbolizing deep love and passion</p>
-                    </div>
-                    <div class="rose-type">
-                        <h3>Pink Roses 🎀</h3>
-                        <p>Representing grace, admiration, and joy</p>
-                    </div>
-                    <div class="rose-type">
-                        <h3>White Roses ⚪</h3>
-                        <p>Signifying purity and new beginnings</p>
-                    </div>
-                    <div class="rose-type">
-                        <h3>Yellow Roses 💛</h3>
-                        <p>Expressing friendship and caring</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="personal-message">
-                <h2>My Rose Garden of Love</h2>
-                <p>My dearest, just like a rose garden filled with various colors and fragrances, you bring different beautiful emotions into my life. Your love has different shades, each more beautiful than the last.</p>
-                <p>Your smile is as delicate as rose petals, your love as deep as the red of the richest rose, and your presence in my life as refreshing as morning dew on rose buds.</p>
-                <p>Like a rose that stands beautiful despite its thorns, you've shown me that true love can overcome any obstacle. You make every day feel like Rose Day with your presence.</p>
-            </div>
-
-            <div class="virtual-bouquet">
-                <h2>My Virtual Bouquet for You</h2>
-                <div class="bouquet-gallery">
-                    <img src="images/rose-bouquet1.jpg" alt="Red roses bouquet with romantic lighting">
-                    <img src="images/rose-bouquet2.jpg" alt="Pink and white roses arrangement">
-                    <img src="images/rose-bouquet3.jpg" alt="Mixed roses with romantic setting">
-                    <img src="images/rose-bouquet4.jpg" alt="Heart-shaped arrangement of red roses">
-                    <img src="images/rose-bouquet5.jpg" alt="Elegant rose arrangement with love message">
-                </div>
-            </div>
-
-            <div class="rose-poem">
-                <h2>A Rose Poem for You</h2>
-                <p class="poem">
-                    In gardens fair where roses bloom,<br>
-                    My thoughts of you light up the room.<br>
-                    Each petal soft, each color bright,<br>
-                    Reminds me of our love's delight.<br><br>
-                    
-                    Red for passion, pink for grace,<br>
-                    Like the beauty of your face.<br>
-                    White for purity so true,<br>
-                    Yellow for the joy that's you.<br><br>
-                    
-                    This bouquet of love I send your way,<br>
-                    On this special Rose Day.
-                </p>
+    <main class="rose-day-main">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <h2>Welcome to Our Rose Garden of Love</h2>
+                <p>On this special Rose Day, let every petal tell a story of our love...</p>
             </div>
         </section>
 
-        <div id="love-letter-container">
-            <button id="love-letter-button">💌</button>
-            <div id="love-letter" class="hidden">
-                <h3>My Dearest Rose,</h3>
-                <p>On this Rose Day, I want to tell you how much you mean to me. Like a rose that blooms in the morning sun, you bring brightness to my life every single day.</p>
-                <p>Each rose color reminds me of a different aspect of your beautiful personality - the passion of red roses, the grace of pink ones, the purity of white roses, and the joy of yellow ones.</p>
-                <p>You are my perfect rose, beautiful inside and out. Your love has thorns that protect our special bond, petals that unfold new beauty each day, and a fragrance that makes life sweeter.</p>
-                <p>May this Rose Day be as beautiful as you are, and may our love continue to bloom and grow stronger with each passing day.</p>
-                <p>With all my love,<br>Your Valentine</p>
+        <!-- Interactive Rose Color Meanings -->
+        <section class="rose-meanings">
+            <h2>The Language of Roses</h2>
+            <div class="rose-color-cards">
+                <div class="rose-card" data-color="red">
+                    <div class="rose-image red-rose"></div>
+                    <h3>Red Rose</h3>
+                    <p>Symbolizing deep love and passion</p>
+                    <div class="card-hover">
+                        <p>Like my endless love for you...</p>
+                    </div>
+                </div>
+                <div class="rose-card" data-color="pink">
+                    <div class="rose-image pink-rose"></div>
+                    <h3>Pink Rose</h3>
+                    <p>Representing grace and admiration</p>
+                    <div class="card-hover">
+                        <p>Like your beautiful soul...</p>
+                    </div>
+                </div>
+                <div class="rose-card" data-color="white">
+                    <div class="rose-image white-rose"></div>
+                    <h3>White Rose</h3>
+                    <p>Pure and innocent love</p>
+                    <div class="card-hover">
+                        <p>Like our pure connection...</p>
+                    </div>
+                </div>
+                <div class="rose-card" data-color="yellow">
+                    <div class="rose-image yellow-rose"></div>
+                    <h3>Yellow Rose</h3>
+                    <p>Joy and friendship</p>
+                    <div class="card-hover">
+                        <p>Like the happiness you bring...</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Virtual Rose Garden -->
+        <section class="virtual-garden">
+            <h2>Our Virtual Rose Garden</h2>
+            <div class="garden-gallery">
+                <div class="rose-arrangement">
+                    <img src="images/rose1.jpg" alt="Red roses arrangement" class="garden-image">
+                    <div class="arrangement-info">
+                        <h3>Love's First Bloom</h3>
+                        <p>Each rose represents a moment of our love...</p>
+                    </div>
+                </div>
+                <div class="rose-arrangement">
+                    <img src="images/rose2.jpg" alt="Pink roses bouquet" class="garden-image">
+                    <div class="arrangement-info">
+                        <h3>Sweet Memories</h3>
+                        <p>Like the sweetness of your smile...</p>
+                    </div>
+                </div>
+                <div class="rose-arrangement">
+                    <img src="images/rose3.jpg" alt="Mixed roses arrangement" class="garden-image">
+                    <div class="arrangement-info">
+                        <h3>Rainbow of Love</h3>
+                        <p>All the colors of our journey together...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Message Section -->
+        <section class="rose-message">
+            <h2>A Rose's Whisper</h2>
+            <div class="message-container">
+                <p class="typing-message"></p>
+            </div>
+            <div class="rose-quotes">
+                <blockquote>"Love planted a rose, and the world turned sweet." - Katharine Lee Bates</blockquote>
+            </div>
+        </section>
+
+        <!-- Memory Book -->
+        <section class="memory-book">
+            <h2>Our Rose Day Memories</h2>
+            <div class="book-container">
+                <div class="memory-page">
+                    <h3>Our First Rose</h3>
+                    <p>Remember when I gave you that single red rose...</p>
+                </div>
+                <div class="memory-page">
+                    <h3>Garden of Love</h3>
+                    <p>Every moment with you blooms like a perfect rose...</p>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Love Letter -->
+    <div id="love-letter-container">
+        <button id="love-letter-button">💌</button>
+        <div id="love-letter" class="hidden">
+            <h3>My Dearest Rose,</h3>
+            <p>On this special Rose Day, I want to tell you how much you mean to me. Like a rose that blooms in the morning sun, you bring brightness to my life every single day.</p>
+            <p>Each rose color reminds me of a different aspect of your beautiful personality - the passion of red roses, the grace of pink ones, the purity of white roses, and the joy of yellow ones.</p>
+            <p>Your love is like a garden of roses - beautiful, delicate, and precious. Each moment with you adds another beautiful rose to our garden of memories.</p>
+            <p>Just as roses have thorns to protect their beauty, I promise to protect our love and cherish it forever. You are my perfect rose, growing more beautiful with each passing day.</p>
+            <p>May our love continue to bloom and flourish like an eternal garden of roses.</p>
+            <p>Forever Yours,<br>Your Valentine</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="rose-day.js"></script>
 </body>
 </html>
-
