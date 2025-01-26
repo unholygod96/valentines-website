@@ -1,47 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sweet Messages Typing Effect
+    // Sweet Messages Array with proper timing
     const sweetMessages = [
-        "Hey sweetie! Ready for something delicious? 🍫",
-        "Life is sweet with you! ✨",
-        "You're sweeter than chocolate! 💝",
-        "Let's make sweet memories together! 🎁"
+        { text: "You're", duration: 2000 },
+        { text: "better", duration: 2000 },
+        { text: "sweetest", duration: 2000 },
+        { text: "than chocolate!", duration: 2000 },
+        { text: "delicious", duration: 2000 },
+        { text: "you! ⭐", duration: 2000 }
     ];
-    
-    let currentMessageIndex = 0;
-    const typingMessage = document.querySelector('.message-bubble p');
-    
-    function typeMessage(message, index = 0) {
-        if (index < message.length) {
-            typingMessage.textContent += message.charAt(index);
-            setTimeout(() => typeMessage(message, index + 1), 50);
-        } else {
+
+    const messageElement = document.getElementById('animated-message');
+    let currentIndex = 0;
+
+    function showMessage() {
+        if (currentIndex >= sweetMessages.length) {
+            currentIndex = 0;
+        }
+
+        const currentMessage = sweetMessages[currentIndex];
+
+        // Clear previous message
+        messageElement.style.opacity = '0';
+        
+        setTimeout(() => {
+            messageElement.textContent = currentMessage.text;
+            messageElement.style.opacity = '1';
+            
+            // Schedule next message
             setTimeout(() => {
-                createMessageSparkles();
-                setTimeout(() => {
-                    typingMessage.textContent = '';
-                    currentMessageIndex = (currentMessageIndex + 1) % sweetMessages.length;
-                    typeMessage(sweetMessages[currentMessageIndex]);
-                }, 3000);
-            }, 1000);
-        }
+                currentIndex++;
+                showMessage();
+            }, currentMessage.duration);
+        }, 500);
     }
 
-    // Start the typing animation
-    typeMessage(sweetMessages[0]);
-
-    // Create Message Sparkles
-    function createMessageSparkles() {
-        const sparkleContainer = document.querySelector('.message-bubble');
-        for (let i = 0; i < 15; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'message-sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            sparkle.style.animationDelay = Math.random() * 1000 + 'ms';
-            sparkleContainer.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
+    // Start message animation
+    showMessage();
 
     // Falling Chocolates Animation
     function createChocolate() {
@@ -88,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sparkle.className = 'chocolate-sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
             sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 500 + 'ms';
             element.appendChild(sparkle);
             setTimeout(() => sparkle.remove(), 1000);
         }
@@ -132,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Memory Cards Animation
     const memoryCards = document.querySelectorAll('.memory-card');
-    
     memoryCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px)';
@@ -156,63 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Interactive Magic Chocolate
-    const magicChocolate = document.querySelector('.magic-chocolate');
-    const wishText = document.querySelector('.wish-text');
-    
-    magicChocolate.addEventListener('click', function() {
-        this.style.transform = 'scale(1.5) rotate(720deg)';
-        createMagicSparkles(this);
-        
-        setTimeout(() => {
-            wishText.classList.remove('hidden');
-            wishText.classList.add('show');
-        }, 500);
-
-        setTimeout(() => {
-            this.style.transform = '';
-            wishText.classList.remove('show');
-            setTimeout(() => wishText.classList.add('hidden'), 300);
-        }, 3000);
-    });
-
-    // Create Magic Sparkles
-    function createMagicSparkles(element) {
-        for (let i = 0; i < 12; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'magic-sparkle';
-            sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
-            sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
-
-    // Sweet Notes Hover Effect
-    const notes = document.querySelectorAll('.note');
-    notes.forEach(note => {
-        note.addEventListener('mouseenter', function() {
-            this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
-            createNoteSparkles(this);
-        });
-
-        note.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1) rotate(0deg)';
-        });
-    });
-
-    // Create Note Sparkles
-    function createNoteSparkles(element) {
-        for (let i = 0; i < 6; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'note-sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
-
     // Smooth Scroll Navigation
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -226,4 +163,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
