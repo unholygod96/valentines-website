@@ -44,10 +44,10 @@
     font-size: 2rem;
     color: #fff5e6;
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 10px;
 }
 
@@ -92,7 +92,7 @@
     }
 }
 
-/* Chocolate positioning */
+/* Chocolate positioning with different timings */
 .chocolate:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
 .chocolate:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
 .chocolate:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
@@ -121,7 +121,7 @@
     border-radius: 30px;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
     animation: bounce 2s ease-in-out infinite;
 }
 
@@ -186,6 +186,10 @@
     background: white;
     transform: rotateY(180deg);
     color: #8b4513;
+}
+
+.chocolate-piece:hover {
+    transform: scale(1.05);
 }
 
 .chocolate-piece:hover .chocolate-front {
@@ -256,9 +260,9 @@
 .magic-chocolate {
     font-size: 5rem;
     cursor: pointer;
-    display: inline-block;
     transition: transform 0.3s ease;
     animation: float 2s ease-in-out infinite;
+    display: inline-block;
 }
 
 .magic-chocolate:hover {
@@ -330,8 +334,8 @@
     width: 20px;
     height: 20px;
     background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+    animation: sparkleAnim 1s ease-out;
     pointer-events: none;
-    animation: sparkleAnim 1s ease-out forwards;
 }
 
 @keyframes sparkleAnim {
