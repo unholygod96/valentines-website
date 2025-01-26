@@ -93,7 +93,7 @@ nav ul li a:hover {
 .heart {
     position: fixed;
     font-size: 20px;
-    color: #8B5CF6;
+    color: #FF69B4; /* Changed to pink */
     opacity: 0;
     animation: heartRain linear infinite;
 }
