@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Propose Day 💍</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Propose Day Specific CSS -->
+    <link rel="stylesheet" href="propose-day.css">
+</head>
+<body class="propose-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Heart Rain -->
+    <div class="hearts">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
+    <!-- Ring Animation -->
+    <div class="rings-falling">
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+        <div class="ring">💍</div>
+    </div>
+
+    <!-- Timer End Overlay -->
+    <div id="timer-end-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2 id="overlay-header"></h2>
+            <button id="close-overlay">Close ✨</button>
+        </div>
+    </div>
+
+    <header class="propose-day-header">
+        <h1>My Sweet Proposal to You! 💍✨</h1>
+        <p class="header-subtitle">Every day I choose you! 💝</p>
+        
+        <div id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Counting moments of our love story! 💫</h2>
+            <div id="custom-timer">
+                <span id="custom-timer-display">00:00:00</span>
+            </div>
+            <input type="datetime-local" id="calendar-input" />
+            <button id="start-timer">Start ✨</button>
+            <button id="pause-timer">Pause 💫</button>
+            <button id="reset-timer">Reset 🌟</button>
+            <button id="set-timer">Set Timer 💖</button>
+        </div>
+
+        <audio id="background-music" loop>
+            <source src="double-take.mp3" type="audio/mpeg">
+        </audio>
+        <button id="toggle-music">🎵</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Our Journey 🏡</a></li>
+            <li><a href="rose-day.html">Rose Day 🌹</a></li>
+            <li><a href="propose-day.html" class="active">Propose Day 💍</a></li>
+            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
+            <li><a href="promise-day.html">Promise Day 🤝</a></li>
+            <li><a href="hug-day.html">Hug Day 🤗</a></li>
+            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+        </ul>
+    </nav>
+
+    <main class="propose-day-main">
+        <section class="welcome-message">
+            <div class="message-bubble bounce">
+                <h2>Hey My Love! 💝</h2>
+                <p>Today and every day, I want to tell you something special...</p>
+                <div class="bounce-arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="proposal-cards">
+            <h2>My Heart's Proposal 💍</h2>
+            <div class="card-container">
+                <div class="proposal-card" data-message="first">
+                    <div class="card-front">
+                        <h3>Open Me First! 💝</h3>
+                        <p>Click to reveal my feelings...</p>
+                    </div>
+                    <div class="card-back">
+                        <p>From the moment I first saw you, I knew you were special...</p>
+                    </div>
+                </div>
+                <div class="proposal-card" data-message="second">
+                    <div class="card-front">
+                        <h3>Then This One! 💫</h3>
+                        <p>There's more to say...</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Your smile lights up my world in ways I never knew possible...</p>
+                    </div>
+                </div>
+                <div class="proposal-card" data-message="third">
+                    <div class="card-front">
+                        <h3>Save The Best For Last! ✨</h3>
+                        <p>My special message for you...</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Will you be mine forever? Every day I choose you, and I always will! 💍</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="love-story">
+            <h2>Our Love Story Timeline 💑</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>The First Hello 👋</h3>
+                        <p>When our eyes first met, my heart knew...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>First Date 🌟</h3>
+                        <p>Remember how nervous and excited we were?</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>First Kiss 💋</h3>
+                        <p>The moment time stood still...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Today 💍</h3>
+                        <p>And I fall more in love with you every day!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-proposal">
+            <h2>Click the Ring to Make a Wish! ✨</h2>
+            <div class="ring-container">
+                <div class="magic-ring">💍</div>
+                <div class="wish-text hidden">
+                    <p>Your wish is my command, my love! 💫</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="love-notes">
+            <h2>My Promises to You 💝</h2>
+            <div class="notes-container">
+                <div class="note sparkle">
+                    <p>I promise to make you smile every day! 😊</p>
+                </div>
+                <div class="note sparkle">
+                    <p>I promise to be your biggest supporter! 🌟</p>
+                </div>
+                <div class="note sparkle">
+                    <p>I promise to love you more each day! 💖</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="love-letter-container">
+        <button id="love-letter-button">💌</button>
+        <div id="love-letter" class="hidden">
+            <h3>My Forever Love 💍</h3>
+            <p>Dearest sweetheart,</p>
+            <p>Today is extra special because it's all about choosing you - again and again, every single day! 💝</p>
+            <p>You know what's funny? My heart proposes to you every morning when I wake up, every time I see your smile, and every night before I sleep. Each moment with you feels like falling in love all over again! ✨</p>
+            <p>You're not just my partner; you're my best friend, my favorite person, and my dream come true! The way you understand me, support me, and love me makes every day feel like a fairy tale! 🌟</p>
+            <p>So here I am, proposing once again - to share all my tomorrows, my dreams, and my heart with you. Will you continue this beautiful journey with me? 💑</p>
+            <p>Forever yours and always choosing you,<br>Your Love 💕</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="propose-day.js"></script>
+</body>
+</html>
 
