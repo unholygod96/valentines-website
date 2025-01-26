@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Typing Animation for Rose Message
-    const messages = [
-        "Like a rose that blooms in adversity, our love grows stronger each day...",
-        "Every petal represents a moment we've shared together...",
-        "You are the most beautiful rose in my garden of life..."
+    // Cute Welcome Message Typing Effect
+    const welcomeMessages = [
+        "Hey sweetie! 💖",
+        "I picked these roses just for you! 🌹",
+        "Each one is special, just like you! ✨",
+        "Ready for our rose adventure? 🌸"
     ];
     
     let currentMessageIndex = 0;
-    const typingMessage = document.querySelector('.typing-message');
+    const typingMessage = document.querySelector('.message-bubble p');
     
     function typeMessage(message, index = 0) {
         if (index < message.length) {
@@ -15,78 +16,130 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => typeMessage(message, index + 1), 50);
         } else {
             setTimeout(() => {
-                // Clear the message
-                typingMessage.textContent = '';
-                // Move to next message
-                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
-                // Start typing the next message
-                typeMessage(messages[currentMessageIndex]);
-            }, 3000);
+                // Add sparkle effect
+                createMessageSparkles();
+                // Clear and start next message
+                setTimeout(() => {
+                    typingMessage.textContent = '';
+                    currentMessageIndex = (currentMessageIndex + 1) % welcomeMessages.length;
+                    typeMessage(welcomeMessages[currentMessageIndex]);
+                }, 3000);
+            }, 1000);
         }
     }
 
     // Start the typing animation
-    typeMessage(messages[0]);
+    typeMessage(welcomeMessages[0]);
 
-    // Rose Petals Animation
-    function createPetal() {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
+    // Create Sparkles for Messages
+    function createMessageSparkles() {
+        const sparkleContainer = document.querySelector('.message-bubble');
+        for (let i = 0; i < 15; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'message-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 1000 + 'ms';
+            sparkleContainer.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Dynamic Rose Creation and Animation
+    function createRose() {
+        const rose = document.createElement('div');
+        rose.className = 'rose';
+        rose.textContent = '🌹';
         
         // Random position and rotation
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+        rose.style.left = Math.random() * 100 + 'vw';
+        rose.style.transform = `rotate(${Math.random() * 360}deg)`;
         
-        // Random animation duration
-        const duration = 5 + Math.random() * 5;
-        petal.style.animationDuration = `${duration}s`;
+        // Random animation duration between 7 and 12 seconds
+        const duration = 7 + Math.random() * 5;
+        rose.style.animationDuration = `${duration}s`;
         
-        document.querySelector('.rose-petals').appendChild(petal);
+        document.querySelector('.roses-falling').appendChild(rose);
         
-        // Remove petal after animation
+        // Remove rose after animation
         setTimeout(() => {
-            petal.remove();
+            rose.remove();
         }, duration * 1000);
     }
 
-    // Create petals periodically
-    setInterval(createPetal, 300);
+    // Create roses periodically
+    setInterval(createRose, 300);
 
-    // Interactive Rose Cards
+    // Interactive Rose Cards with Special Effects
     const roseCards = document.querySelectorAll('.rose-card');
     roseCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
+            // Add floating petals effect
+            createFloatingPetals(this);
             // Add sparkle effect
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            this.appendChild(sparkle);
-            
-            // Remove sparkle after animation
-            setTimeout(() => sparkle.remove(), 1000);
+            createCardSparkles(this);
         });
 
         card.addEventListener('click', function() {
             const color = this.getAttribute('data-color');
-            showRoseMeaning(color);
+            showRoseMessage(color);
         });
     });
 
-    function showRoseMeaning(color) {
-        const meanings = {
-            red: "Red roses symbolize deep love and passion. They are the ultimate expression of romantic love.",
-            pink: "Pink roses represent grace, admiration, and joy. They're perfect for showing appreciation and gratitude.",
-            white: "White roses symbolize purity and innocence. They represent new beginnings and pure love.",
-            yellow: "Yellow roses symbolize friendship and joy. They bring warmth and happiness to any relationship."
+    // Create Floating Petals Effect
+    function createFloatingPetals(element) {
+        for (let i = 0; i < 5; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'floating-petal';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDelay = Math.random() * 1000 + 'ms';
+            element.appendChild(petal);
+            setTimeout(() => petal.remove(), 2000);
+        }
+    }
+
+    // Create Card Sparkles
+    function createCardSparkles(element) {
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'card-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 500 + 'ms';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Show Rose Messages with Cute Animations
+    function showRoseMessage(color) {
+        const messages = {
+            red: {
+                title: "My Red Rose ❤️",
+                message: "Like this red rose, my love for you grows deeper every day! Want to know a secret? Every time I see you, my heart does a little dance! 💝"
+            },
+            pink: {
+                title: "My Pink Rose 🌸",
+                message: "Sweet and gentle, just like you! Did you know your smile is prettier than all the pink roses in the world? ✨"
+            },
+            white: {
+                title: "My White Rose ✨",
+                message: "Pure and perfect, like our love! Every moment with you feels like a fresh start, a new adventure! 💫"
+            },
+            yellow: {
+                title: "My Yellow Rose 🌟",
+                message: "Bright and cheerful, just like your personality! You bring so much joy to my life, my little sunshine! ⭐"
+            }
         };
 
-        // Create and show modal with meaning
+        // Create and show modal with message
         const modal = document.createElement('div');
-        modal.classList.add('rose-modal');
+        modal.className = 'rose-message-modal';
         modal.innerHTML = `
             <div class="modal-content">
-                <h3>${color.charAt(0).toUpperCase() + color.slice(1)} Rose Meaning</h3>
-                <p>${meanings[color]}</p>
-                <button class="close-modal">✖</button>
+                <h3>${messages[color].title}</h3>
+                <p>${messages[color].message}</p>
+                <button class="close-modal">Close with love ✨</button>
             </div>
         `;
         document.body.appendChild(modal);
@@ -99,63 +152,69 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.remove('show');
             setTimeout(() => modal.remove(), 300);
         });
+
+        // Add floating hearts to modal
+        createFloatingHearts(modal.querySelector('.modal-content'));
     }
 
-    // Memory Book Page Turn Effect
-    const memoryPages = document.querySelectorAll('.memory-page');
-    memoryPages.forEach(page => {
-        page.addEventListener('click', function() {
-            this.classList.toggle('flipped');
-        });
-    });
-
-    // Virtual Garden Image Hover Effect
-    const arrangements = document.querySelectorAll('.rose-arrangement');
-    arrangements.forEach(arrangement => {
-        arrangement.addEventListener('mouseenter', function() {
-            const info = this.querySelector('.arrangement-info');
-            info.style.transform = 'translateY(0)';
-        });
-
-        arrangement.addEventListener('mouseleave', function() {
-            const info = this.querySelector('.arrangement-info');
-            info.style.transform = 'translateY(100%)';
-        });
-    });
-
-    // Add Parallax Effect to Header
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.rose-day-header');
-        const scrollPosition = window.scrollY;
-        header.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-    });
-
-    // Custom Cursor with Rose Trail
-    let trail = [];
-    const trailLength = 10;
-
-    document.addEventListener('mousemove', function(e) {
-        // Create new trail element
-        const trailDot = document.createElement('div');
-        trailDot.classList.add('rose-trail');
-        trailDot.style.left = e.pageX + 'px';
-        trailDot.style.top = e.pageY + 'px';
-        document.body.appendChild(trailDot);
-
-        // Add to trail array
-        trail.push(trailDot);
-
-        // Remove old trail elements
-        if (trail.length > trailLength) {
-            trail[0].remove();
-            trail.shift();
+    // Create Floating Hearts
+    function createFloatingHearts(element) {
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 2000 + 'ms';
+            heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+            element.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
         }
+    }
 
-        // Fade out trail
-        trail.forEach((dot, index) => {
-            dot.style.opacity = (index + 1) / trail.length;
+    // Memory Bubbles Hover Effect
+    const memoryBubbles = document.querySelectorAll('.memory-bubble');
+    memoryBubbles.forEach(bubble => {
+        bubble.addEventListener('mouseenter', function() {
+            createBubbleSparkles(this);
         });
     });
+
+    // Create Bubble Sparkles
+    function createBubbleSparkles(element) {
+        for (let i = 0; i < 8; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'bubble-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Secret Notes Hover Effect
+    const notes = document.querySelectorAll('.note');
+    notes.forEach(note => {
+        note.addEventListener('mouseenter', function() {
+            this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
+            createNoteSparkles(this);
+        });
+
+        note.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+
+    // Create Note Sparkles
+    function createNoteSparkles(element) {
+        for (let i = 0; i < 6; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'note-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
 
     // Add smooth scroll for navigation
     document.querySelectorAll('nav a').forEach(anchor => {
@@ -170,76 +229,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Add CSS styles for new elements
-const style = document.createElement('style');
-style.textContent = `
-    .rose-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 1000;
-    }
-
-    .rose-modal.show {
-        opacity: 1;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        max-width: 500px;
-        position: relative;
-        transform: scale(0.7);
-        transition: transform 0.3s ease;
-    }
-
-    .rose-modal.show .modal-content {
-        transform: scale(1);
-    }
-
-    .close-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .rose-trail {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: #ff8fab;
-        border-radius: 50%;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-
-    .sparkle {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: radial-gradient(circle, #fff 0%, transparent 70%);
-        animation: sparkleAnim 1s ease-out;
-    }
-
-    @keyframes sparkleAnim {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(2); opacity: 0; }
-    }
-`;
-
-document.head.appendChild(style);
-
