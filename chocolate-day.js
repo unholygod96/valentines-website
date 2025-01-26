@@ -58,9 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
             createChocolateSparkles(this);
         });
 
-        piece.addEventListener('click', function() {
-            this.classList.add('active');
-            createChocolateSparkles(this);
+        piece.addEventListener('mouseleave', function() {
+            // Remove any remaining sparkles
+            const sparkles = this.querySelectorAll('.sparkle');
+            sparkles.forEach(sparkle => sparkle.remove());
         });
     });
 
