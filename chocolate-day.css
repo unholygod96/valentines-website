@@ -12,8 +12,22 @@
     overflow: hidden;
 }
 
-/* Message Animation Container */
-.message-animation-container {
+.chocolate-day-header h1 {
+    font-size: 3rem;
+    color: #fff5e6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #ffe6cc;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Message Container */
+.message-container {
     position: relative;
     height: 80px;
     width: 100%;
@@ -27,7 +41,6 @@
 }
 
 .message-text {
-    position: absolute;
     font-size: 2rem;
     color: #fff5e6;
     text-align: center;
@@ -35,51 +48,12 @@
     transform: translateY(20px);
     transition: all 0.5s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    width: 100%;
     padding: 10px;
 }
 
 .message-text.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-.message-text.fade-out {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-.message-text.strikethrough {
-    text-decoration: none;
-    opacity: 1;
-}
-
-/* Star Animation */
-.star {
-    position: absolute;
-    font-size: 1.5rem;
-    color: #ffd700;
-    animation: starTwinkle 1s infinite;
-}
-
-@keyframes starTwinkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
-
-/* Header Elements */
-.chocolate-day-header h1 {
-    font-size: 3rem;
-    color: #fff5e6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    animation: floatText 3s ease-in-out infinite;
-}
-
-.header-subtitle {
-    color: #ffe6cc;
-    font-size: 1.3rem;
-    margin-top: 10px;
-    opacity: 0.9;
 }
 
 /* Falling Chocolates Animation */
@@ -118,7 +92,7 @@
     }
 }
 
-/* Chocolate positioning with different timings */
+/* Chocolate positioning */
 .chocolate:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
 .chocolate:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
 .chocolate:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
@@ -135,26 +109,256 @@
 .chocolate:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
 .chocolate:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
 
-/* Message Transition */
-@keyframes messageTransition {
-    0% { opacity: 0; transform: translateY(20px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-20px); }
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #8b4513;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    color: #8b4513;
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    margin-top: 1rem;
+}
+
+/* Chocolate Box */
+.chocolate-box {
+    padding: 3rem 2rem;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.chocolate-piece {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+}
+
+.chocolate-front,
+.chocolate-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.chocolate-front {
+    background: linear-gradient(145deg, #d2691e, #8b4513);
+    color: white;
+}
+
+.chocolate-back {
+    background: white;
+    transform: rotateY(180deg);
+    color: #8b4513;
+}
+
+.chocolate-piece:hover .chocolate-front {
+    transform: rotateY(180deg);
+}
+
+.chocolate-piece:hover .chocolate-back {
+    transform: rotateY(0deg);
+}
+
+/* Sweet Memories */
+.sweet-memories {
+    padding: 3rem 2rem;
+}
+
+.memory-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.memory-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Chocolate Facts */
+.chocolate-facts {
+    padding: 3rem 2rem;
+}
+
+.facts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.fact-bubble {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 25px;
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Interactive Chocolate */
+.interactive-chocolate {
+    padding: 3rem 2rem;
+}
+
+.wish-container {
+    text-align: center;
+}
+
+.magic-chocolate {
+    font-size: 5rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    animation: float 2s ease-in-out infinite;
+}
+
+.magic-chocolate:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.wish-text {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.wish-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sweet Notes */
+.sweet-notes {
+    padding: 3rem 2rem;
+}
+
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.note {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    transition: all 0.3s ease;
+}
+
+.note:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animations */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Sparkle Effects */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+    pointer-events: none;
+    animation: sparkleAnim 1s ease-out forwards;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .message-animation-container {
-        height: 60px;
+    .chocolate-day-header h1 {
+        font-size: 2rem;
     }
-    
+
     .message-text {
         font-size: 1.5rem;
     }
-    
-    .chocolate-day-header h1 {
-        font-size: 2rem;
+
+    .box-container {
+        grid-template-columns: 1fr;
+    }
+
+    .memory-card {
+        width: 100%;
+    }
+
+    .fact-bubble {
+        width: 100%;
     }
 }
 
