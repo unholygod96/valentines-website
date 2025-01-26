@@ -12,6 +12,62 @@
     overflow: hidden;
 }
 
+/* Message Animation Container */
+.message-animation-container {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.message-text {
+    position: absolute;
+    font-size: 2rem;
+    color: #fff5e6;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px;
+}
+
+.message-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message-text.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.message-text.strikethrough {
+    text-decoration: none;
+    opacity: 1;
+}
+
+/* Star Animation */
+.star {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #ffd700;
+    animation: starTwinkle 1s infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Header Elements */
 .chocolate-day-header h1 {
     font-size: 3rem;
     color: #fff5e6;
@@ -79,211 +135,26 @@
 .chocolate:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
 .chocolate:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
 
-/* Welcome Message */
-.message-bubble {
-    background: #fff5e6;
-    padding: 2rem;
-    border-radius: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
-    animation: bounce 2s ease-in-out infinite;
-}
-
-.message-bubble h2 {
-    color: #8b4513;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-/* Chocolate Box */
-.chocolate-box {
-    padding: 3rem 2rem;
-}
-
-.box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.chocolate-piece {
-    position: relative;
-    height: 200px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.chocolate-front,
-.chocolate-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
-    border-radius: 15px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.chocolate-front {
-    background: linear-gradient(145deg, #d2691e, #8b4513);
-    color: #fff5e6;
-}
-
-.chocolate-front span {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.chocolate-back {
-    background: #fff5e6;
-    transform: rotateY(180deg);
-    color: #8b4513;
-}
-
-.chocolate-piece:hover .chocolate-front {
-    transform: rotateY(180deg);
-}
-
-.chocolate-piece:hover .chocolate-back {
-    transform: rotateY(0deg);
-}
-
-/* Sweet Memories */
-.memory-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.memory-card {
-    background: #fff5e6;
-    padding: 1.5rem;
-    border-radius: 15px;
-    width: 300px;
-    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.memory-card:hover {
-    transform: translateY(-10px);
-}
-
-/* Chocolate Facts */
-.facts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.fact-bubble {
-    background: #fff5e6;
-    padding: 1.5rem;
-    border-radius: 25px;
-    max-width: 250px;
-    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
-    animation: float 3s ease-in-out infinite;
-}
-
-/* Interactive Chocolate */
-.wish-container {
-    text-align: center;
-    padding: 3rem;
-}
-
-.magic-chocolate {
-    font-size: 5rem;
-    cursor: pointer;
-    display: inline-block;
-    transition: transform 0.3s ease;
-    animation: float 2s ease-in-out infinite;
-}
-
-.magic-chocolate:hover {
-    transform: scale(1.2) rotate(360deg);
-}
-
-/* Sweet Notes */
-.notes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.note {
-    background: #fff5e6;
-    padding: 1.5rem;
-    border-radius: 15px;
-    width: 250px;
-    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
-    transition: all 0.3s ease;
-}
-
-.note:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Animations */
-@keyframes floatText {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-/* Sparkle Animation */
-.sparkle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, #ffd700 0%, transparent 70%);
-    animation: sparkleAnim 1s ease-out;
-    pointer-events: none;
-}
-
-@keyframes sparkleAnim {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(2); opacity: 0; }
+/* Message Transition */
+@keyframes messageTransition {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .message-animation-container {
+        height: 60px;
+    }
+    
+    .message-text {
+        font-size: 1.5rem;
+    }
+    
     .chocolate-day-header h1 {
         font-size: 2rem;
-    }
-
-    .box-container {
-        grid-template-columns: 1fr;
-    }
-
-    .memory-card {
-        width: 100%;
-    }
-
-    .fact-bubble {
-        width: 100%;
-        max-width: none;
     }
 }
 
@@ -304,4 +175,3 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #8b4513;
 }
-
