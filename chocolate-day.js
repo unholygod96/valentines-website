@@ -9,15 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
         "Sweeter than any dessert! 🍫"
     ];
 
-    const messageElement = document.getElementById('sweet-message');
+    const messageElement = document.getElementById('message-display');
     let currentIndex = 0;
 
     function showMessage() {
-        messageElement.classList.remove('active');
+        messageElement.style.opacity = '0';
+        messageElement.style.transform = 'translateY(20px)';
         
         setTimeout(() => {
             messageElement.textContent = sweetMessages[currentIndex];
-            messageElement.classList.add('active');
+            messageElement.style.opacity = '1';
+            messageElement.style.transform = 'translateY(0)';
             
             currentIndex = (currentIndex + 1) % sweetMessages.length;
             
@@ -50,19 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Interactive Chocolate Box
     const chocolatePieces = document.querySelectorAll('.chocolate-piece');
-    let piecesOpened = 0;
-
+    
     chocolatePieces.forEach(piece => {
-        piece.addEventListener('click', function() {
-            if (!this.classList.contains('opened')) {
-                this.classList.add('opened');
-                piecesOpened++;
-                createChocolateSparkles(this);
+        piece.addEventListener('mouseenter', function() {
+            createChocolateSparkles(this);
+        });
 
-                if (piecesOpened === chocolatePieces.length) {
-                    setTimeout(showSweetSurprise, 1000);
-                }
-            }
+        piece.addEventListener('click', function() {
+            this.classList.add('active');
+            createChocolateSparkles(this);
         });
     });
 
@@ -76,43 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
             sparkle.style.animationDelay = Math.random() * 500 + 'ms';
             element.appendChild(sparkle);
             setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
-
-    // Show Sweet Surprise
-    function showSweetSurprise() {
-        const surprise = document.createElement('div');
-        surprise.className = 'sweet-surprise';
-        surprise.innerHTML = `
-            <div class="surprise-content">
-                <h2>Sweet Surprise! 🍫</h2>
-                <p>You're the sweetest part of my life! 💝</p>
-                <div class="chocolate-hearts"></div>
-            </div>
-        `;
-        document.body.appendChild(surprise);
-        
-        setTimeout(() => {
-            surprise.classList.add('show');
-            createChocolateHearts();
-        }, 100);
-
-        setTimeout(() => {
-            surprise.classList.remove('show');
-            setTimeout(() => surprise.remove(), 500);
-        }, 5000);
-    }
-
-    // Create Chocolate Hearts
-    function createChocolateHearts() {
-        const heartsContainer = document.querySelector('.chocolate-hearts');
-        for (let i = 0; i < 20; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'chocolate-heart';
-            heart.innerHTML = '🍫';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            heartsContainer.appendChild(heart);
         }
     }
 
@@ -198,20 +159,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Smooth Scroll Navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href').split('#')[1];
-            if (targetId) {
-                e.preventDefault();
-                document.getElementById(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // Love Letter Toggle
+    const loveLetterButton = document.getElementById('love-letter-button');
+    const loveLetter = document.getElementById('love-letter');
+    
+    loveLetterButton.addEventListener('click', function() {
+        loveLetter.classList.toggle('hidden');
+        if (!loveLetter.classList.contains('hidden')) {
+            createLetterSparkles(loveLetter);
+        }
     });
 
-    // Initialize animations and effects
+    // Create Letter Sparkles
+    function createLetterSparkles(element) {
+        for (let i = 0; i < 15; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
+    // Background Music Toggle
+    const musicButton = document.getElementById('toggle-music');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    musicButton.addEventListener('click', function() {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play();
+            musicButton.textContent = '🎵';
+        } else {
+            backgroundMusic.pause();
+            musicButton.textContent = '🔇';
+        }
+    });
+
+    // Timer Functions
+    const timerDisplay = document.getElementById('custom-timer-display');
+    const timerHeader = document.getElementById('timer-header');
+    let timerInterval;
+    let endTime;
+
+    document.getElementById('set-timer').addEventListener('click', function() {
+        const input = document.getElementById('calendar-input');
+        if (input.value) {
+            endTime = new Date(input.value).getTime();
+            startTimer();
+        }
+    });
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance <= 0) {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "Time's Up! 💝";
+            return;
+        }
+
+        const hours = Math.floor(distance / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerDisplay.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    // Initialize
     createChocolate();
     showMessage();
 });
