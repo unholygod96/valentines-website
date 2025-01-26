@@ -4,34 +4,32 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("nav").classList.toggle("active");
     });
 
-    // Tab Switching Logic with Close Functionality
-    document.querySelectorAll("nav ul li a").forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = this.getAttribute("href");
-            const selectedContent = document.querySelector(target);
-            
-            // If content is already visible, hide it and return
-            if (selectedContent.style.display === "block") {
-                selectedContent.style.display = "none";
-            } else {
-                // Hide all tab content first
-                document.querySelectorAll(".tab-content").forEach(tab => {
-                    tab.style.display = "none";
-                });
-                // Show the selected content
-                selectedContent.style.display = "block";
-            }
-            
-            // Close the menu
-            document.querySelector("nav").classList.remove("active");
-        });
+    // Love Letter Button with Cute Animation
+    document.getElementById("love-letter-button").addEventListener("click", function () {
+        const letter = document.getElementById("love-letter");
+        if (letter.classList.contains("hidden")) {
+            letter.classList.remove("hidden");
+            this.innerHTML = "💌✨";
+            // Add sparkle effect
+            createSparkles(this);
+        } else {
+            letter.classList.add("hidden");
+            this.innerHTML = "💌";
+        }
     });
 
-    // Love Letter Button
-    document.getElementById("love-letter-button").addEventListener("click", function () {
-        document.getElementById("love-letter").classList.toggle("hidden");
-    });
+    // Sparkle Effect Function
+    function createSparkles(element) {
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 60 + 'px';
+            sparkle.style.top = Math.random() * 60 + 'px';
+            sparkle.style.animationDelay = Math.random() * 1000 + 'ms';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
 
     // Custom Timer with localStorage persistence
     let customTimerInterval = null;
@@ -70,6 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
             overlay.classList.remove("hidden");
             overlay.classList.add("show");
             
+            // Add celebration effects
+            createCelebration();
             return;
         }
 
@@ -83,26 +83,43 @@ document.addEventListener("DOMContentLoaded", function () {
         customTimerSeconds--;
     }
 
-    // Start Timer
+    // Celebration Effects
+    function createCelebration() {
+        const celebration = document.createElement('div');
+        celebration.className = 'celebration';
+        document.body.appendChild(celebration);
+
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            celebration.appendChild(confetti);
+        }
+
+        setTimeout(() => celebration.remove(), 5000);
+    }
+
+    // Timer Buttons
     document.getElementById("start-timer").addEventListener("click", function () {
         if (!customTimerInterval && customTimerSeconds > 0) {
             customTimerInterval = setInterval(updateCustomTimer, 1000);
+            createSparkles(this);
         }
     });
 
-    // Pause Timer
     document.getElementById("pause-timer").addEventListener("click", function () {
         if (customTimerInterval) {
             clearInterval(customTimerInterval);
             customTimerInterval = null;
-            // Save current state when paused
             const now = new Date().getTime();
             const endTime = now + (customTimerSeconds * 1000);
             localStorage.setItem("timerEndTime", endTime.toString());
+            createSparkles(this);
         }
     });
 
-    // Reset Timer
     document.getElementById("reset-timer").addEventListener("click", function () {
         clearInterval(customTimerInterval);
         customTimerInterval = null;
@@ -113,13 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const timerContainer = document.getElementById("timer-container");
         const timerHeader = document.getElementById("timer-header");
-        timerHeader.textContent = "Custom Timer";
+        timerHeader.textContent = "Counting moments until I see you! 💫";
         Array.from(timerContainer.children).forEach(child => {
             child.style.display = '';
         });
+        createSparkles(this);
     });
 
-    // Set Timer from Calendar Input
     document.getElementById("set-timer").addEventListener("click", function () {
         const calendarInput = document.getElementById("calendar-input");
         const calendarValue = calendarInput.value;
@@ -129,13 +146,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const now = new Date();
             customTimerSeconds = Math.floor((targetDate - now) / 1000);
             if (customTimerSeconds > 0) {
-                // Save the end time and header in localStorage
                 localStorage.setItem("timerEndTime", targetDate.getTime().toString());
                 localStorage.setItem("timerHeader", document.getElementById("timer-header").textContent);
                 updateCustomTimer();
                 if (!customTimerInterval) {
                     customTimerInterval = setInterval(updateCustomTimer, 1000);
                 }
+                createSparkles(this);
             }
         }
     });
@@ -146,48 +163,34 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.classList.remove("show");
         overlay.classList.add("hidden");
         
-        // Reset the timer container to its original state
         const timerContainer = document.getElementById("timer-container");
         const timerHeader = document.getElementById("timer-header");
-        timerHeader.textContent = "Custom Timer";
+        timerHeader.textContent = "Set another special moment! 💫";
         Array.from(timerContainer.children).forEach(child => {
             child.style.display = '';
         });
+        createSparkles(this);
     });
 
-    // Photo Upload and Collage Creation
-    document.getElementById("photo-upload").addEventListener("change", function (event) {
-        const files = event.target.files;
-        const collage = document.getElementById("collage");
-        collage.innerHTML = ''; // Clear existing images
-
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            if (file.type.startsWith('image/')) {
-                const img = document.createElement('img');
-                img.file = file;
-                collage.appendChild(img);
-
-                const reader = new FileReader();
-                reader.onload = (function(aImg) { 
-                    return function(e) { 
-                        aImg.src = e.target.result; 
-                    }; 
-                })(img);
-                reader.readAsDataURL(file);
-            }
-        }
-    });
-
-    // Background Music Control
+    // Background Music Control with Cute Toggle
     const audioElement = document.getElementById("background-music");
-    document.getElementById("toggle-music").addEventListener("click", function () {
+    const musicButton = document.getElementById("toggle-music");
+    
+    musicButton.addEventListener("click", function () {
         if (audioElement.paused) {
             audioElement.play();
-            this.textContent = "🔇";
+            this.textContent = "🎵✨";
+            createSparkles(this);
         } else {
             audioElement.pause();
             this.textContent = "🎵";
         }
+    });
+
+    // Add hover effects to all interactive elements
+    document.querySelectorAll('button, a').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            createSparkles(this);
+        });
     });
 });
