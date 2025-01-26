@@ -1,38 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sweet Messages Array
+    // Sweet Messages Animation
     const sweetMessages = [
-        { text: "You're", duration: 2000 },
-        { text: "better", duration: 2000 },
-        { text: "than chocolate!", duration: 2000 },
-        { text: "sweetest", duration: 2000 },
-        { text: "delicious", duration: 2000 },
-        { text: "you! ⭐", duration: 2000 }
+        "You're sweeter than chocolate! 🍫",
+        "Life is delicious with you! ✨",
+        "My favorite treat is your smile! 💝",
+        "Every moment with you is sweet! 🌟",
+        "You melt my heart! 💫",
+        "Sweeter than any dessert! 🍫"
     ];
 
     const messageElement = document.getElementById('sweet-message');
     let currentIndex = 0;
 
     function showMessage() {
-        if (currentIndex >= sweetMessages.length) {
-            currentIndex = 0;
-        }
-
-        const currentMessage = sweetMessages[currentIndex];
-
-        // Clear previous message and add new one with fade effect
-        messageElement.style.opacity = '0';
-        messageElement.style.transform = 'translateY(20px)';
+        messageElement.classList.remove('active');
         
         setTimeout(() => {
-            messageElement.textContent = currentMessage.text;
-            messageElement.style.opacity = '1';
-            messageElement.style.transform = 'translateY(0)';
+            messageElement.textContent = sweetMessages[currentIndex];
+            messageElement.classList.add('active');
             
-            // Schedule next message
-            setTimeout(() => {
-                currentIndex++;
-                showMessage();
-            }, currentMessage.duration);
+            currentIndex = (currentIndex + 1) % sweetMessages.length;
+            
+            setTimeout(showMessage, 3000);
         }, 500);
     }
 
@@ -81,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createChocolateSparkles(element) {
         for (let i = 0; i < 10; i++) {
             const sparkle = document.createElement('div');
-            sparkle.className = 'chocolate-sparkle';
+            sparkle.className = 'sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
             sparkle.style.top = Math.random() * 100 + '%';
             sparkle.style.animationDelay = Math.random() * 500 + 'ms';
@@ -144,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createMemorySparkles(element) {
         for (let i = 0; i < 8; i++) {
             const sparkle = document.createElement('div');
-            sparkle.className = 'memory-sparkle';
+            sparkle.className = 'sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
             sparkle.style.top = Math.random() * 100 + '%';
             element.appendChild(sparkle);
@@ -176,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createMagicSparkles(element) {
         for (let i = 0; i < 12; i++) {
             const sparkle = document.createElement('div');
-            sparkle.className = 'magic-sparkle';
+            sparkle.className = 'sparkle';
             sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
             sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
             element.appendChild(sparkle);
@@ -201,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createNoteSparkles(element) {
         for (let i = 0; i < 6; i++) {
             const sparkle = document.createElement('div');
-            sparkle.className = 'note-sparkle';
+            sparkle.className = 'sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
             sparkle.style.top = Math.random() * 100 + '%';
             element.appendChild(sparkle);
@@ -221,4 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Initialize animations and effects
+    createChocolate();
+    showMessage();
 });
