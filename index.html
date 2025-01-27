@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Valentine's Journey ❤️</title>
+    <title>Our Valentine's Journey 💝</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Access Check Script -->
+    <script>
+        // Check access before page loads
+        (function() {
+            const hasSpecialAccess = localStorage.getItem('specialAccess') === 'true';
+            const userEmail = localStorage.getItem('userEmail');
+            const allowedEmail = '23f3000516@ds.study.iitm.ac.in';
+            
+            if (!hasSpecialAccess || userEmail !== allowedEmail) {
+                const today = new Date();
+                const valentineWeekStart = new Date('2025-02-07');
+                
+                if (today < valentineWeekStart) {
+                    window.location.href = 'landing.html';
+                }
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Menu Button -->
@@ -12,21 +30,6 @@
 
     <!-- Heart Rain -->
     <div class="hearts">
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
-        <div class="heart">❤</div>
         <div class="heart">❤</div>
         <div class="heart">❤</div>
         <div class="heart">❤</div>
@@ -53,9 +56,11 @@
     </div>
 
     <header>
-        <h1>Hey Cutie! Welcome to Our Valentine's Week! 💖</h1>
+        <h1>Our Valentine's Journey 💝</h1>
+        <p class="subtitle">Let's make every moment special! ✨</p>
+        
         <div id="timer-container">
-            <h2 id="timer-header" contenteditable="true">Counting Down to Our Special Moments! ✨</h2>
+            <h2 id="timer-header" contenteditable="true">Counting moments until we meet! 💫</h2>
             <div id="custom-timer">
                 <span id="custom-timer-display">00:00:00</span>
             </div>
@@ -65,100 +70,97 @@
             <button id="reset-timer">Reset 🌟</button>
             <button id="set-timer">Set Timer 💖</button>
         </div>
+
         <audio id="background-music" loop>
             <source src="double-take.mp3" type="audio/mpeg">
         </audio>
         <button id="toggle-music">🎵</button>
     </header>
-    
+
     <nav>
         <ul>
-            <li><a href="rose-day.html">Rose Day 🌹</a></li>
-            <li><a href="propose-day.html">Propose Day 💍</a></li>
-            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
-            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
-            <li><a href="promise-day.html">Promise Day 🤝</a></li>
-            <li><a href="hug-day.html">Hug Day 🤗</a></li>
-            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
-            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+            <li><a href="rose-day.html" data-date="2025-02-07">Rose Day 🌹</a></li>
+            <li><a href="propose-day.html" data-date="2025-02-08">Propose Day 💍</a></li>
+            <li><a href="chocolate-day.html" data-date="2025-02-09">Chocolate Day 🍫</a></li>
+            <li><a href="teddy-day.html" data-date="2025-02-10">Teddy Day 🧸</a></li>
+            <li><a href="promise-day.html" data-date="2025-02-11">Promise Day 🤝</a></li>
+            <li><a href="hug-day.html" data-date="2025-02-12">Hug Day 🤗</a></li>
+            <li><a href="kiss-day.html" data-date="2025-02-13">Kiss Day 💋</a></li>
+            <li><a href="valentines-day.html" data-date="2025-02-14">Valentine's Day ❤️</a></li>
         </ul>
     </nav>
 
-    <main class="main-content">
-        <section class="welcome-section">
-            <h2>Ready for Our Love Adventure? 💝</h2>
-            <p>I've prepared something super special just for you! Let's make this Valentine's week unforgettable together! ✨</p>
-            
-            <div class="week-overview">
-                <h3>Our Magical Week Together 💫</h3>
-                <div class="day-cards">
-                    <div class="day-card">
-                        <h4>February 7</h4>
-                        <p>Rose Day 🌹</p>
-                        <p class="cute-message">Because you make everything bloom!</p>
-                        <a href="rose-day.html" class="day-link">Start Our Rose Adventure! ✨</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 8</h4>
-                        <p>Propose Day 💍</p>
-                        <p class="cute-message">Every day I choose you!</p>
-                        <a href="propose-day.html" class="day-link">Let's Make Promises! 💫</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 9</h4>
-                        <p>Chocolate Day 🍫</p>
-                        <p class="cute-message">Sweet like you!</p>
-                        <a href="chocolate-day.html" class="day-link">Time for Sweetness! 🍫</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 10</h4>
-                        <p>Teddy Day 🧸</p>
-                        <p class="cute-message">Soft hugs coming your way!</p>
-                        <a href="teddy-day.html" class="day-link">Cuddle Time! 🧸</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 11</h4>
-                        <p>Promise Day 🤝</p>
-                        <p class="cute-message">Forever and always!</p>
-                        <a href="promise-day.html" class="day-link">Let's Promise! 💫</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 12</h4>
-                        <p>Hug Day 🤗</p>
-                        <p class="cute-message">Sending virtual hugs!</p>
-                        <a href="hug-day.html" class="day-link">Hugs Loading... 🤗</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 13</h4>
-                        <p>Kiss Day 💋</p>
-                        <p class="cute-message">Kisses make everything better!</p>
-                        <a href="kiss-day.html" class="day-link">Sending Kisses! 💋</a>
-                    </div>
-                    <div class="day-card">
-                        <h4>February 14</h4>
-                        <p>Valentine's Day ❤️</p>
-                        <p class="cute-message">Our special day!</p>
-                        <a href="valentines-day.html" class="day-link">The Big Day! ❤️</a>
-                    </div>
-                </div>
+    <main>
+        <section class="welcome-message">
+            <div class="message-bubble bounce">
+                <h2>Welcome to Our Journey! 💝</h2>
+                <p>Each day brings a new way to express our love...</p>
+                <div class="bounce-arrow">↓</div>
             </div>
         </section>
 
-        <div id="love-letter-container">
-            <button id="love-letter-button">💌</button>
-            <div id="love-letter" class="hidden">
-                <h3>Hey Sweetie! 💖</h3>
-                <p>I can't wait to share this magical week with you! Every day is going to be super special, just like you are to me! ✨</p>
-                <p>You know what's the best part of my day? When I get to see your beautiful smile! It lights up my whole world and makes everything better. 🌟</p>
-                <p>Your laugh is like my favorite song, and the way your eyes sparkle when you're happy? That's pure magic! ✨ You're not just my girlfriend; you're my best friend, my favorite person, and the star of all my daydreams! 💫</p>
-                <p>I love all our silly moments together - from our random adventures to our quiet cuddle times. You make even ordinary days feel like fairy tales! 🌈</p>
-                <p>Every day with you feels like a gift, and I fall more in love with your adorable self as time goes by. You're the missing piece to my puzzle, and I'm so lucky to have you! 💝</p>
-                <p>You're my favorite notification, my best good morning, and my sweetest dream! I love you more than all the stars in the sky and all the hearts in the world! 🌟</p>
-                <p>Forever yours,<br>Your Loving Partner 💕</p>
+        <section class="day-cards">
+            <!-- Rose Day Card -->
+            <div class="day-card" data-date="2025-02-07">
+                <h3>Rose Day 🌹</h3>
+                <p>Where our journey begins with the sweetness of roses...</p>
             </div>
-        </div>
+
+            <!-- Propose Day Card -->
+            <div class="day-card" data-date="2025-02-08">
+                <h3>Propose Day 💍</h3>
+                <p>A day to express our feelings...</p>
+            </div>
+
+            <!-- Chocolate Day Card -->
+            <div class="day-card" data-date="2025-02-09">
+                <h3>Chocolate Day 🍫</h3>
+                <p>Sweet moments and sweeter memories...</p>
+            </div>
+
+            <!-- Teddy Day Card -->
+            <div class="day-card" data-date="2025-02-10">
+                <h3>Teddy Day 🧸</h3>
+                <p>Soft hugs and tender moments...</p>
+            </div>
+
+            <!-- Promise Day Card -->
+            <div class="day-card" data-date="2025-02-11">
+                <h3>Promise Day 🤝</h3>
+                <p>Promises that bind our hearts...</p>
+            </div>
+
+            <!-- Hug Day Card -->
+            <div class="day-card" data-date="2025-02-12">
+                <h3>Hug Day 🤗</h3>
+                <p>Embracing our love...</p>
+            </div>
+
+            <!-- Kiss Day Card -->
+            <div class="day-card" data-date="2025-02-13">
+                <h3>Kiss Day 💋</h3>
+                <p>Sealed with love...</p>
+            </div>
+
+            <!-- Valentine's Day Card -->
+            <div class="day-card" data-date="2025-02-14">
+                <h3>Valentine's Day ❤️</h3>
+                <p>The day our hearts unite...</p>
+            </div>
+        </section>
     </main>
 
+    <div id="love-letter-container">
+        <button id="love-letter-button">💌</button>
+        <div id="love-letter" class="hidden">
+            <h3>My Dearest 💝</h3>
+            <p>Every day with you is a new adventure, and I can't wait to share this special journey through Valentine's Week with you!</p>
+            <p>Let's make each day memorable, starting from the first rose to our final Valentine's celebration.</p>
+            <p>Forever yours,<br>Your Valentine 💕</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
