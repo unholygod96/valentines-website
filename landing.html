@@ -5,77 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine? 💝</title>
     <style>
-        .landing-page {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
             background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
+            align-items: center;
+            overflow: hidden;
         }
 
-        .valentine-card {
-            background: white;
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #FF69B4;
+            opacity: 0;
+            animation: heartFall linear infinite;
+        }
+
+        .landing-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(109, 40, 217, 0.2);
             max-width: 500px;
             width: 90%;
-            margin: 20px;
+            text-align: center;
             animation: float 3s ease-in-out infinite;
         }
 
-        .special-access {
-            margin-top: 20px;
+        h1 {
+            color: #7C3AED;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .message {
+            color: #6D28D9;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .special-question {
+            font-size: 1.8rem;
+            color: #7C3AED;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        .access-form {
+            margin-top: 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(139, 92, 246, 0.1);
             border-radius: 10px;
         }
 
         #emailInput {
-            padding: 10px;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
             border: 2px solid #8B5CF6;
-            border-radius: 5px;
-            margin: 10px;
-            width: 250px;
-        }
-
-        .access-btn {
-            background: #8B5CF6;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
             transition: all 0.3s ease;
         }
 
-        .access-btn:hover {
-            background: #7C3AED;
+        #emailInput:focus {
+            border-color: #7C3AED;
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);
+        }
+
+        .enter-btn {
+            background: linear-gradient(145deg, #8B5CF6, #7C3AED);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .enter-btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+
+        @keyframes heartFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        /* Heart animations */
+        .heart:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; }
+        .heart:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
+        .heart:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
+        .heart:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
+        .heart:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
+        .heart:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 2.7s; }
+        .heart:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 0.2s; }
     </style>
 </head>
 <body>
-    <div class="landing-page">
-        <div class="valentine-card">
-            <h1>Hey Sweetie! 💝</h1>
-            <p>I know you've been waiting for this moment...</p>
-            <p>Every time I look at you, my heart skips a beat, and I can't help but smile. 💫</p>
-            <p>So here I am, asking you the most important question:</p>
-            <h2>Will You Be My Valentine? 🌹</h2>
-            <div class="special-access">
-                <p>Enter your email for access:</p>
-                <input type="email" id="emailInput" placeholder="Enter your email">
-                <button class="access-btn" onclick="checkAccess()">Enter 💝</button>
-            </div>
+    <!-- Falling Hearts Animation -->
+    <div class="hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+        <div class="heart">❤️</div>
+    </div>
+
+    <div class="landing-container">
+        <h1>Hey Sweetie! 💝</h1>
+        <p class="message">I know you've been waiting for this moment...</p>
+        <p class="message">Every time I look at you, my heart skips a beat, and I can't help but smile. 💫</p>
+        <p class="message">The way you make me feel is indescribable, and I've been gathering the courage to ask you something special...</p>
+        <p class="special-question">Will You Be My Valentine? 🌹</p>
+        
+        <div class="access-form">
+            <p class="message">Enter your email to access our special journey:</p>
+            <input type="email" id="emailInput" placeholder="Enter your email">
+            <button class="enter-btn" onclick="checkAccess()">Enter Our World 💝</button>
         </div>
     </div>
 
@@ -84,21 +181,34 @@
             const email = document.getElementById('emailInput').value;
             const allowedEmail = '23f3000516@ds.study.iitm.ac.in';
             
-            if (email === allowedEmail) {
+            if (email.toLowerCase() === allowedEmail.toLowerCase()) {
                 localStorage.setItem('specialAccess', 'true');
+                localStorage.setItem('userEmail', email);
                 window.location.href = 'index.html';
             } else {
                 alert('Access restricted. Please wait for Valentine\'s Week! 💝');
             }
         }
 
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.querySelector('.hearts').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+
         // Prevent direct access to main site
-        if (!localStorage.getItem('specialAccess')) {
-            if (window.location.pathname !== '/landing.html') {
-                window.location.href = 'landing.html';
-            }
+        if (window.location.pathname !== '/landing.html' && !localStorage.getItem('specialAccess')) {
+            window.location.href = 'landing.html';
         }
     </script>
 </body>
 </html>
-
