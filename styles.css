@@ -54,214 +54,240 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-/* Access Restriction Styles */
-nav a.locked {
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: not-allowed;
-    background: #f0f0f0;
-    color: #999;
+/* New Restriction Styles */
+.locked-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-nav a.unlocked {
-    background: #EDE9FE;
+nav a:hover .locked-overlay {
+    opacity: 1;
 }
 
-nav a.active {
-    background: #8B5CF6;
-    color: white;
+.locked-content {
+    position: relative;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-/* Day Cards */
-.day-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
+.locked-content:hover {
+    opacity: 1;
 }
 
-.day-card {
+/* Teasing Popup Styles */
+.tease-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
     background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(109, 40, 217, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
-    cursor: pointer;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
 }
 
-/* Locked Day Card Styles */
-.day-card.locked {
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: not-allowed;
-    filter: grayscale(1);
+.tease-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.day-card.unlocked {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+.tease-popup h3 {
+    color: #7C3AED;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
-/* Timer Container */
-#timer-container {
-    margin: 2rem auto;
-    max-width: 600px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 15px;
+.tease-popup p {
+    color: #6D28D9;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
-#custom-timer-display {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 1rem 0;
-    display: block;
-}
-
-/* Buttons */
-button {
-    background: #8B5CF6;
+.tease-popup button {
+    background: linear-gradient(145deg, #8B5CF6, #7C3AED);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin: 0.5rem;
+    font-size: 1rem;
 }
 
-button:hover {
-    background: #7C3AED;
-    transform: translateY(-2px);
+.tease-popup button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
 }
 
-/* Music Toggle */
-#toggle-music {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    z-index: 1000;
+/* Day Cards with Restriction */
+.day-card {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Love Letter */
-#love-letter-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-#love-letter-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-}
-
-#love-letter {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    transform: translateY(20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-#love-letter.show {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Heart Animation */
-.hearts {
-    position: fixed;
+.day-card::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.heart {
-    position: absolute;
-    font-size: 20px;
-    color: #FF69B4;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
     opacity: 0;
-    animation: heartFall linear infinite;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-@keyframes heartFall {
+.day-card.locked::before {
+    opacity: 1;
+}
+
+.unlock-date {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    color: #6D28D9;
+    opacity: 0.7;
+}
+
+/* Progressive Unlock Animation */
+@keyframes unlockAnimation {
     0% {
-        opacity: 0;
-        transform: translateY(-5vh) rotate(0deg);
+        transform: scale(0.95);
+        opacity: 0.5;
     }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
+    50% {
+        transform: scale(1.05);
         opacity: 0.8;
     }
     100% {
-        opacity: 0;
-        transform: translateY(105vh) rotate(720deg);
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-/* Access Denied Message */
-.access-denied {
-    position: fixed;
+.unlocking {
+    animation: unlockAnimation 0.5s ease forwards;
+}
+
+/* Sparkle Effect for Unlocked Content */
+.sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+    pointer-events: none;
+    animation: sparkleAnim 1s ease-out;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Countdown Timer for Next Unlock */
+.countdown {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    color: #6D28D9;
     text-align: center;
-    z-index: 2000;
-    animation: fadeIn 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translate(-50%, -60%); }
-    to { opacity: 1; transform: translate(-50%, -50%); }
+.locked:hover .countdown {
+    opacity: 1;
 }
 
-/* Responsive Design */
+/* Special Access Indicator */
+.special-access {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(124, 58, 237, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #6D28D9;
+}
+
+/* Responsive Design Updates */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
+    .tease-popup {
+        width: 95%;
+        padding: 1.5rem;
     }
     
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .countdown {
+        font-size: 1rem;
     }
     
-    .day-cards {
-        grid-template-columns: 1fr;
+    .unlock-date {
+        font-size: 0.8rem;
     }
-    
-    #custom-timer-display {
-        font-size: 2rem;
+}
+
+/* Animation for Locked Content Hover */
+@keyframes lockedPulse {
+    0% {
+        transform: scale(1);
     }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.locked:hover {
+    animation: lockedPulse 1s ease infinite;
+}
+
+/* Valentine's Day Special Effects */
+.valentines-day .day-card {
+    background: linear-gradient(145deg, #FF69B4, #FF1493);
+    color: white;
+}
+
+.valentines-day .day-card::before {
+    display: none;
+}
+
+.valentines-day .unlock-date {
+    color: white;
 }
 
 /* Custom Scrollbar */
@@ -280,32 +306,4 @@ button:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #7C3AED;
-}
-
-/* Loading Animation */
-.loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.loading::after {
-    content: '';
-    width: 50px;
-    height: 50px;
-    border: 5px solid #8B5CF6;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }
