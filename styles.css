@@ -1,245 +1,211 @@
-/* Base Styles */
-* {
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F3FF;
+    color: #6D28D9;
+    text-align: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
-    min-height: 100vh;
-    color: #6D28D9;
     overflow-x: hidden;
 }
 
-/* Header Styles */
-header {
-    background: linear-gradient(to bottom, #8B5CF6, #6D28D9);
-    padding: 2rem;
-    text-align: center;
-    color: white;
-    position: relative;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-/* Menu Button */
+/* Menu Button Styling */
 .menu-button {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 1000;
-    background: #8B5CF6;
+    background-color: #8B5CF6;
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    padding: 15px;
+    font-size: 24px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
 }
 
 .menu-button:hover {
+    background-color: #7C3AED;
     transform: scale(1.1);
-    background: #7C3AED;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 
-/* Navigation */
+/* Navigation Menu */
 nav {
-    background: white;
-    padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px;
     height: 100vh;
     width: 250px;
+    background-color: rgba(139, 92, 246, 0.95);
+    transition: left 0.3s ease;
     z-index: 999;
-    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
 nav.active {
-    transform: translateX(0);
+    left: 0;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 20px;
+    margin: 0;
+    margin-top: 60px;
 }
 
-nav li {
-    margin-bottom: 15px;
+nav ul li {
+    margin: 20px 0;
 }
 
-nav a {
+nav ul li a {
     text-decoration: none;
-    color: #6D28D9;
-    padding: 10px 15px;
-    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s;
     display: block;
-    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Heart Rain Animation */
+.hearts {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: fixed;
+    font-size: 20px;
+    color: #FF69B4;
+    opacity: 0;
+    animation: heartRain linear infinite;
+}
+
+@keyframes heartRain {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%) rotate(0deg);
+    }
+    20% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Heart positioning and timing */
+[Previous heart positioning remains the same]
+
+header {
+    background-color: #C4B5FD;
+    padding: 20px;
     position: relative;
     overflow: hidden;
 }
 
-nav a:hover {
-    background: #EDE9FE;
-    transform: translateX(10px);
+h1 {
+    margin: 0;
+    color: #6D28D9;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Timer Container */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Timer Styling */
 #timer-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
     border-radius: 15px;
-    margin: 2rem auto;
-    max-width: 600px;
+    backdrop-filter: blur(5px);
 }
 
 #timer-header {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    outline: none;
-}
-
-#custom-timer {
-    font-size: 3rem;
-    margin: 1rem 0;
-    font-weight: bold;
-}
-
-#calendar-input {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 25px;
-    margin: 1rem;
-    font-size: 1rem;
-}
-
-/* Buttons */
-button {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 0.5rem;
-}
-
-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-/* Heart Animation */
-.hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.heart {
-    position: absolute;
-    font-size: 20px;
-    color: #FF69B4;
-    opacity: 0;
-    animation: heartFall linear infinite;
-}
-
-@keyframes heartFall {
-    0% {
-        opacity: 0;
-        transform: translateY(-5vh) rotate(0deg);
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(105vh) rotate(720deg);
-    }
-}
-
-/* Day Cards */
-.day-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    position: relative;
-}
-
-.day-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.day-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.day-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
+    cursor: text;
     color: #6D28D9;
 }
 
-.day-card p {
-    color: #7C3AED;
-    line-height: 1.6;
+#custom-timer {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #6D28D9;
+    font-weight: bold;
 }
 
-/* Card Overlay for Locked State */
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+#start-timer, #pause-timer, #reset-timer, #set-timer {
+    background-color: #8B5CF6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.day-card.locked .card-overlay {
-    opacity: 1;
-    cursor: not-allowed;
+#start-timer:hover, 
+#pause-timer:hover, 
+#reset-timer:hover, 
+#set-timer:hover {
+    background-color: #7C3AED;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Love Letter */
+/* Calendar Input Field */
+#calendar-input {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 25px;
+    border: 2px solid #C4B5FD;
+    text-align: center;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+#calendar-input:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+/* Love Letter Styling */
 #love-letter-container {
     position: fixed;
     bottom: 20px;
@@ -248,106 +214,133 @@ button:hover {
 }
 
 #love-letter-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #8B5CF6;
-    color: white;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    background: none;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    opacity: 0.7;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#love-letter-button:hover {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 #love-letter {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 400px;
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transform: translateY(20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    max-height: 80vh;
+    background-color: #fff;
+    border: 2px solid #8B5CF6;
+    border-radius: 15px;
+    padding: 25px;
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    width: 300px;
+    max-height: 400px;
     overflow-y: auto;
-}
-
-#love-letter.show {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-}
-
-.love-letter-content {
-    color: #6D28D9;
-}
-
-.love-letter-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: #7C3AED;
-}
-
-.love-letter-content p {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-}
-
-.love-signature {
-    text-align: right;
-    font-style: italic;
-    margin-top: 2rem;
-}
-
-/* Access Denied Popup */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    opacity: 0;
-    visibility: hidden;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+    text-align: left;
+    transform-origin: bottom right;
     transition: all 0.3s ease;
 }
 
-.popup.show {
-    opacity: 1;
-    visibility: visible;
+#love-letter.hidden {
+    transform: scale(0);
+    opacity: 0;
 }
 
-.popup h3 {
+#love-letter h3 {
     color: #7C3AED;
-    margin-bottom: 1rem;
+    margin-top: 0;
+    font-size: 1.5em;
 }
 
-.popup p {
+#love-letter p {
+    margin-bottom: 15px;
+    line-height: 1.6;
     color: #6D28D9;
-    margin-bottom: 1.5rem;
+    font-size: 1.1em;
 }
 
-.popup button {
+/* Music Controls */
+#toggle-music {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
     background: #8B5CF6;
     color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
     border: none;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    border-radius: 25px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#toggle-music:hover {
+    background: #7C3AED;
+    transform: scale(1.1);
+}
+
+/* Day Cards Styling */
+.day-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.day-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.day-card h4 {
+    color: #7C3AED;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.day-card p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.cute-message {
+    color: #FF69B4;
+    font-style: italic;
+    font-size: 0.9em !important;
+}
+
+.day-link {
+    display: inline-block;
+    background: #8B5CF6;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    margin-top: 10px;
     transition: all 0.3s ease;
 }
 
-.popup button:hover {
+.day-link:hover {
     background: #7C3AED;
     transform: scale(1.05);
 }
@@ -355,38 +348,42 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2em;
     }
-    
-    #custom-timer {
-        font-size: 2rem;
-    }
-    
+
     .day-cards {
         grid-template-columns: 1fr;
     }
-    
+
     #love-letter {
-        width: 90%;
-        right: 5%;
-        left: 5%;
+        width: 80%;
+        left: 10%;
+        right: 10%;
+    }
+
+    #timer-container button {
+        margin: 5px;
+        font-size: 0.9rem;
     }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+/* Utility Classes */
+.hidden {
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #F5F3FF;
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-::-webkit-scrollbar-thumb {
-    background: #8B5CF6;
-    border-radius: 4px;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #7C3AED;
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
