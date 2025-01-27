@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💝</title>
+    <style>
+        .landing-page {
+            background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .valentine-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(109, 40, 217, 0.2);
+            max-width: 500px;
+            width: 90%;
+            margin: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .special-access {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+
+        #emailInput {
+            padding: 10px;
+            border: 2px solid #8B5CF6;
+            border-radius: 5px;
+            margin: 10px;
+            width: 250px;
+        }
+
+        .access-btn {
+            background: #8B5CF6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .access-btn:hover {
+            background: #7C3AED;
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <div class="valentine-card">
+            <h1>Hey Sweetie! 💝</h1>
+            <p>I know you've been waiting for this moment...</p>
+            <p>Every time I look at you, my heart skips a beat, and I can't help but smile. 💫</p>
+            <p>So here I am, asking you the most important question:</p>
+            <h2>Will You Be My Valentine? 🌹</h2>
+            <div class="special-access">
+                <p>Enter your email for access:</p>
+                <input type="email" id="emailInput" placeholder="Enter your email">
+                <button class="access-btn" onclick="checkAccess()">Enter 💝</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAccess() {
+            const email = document.getElementById('emailInput').value;
+            const allowedEmail = '23f3000516@ds.study.iitm.ac.in';
+            
+            if (email === allowedEmail) {
+                localStorage.setItem('specialAccess', 'true');
+                window.location.href = 'index.html';
+            } else {
+                alert('Access restricted. Please wait for Valentine\'s Week! 💝');
+            }
+        }
+
+        // Prevent direct access to main site
+        if (!localStorage.getItem('specialAccess')) {
+            if (window.location.pathname !== '/landing.html') {
+                window.location.href = 'landing.html';
+            }
+        }
+    </script>
+</body>
+</html>
 
