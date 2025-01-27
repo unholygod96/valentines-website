@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'valentines-day': new Date('2025-02-14')
     };
 
-    // Teasing Messages
+    // Sweet Messages for Teasing
     const teasingMessages = [
         "Getting impatient, aren't you? 😏",
         "Aww, someone's excited! 🙈",
@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
         "Almost there, sweetie! 💫",
         "Good things come to those who wait! 🌟"
     ];
+
+    // Menu Toggle
+    document.getElementById('menu-button').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+    });
 
     // Access Control Functions
     function checkAccess(pageDate) {
@@ -38,23 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showTeasingPopup() {
-        const popup = document.createElement('div');
-        popup.className = 'tease-popup';
-        const randomMessage = teasingMessages[Math.floor(Math.random() * teasingMessages.length)];
+        const popup = document.getElementById('access-denied');
+        const message = teasingMessages[Math.floor(Math.random() * teasingMessages.length)];
+        popup.querySelector('p').textContent = message;
+        popup.classList.remove('hidden');
+        popup.classList.add('show');
         
-        popup.innerHTML = `
-            <h3>Hey Sweetie! 💝</h3>
-            <p>${randomMessage}</p>
-            <button onclick="this.parentElement.remove()">Okay, I'll wait! 🥰</button>
-        `;
-        
-        document.body.appendChild(popup);
-        setTimeout(() => popup.classList.add('show'), 10);
-        
-        // Remove popup after 3 seconds
         setTimeout(() => {
             popup.classList.remove('show');
-            setTimeout(() => popup.remove(), 300);
+            setTimeout(() => popup.classList.add('hidden'), 300);
         }, 3000);
     }
 
@@ -84,49 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!checkAccess(pageDate)) {
                 card.classList.add('locked');
-                updateCountdown(card, pageDate);
+                card.addEventListener('click', showTeasingPopup);
             } else {
                 card.classList.add('unlocked');
             }
         });
-    }
-
-    // Countdown Timer
-    function updateCountdown(element, unlockDate) {
-        const countdownDiv = document.createElement('div');
-        countdownDiv.className = 'countdown';
-        element.appendChild(countdownDiv);
-
-        function updateTimer() {
-            const now = new Date();
-            const distance = unlockDate - now;
-
-            if (distance <= 0) {
-                element.classList.remove('locked');
-                element.classList.add('unlocked');
-                countdownDiv.remove();
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            countdownDiv.textContent = `Unlocks in: ${days}d ${hours}h`;
-        }
-
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    }
-
-    // Sparkle Effect
-    function createSparkles(element) {
-        for (let i = 0; i < 10; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
     }
 
     // Heart Animation
@@ -144,14 +103,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Timer Functionality
     const timerDisplay = document.getElementById('custom-timer-display');
+    const timerHeader = document.getElementById('timer-header');
     let timerInterval;
     let endTime;
+
+    // Load saved timer if exists
+    const savedEndTime = localStorage.getItem('timerEndTime');
+    const savedTimerHeader = localStorage.getItem('timerHeader');
+
+    if (savedEndTime) {
+        const now = new Date().getTime();
+        const endTime = parseInt(savedEndTime);
+        if (endTime > now) {
+            customTimerSeconds = Math.floor((endTime - now) / 1000);
+            if (savedTimerHeader) {
+                timerHeader.textContent = savedTimerHeader;
+            }
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+    }
 
     document.getElementById('set-timer').addEventListener('click', function() {
         const input = document.getElementById('calendar-input');
         if (input.value) {
             endTime = new Date(input.value).getTime();
+            localStorage.setItem('timerEndTime', endTime.toString());
+            localStorage.setItem('timerHeader', timerHeader.textContent);
             startTimer();
+            createSparkles(this);
         }
     });
 
@@ -167,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (distance <= 0) {
             clearInterval(timerInterval);
             timerDisplay.textContent = "Time's Up! 💝";
+            localStorage.removeItem('timerEndTime');
+            localStorage.removeItem('timerHeader');
             return;
         }
 
@@ -178,6 +160,33 @@ document.addEventListener('DOMContentLoaded', function() {
             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
+    // Timer Controls
+    document.getElementById('start-timer').addEventListener('click', function() {
+        if (!timerInterval && endTime) {
+            startTimer();
+            createSparkles(this);
+        }
+    });
+
+    document.getElementById('pause-timer').addEventListener('click', function() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            createSparkles(this);
+        }
+    });
+
+    document.getElementById('reset-timer').addEventListener('click', function() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        endTime = null;
+        localStorage.removeItem('timerEndTime');
+        localStorage.removeItem('timerHeader');
+        timerDisplay.textContent = "00:00:00";
+        timerHeader.textContent = "Counting moments until we meet! 💫";
+        createSparkles(this);
+    });
+
     // Music Controls
     const musicButton = document.getElementById('toggle-music');
     const backgroundMusic = document.getElementById('background-music');
@@ -185,10 +194,11 @@ document.addEventListener('DOMContentLoaded', function() {
     musicButton.addEventListener('click', function() {
         if (backgroundMusic.paused) {
             backgroundMusic.play();
-            musicButton.textContent = '🎵';
+            this.textContent = '🎵';
+            createSparkles(this);
         } else {
             backgroundMusic.pause();
-            musicButton.textContent = '🔇';
+            this.textContent = '🔇';
         }
     });
 
@@ -199,16 +209,33 @@ document.addEventListener('DOMContentLoaded', function() {
     loveLetterButton.addEventListener('click', function() {
         loveLetter.classList.toggle('show');
         if (!loveLetter.classList.contains('hidden')) {
-            createSparkles(loveLetter);
+            createSparkles(this);
         }
     });
 
+    // Close love letter when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!loveLetter.contains(event.target) && 
+            !loveLetterButton.contains(event.target) && 
+            !loveLetter.classList.contains('hidden')) {
+            loveLetter.classList.remove('show');
+        }
+    });
+
+    // Sparkle Effect
+    function createSparkles(element) {
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 500 + 'ms';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+
     // Initialize
     updatePageAccess();
-    
-    // Check for Valentine's Day
-    const today = new Date();
-    if (today >= valentinesDates['valentines-day']) {
-        document.body.classList.add('valentines-day');
-    }
+    createHeart();
 });
