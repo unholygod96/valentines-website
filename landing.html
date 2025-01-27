@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Question 💝</title>
     <style>
+        /* Existing styles from the provided landing.html */
         * {
             margin: 0;
             padding: 0;
@@ -251,9 +252,15 @@
 
         // Final Confirmation
         function finalConfirmation() {
-            localStorage.setItem('specialAccess', 'true');
-            localStorage.setItem('userEmail', '23f3000516@ds.study.iitm.ac.in');
+            localStorage.setItem('valentineAsked', 'true');
             window.location.href = 'index.html';
+        }
+
+        // Check if user has already been asked
+        window.onload = function() {
+            if (localStorage.getItem('valentineAsked') === 'true') {
+                window.location.href = 'index.html';
+            }
         }
     </script>
 </body>
