@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Valentine's Journey 💝</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Access Check Script -->
-    <script>
-        // Check access before page loads
-        (function() {
-            const hasSpecialAccess = localStorage.getItem('specialAccess') === 'true';
-            const userEmail = localStorage.getItem('userEmail');
-            const allowedEmail = '23f3000516@ds.study.iitm.ac.in';
-            
-            if (!hasSpecialAccess || userEmail !== allowedEmail) {
-                const today = new Date();
-                const valentineWeekStart = new Date('2025-02-07');
-                
-                if (today < valentineWeekStart) {
-                    window.location.href = 'landing.html';
-                }
-            }
-        })();
-    </script>
 </head>
 <body>
     <!-- Menu Button -->
@@ -100,52 +82,58 @@
         </section>
 
         <section class="day-cards">
-            <!-- Rose Day Card -->
             <div class="day-card" data-date="2025-02-07">
                 <h3>Rose Day 🌹</h3>
                 <p>Where our journey begins with the sweetness of roses...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Propose Day Card -->
             <div class="day-card" data-date="2025-02-08">
                 <h3>Propose Day 💍</h3>
                 <p>A day to express our feelings...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Chocolate Day Card -->
             <div class="day-card" data-date="2025-02-09">
                 <h3>Chocolate Day 🍫</h3>
                 <p>Sweet moments and sweeter memories...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Teddy Day Card -->
             <div class="day-card" data-date="2025-02-10">
                 <h3>Teddy Day 🧸</h3>
                 <p>Soft hugs and tender moments...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Promise Day Card -->
             <div class="day-card" data-date="2025-02-11">
                 <h3>Promise Day 🤝</h3>
                 <p>Promises that bind our hearts...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Hug Day Card -->
             <div class="day-card" data-date="2025-02-12">
                 <h3>Hug Day 🤗</h3>
                 <p>Embracing our love...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Kiss Day Card -->
             <div class="day-card" data-date="2025-02-13">
                 <h3>Kiss Day 💋</h3>
                 <p>Sealed with love...</p>
+                <div class="card-overlay"></div>
             </div>
 
-            <!-- Valentine's Day Card -->
             <div class="day-card" data-date="2025-02-14">
                 <h3>Valentine's Day ❤️</h3>
                 <p>The day our hearts unite...</p>
+                <div class="card-overlay"></div>
+            </div>
+        </section>
+
+        <section class="special-messages">
+            <div class="message-container">
+                <div id="message-display" class="message-text"></div>
             </div>
         </section>
     </main>
@@ -153,11 +141,30 @@
     <div id="love-letter-container">
         <button id="love-letter-button">💌</button>
         <div id="love-letter" class="hidden">
-            <h3>My Dearest 💝</h3>
-            <p>Every day with you is a new adventure, and I can't wait to share this special journey through Valentine's Week with you!</p>
-            <p>Let's make each day memorable, starting from the first rose to our final Valentine's celebration.</p>
-            <p>Forever yours,<br>Your Valentine 💕</p>
+            <div class="love-letter-content">
+                <h3>My Dearest Love 💝</h3>
+                <p>As I write this letter, my heart dances with joy thinking about our beautiful journey together. Every moment with you feels like a precious gift, wrapped in love and tied with the ribbons of our shared memories.</p>
+                
+                <p>You know what's amazing? The way you make ordinary days feel extraordinary. Your smile brightens my darkest days, your laugh is my favorite melody, and your presence makes my world complete.</p>
+                
+                <p>I've been counting down the days to Valentine's Week, planning little surprises and dreaming of ways to make each day special for you. From the first rose to the final Valentine's celebration, I want to shower you with all the love you deserve.</p>
+                
+                <p>Remember when we first met? That moment feels like yesterday, yet here we are, creating beautiful memories together. Each day with you is a new adventure, a new reason to smile, and a new chapter in our love story.</p>
+                
+                <p>As Valentine's Week approaches, my heart flutters with excitement. I can't wait to celebrate our love, to see your eyes light up with joy, and to remind you just how special you are to me.</p>
+                
+                <p>You're not just my valentine; you're my best friend, my confidant, my partner in crime, and the keeper of my heart. Thank you for being you, for loving me, and for making every day feel like Valentine's Day.</p>
+                
+                <p class="love-signature">Forever Yours,<br>Your Valentine 💕</p>
+            </div>
         </div>
+    </div>
+
+    <!-- Access Denied Popup -->
+    <div id="access-denied" class="popup hidden">
+        <h3>Getting Impatient? 🙈</h3>
+        <p>I know you're excited, but good things come to those who wait! 💝</p>
+        <button onclick="this.parentElement.classList.add('hidden')">Okay, I'll wait! 🥰</button>
     </div>
 
     <!-- Scripts -->
