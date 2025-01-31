@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddy Day - Valentine's Week</title>
+    <link rel="stylesheet" href="teddy-day.css">
+</head>
+<body class="teddy-day-theme">
+    <header class="teddy-day-header">
+        <h1>Happy Teddy Day! 🧸</h1>
+        <p class="header-subtitle">Cuddles, Love, and Fluffy Memories</p>
+    </header>
+
+    <div class="teddy-rain"></div>
+
+    <section class="welcome-message">
+        <div class="message-bubble">
+            <h2>Beary Special Messages</h2>
+            <p id="typing-message"></p>
+        </div>
+    </section>
+
+    <section class="teddy-gallery">
+        <h2>Our Teddy Collection</h2>
+        <div class="gallery-container">
+            <div class="teddy-card" data-name="Cuddles">
+                <img src="teddy1.jpg" alt="Cuddles the Teddy">
+                <p>Cuddles</p>
+            </div>
+            <div class="teddy-card" data-name="Snuggles">
+                <img src="teddy2.jpg" alt="Snuggles the Teddy">
+                <p>Snuggles</p>
+            </div>
+            <div class="teddy-card" data-name="Fluffy">
+                <img src="teddy3.jpg" alt="Fluffy the Teddy">
+                <p>Fluffy</p>
+            </div>
+            <div class="teddy-card" data-name="Honey">
+                <img src="teddy4.jpg" alt="Honey the Teddy">
+                <p>Honey</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="teddy-memory-game">
+        <h2>Teddy Memory Lane</h2>
+        <div class="memory-container">
+            <div class="memory-card" data-framework="teddy1">
+                <img class="front-face" src="teddy1.jpg" alt="Teddy 1">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+            <div class="memory-card" data-framework="teddy1">
+                <img class="front-face" src="teddy1.jpg" alt="Teddy 1">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+            <div class="memory-card" data-framework="teddy2">
+                <img class="front-face" src="teddy2.jpg" alt="Teddy 2">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+            <div class="memory-card" data-framework="teddy2">
+                <img class="front-face" src="teddy2.jpg" alt="Teddy 2">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+            <div class="memory-card" data-framework="teddy3">
+                <img class="front-face" src="teddy3.jpg" alt="Teddy 3">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+            <div class="memory-card" data-framework="teddy3">
+                <img class="front-face" src="teddy3.jpg" alt="Teddy 3">
+                <img class="back-face" src="card-back.jpg" alt="Card Back">
+            </div>
+        </div>
+    </section>
+
+    <section class="teddy-wishes">
+        <h2>Send a Teddy Wish</h2>
+        <div class="wish-container">
+            <textarea id="wish-text" placeholder="Write your teddy wish here..."></textarea>
+            <button id="send-wish">Send Wish</button>
+        </div>
+        <div id="wish-display"></div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for Teddy Day</p>
+    </footer>
+
+    <script src="teddy-day.js"></script>
+</body>
+</html>
 
