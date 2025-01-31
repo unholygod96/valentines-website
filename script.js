@@ -1,196 +1,234 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Menu Toggle
-    document.getElementById("menu-button").addEventListener("click", function () {
-        document.querySelector("nav").classList.toggle("active");
+document.addEventListener('DOMContentLoaded', function() {
+    // ======================
+    // MENU FUNCTIONALITY
+    // ======================
+    const menuButton = document.getElementById('menu-button');
+    const nav = document.querySelector('nav');
+    let menuOpen = false;
+
+    menuButton.addEventListener('click', function() {
+        menuOpen = !menuOpen;
+        nav.classList.toggle('active');
+        this.style.transform = menuOpen ? 'rotate(90deg)' : 'rotate(0deg)';
     });
 
-    // Love Letter Button with Cute Animation
-    document.getElementById("love-letter-button").addEventListener("click", function () {
-        const letter = document.getElementById("love-letter");
-        if (letter.classList.contains("hidden")) {
-            letter.classList.remove("hidden");
-            this.innerHTML = "ðŸ’Œâœ¨";
-            // Add sparkle effect
-            createSparkles(this);
-        } else {
-            letter.classList.add("hidden");
-            this.innerHTML = "ðŸ’Œ";
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!nav.contains(event.target) && !menuButton.contains(event.target)) {
+            nav.classList.remove('active');
+            menuOpen = false;
+            menuButton.style.transform = 'rotate(0deg)';
         }
     });
 
-    // Sparkle Effect Function
-    function createSparkles(element) {
-        for (let i = 0; i < 10; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 60 + 'px';
-            sparkle.style.top = Math.random() * 60 + 'px';
-            sparkle.style.animationDelay = Math.random() * 1000 + 'ms';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
+    // ======================
+    // TIMER FUNCTIONALITY
+    // ======================
+    let timerInterval;
+    let endTime;
+    const timerElements = {
+        display: document.getElementById('custom-timer-display'),
+        start: document.getElementById('start-timer'),
+        pause: document.getElementById('pause-timer'),
+        reset: document.getElementById('reset-timer'),
+        set: document.getElementById('set-timer'),
+        input: document.getElementById('calendar-input'),
+        overlay: document.getElementById('timer-end-overlay'),
+        closeOverlay: document.getElementById('close-overlay'),
+        header: document.getElementById('overlay-header')
+    };
+
+    function updateTimerDisplay(hours, minutes, seconds) {
+        timerElements.display.textContent = 
+            `${hours.toString().padStart(2, '0')}:` +
+            `${minutes.toString().padStart(2, '0')}:` +
+            `${seconds.toString().padStart(2, '0')}`;
     }
 
-    // Custom Timer with localStorage persistence
-    let customTimerInterval = null;
-    let customTimerSeconds = 0;
-
-    // Check if there's a saved timer when page loads
-    const savedEndTime = localStorage.getItem("timerEndTime");
-    const savedTimerHeader = localStorage.getItem("timerHeader");
-    if (savedEndTime) {
-        const now = new Date().getTime();
-        const endTime = parseInt(savedEndTime);
-        if (endTime > now) {
-            customTimerSeconds = Math.floor((endTime - now) / 1000);
-            if (savedTimerHeader) {
-                document.getElementById("timer-header").textContent = savedTimerHeader;
-            }
-            updateCustomTimer();
-            customTimerInterval = setInterval(updateCustomTimer, 1000);
-        } else {
-            localStorage.removeItem("timerEndTime");
-            localStorage.removeItem("timerHeader");
-        }
+    function calculateTimeRemaining() {
+        const now = Date.now();
+        const distance = endTime - now;
+        
+        return {
+            hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+            minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+            seconds: Math.floor((distance % (1000 * 60)) / 1000),
+            distance: distance
+        };
     }
 
-    function updateCustomTimer() {
-        if (customTimerSeconds <= 0) {
-            clearInterval(customTimerInterval);
-            customTimerInterval = null;
-            localStorage.removeItem("timerEndTime");
-            localStorage.removeItem("timerHeader");
-            
-            const customHeader = document.getElementById("timer-header").textContent;
-            const overlay = document.getElementById("timer-end-overlay");
-            const overlayHeader = document.getElementById("overlay-header");
-            overlayHeader.textContent = customHeader;
-            overlay.classList.remove("hidden");
-            overlay.classList.add("show");
-            
-            // Add celebration effects
-            createCelebration();
+    function handleTimerCompletion() {
+        clearInterval(timerInterval);
+        timerElements.display.textContent = "00:00:00";
+        showOverlay("Time's up! 🎉");
+        createConfettiEffect();
+    }
+
+    function updateTimer() {
+        const time = calculateTimeRemaining();
+        
+        if (time.distance < 0) {
+            handleTimerCompletion();
             return;
         }
-
-        const hours = Math.floor(customTimerSeconds / 3600);
-        const minutes = Math.floor((customTimerSeconds % 3600) / 60);
-        const seconds = customTimerSeconds % 60;
-
-        document.getElementById("custom-timer-display").textContent =
-            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
-        customTimerSeconds--;
+        updateTimerDisplay(time.hours, time.minutes, time.seconds);
     }
 
-    // Celebration Effects
-    function createCelebration() {
-        const celebration = document.createElement('div');
-        celebration.className = 'celebration';
-        document.body.appendChild(celebration);
-
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDelay = Math.random() * 3 + 's';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            celebration.appendChild(confetti);
-        }
-
-        setTimeout(() => celebration.remove(), 5000);
+    function showOverlay(message) {
+        timerElements.header.textContent = message;
+        timerElements.overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
     }
 
-    // Timer Buttons
-    document.getElementById("start-timer").addEventListener("click", function () {
-        if (!customTimerInterval && customTimerSeconds > 0) {
-            customTimerInterval = setInterval(updateCustomTimer, 1000);
-            createSparkles(this);
+    function hideOverlay() {
+        timerElements.overlay.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    function validateDateTime(selectedDate) {
+        if (isNaN(selectedDate.getTime()) || selectedDate < Date.now()) {
+            alert("Please select a valid future date and time!");
+            return false;
         }
+        return true;
+    }
+
+    timerElements.start.addEventListener('click', function() {
+        if (!endTime) return alert("Please set a timer first!");
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
     });
 
-    document.getElementById("pause-timer").addEventListener("click", function () {
-        if (customTimerInterval) {
-            clearInterval(customTimerInterval);
-            customTimerInterval = null;
-            const now = new Date().getTime();
-            const endTime = now + (customTimerSeconds * 1000);
-            localStorage.setItem("timerEndTime", endTime.toString());
-            createSparkles(this);
-        }
-    });
-
-    document.getElementById("reset-timer").addEventListener("click", function () {
-        clearInterval(customTimerInterval);
-        customTimerInterval = null;
-        customTimerSeconds = 0;
-        localStorage.removeItem("timerEndTime");
-        localStorage.removeItem("timerHeader");
-        document.getElementById("custom-timer-display").textContent = "00:00:00";
-        
-        const timerContainer = document.getElementById("timer-container");
-        const timerHeader = document.getElementById("timer-header");
-        timerHeader.textContent = "Counting moments until I see you! ðŸ’«";
-        Array.from(timerContainer.children).forEach(child => {
-            child.style.display = '';
-        });
-        createSparkles(this);
-    });
-
-    document.getElementById("set-timer").addEventListener("click", function () {
-        const calendarInput = document.getElementById("calendar-input");
-        const calendarValue = calendarInput.value;
-
-        if (calendarValue) {
-            const targetDate = new Date(calendarValue);
-            const now = new Date();
-            customTimerSeconds = Math.floor((targetDate - now) / 1000);
-            if (customTimerSeconds > 0) {
-                localStorage.setItem("timerEndTime", targetDate.getTime().toString());
-                localStorage.setItem("timerHeader", document.getElementById("timer-header").textContent);
-                updateCustomTimer();
-                if (!customTimerInterval) {
-                    customTimerInterval = setInterval(updateCustomTimer, 1000);
-                }
-                createSparkles(this);
-            }
-        }
-    });
-
-    // Close Overlay Button
-    document.getElementById("close-overlay").addEventListener("click", function() {
-        const overlay = document.getElementById("timer-end-overlay");
-        overlay.classList.remove("show");
-        overlay.classList.add("hidden");
-        
-        const timerContainer = document.getElementById("timer-container");
-        const timerHeader = document.getElementById("timer-header");
-        timerHeader.textContent = "Set another special moment! ðŸ’«";
-        Array.from(timerContainer.children).forEach(child => {
-            child.style.display = '';
-        });
-        createSparkles(this);
-    });
-
-    // Background Music Control with Cute Toggle
-    const audioElement = document.getElementById("background-music");
-    const musicButton = document.getElementById("toggle-music");
+    timerElements.pause.addEventListener('click', () => clearInterval(timerInterval));
     
-    musicButton.addEventListener("click", function () {
-        if (audioElement.paused) {
-            audioElement.play();
-            this.textContent = "ðŸŽµâœ¨";
-            createSparkles(this);
-        } else {
-            audioElement.pause();
-            this.textContent = "ðŸŽµ";
+    timerElements.reset.addEventListener('click', function() {
+        clearInterval(timerInterval);
+        endTime = null;
+        timerElements.display.textContent = "00:00:00";
+    });
+
+    timerElements.set.addEventListener('click', function() {
+        const selectedDate = new Date(timerElements.input.value);
+        if (!validateDateTime(selectedDate)) return;
+        endTime = selectedDate.getTime();
+        updateTimer();
+    });
+
+    timerElements.closeOverlay.addEventListener('click', hideOverlay);
+
+    // ======================
+    // LOVE LETTER FUNCTIONALITY
+    // ======================
+    const loveLetter = {
+        container: document.getElementById('love-letter'),
+        button: document.getElementById('love-letter-button'),
+        isOpen: false
+    };
+
+    function toggleLoveLetter() {
+        loveLetter.isOpen = !loveLetter.isOpen;
+        loveLetter.container.classList.toggle('hidden');
+        loveLetter.button.style.transform = loveLetter.isOpen ? 
+            'rotate(360deg) scale(1.2)' : 
+            'rotate(0deg) scale(1)';
+    }
+
+    loveLetter.button.addEventListener('click', toggleLoveLetter);
+
+    // Close love letter when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!loveLetter.container.contains(event.target) && 
+            !loveLetter.button.contains(event.target) && 
+            loveLetter.isOpen) {
+            toggleLoveLetter();
         }
     });
 
-    // Add hover effects to all interactive elements
-    document.querySelectorAll('button, a').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            createSparkles(this);
-        });
+    // ======================
+    // MUSIC FUNCTIONALITY
+    // ======================
+    const music = {
+        button: document.getElementById('toggle-music'),
+        player: document.getElementById('background-music'),
+        isPlaying: false
+    };
+
+    function toggleMusic() {
+        music.isPlaying = !music.isPlaying;
+        music.isPlaying ? music.player.play() : music.player.pause();
+        music.button.textContent = music.isPlaying ? '🔊' : '🔇';
+        music.button.style.animation = music.isPlaying ? 
+            'pulse 1s infinite' : 'none';
+    }
+
+    music.button.addEventListener('click', toggleMusic);
+
+    // ======================
+    // SPECIAL EFFECTS
+    // ======================
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.cssText = `
+            left: ${Math.random() * 100}vw;
+            animation-duration: ${Math.random() * 3 + 2}s;
+            font-size: ${Math.random() * 20 + 15}px;
+        `;
+        heart.textContent = '❤';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }
+
+    function createConfettiEffect() {
+        const colors = ['#ff69b4', '#8b5cf6', '#7c3aed'];
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.cssText = `
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}vw;
+                    animation: confetti-fall ${Math.random() * 3 + 2}s linear;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }, i * 30);
+        }
+    }
+
+    // Initialize effects
+    setInterval(createHeart, 300);
+    document.querySelectorAll('.day-card').forEach(card => {
+        card.addEventListener('click', () => createConfettiEffect());
     });
+
+    // ======================
+    // ADDITIONAL ANIMATIONS
+    // ======================
+    const animationKeyframes = {
+        pulse: [
+            { transform: 'scale(1)', opacity: 1 },
+            { transform: 'scale(1.1)', opacity: 0.8 },
+            { transform: 'scale(1)', opacity: 1 }
+        ],
+        confettiFall: {
+            transform: 'translateY(-100vh) rotate(720deg)',
+            opacity: 1
+        }
+    };
+
+    const animationTiming = {
+        duration: 1000,
+        iterations: Infinity
+    };
+
+    // Register animations
+    document.styleSheets[0].insertRule(`
+        @keyframes confetti-fall {
+            from { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    `);
 });
