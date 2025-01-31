@@ -3,97 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teddy Day - Valentine's Week</title>
+    <title>Happy Teddy Day 🧸</title>
     <link rel="stylesheet" href="teddy-day.css">
 </head>
-<body class="teddy-day-theme">
-    <header class="teddy-day-header">
-        <h1>Happy Teddy Day! 🧸</h1>
-        <p class="header-subtitle">Cuddles, Love, and Fluffy Memories</p>
+<body>
+    <!-- Main Header -->
+    <header class="teddy-header">
+        <h1 class="main-title">Happy Teddy Day</h1>
+        <p class="subtitle">Create, Play, and Share the Love 🧸</p>
+        <div class="floating-hearts"></div>
     </header>
 
-    <div class="teddy-rain"></div>
-
-    <section class="welcome-message">
-        <div class="message-bubble">
-            <h2>Beary Special Messages</h2>
-            <p id="typing-message"></p>
-        </div>
-    </section>
-
+    <!-- Teddy Creator Section -->
     <section class="teddy-creator">
-        <h2>Create Your Own Teddy</h2>
-        <div class="teddy-customizer">
-            <div class="teddy-preview">
-                <div id="teddy-face" class="teddy-part">😊</div>
-                <div id="teddy-body" class="teddy-part">🧸</div>
-                <div id="teddy-accessory" class="teddy-part"></div>
+        <h2>Design Your Perfect Teddy</h2>
+        
+        <div class="creator-container">
+            <!-- Preview Window -->
+            <div class="preview-window">
+                <div class="teddy-preview">
+                    <div class="teddy-face">😊</div>
+                    <div class="teddy-body">
+                        <div class="teddy-ears">
+                            <div class="ear left"></div>
+                            <div class="ear right"></div>
+                        </div>
+                        <div class="teddy-main"></div>
+                    </div>
+                    <div class="teddy-accessory"></div>
+                </div>
+                <div class="sparkles-container"></div>
             </div>
-            <div class="customization-options">
-                <div>
-                    <label for="face-select">Face:</label>
-                    <select id="face-select">
-                        <option value="😊">😊</option>
-                        <option value="😍">😍</option>
-                        <option value="😎">😎</option>
-                        <option value="🥺">🥺</option>
-                    </select>
+
+            <!-- Customization Panel -->
+            <div class="customization-panel">
+                <!-- Face Options -->
+                <div class="option-group">
+                    <h3>Choose Expression</h3>
+                    <div class="face-options">
+                        <button class="face-btn" data-face="😊">😊</button>
+                        <button class="face-btn" data-face="🥰">🥰</button>
+                        <button class="face-btn" data-face="😍">😍</button>
+                        <button class="face-btn" data-face="🤗">🤗</button>
+                    </div>
                 </div>
-                <div>
-                    <label for="body-color">Body Color:</label>
-                    <input type="color" id="body-color" value="#8B4513">
+
+                <!-- Color Options -->
+                <div class="option-group">
+                    <h3>Choose Color</h3>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #8B4513"></button>
+                        <button class="color-btn" style="background-color: #A0522D"></button>
+                        <button class="color-btn" style="background-color: #CD853F"></button>
+                        <button class="color-btn" style="background-color: #DEB887"></button>
+                    </div>
                 </div>
-                <div>
-                    <label for="accessory-select">Accessory:</label>
-                    <select id="accessory-select">
-                        <option value="">None</option>
-                        <option value="🎀">🎀 Bow</option>
-                        <option value="👑">👑 Crown</option>
-                        <option value="🧣">🧣 Scarf</option>
-                    </select>
+
+                <!-- Accessory Options -->
+                <div class="option-group">
+                    <h3>Add Accessory</h3>
+                    <div class="accessory-options">
+                        <button class="accessory-btn" data-accessory="🎀">🎀</button>
+                        <button class="accessory-btn" data-accessory="👑">👑</button>
+                        <button class="accessory-btn" data-accessory="🎩">🎩</button>
+                        <button class="accessory-btn" data-accessory="🧣">🧣</button>
+                    </div>
                 </div>
+
+                <button id="save-teddy" class="save-btn">
+                    Save My Teddy
+                    <span class="btn-sparkles"></span>
+                </button>
             </div>
         </div>
-        <button id="save-teddy">Save My Teddy</button>
     </section>
 
-    <section class="teddy-memory-game">
+    <!-- Memory Game Section -->
+    <section class="memory-game">
         <h2>Teddy Memory Lane</h2>
-        <div class="memory-container">
-            <div class="memory-card" data-framework="teddy1">
-                <img class="front-face" src="teddy1.jpg" alt="Teddy 1">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
+        
+        <div class="game-container">
+            <div class="game-stats">
+                <span class="moves">Moves: 0</span>
+                <span class="timer">Time: 0:00</span>
+                <button class="reset-btn">Reset Game</button>
             </div>
-            <div class="memory-card" data-framework="teddy1">
-                <img class="front-face" src="teddy1.jpg" alt="Teddy 1">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
-            </div>
-            <div class="memory-card" data-framework="teddy2">
-                <img class="front-face" src="teddy2.jpg" alt="Teddy 2">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
-            </div>
-            <div class="memory-card" data-framework="teddy2">
-                <img class="front-face" src="teddy2.jpg" alt="Teddy 2">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
-            </div>
-            <div class="memory-card" data-framework="teddy3">
-                <img class="front-face" src="teddy3.jpg" alt="Teddy 3">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
-            </div>
-            <div class="memory-card" data-framework="teddy3">
-                <img class="front-face" src="teddy3.jpg" alt="Teddy 3">
-                <img class="back-face" src="card-back.jpg" alt="Card Back">
+
+            <div class="cards-grid">
+                <!-- Cards will be generated by JavaScript -->
             </div>
         </div>
     </section>
 
+    <!-- Teddy Wishes Section -->
     <section class="teddy-wishes">
         <h2>Send a Teddy Wish</h2>
+        
         <div class="wish-container">
-            <textarea id="wish-text" placeholder="Write your teddy wish here..."></textarea>
-            <button id="send-wish">Send Wish</button>
+            <textarea id="wish-text" placeholder="Write your special teddy wish here..."></textarea>
+            <button id="send-wish" class="wish-btn">Send Wish</button>
         </div>
-        <div id="wish-display"></div>
+        
+        <div class="wishes-display">
+            <!-- Wishes will be displayed here -->
+        </div>
     </section>
 
     <footer>
