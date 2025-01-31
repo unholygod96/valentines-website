@@ -3,107 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day! 🧸</title>
+    <title>Happy Teddy Day</title>
     <link rel="stylesheet" href="teddy-day.css">
 </head>
 <body>
-    <!-- Teddy Rain Container -->
-    <div class="teddy-rain-container"></div>
+    <main>
+        <header>
+            <h1>Happy Teddy Day</h1>
+            <p>Create your perfect teddy companion! 🔔</p>
+        </header>
 
-    <!-- Main Header -->
-    <header class="main-header">
-        <h1 class="title">Happy Teddy Day</h1>
-        <p class="subtitle">Create your perfect teddy companion! 🧸</p>
-    </header>
-
-    <!-- Teddy Creator Section -->
-    <section class="teddy-creator">
-        <div class="creator-container">
-            <!-- Preview Window -->
-            <div class="preview-window">
-                <div class="teddy-preview">
-                    <div class="teddy-face">😊</div>
-                    <div class="teddy-body">
-                        <div class="teddy-ears">
-                            <div class="ear left"></div>
-                            <div class="ear right"></div>
-                        </div>
-                        <div class="teddy-main"></div>
-                    </div>
-                    <div class="teddy-accessory"></div>
+        <div class="teddy-container">
+            <!-- Teddy Preview -->
+            <div class="teddy-preview">
+                <div class="teddy-ears">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
                 </div>
-                <div class="sparkles-container"></div>
+                <div class="teddy-face"></div>
+                <div class="teddy-body"></div>
+                <div class="teddy-accessory"></div>
             </div>
 
             <!-- Customization Panel -->
             <div class="customization-panel">
-                <!-- Face Options -->
-                <div class="option-group">
-                    <h3>Choose Expression</h3>
-                    <div class="face-options">
-                        <button class="face-btn" data-face="😊">😊</button>
-                        <button class="face-btn" data-face="🥰">🥰</button>
-                        <button class="face-btn" data-face="😍">😍</button>
-                        <button class="face-btn" data-face="🤗">🤗</button>
+                <section class="option-section">
+                    <h2>Choose Expression</h2>
+                    <div class="expression-grid">
+                        <button class="expression-btn" data-expression="😊">😊</button>
+                        <button class="expression-btn" data-expression="🥰">🥰</button>
+                        <button class="expression-btn" data-expression="😍">😍</button>
+                        <button class="expression-btn" data-expression="🤗">🤗</button>
                     </div>
-                </div>
+                </section>
 
-                <!-- Color Options -->
-                <div class="option-group">
-                    <h3>Choose Color</h3>
-                    <div class="color-options">
-                        <button class="color-btn brown1"></button>
-                        <button class="color-btn brown2"></button>
-                        <button class="color-btn brown3"></button>
-                        <button class="color-btn brown4"></button>
-                    </div>
-                </div>
+                <section class="option-section">
+                    <h2>Choose Color</h2>
+                    <div class="color-picker"></div>
+                </section>
 
-                <!-- Accessory Options -->
-                <div class="option-group">
-                    <h3>Add Accessory</h3>
-                    <div class="accessory-options">
+                <section class="option-section">
+                    <h2>Add Accessory</h2>
+                    <div class="accessory-grid">
                         <button class="accessory-btn" data-accessory="🎀">🎀</button>
                         <button class="accessory-btn" data-accessory="👑">👑</button>
                         <button class="accessory-btn" data-accessory="🎩">🎩</button>
                         <button class="accessory-btn" data-accessory="🧣">🧣</button>
                     </div>
-                </div>
+                </section>
 
-                <button id="save-teddy" class="save-btn">
-                    Save My Teddy
-                    <span class="btn-sparkles"></span>
-                </button>
+                <button id="save-teddy">Save My Teddy</button>
             </div>
         </div>
-    </section>
 
-    <!-- Memory Game Section -->
-    <section class="memory-game">
-        <h2>Teddy Memory Lane</h2>
-        <div class="game-container">
+        <section class="memory-game">
+            <h2>Teddy Memory Lane</h2>
             <div class="game-stats">
-                <span class="moves">Moves: 0</span>
-                <span class="timer">Time: 0:00</span>
+                <span>Moves: 0</span>
+                <span>Time: 0:00</span>
                 <button class="reset-btn">Reset Game</button>
             </div>
-            <div class="cards-grid"></div>
-        </div>
-    </section>
+            <div class="game-grid"></div>
+        </section>
 
-    <!-- Wish Section -->
-    <section class="wish-section">
-        <h2>Send a Teddy Wish</h2>
-        <div class="wish-container">
-            <textarea id="wish-text" placeholder="Write your teddy wish here..."></textarea>
-            <button id="send-wish" class="wish-btn">Send Wish</button>
-        </div>
-        <div class="wishes-display"></div>
-    </section>
+        <section class="wish-section">
+            <h2>Send a Teddy Wish</h2>
+            <textarea placeholder="Write your teddy wish here..."></textarea>
+            <button class="send-wish">Send Wish</button>
+            <div class="wishes-display"></div>
+        </section>
 
-    <footer>
-        <p>Made with ❤️ for Teddy Day</p>
-    </footer>
+        <footer>
+            <p>Made with ❤️ for Teddy Day</p>
+        </footer>
+    </main>
 
     <script src="teddy-day.js"></script>
 </body>
