@@ -1,4 +1,4 @@
-/* General Page Styling */
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #F5F3FF;
@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Menu Button Styling */
+/* Menu Button */
 .menu-button {
     position: fixed;
     top: 20px;
@@ -50,9 +50,7 @@ nav {
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
-nav.active {
-    left: 0;
-}
+nav.active { left: 0; }
 
 nav ul {
     list-style-type: none;
@@ -61,9 +59,7 @@ nav ul {
     margin-top: 60px;
 }
 
-nav ul li {
-    margin: 20px 0;
-}
+nav ul li { margin: 20px 0; }
 
 nav ul li a {
     text-decoration: none;
@@ -101,25 +97,13 @@ nav ul li a:hover {
 }
 
 @keyframes heartRain {
-    0% {
-        opacity: 0;
-        transform: translateY(-100%) rotate(0deg);
-    }
-    20% {
-        opacity: 0.5;
-    }
-    80% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(100vh) rotate(360deg);
-    }
+    0% { opacity: 0; transform: translateY(-100%) rotate(0deg); }
+    20% { opacity: 0.5; }
+    80% { opacity: 0.5; }
+    100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
 }
 
-/* Heart positioning and timing */
-[Previous heart positioning remains the same]
-
+/* Header Styles */
 header {
     background-color: #C4B5FD;
     padding: 20px;
@@ -141,7 +125,7 @@ h1 {
     100% { transform: scale(1); }
 }
 
-/* Timer Styling */
+/* Timer Container */
 #timer-container {
     margin-top: 20px;
     background: rgba(255, 255, 255, 0.3);
@@ -164,7 +148,10 @@ h1 {
     font-weight: bold;
 }
 
-#start-timer, #pause-timer, #reset-timer, #set-timer {
+#start-timer,
+#pause-timer,
+#reset-timer,
+#set-timer {
     background-color: #8B5CF6;
     color: white;
     border: none;
@@ -177,16 +164,16 @@ h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#start-timer:hover, 
-#pause-timer:hover, 
-#reset-timer:hover, 
+#start-timer:hover,
+#pause-timer:hover,
+#reset-timer:hover,
 #set-timer:hover {
     background-color: #7C3AED;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Calendar Input Field */
+/* Calendar Input */
 #calendar-input {
     margin: 10px 5px;
     padding: 10px;
@@ -205,7 +192,7 @@ h1 {
     box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
-/* Love Letter Styling */
+/* Love Letter Section */
 #love-letter-container {
     position: fixed;
     bottom: 20px;
@@ -213,24 +200,71 @@ h1 {
     z-index: 1000;
 }
 
-#love-letter-button {
-    font-size: 2.5rem;
-    background: none;
+.envelope-container {
+    background: transparent !important;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0.7;
-    animation: float 2s ease-in-out infinite;
+    padding: 15px;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.envelope {
+    position: relative;
+    width: 80px;
+    height: 50px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#love-letter-button:hover {
+.envelope-flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 25px solid #ff6b6b;
+    transform-origin: top;
+    transition: all 0.4s ease-out;
+    z-index: 2;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 35px;
+    background: #ff8787;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-size: 2rem;
     opacity: 1;
-    transform: scale(1.2);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    z-index: 3;
+}
+
+#love-letter-container.open .envelope {
+    transform: translateY(-20px);
+}
+
+#love-letter-container.open .envelope-flap {
+    transform: rotateX(180deg);
+    border-bottom-color: #ff8787;
+}
+
+#love-letter-container.open .heart-icon {
+    animation: heartJump 1s ease forwards;
+}
+
+@keyframes heartJump {
+    0% { transform: translate(-50%, -30%) scale(1); opacity: 1; }
+    30% { transform: translate(-50%, -150%) scale(1.5); opacity: 1; }
+    100% { transform: translate(-50%, -200%) scale(0); opacity: 0; }
 }
 
 #love-letter {
@@ -240,14 +274,14 @@ h1 {
     padding: 25px;
     position: absolute;
     right: 0;
-    bottom: 60px;
+    bottom: 100px;
     width: 300px;
     max-height: 400px;
     overflow-y: auto;
     box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-    text-align: left;
     transform-origin: bottom right;
     transition: all 0.3s ease;
+    z-index: 999;
 }
 
 #love-letter.hidden {
@@ -255,17 +289,14 @@ h1 {
     opacity: 0;
 }
 
-#love-letter h3 {
-    color: #7C3AED;
-    margin-top: 0;
-    font-size: 1.5em;
+#love-letter-container.open #love-letter {
+    animation: letterPop 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
 }
 
-#love-letter p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    color: #6D28D9;
-    font-size: 1.1em;
+@keyframes letterPop {
+    0% { transform: scale(0) rotateZ(-10deg); }
+    70% { transform: scale(1.1) rotateZ(5deg); }
+    100% { transform: scale(1) rotateZ(0deg); }
 }
 
 /* Music Controls */
@@ -289,7 +320,7 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Day Cards Styling */
+/* Day Cards */
 .day-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -312,7 +343,7 @@ h1 {
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
-.day-card h4 {
+.day-card h3 {
     color: #7C3AED;
     margin: 0;
     font-size: 1.2em;
@@ -323,67 +354,31 @@ h1 {
     font-size: 1.1em;
 }
 
-.cute-message {
-    color: #FF69B4;
-    font-style: italic;
-    font-size: 0.9em !important;
-}
-
-.day-link {
-    display: inline-block;
-    background: #8B5CF6;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    margin-top: 10px;
-    transition: all 0.3s ease;
-}
-
-.day-link:hover {
-    background: #7C3AED;
-    transform: scale(1.05);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
-
-    .day-cards {
-        grid-template-columns: 1fr;
-    }
-
-    #love-letter {
-        width: 80%;
-        left: 10%;
-        right: 10%;
-    }
-
-    #timer-container button {
-        margin: 5px;
-        font-size: 0.9rem;
-    }
+    h1 { font-size: 2em; }
+    .day-cards { grid-template-columns: 1fr; }
+    #love-letter { width: 80%; left: 10%; right: 10%; }
+    #timer-container button { margin: 5px; font-size: 0.9rem; }
 }
 
 /* Utility Classes */
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 /* Animations */
+.floating-heart {
+    position: fixed;
+    font-size: 24px;
+    animation: floatUp 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+}
+
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes sparkle {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
 }
