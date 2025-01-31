@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ======================
-    // MENU FUNCTIONALITY
-    // ======================
+    // Menu Toggle
     const menuButton = document.getElementById('menu-button');
     const nav = document.querySelector('nav');
     let menuOpen = false;
@@ -12,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.transform = menuOpen ? 'rotate(90deg)' : 'rotate(0deg)';
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!nav.contains(event.target) && !menuButton.contains(event.target)) {
             nav.classList.remove('active');
@@ -21,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ======================
-    // TIMER FUNCTIONALITY
-    // ======================
+    // Timer Functionality
     let timerInterval;
     let endTime;
     const timerElements = {
@@ -117,37 +112,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     timerElements.closeOverlay.addEventListener('click', hideOverlay);
 
-    // ======================
-    // LOVE LETTER FUNCTIONALITY
-    // ======================
-    const loveLetter = {
-        container: document.getElementById('love-letter'),
-        button: document.getElementById('love-letter-button'),
-        isOpen: false
-    };
+    // Love Letter Functionality
+    const loveLetterContainer = document.getElementById('love-letter-container');
+    const loveLetterButton = document.getElementById('love-letter-button');
+    const loveLetter = document.getElementById('love-letter');
 
-    function toggleLoveLetter() {
-        loveLetter.isOpen = !loveLetter.isOpen;
-        loveLetter.container.classList.toggle('hidden');
-        loveLetter.button.style.transform = loveLetter.isOpen ? 
-            'rotate(360deg) scale(1.2)' : 
-            'rotate(0deg) scale(1)';
+    function createFloatingHearts() {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 80 + 10}%`;
+                heart.style.animation = `floatUp ${Math.random() * 2 + 2}s ease-in`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }, i * 300);
+        }
     }
 
-    loveLetter.button.addEventListener('click', toggleLoveLetter);
+    function toggleLoveLetter() {
+        loveLetterContainer.classList.toggle('open');
+        loveLetter.classList.toggle('hidden');
+        
+        if (loveLetterContainer.classList.contains('open')) {
+            createFloatingHearts();
+        }
+    }
 
-    // Close love letter when clicking outside
+    loveLetterButton.addEventListener('click', toggleLoveLetter);
+
     document.addEventListener('click', function(event) {
-        if (!loveLetter.container.contains(event.target) && 
-            !loveLetter.button.contains(event.target) && 
-            loveLetter.isOpen) {
+        if (!loveLetter.contains(event.target) && 
+            !loveLetterButton.contains(event.target) &&
+            !loveLetter.classList.contains('hidden')) {
             toggleLoveLetter();
         }
     });
 
-    // ======================
-    // MUSIC FUNCTIONALITY
-    // ======================
+    // Music Control
     const music = {
         button: document.getElementById('toggle-music'),
         player: document.getElementById('background-music'),
@@ -164,23 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     music.button.addEventListener('click', toggleMusic);
 
-    // ======================
-    // SPECIAL EFFECTS
-    // ======================
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.cssText = `
-            left: ${Math.random() * 100}vw;
-            animation-duration: ${Math.random() * 3 + 2}s;
-            font-size: ${Math.random() * 20 + 15}px;
-        `;
-        heart.textContent = '❤';
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
-    }
-
+    // Special Effects
     function createConfettiEffect() {
         const colors = ['#ff69b4', '#8b5cf6', '#7c3aed'];
         for (let i = 0; i < 50; i++) {
@@ -198,37 +185,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initialize effects
-    setInterval(createHeart, 300);
-    document.querySelectorAll('.day-card').forEach(card => {
-        card.addEventListener('click', () => createConfettiEffect());
-    });
+    // Initialize Effects
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        heart.textContent = '❤';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }, 300);
 
-    // ======================
-    // ADDITIONAL ANIMATIONS
-    // ======================
-    const animationKeyframes = {
-        pulse: [
-            { transform: 'scale(1)', opacity: 1 },
-            { transform: 'scale(1.1)', opacity: 0.8 },
-            { transform: 'scale(1)', opacity: 1 }
-        ],
-        confettiFall: {
-            transform: 'translateY(-100vh) rotate(720deg)',
-            opacity: 1
-        }
-    };
-
-    const animationTiming = {
-        duration: 1000,
-        iterations: Infinity
-    };
-
-    // Register animations
-    document.styleSheets[0].insertRule(`
+    // Animation Definitions
+    const style = document.createElement('style');
+    style.textContent = `
         @keyframes confetti-fall {
             from { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
             to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
-    `);
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    `;
+    document.head.appendChild(style);
 });
