@@ -84,42 +84,63 @@
     margin-bottom: 1rem;
 }
 
-/* Teddy Gallery */
-.teddy-gallery {
+/* Teddy Creator */
+.teddy-creator {
     padding: 3rem 2rem;
     text-align: center;
 }
 
-.gallery-container {
+.teddy-customizer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    padding: 2rem;
+    margin-top: 2rem;
 }
 
-.teddy-card {
+.teddy-preview {
     width: 200px;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.teddy-card:hover {
-    transform: scale(1.05);
-}
-
-.teddy-card img {
-    width: 100%;
     height: 200px;
-    object-fit: cover;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
 }
 
-.teddy-card p {
-    padding: 1rem;
-    font-weight: bold;
+.teddy-part {
+    font-size: 3rem;
+    transition: all 0.3s ease;
+}
+
+.customization-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.customization-options div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#save-teddy {
+    margin-top: 2rem;
+    padding: 10px 20px;
+    background: #fcb69f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#save-teddy:hover {
+    background: #8b4513;
 }
 
 /* Memory Game */
@@ -227,12 +248,8 @@ footer {
         font-size: 2rem;
     }
 
-    .gallery-container {
-        gap: 1rem;
-    }
-
-    .teddy-card {
-        width: 150px;
+    .teddy-customizer {
+        flex-direction: column;
     }
 
     .memory-card {
@@ -258,4 +275,3 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: #8b4513;
 }
-
