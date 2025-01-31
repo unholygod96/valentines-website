@@ -1,1 +1,261 @@
+/* Teddy Day Theme */
+.teddy-day-theme {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #8b4513;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Teddy Day Header */
+.teddy-day-header {
+    background: linear-gradient(to bottom, #fcb69f 0%, #ffecd2 100%);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.teddy-day-header h1 {
+    font-size: 3rem;
+    color: #8b4513;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #a0522d;
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+/* Teddy Rain Animation */
+.teddy-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.teddy {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    animation: teddyFall linear infinite;
+}
+
+@keyframes teddyFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(720deg);
+    }
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 20px rgba(139, 69, 19, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #8b4513;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Teddy Gallery */
+.teddy-gallery {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.teddy-card {
+    width: 200px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.teddy-card:hover {
+    transform: scale(1.05);
+}
+
+.teddy-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.teddy-card p {
+    padding: 1rem;
+    font-weight: bold;
+}
+
+/* Memory Game */
+.teddy-memory-game {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.memory-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    perspective: 1000px;
+}
+
+.memory-card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    background: #ffecd2;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+/* Teddy Wishes */
+.teddy-wishes {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.wish-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#wish-text {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 2px solid #fcb69f;
+    border-radius: 10px;
+    resize: none;
+}
+
+#send-wish {
+    background: #fcb69f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#send-wish:hover {
+    background: #8b4513;
+}
+
+#wish-display {
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #ffecd2;
+    margin-top: 2rem;
+}
+
+/* Animations */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .teddy-day-header h1 {
+        font-size: 2rem;
+    }
+
+    .gallery-container {
+        gap: 1rem;
+    }
+
+    .teddy-card {
+        width: 150px;
+    }
+
+    .memory-card {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffecd2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fcb69f;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b4513;
+}
 
