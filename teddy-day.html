@@ -3,114 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day 🧸</title>
+    <title>🧸 Happy Teddy Day! 🎀</title>
     <link rel="stylesheet" href="teddy-day.css">
 </head>
 <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="hearts-container"></div>
+        <div class="stars-container"></div>
+        <div class="mini-teddies-container"></div>
+    </div>
+
     <!-- Main Header -->
-    <header class="teddy-header">
-        <h1 class="main-title">Happy Teddy Day</h1>
-        <p class="subtitle">Create, Play, and Share the Love 🧸</p>
-        <div class="floating-hearts"></div>
+    <header class="main-header">
+        <h1 class="title-animation">Happy Teddy Day</h1>
+        <p class="subtitle-animation">Create your perfect teddy companion! 🧸</p>
     </header>
 
     <!-- Teddy Creator Section -->
-    <section class="teddy-creator">
-        <h2>Design Your Perfect Teddy</h2>
-        
+    <section class="teddy-creator-section">
         <div class="creator-container">
-            <!-- Preview Window -->
-            <div class="preview-window">
-                <div class="teddy-preview">
-                    <div class="teddy-face">😊</div>
-                    <div class="teddy-body">
-                        <div class="teddy-ears">
-                            <div class="ear left"></div>
-                            <div class="ear right"></div>
+            <!-- 3D Teddy Preview -->
+            <div class="teddy-preview-container">
+                <div class="teddy-stage">
+                    <div class="teddy-model">
+                        <div class="teddy-head">
+                            <div class="teddy-face"></div>
+                            <div class="teddy-ears">
+                                <div class="ear left"></div>
+                                <div class="ear right"></div>
+                            </div>
                         </div>
-                        <div class="teddy-main"></div>
+                        <div class="teddy-body">
+                            <div class="teddy-tummy"></div>
+                        </div>
+                        <div class="teddy-arms">
+                            <div class="arm left"></div>
+                            <div class="arm right"></div>
+                        </div>
+                        <div class="teddy-accessory"></div>
                     </div>
-                    <div class="teddy-accessory"></div>
+                    <div class="stage-platform"></div>
                 </div>
-                <div class="sparkles-container"></div>
+                <div class="preview-controls">
+                    <button class="rotate-btn left">↶</button>
+                    <button class="rotate-btn right">↷</button>
+                </div>
             </div>
 
             <!-- Customization Panel -->
             <div class="customization-panel">
-                <!-- Face Options -->
-                <div class="option-group">
+                <!-- Expression Selector -->
+                <div class="option-group expressions">
                     <h3>Choose Expression</h3>
-                    <div class="face-options">
-                        <button class="face-btn" data-face="😊">😊</button>
-                        <button class="face-btn" data-face="🥰">🥰</button>
-                        <button class="face-btn" data-face="😍">😍</button>
-                        <button class="face-btn" data-face="🤗">🤗</button>
+                    <div class="expression-grid">
+                        <button class="expression-btn" data-expression="🥰">🥰</button>
+                        <button class="expression-btn" data-expression="😊">😊</button>
+                        <button class="expression-btn" data-expression="😍">😍</button>
+                        <button class="expression-btn" data-expression="🤗">🤗</button>
+                        <button class="expression-btn" data-expression="😴">😴</button>
+                        <button class="expression-btn" data-expression="😘">😘</button>
                     </div>
                 </div>
 
-                <!-- Color Options -->
-                <div class="option-group">
-                    <h3>Choose Color</h3>
-                    <div class="color-options">
-                        <button class="color-btn" style="background-color: #8B4513"></button>
-                        <button class="color-btn" style="background-color: #A0522D"></button>
-                        <button class="color-btn" style="background-color: #CD853F"></button>
-                        <button class="color-btn" style="background-color: #DEB887"></button>
+                <!-- Color Selector -->
+                <div class="option-group colors">
+                    <h3>Pick Color</h3>
+                    <div class="color-palette">
+                        <button class="color-btn gradient1"></button>
+                        <button class="color-btn gradient2"></button>
+                        <button class="color-btn gradient3"></button>
+                        <button class="color-btn gradient4"></button>
+                        <button class="color-btn gradient5"></button>
+                        <button class="color-btn gradient6"></button>
                     </div>
                 </div>
 
-                <!-- Accessory Options -->
-                <div class="option-group">
-                    <h3>Add Accessory</h3>
-                    <div class="accessory-options">
+                <!-- Accessory Selector -->
+                <div class="option-group accessories">
+                    <h3>Add Accessories</h3>
+                    <div class="accessory-grid">
                         <button class="accessory-btn" data-accessory="🎀">🎀</button>
                         <button class="accessory-btn" data-accessory="👑">👑</button>
                         <button class="accessory-btn" data-accessory="🎩">🎩</button>
                         <button class="accessory-btn" data-accessory="🧣">🧣</button>
+                        <button class="accessory-btn" data-accessory="🌸">🌸</button>
+                        <button class="accessory-btn" data-accessory="⭐">⭐</button>
                     </div>
                 </div>
 
-                <button id="save-teddy" class="save-btn">
-                    Save My Teddy
-                    <span class="btn-sparkles"></span>
+                <!-- Save Button -->
+                <button class="save-teddy-btn">
+                    <span>Save My Teddy</span>
+                    <div class="button-particles"></div>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Memory Game Section -->
-    <section class="memory-game">
+    <section class="memory-game-section">
         <h2>Teddy Memory Lane</h2>
-        
         <div class="game-container">
             <div class="game-stats">
-                <span class="moves">Moves: 0</span>
-                <span class="timer">Time: 0:00</span>
-                <button class="reset-btn">Reset Game</button>
+                <div class="stat-item moves">Moves: 0</div>
+                <div class="stat-item timer">Time: 0:00</div>
+                <button class="reset-game-btn">Reset Game</button>
             </div>
-
-            <div class="cards-grid">
-                <!-- Cards will be generated by JavaScript -->
-            </div>
+            <div class="memory-grid"></div>
         </div>
     </section>
 
-    <!-- Teddy Wishes Section -->
-    <section class="teddy-wishes">
-        <h2>Send a Teddy Wish</h2>
-        
-        <div class="wish-container">
-            <textarea id="wish-text" placeholder="Write your special teddy wish here..."></textarea>
-            <button id="send-wish" class="wish-btn">Send Wish</button>
+    <!-- Wish Generator Section -->
+    <section class="wish-generator-section">
+        <h2>Send Teddy Wishes</h2>
+        <div class="wish-creator">
+            <textarea class="wish-input" placeholder="Write your teddy wish here..."></textarea>
+            <div class="wish-decorations">
+                <button class="decoration-btn" data-decoration="🧸">🧸</button>
+                <button class="decoration-btn" data-decoration="💝">💝</button>
+                <button class="decoration-btn" data-decoration="✨">✨</button>
+                <button class="decoration-btn" data-decoration="🎀">🎀</button>
+            </div>
+            <button class="send-wish-btn">
+                <span>Send Wish</span>
+                <div class="heart-particles"></div>
+            </button>
         </div>
-        
-        <div class="wishes-display">
-            <!-- Wishes will be displayed here -->
-        </div>
+        <div class="wishes-display"></div>
     </section>
 
-    <footer>
-        <p>Made with ❤️ for Teddy Day</p>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Made with 💖 for Teddy Day</p>
     </footer>
 
     <script src="teddy-day.js"></script>
