@@ -171,6 +171,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    height: 300px;
 }
 
 .rose-card:hover {
@@ -204,6 +205,7 @@
     opacity: 0;
     transition: all 0.3s ease;
     border-radius: 20px;
+    pointer-events: none;
 }
 
 .rose-card:hover .hover-message {
