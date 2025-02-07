@@ -196,8 +196,8 @@
 }
 
 .card-back {
-    background-color: #ff4d6d;
-    color: white;
+    background-color: #FFD1DC; /* Changed to soft pink */
+    color: #ff4d6d;
     transform: rotateY(180deg);
     border-radius: 20px;
 }
