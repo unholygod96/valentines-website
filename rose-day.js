@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // New code for "Click the Roses for Surprises" section
-    const gardenArea = document.querySelector('.garden-area');
     const surpriseRoses = document.querySelectorAll('.surprise-rose');
 
     surpriseRoses.forEach(rose => {
