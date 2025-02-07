@@ -196,4 +196,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // New code for interactive garden
+    const gardenArea = document.querySelector('.garden-area');
+    const surpriseRoses = [
+        { emoji: '🌹', message: "You're my favorite bloom in the whole wide world! 💖" },
+        { emoji: '🌺', message: "Your love makes my heart blossom with joy! ✨" },
+        { emoji: '🌸', message: "Like this flower, you bring beauty to my life every day! 🌟" }
+    ];
+
+    surpriseRoses.forEach((rose, index) => {
+        const roseElement = document.createElement('div');
+        roseElement.className = 'surprise-rose';
+        roseElement.textContent = rose.emoji;
+        roseElement.addEventListener('click', () => showSurpriseMessage(rose.message));
+        gardenArea.appendChild(roseElement);
+    });
+
+    function showSurpriseMessage(message) {
+        const modal = document.createElement('div');
+        modal.className = 'surprise-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h3>A Blooming Surprise! 🌸</h3>
+                <p>${message}</p>
+                <button onclick="this.parentElement.parentElement.remove()">Close 🌹</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.add('show'), 10);
+        createFloatingHearts(modal.querySelector('.modal-content'));
+    }
 });
