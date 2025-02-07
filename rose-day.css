@@ -210,10 +210,38 @@
     opacity: 1;
 }
 
-.hover-message p {
+.hover-message .message-pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(255, 77, 109, 0.9);
+}
+
+.hover-message .message-content {
+    text-align: center;
     color: white;
-    font-size: 1.2rem;
     padding: 1rem;
+}
+
+.hover-message .message-content p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.hover-message .sparkle {
+    font-size: 1.5rem;
+    display: inline-block;
+    animation: twinkle 1s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
 }
 
 /* Memory Bubbles */
@@ -266,6 +294,12 @@
 .note:hover {
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 8px 25px rgba(255, 77, 109, 0.2);
+}
+
+.note p {
+    color: #ff4d6d;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 /* Animations */
@@ -321,4 +355,3 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #ff4d6d;
 }
-
