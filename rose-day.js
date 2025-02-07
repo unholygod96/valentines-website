@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Cute Welcome Message Typing Effect
     const welcomeMessages = [
         "Hey sweetie! 💖",
         "I picked these roses just for you! 🌹",
@@ -16,9 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => typeMessage(message, index + 1), 50);
         } else {
             setTimeout(() => {
-                // Add sparkle effect
                 createMessageSparkles();
-                // Clear and start next message
                 setTimeout(() => {
                     typingMessage.textContent = '';
                     currentMessageIndex = (currentMessageIndex + 1) % welcomeMessages.length;
@@ -28,10 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Start the typing animation
     typeMessage(welcomeMessages[0]);
 
-    // Create Sparkles for Messages
     function createMessageSparkles() {
         const sparkleContainer = document.querySelector('.message-bubble');
         for (let i = 0; i < 15; i++) {
@@ -45,38 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Dynamic Rose Creation and Animation
     function createRose() {
         const rose = document.createElement('div');
         rose.className = 'rose';
         rose.textContent = '🌹';
-        
-        // Random position and rotation
         rose.style.left = Math.random() * 100 + 'vw';
         rose.style.transform = `rotate(${Math.random() * 360}deg)`;
-        
-        // Random animation duration between 7 and 12 seconds
         const duration = 7 + Math.random() * 5;
         rose.style.animationDuration = `${duration}s`;
-        
         document.querySelector('.roses-falling').appendChild(rose);
-        
-        // Remove rose after animation
-        setTimeout(() => {
-            rose.remove();
-        }, duration * 1000);
+        setTimeout(() => rose.remove(), duration * 1000);
     }
 
-    // Create roses periodically
     setInterval(createRose, 300);
 
-    // Interactive Rose Cards with Special Effects
     const roseCards = document.querySelectorAll('.rose-card');
     roseCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            // Add floating petals effect
             createFloatingPetals(this);
-            // Add sparkle effect
             createCardSparkles(this);
         });
 
@@ -86,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Create Floating Petals Effect
     function createFloatingPetals(element) {
         for (let i = 0; i < 5; i++) {
             const petal = document.createElement('div');
@@ -98,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Create Card Sparkles
     function createCardSparkles(element) {
         for (let i = 0; i < 10; i++) {
             const sparkle = document.createElement('div');
@@ -111,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Show Rose Messages with Cute Animations
     function showRoseMessage(color) {
         const messages = {
             red: {
@@ -132,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        // Create and show modal with message
         const modal = document.createElement('div');
         modal.className = 'rose-message-modal';
         modal.innerHTML = `
@@ -144,20 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.body.appendChild(modal);
 
-        // Add show class after a small delay for animation
         setTimeout(() => modal.classList.add('show'), 10);
 
-        // Close modal functionality
         modal.querySelector('.close-modal').addEventListener('click', () => {
             modal.classList.remove('show');
             setTimeout(() => modal.remove(), 300);
         });
 
-        // Add floating hearts to modal
         createFloatingHearts(modal.querySelector('.modal-content'));
     }
 
-    // Create Floating Hearts
     function createFloatingHearts(element) {
         for (let i = 0; i < 15; i++) {
             const heart = document.createElement('div');
@@ -171,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Memory Bubbles Hover Effect
     const memoryBubbles = document.querySelectorAll('.memory-bubble');
     memoryBubbles.forEach(bubble => {
         bubble.addEventListener('mouseenter', function() {
@@ -179,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Create Bubble Sparkles
     function createBubbleSparkles(element) {
         for (let i = 0; i < 8; i++) {
             const sparkle = document.createElement('div');
@@ -191,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Secret Notes Hover Effect
     const notes = document.querySelectorAll('.note');
     notes.forEach(note => {
         note.addEventListener('mouseenter', function() {
@@ -204,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Create Note Sparkles
     function createNoteSparkles(element) {
         for (let i = 0; i < 6; i++) {
             const sparkle = document.createElement('div');
@@ -216,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add smooth scroll for navigation
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').split('#')[1];
