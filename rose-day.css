@@ -196,7 +196,7 @@
 }
 
 .card-back {
-    background-color: #FF69B4;
+    background-color: #ff4d6d;
     color: white;
     transform: rotateY(180deg);
     border-radius: 20px;
