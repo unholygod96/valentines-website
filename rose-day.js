@@ -185,6 +185,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // New code for "Click the Roses for Surprises" section
+    const gardenArea = document.querySelector('.garden-area');
+    const surpriseRoses = document.querySelectorAll('.surprise-rose');
+
+    surpriseRoses.forEach(rose => {
+        rose.addEventListener('click', function() {
+            const message = this.getAttribute('data-message');
+            showSurpriseMessage(message);
+        });
+    });
+
+    function showSurpriseMessage(message) {
+        const surpriseModal = document.createElement('div');
+        surpriseModal.className = 'surprise-message';
+        surpriseModal.innerHTML = `
+            <p>${message}</p>
+            <button class="close-surprise">Close with love 💕</button>
+        `;
+        document.body.appendChild(surpriseModal);
+
+        surpriseModal.querySelector('.close-surprise').addEventListener('click', () => {
+            surpriseModal.remove();
+        });
+
+        createFloatingHearts(surpriseModal);
+    }
+
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').split('#')[1];
