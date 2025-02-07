@@ -259,6 +259,47 @@
     transform: scale(1.2);
 }
 
+.surprise-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.3);
+    z-index: 1000;
+    text-align: center;
+    max-width: 300px;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    80% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.surprise-message p {
+    font-size: 1.2rem;
+    color: #ff4d6d;
+    margin-bottom: 1rem;
+}
+
+.surprise-message button {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.surprise-message button:hover {
+    background-color: #ff8fa3;
+}
+
 /* Secret Notes */
 .secret-notes {
     padding: 3rem 2rem;
