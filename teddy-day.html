@@ -10,16 +10,11 @@
 <body>
     <main>
         <header>
-            <h1>Happy Teddy Day</h1>
-            <p>Create your perfect teddy companion! 🐻</p>
+            <h1>Happy Teddy Day, My Love!</h1>
+            <p>Create your perfect teddy companion and let's celebrate our love!</p>
         </header>
 
-        <section class="comfort-lines">
-            <p id="comfort-text">"A teddy bear is a friend who always understands."</p>
-        </section>
-
         <div class="teddy-container">
-            <!-- Teddy Preview -->
             <div class="teddy-preview">
                 <div class="teddy-ears">
                     <div class="ear left"></div>
@@ -30,17 +25,16 @@
                 <div class="teddy-accessory"></div>
             </div>
 
-            <!-- Customization Panel -->
             <div class="customization-panel">
                 <section class="option-section">
                     <h2>Choose Expression</h2>
                     <div class="expression-grid">
-                        <button class="expression-btn" data-expression="😊">😊</button>
-                        <button class="expression-btn" data-expression="🥰">🥰</button>
-                        <button class="expression-btn" data-expression="😍">😍</button>
-                        <button class="expression-btn" data-expression="🤗">🤗</button>
-                        <button class="expression-btn" data-expression="😎">😎</button>
-                        <button class="expression-btn" data-expression="🥳">🥳</button>
+                        <button class="expression-btn" data-expression="happy">Happy</button>
+                        <button class="expression-btn" data-expression="love">Love</button>
+                        <button class="expression-btn" data-expression="shy">Shy</button>
+                        <button class="expression-btn" data-expression="excited">Excited</button>
+                        <button class="expression-btn" data-expression="cool">Cool</button>
+                        <button class="expression-btn" data-expression="sleepy">Sleepy</button>
                     </div>
                 </section>
 
@@ -52,19 +46,23 @@
                 <section class="option-section">
                     <h2>Add Accessory</h2>
                     <div class="accessory-grid">
-                        <button class="accessory-btn" data-accessory="🎀">🎀</button>
-                        <button class="accessory-btn" data-accessory="👑">👑</button>
-                        <button class="accessory-btn" data-accessory="🎩">🎩</button>
-                        <button class="accessory-btn" data-accessory="🧣">🧣</button>
-                        <button class="accessory-btn" data-accessory="🕶️">🕶️</button>
-                        <button class="accessory-btn" data-accessory="🎸">🎸</button>
+                        <button class="accessory-btn" data-accessory="bow">Bow</button>
+                        <button class="accessory-btn" data-accessory="crown">Crown</button>
+                        <button class="accessory-btn" data-accessory="hat">Hat</button>
+                        <button class="accessory-btn" data-accessory="scarf">Scarf</button>
+                        <button class="accessory-btn" data-accessory="glasses">Glasses</button>
+                        <button class="accessory-btn" data-accessory="guitar">Guitar</button>
                     </div>
                 </section>
 
                 <button id="save-teddy">Save My Teddy</button>
-                <!-- <button id="save-to-drive">Save to Google Drive</button> -->
             </div>
         </div>
+
+        <section class="comforting-messages">
+            <h2>Teddy's Whispers of Love</h2>
+            <div id="message-display"></div>
+        </section>
 
         <section class="memory-game">
             <h2>Teddy Memory Lane</h2>
@@ -78,16 +76,19 @@
 
         <section class="wish-section">
             <h2>Send a Teddy Wish</h2>
-            <textarea placeholder="Write your teddy wish here..."></textarea>
-            <button class="send-wish">Send Wish</button>
+            <form id="wish-form">
+                <textarea id="wish-text" placeholder="Write your teddy wish here..."></textarea>
+                <button type="submit" class="send-wish">Send Wish</button>
+            </form>
             <div class="wishes-display"></div>
         </section>
 
         <footer>
-            <p>Made with ❤️ for Teddy Day</p>
+            <p>Made with love for you, my dear. Happy Teddy Day!</p>
         </footer>
     </main>
 
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="teddy-day.js"></script>
 </body>
 </html>
