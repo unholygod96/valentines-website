@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hugging you with a Teddy! 🧸💝</title>
-    <!-- Common CSS -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Teddy Day Specific CSS -->
     <link rel="stylesheet" href="teddy-day.css">
 </head>
 <body class="teddy-day-theme">
-
-    <!-- Menu Button -->
     <button id="menu-button" class="menu-button">☰</button>
 
-    <!-- Heart Rain -->
     <div class="hearts">
         <div class="heart">❤</div>
         <div class="heart">❤</div>
@@ -48,7 +43,6 @@
         <div class="heart">❤</div>
     </div>
 
-    <!-- Teddy Animation -->
     <div class="teddies-falling">
         <div class="teddy">🧸</div>
         <div class="teddy">🧸</div>
@@ -67,7 +61,6 @@
         <div class="teddy">🧸</div>
     </div>
 
-    <!-- Timer End Overlay -->
     <div id="timer-end-overlay" class="overlay hidden">
         <div class="overlay-content">
             <h2 id="overlay-header"></h2>
@@ -79,7 +72,6 @@
         <h1>Warm Hugs and Teddies! 🧸💝</h1>
         <p class="header-subtitle">Sending you a cuddly bear hug across the miles! 🤗</p>
         
-        <!-- Message Animation Container -->
         <div class="message-container">
             <div id="message-display" class="message-text"></div>
         </div>
@@ -131,7 +123,6 @@
 
             <div class="bear-customization-area">
                 <div class="bear-display">
-                    <!-- This is where the customized bear will be displayed -->
                     <canvas id="bearCanvas" width="300" height="400"></canvas>
                 </div>
 
@@ -146,6 +137,11 @@
                                 <option value="white">White</option>
                                 <option value="pink">Pink</option>
                                 <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="purple">Purple</option>
+                                <option value="gray">Gray</option>
+                                <option value="orange">Orange</option>
+                                <option value="green">Green</option>
                             </select>
                         </div>
 
@@ -164,9 +160,7 @@
                             <select id="clothing">
                                 <option value="none">None</option>
                                 <option value="shirt">Shirt</option>
-                                <option value="dress">Dress</option>
                                 <option value="hat">Hat</option>
-                                <!-- More clothing options here -->
                             </select>
                         </div>
 
@@ -176,8 +170,6 @@
                                 <option value="none">None</option>
                                 <option value="bow">Bow</option>
                                 <option value="scarf">Scarf</option>
-                                <option value="heart">Heart</option>
-                                <!-- More accessories options here -->
                             </select>
                         </div>
 
@@ -185,10 +177,8 @@
                             <label for="expression">Expression:</label>
                             <select id="expression">
                                 <option value="smile">Smile</option>
-                                <option value="happy">Happy</option>
-                                <option value="love">Love</option>
                                 <option value="sad">Sad</option>
-                                <!-- More expression options here -->
+                                <option value="love">Love</option>
                             </select>
                         </div>
 
@@ -196,10 +186,7 @@
                             <label for="animation">Animation:</label>
                             <select id="animation">
                                 <option value="none">None</option>
-                                <option value="hug">Hug</option>
-                                <option value="kiss">Kiss</option>
                                 <option value="wave">Wave</option>
-                                <!-- More animation options here -->
                             </select>
                         </div>
                     </div>
@@ -268,16 +255,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- Mini-Game Section (Placeholder) -->
-        <section class="mini-game-section">
-            <h2>Play a Cuddly Game!</h2>
-            <p>Coming Soon! We're working on a fun mini-game for you to enjoy. Stay tuned! 🧸🎮</p>
-            <!-- Add your mini-game code here in the future -->
-        </section>
     </main>
 
-    <!-- Love Letter Container -->
     <div id="love-letter-container">
         <button id="love-letter-button" class="love-letter-button">💌</button>
         <div id="love-letter" class="love-letter hidden">
@@ -298,8 +277,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="script.js"></script>
-    <script src="teddy-day.js"></script>
 </body>
 </html>
