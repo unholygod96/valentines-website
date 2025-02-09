@@ -233,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const defaultClothing = 'none';
         const defaultAccessories = 'none';
         const defaultExpression = 'smile';
+        const defaultAnimation = 'none';
 
         // Use provided configurations or defaults
         const furColor = config.furColor || defaultFurColor;
@@ -240,72 +241,102 @@ document.addEventListener('DOMContentLoaded', function() {
         const clothing = config.clothing || defaultClothing;
         const accessories = config.accessories || defaultAccessories;
         const expression = config.expression || defaultExpression;
+        const animation = config.animation || defaultAnimation;
 
         // Draw the bear head and body
         ctx.fillStyle = furColor;
 
-        // Head
-        ctx.beginPath();
-        ctx.arc(150, 100, 50, 0, 2 * Math.PI);
-        ctx.fill();
-
         // Body
         ctx.beginPath();
-        ctx.ellipse(150, 250, 60, 80, 0, 0, 2 * Math.PI);
+        ctx.ellipse(150, 200, 60, 80, 0, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Head
+        ctx.beginPath();
+        ctx.arc(150, 120, 40, 0, 2 * Math.PI);
         ctx.fill();
 
         // Ears
         ctx.beginPath();
-        ctx.arc(100, 70, 20, 0, 2 * Math.PI);
+        ctx.arc(110, 70, 20, 0, 2 * Math.PI);
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(200, 70, 20, 0, 2 * Math.PI);
+        ctx.arc(190, 70, 20, 0, 2 * Math.PI);
         ctx.fill();
 
         // Eyes
         ctx.fillStyle = eyeColor;
         ctx.beginPath();
-        ctx.arc(130, 90, 7, 0, 2 * Math.PI);
+        ctx.arc(130, 110, 7, 0, 2 * Math.PI);
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(170, 90, 7, 0, 2 * Math.PI);
+        ctx.arc(170, 110, 7, 0, 2 * Math.PI);
         ctx.fill();
 
         // Nose
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.arc(150, 130, 4, 0, 2 * Math.PI);
+        ctx.arc(150, 140, 4, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Smile
+        // Mouth (Expressions)
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
-
         ctx.beginPath();
         if (expression === 'smile') {
-            ctx.arc(150, 150, 20, 0, Math.PI);
+            ctx.arc(150, 160, 20, 0, Math.PI);
         } else if (expression === 'sad') {
-            ctx.arc(150, 170, 20, Math.PI, 2 * Math.PI);
+            ctx.arc(150, 180, 20, Math.PI, 2 * Math.PI);
+        } else if (expression === 'love') {
+            // Draw a heart-shaped mouth
+            ctx.moveTo(140, 160);
+            ctx.quadraticCurveTo(150, 170, 160, 160);
+            ctx.moveTo(140, 160);
+            ctx.quadraticCurveTo(150, 150, 160, 160);
         }
         ctx.stroke();
 
         // Clothing
-        if (clothing === 'shirt') {
+        if (clothing === 'hat') {
             ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.ellipse(150, 50, 30, 15, 0, 0, Math.PI);
+            ctx.fill();
+        } else if (clothing === 'shirt') {
+            ctx.fillStyle = 'blue';
             ctx.fillRect(90, 170, 120, 50);
         }
 
         // Accessories
         if (accessories === 'scarf') {
-            ctx.fillStyle = 'blue';
+            ctx.fillStyle = 'purple';
             ctx.fillRect(90, 170, 120, 20);
+        }
+
+        // Animations (Simple Example)
+        if (animation === 'wave') {
+            // Waving paw
+            ctx.beginPath();
+            ctx.arc(80, 220, 15, 0.5 * Math.PI, 1.5 * Math.PI);
+            ctx.stroke();
         }
     }
 
-    // Initial draw
-    drawBear(currentBearConfig);
+    // Function to download data to a file
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
 
     // Event listeners for customization options
     document.getElementById('customizeButton').addEventListener('click', function() {
@@ -346,6 +377,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(mailtoLink, '_blank');
     }
 
+    // Local PC Storage
+    document.getElementById('saveButton').addEventListener('click', function() {
+        const bearData = JSON.stringify(currentBearConfig);
+        download('bear_config.txt', bearData);
+    });
+
     // Persistent saving to localStorage
     function saveBearConfig() {
         localStorage.setItem('bearConfig', JSON.stringify(currentBearConfig));
@@ -361,39 +398,25 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
             document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
             document.getElementById('expression').value = currentBearConfig.expression || 'smile';
+            document.getElementById('animation').value = currentBearConfig.animation || 'none';
 
             drawBear(currentBearConfig);
         }
     }
 
-    // Call loadBearConfig to load saved configuration on page load
-    loadBearConfig();
+    // Add more colors to select options
+    const furColorSelect = document.getElementById('furColor');
+    const colors = ['lightBrown', 'darkBrown', 'white', 'pink', 'blue', 'yellow', 'purple', 'gray', 'orange', 'green'];
 
-    // Additional comforting lines
-    const additionalComfortingLines = [
-        "A teddy is a hug made lovable.",
-        "May your day be filled with bear hugs and sweet moments.",
-        "Sending you a teddy and all my love."
-    ];
+    colors.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color.charAt(0).toUpperCase() + color.slice(1); // Capitalize first letter
+        furColorSelect.add(option);
+    });
 
-    // Function to add more comforting lines dynamically
-    function addComfortingLines(lines) {
-        const sweetMemoriesSection = document.querySelector('.sweet-memories .memory-container');
-        lines.forEach(line => {
-            const memoryCard = document.createElement('div');
-            memoryCard.className = 'memory-card';
-            memoryCard.innerHTML = `
-                <h3>A Teddy to Remind You of My Love</h3>
-                <p>${line}</p>
-            `;
-            sweetMemoriesSection.appendChild(memoryCard);
-        });
-    }
-
-    // Call the function to add the lines
-    addComfortingLines(additionalComfortingLines);
-
-    //Initialize
+    // Initialize
+    loadBearConfig(); // Call loadBearConfig to load saved configuration on page load
     createTeddy();
     showMessage();
 });
