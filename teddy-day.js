@@ -51,17 +51,21 @@ document.addEventListener('DOMContentLoaded', function() {
     gameTeddy.style.left = Math.random() * 90 + '%';
     gameTeddy.style.top = '0';
     gameTeddy.style.fontSize = '30px';
+    // Ensure pointer events are enabled
+    gameTeddy.style.pointerEvents = 'auto';
     gameArea.appendChild(gameTeddy);
     let pos = 0;
+    // Slow the fall for easier clicking: increase by 1% every 50ms
     const fallInterval = setInterval(() => {
-      pos += 2;
+      pos += 1;
       gameTeddy.style.top = pos + '%';
       if (pos > 100) {
         clearInterval(fallInterval);
         gameTeddy.remove();
       }
     }, 50);
-    gameTeddy.addEventListener('click', function() {
+    gameTeddy.addEventListener('click', function(e) {
+      e.stopPropagation();
       gameScore += 10;
       gameScoreDisplay.textContent = "Score: " + gameScore;
       clearInterval(fallInterval);
