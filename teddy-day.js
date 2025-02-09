@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Comforting Lines
+    const comfortingLines = [
+        "A teddy bear's hug lasts a lifetime.",
+        "Every teddy bear deserves a loving cuddle.",
+        "Teddies are the best listeners and never judge.",
+        "A teddy bear is a heart without the beat.",
+        "Life is better with a teddy bear by your side."
+    ];
+
+    function setRandomComfortText() {
+        const randomIndex = Math.floor(Math.random() * comfortingLines.length);
+        document.getElementById('comfort-text').textContent = comfortingLines[randomIndex];
+    }
+
+    setInterval(setRandomComfortText, 5000);
+
     const TeddyCreator = {
         init() {
             this.teddy = {
@@ -10,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setupTeddy();
             this.setupEventListeners();
             this.loadSavedTeddy();
+            this.setupGoogleDriveButton();
         },
 
         setupTeddy() {
@@ -89,6 +106,16 @@ document.addEventListener('DOMContentLoaded', function() {
             toast.style.zIndex = '1000';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
+        },
+        setupGoogleDriveButton() {
+            // document.getElementById('save-to-drive').addEventListener('click', () => {
+            //     this.saveTeddyToGoogleDrive();
+            // });
+        },
+        saveTeddyToGoogleDrive() {
+            // Placeholder for Google Drive integration.
+            // Implement OAuth 2.0 flow and Google Drive API to save the teddy data.
+            alert('Google Drive save functionality is not yet implemented.');
         }
     };
 
@@ -251,5 +278,3 @@ document.addEventListener('DOMContentLoaded', function() {
     MemoryGame.init();
     WishSender.init();
 });
-
-
