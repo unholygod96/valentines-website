@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   showMessage();
 
-  // Falling Teddies Animation
+  // Falling Teddies Animation (Background)
   function createTeddy() {
     const teddy = document.createElement('div');
     teddy.className = 'teddy';
@@ -35,6 +35,40 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => teddy.remove(), duration * 1000);
   }
   setInterval(createTeddy, 500);
+
+  // Mini Game: Teddy Hunt Game
+  const gameArea = document.getElementById('teddy-game-area');
+  const gameScoreDisplay = document.getElementById('game-score');
+  let gameScore = 0;
+  // Reset score display on page load
+  gameScoreDisplay.textContent = "Score: 0";
+  
+  function spawnGameTeddy() {
+    const gameTeddy = document.createElement('div');
+    gameTeddy.className = 'teddy game-teddy';
+    gameTeddy.textContent = '🧸';
+    gameTeddy.style.position = 'absolute';
+    gameTeddy.style.left = Math.random() * 90 + '%';
+    gameTeddy.style.top = '0';
+    gameTeddy.style.fontSize = '30px';
+    gameArea.appendChild(gameTeddy);
+    let pos = 0;
+    const fallInterval = setInterval(() => {
+      pos += 2;
+      gameTeddy.style.top = pos + '%';
+      if (pos > 100) {
+        clearInterval(fallInterval);
+        gameTeddy.remove();
+      }
+    }, 50);
+    gameTeddy.addEventListener('click', function() {
+      gameScore += 10;
+      gameScoreDisplay.textContent = "Score: " + gameScore;
+      clearInterval(fallInterval);
+      gameTeddy.remove();
+    });
+  }
+  setInterval(spawnGameTeddy, 2000);
 
   // Teddy Customization Functionality
   const applyButton = document.getElementById('apply-customization');
@@ -214,36 +248,35 @@ document.addEventListener('DOMContentLoaded', function() {
     fileInput.click();
   });
 
-  // Mini Game: Teddy Hunt Game
-  const gameArea = document.getElementById('teddy-game-area');
-  const gameScoreDisplay = document.getElementById('game-score');
-  let gameScore = 0;
-  function spawnGameTeddy() {
-    const gameTeddy = document.createElement('div');
-    gameTeddy.className = 'teddy game-teddy';
-    gameTeddy.textContent = '🧸';
-    gameTeddy.style.position = 'absolute';
-    gameTeddy.style.left = Math.random() * 90 + '%';
-    gameTeddy.style.top = '0';
-    gameTeddy.style.fontSize = '30px';
-    gameArea.appendChild(gameTeddy);
-    let pos = 0;
-    const fallInterval = setInterval(() => {
-      pos += 2;
-      gameTeddy.style.top = pos + '%';
-      if (pos > 100) {
-        clearInterval(fallInterval);
-        gameTeddy.remove();
-      }
-    }, 50);
-    gameTeddy.addEventListener('click', function() {
-      gameScore += 10;
-      gameScoreDisplay.textContent = "Score: " + gameScore;
-      clearInterval(fallInterval);
-      gameTeddy.remove();
-    });
+  // Timer Functions
+  const timerDisplay = document.getElementById('custom-timer-display');
+  const timerHeader = document.getElementById('timer-header');
+  let timerInterval;
+  let endTime;
+  document.getElementById('set-timer').addEventListener('click', function() {
+    const input = document.getElementById('calendar-input');
+    if (input.value) {
+      endTime = new Date(input.value).getTime();
+      startTimer();
+    }
+  });
+  function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
   }
-  setInterval(spawnGameTeddy, 2000);
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = endTime - now;
+    if (distance <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "Time's Up! ❤️";
+      return;
+    }
+    const hours = Math.floor(distance / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
 
   // Love Letter Toggle
   const loveLetterButton = document.getElementById('love-letter-button');
@@ -286,34 +319,4 @@ document.addEventListener('DOMContentLoaded', function() {
       musicButton.textContent = '🔇';
     }
   });
-
-  // Timer Functions
-  const timerDisplay = document.getElementById('custom-timer-display');
-  const timerHeader = document.getElementById('timer-header');
-  let timerInterval;
-  let endTime;
-  document.getElementById('set-timer').addEventListener('click', function() {
-    const input = document.getElementById('calendar-input');
-    if (input.value) {
-      endTime = new Date(input.value).getTime();
-      startTimer();
-    }
-  });
-  function startTimer() {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(updateTimer, 1000);
-  }
-  function updateTimer() {
-    const now = new Date().getTime();
-    const distance = endTime - now;
-    if (distance <= 0) {
-      clearInterval(timerInterval);
-      timerDisplay.textContent = "Time's Up! ❤️";
-      return;
-    }
-    const hours = Math.floor(distance / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  }
 });
