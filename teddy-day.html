@@ -97,28 +97,35 @@
           <h2>Build Your Own Teddy Bear!</h2>
           <div class="teddy-customizer">
               <div class="teddy-preview" id="teddy-preview">
-                  <!-- A simple inline SVG teddy bear for customization -->
-                  <svg id="teddy-svg" width="200" height="300" viewBox="0 0 200 300">
-                      <!-- Teddy Body Parts -->
-                      <circle id="teddy-head" cx="100" cy="60" r="40" fill="#D2B48C" />
-                      <circle id="teddy-ear-left" cx="60" cy="40" r="15" fill="#D2B48C" />
-                      <circle id="teddy-ear-right" cx="140" cy="40" r="15" fill="#D2B48C" />
-                      <ellipse id="teddy-body" cx="100" cy="170" rx="50" ry="70" fill="#D2B48C" />
-                      <!-- Facial Features -->
-                      <circle id="teddy-eye-left" cx="85" cy="55" r="5" fill="#000" />
-                      <circle id="teddy-eye-right" cx="115" cy="55" r="5" fill="#000" />
-                      <circle id="teddy-nose" cx="100" cy="70" r="4" fill="#000" />
-                      <path id="teddy-mouth" d="M90,80 Q100,90 110,80" stroke="#000" fill="transparent" stroke-width="2"/>
-                      <!-- Clothing (shirt) -->
-                      <rect id="teddy-clothing" x="50" y="140" width="100" height="50" fill="none" />
-                      <!-- Accessory (hat) – initially hidden -->
-                      <path id="teddy-hat" d="M60,20 Q100,0 140,20 L140,30 Q100,10 60,30 Z" fill="none" style="display:none;" />
+                  <!-- Updated cute inline SVG for Teddy -->
+                  <svg id="teddy-svg" width="200" height="320" viewBox="0 0 200 320">
+                    <!-- Teddy Head -->
+                    <circle id="teddy-head" cx="100" cy="80" r="40" fill="#F5D6B3" />
+                    <!-- Teddy Ears -->
+                    <circle id="teddy-ear-left" cx="60" cy="50" r="15" fill="#F5D6B3" />
+                    <circle id="teddy-ear-right" cx="140" cy="50" r="15" fill="#F5D6B3" />
+                    <!-- Teddy Eyes -->
+                    <circle id="teddy-eye-left" cx="85" cy="75" r="6" fill="#000" />
+                    <circle id="teddy-eye-right" cx="115" cy="75" r="6" fill="#000" />
+                    <!-- Blush on Cheeks -->
+                    <circle id="teddy-blush-left" cx="75" cy="90" r="4" fill="#FFB6C1" />
+                    <circle id="teddy-blush-right" cx="125" cy="90" r="4" fill="#FFB6C1" />
+                    <!-- Teddy Nose -->
+                    <ellipse id="teddy-nose" cx="100" cy="85" rx="4" ry="3" fill="#D2691E" />
+                    <!-- Teddy Mouth (Smiling) -->
+                    <path id="teddy-mouth" d="M85,95 Q100,110 115,95" stroke="#D2691E" stroke-width="2" fill="none" stroke-linecap="round" />
+                    <!-- Teddy Body -->
+                    <ellipse id="teddy-body" cx="100" cy="190" rx="50" ry="70" fill="#F5D6B3" />
+                    <!-- Clothing: a cute curved t-shirt shape -->
+                    <path id="teddy-clothing" d="M50,160 Q100,140 150,160 L150,210 Q100,230 50,210 Z" fill="#FFB6C1" />
+                    <!-- Accessory (hat) – initially hidden -->
+                    <path id="teddy-hat" d="M65,30 Q100,10 135,30 L125,45 Q100,35 75,45 Z" fill="#FFD700" style="display:none;" />
                   </svg>
               </div>
               <div class="teddy-options">
                   <h3>Customize Your Teddy</h3>
                   <label for="fur-color">Fur Color:</label>
-                  <input type="color" id="fur-color" name="fur-color" value="#D2B48C">
+                  <input type="color" id="fur-color" name="fur-color" value="#F5D6B3">
                   
                   <label for="eye-color">Eye Color:</label>
                   <input type="color" id="eye-color" name="eye-color" value="#000000">
