@@ -43,180 +43,180 @@
 
   <!-- Timer End Overlay -->
   <div id="timer-end-overlay" class="overlay hidden">
-      <div class="overlay-content">
-          <h2 id="overlay-header"></h2>
-          <button id="close-overlay">Close ✨</button>
-      </div>
+    <div class="overlay-content">
+      <h2 id="overlay-header"></h2>
+      <button id="close-overlay">Close ✨</button>
+    </div>
   </div>
 
   <header class="teddy-day-header">
-      <h1>Cuddly Teddy Day! 🧸</h1>
-      <p class="header-subtitle">Wrapped in love, just like a warm teddy bear hug! ❤️</p>
-      
-      <!-- Message Animation Container -->
-      <div class="message-container">
-          <div id="message-display" class="message-text"></div>
-      </div>
+    <h1>Cuddly Teddy Day! 🧸</h1>
+    <p class="header-subtitle">Wrapped in love, just like a warm teddy bear hug! ❤️</p>
+    
+    <!-- Message Animation Container -->
+    <div class="message-container">
+      <div id="message-display" class="message-text"></div>
+    </div>
 
-      <div id="timer-container">
-          <h2 id="timer-header" contenteditable="true">Counting our cuddly moments! 💫</h2>
-          <div id="custom-timer">
-              <span id="custom-timer-display">00:00:00</span>
-          </div>
-          <input type="datetime-local" id="calendar-input" />
-          <button id="start-timer">Start ✨</button>
-          <button id="pause-timer">Pause 💫</button>
-          <button id="reset-timer">Reset 🌟</button>
-          <button id="set-timer">Set Timer 💖</button>
+    <div id="timer-container">
+      <h2 id="timer-header" contenteditable="true">Counting our cuddly moments! 💫</h2>
+      <div id="custom-timer">
+        <span id="custom-timer-display">00:00:00</span>
       </div>
+      <input type="datetime-local" id="calendar-input" />
+      <button id="start-timer">Start ✨</button>
+      <button id="pause-timer">Pause 💫</button>
+      <button id="reset-timer">Reset 🌟</button>
+      <button id="set-timer">Set Timer 💖</button>
+    </div>
 
-      <audio id="background-music" loop>
-          <!-- Replace with your preferred soft melody -->
-          <source src="soft-melody.mp3" type="audio/mpeg">
-      </audio>
-      <button id="toggle-music">🎵</button>
+    <audio id="background-music" loop>
+      <!-- Replace with your preferred soft melody -->
+      <source src="soft-melody.mp3" type="audio/mpeg">
+    </audio>
+    <button id="toggle-music">🎵</button>
   </header>
 
   <nav>
-      <ul>
-          <li><a href="index.html">Back to Our Journey 🏡</a></li>
-          <li><a href="rose-day.html">Rose Day 🌹</a></li>
-          <li><a href="propose-day.html">Propose Day 💍</a></li>
-          <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
-          <li><a href="teddy-day.html" class="active">Teddy Day 🧸</a></li>
-          <li><a href="promise-day.html">Promise Day 🤝</a></li>
-          <li><a href="hug-day.html">Hug Day 🤗</a></li>
-          <li><a href="kiss-day.html">Kiss Day 💋</a></li>
-          <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
-      </ul>
+    <ul>
+      <li><a href="index.html">Back to Our Journey 🏡</a></li>
+      <li><a href="rose-day.html">Rose Day 🌹</a></li>
+      <li><a href="propose-day.html">Propose Day 💍</a></li>
+      <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+      <li><a href="teddy-day.html" class="active">Teddy Day 🧸</a></li>
+      <li><a href="promise-day.html">Promise Day 🤝</a></li>
+      <li><a href="hug-day.html">Hug Day 🤗</a></li>
+      <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+      <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+    </ul>
   </nav>
 
   <main class="teddy-day-main">
-      <!-- Build-A-Teddy Section -->
-      <section class="build-a-teddy">
-          <h2>Build Your Own Teddy Bear!</h2>
-          <div class="teddy-customizer">
-              <div class="teddy-preview" id="teddy-preview">
-                  <!-- Updated cute inline SVG for Teddy -->
-                  <svg id="teddy-svg" width="200" height="320" viewBox="0 0 200 320">
-                    <!-- Teddy Head -->
-                    <circle id="teddy-head" cx="100" cy="80" r="40" fill="#F5D6B3" />
-                    <!-- Teddy Ears -->
-                    <circle id="teddy-ear-left" cx="60" cy="50" r="15" fill="#F5D6B3" />
-                    <circle id="teddy-ear-right" cx="140" cy="50" r="15" fill="#F5D6B3" />
-                    <!-- Teddy Eyes -->
-                    <circle id="teddy-eye-left" cx="85" cy="75" r="6" fill="#000" />
-                    <circle id="teddy-eye-right" cx="115" cy="75" r="6" fill="#000" />
-                    <!-- Blush on Cheeks -->
-                    <circle id="teddy-blush-left" cx="75" cy="90" r="4" fill="#FFB6C1" />
-                    <circle id="teddy-blush-right" cx="125" cy="90" r="4" fill="#FFB6C1" />
-                    <!-- Teddy Nose -->
-                    <ellipse id="teddy-nose" cx="100" cy="85" rx="4" ry="3" fill="#D2691E" />
-                    <!-- Teddy Mouth (Smiling) -->
-                    <path id="teddy-mouth" d="M85,95 Q100,110 115,95" stroke="#D2691E" stroke-width="2" fill="none" stroke-linecap="round" />
-                    <!-- Teddy Body -->
-                    <ellipse id="teddy-body" cx="100" cy="190" rx="50" ry="70" fill="#F5D6B3" />
-                    <!-- Clothing: a cute curved t-shirt shape -->
-                    <path id="teddy-clothing" d="M50,160 Q100,140 150,160 L150,210 Q100,230 50,210 Z" fill="#FFB6C1" />
-                    <!-- Accessory (hat) – initially hidden -->
-                    <path id="teddy-hat" d="M65,30 Q100,10 135,30 L125,45 Q100,35 75,45 Z" fill="#FFD700" style="display:none;" />
-                  </svg>
-              </div>
-              <div class="teddy-options">
-                  <h3>Customize Your Teddy</h3>
-                  <label for="fur-color">Fur Color:</label>
-                  <input type="color" id="fur-color" name="fur-color" value="#F5D6B3">
-                  
-                  <label for="eye-color">Eye Color:</label>
-                  <input type="color" id="eye-color" name="eye-color" value="#000000">
-                  
-                  <label for="clothing-color">Clothing Color:</label>
-                  <input type="color" id="clothing-color" name="clothing-color" value="#FFB6C1">
-                  
-                  <label for="accessory-select">Accessory:</label>
-                  <select id="accessory-select" name="accessory-select">
-                      <option value="none">None</option>
-                      <option value="hat">Hat</option>
-                      <option value="scarf">Scarf</option>
-                  </select>
+    <!-- Build-A-Teddy Section -->
+    <section class="build-a-teddy">
+      <h2>Build Your Own Teddy Bear!</h2>
+      <div class="teddy-customizer">
+        <div class="teddy-preview" id="teddy-preview">
+          <!-- Updated Adorable Inline SVG for Teddy -->
+          <svg id="teddy-svg" width="200" height="320" viewBox="0 0 200 320">
+            <!-- Teddy Head -->
+            <circle id="teddy-head" cx="100" cy="80" r="40" fill="#F5D6B3" />
+            <!-- Teddy Ears -->
+            <circle id="teddy-ear-left" cx="60" cy="50" r="15" fill="#F5D6B3" />
+            <circle id="teddy-ear-right" cx="140" cy="50" r="15" fill="#F5D6B3" />
+            <!-- Teddy Eyes -->
+            <circle id="teddy-eye-left" cx="85" cy="75" r="6" fill="#000" />
+            <circle id="teddy-eye-right" cx="115" cy="75" r="6" fill="#000" />
+            <!-- Eye Shine -->
+            <circle id="teddy-eye-shine-left" cx="82" cy="72" r="2" fill="#fff" />
+            <circle id="teddy-eye-shine-right" cx="112" cy="72" r="2" fill="#fff" />
+            <!-- Blush on Cheeks -->
+            <circle id="teddy-blush-left" cx="75" cy="90" r="4" fill="#FFB6C1" />
+            <circle id="teddy-blush-right" cx="125" cy="90" r="4" fill="#FFB6C1" />
+            <!-- Teddy Nose -->
+            <ellipse id="teddy-nose" cx="100" cy="85" rx="5" ry="3" fill="#D2691E" />
+            <!-- Teddy Mouth (Adorable Smile) -->
+            <path id="teddy-mouth" d="M85,100 Q100,115 115,100" stroke="#D2691E" stroke-width="3" fill="none" stroke-linecap="round" />
+            <!-- Teddy Body -->
+            <ellipse id="teddy-body" cx="100" cy="190" rx="50" ry="70" fill="#F5D6B3" />
+            <!-- Clothing: a cute curved t-shirt shape with a heart -->
+            <path id="teddy-clothing" d="M50,160 Q100,130 150,160 L150,210 Q100,240 50,210 Z" fill="#FFB6C1" />
+            <!-- Heart on Clothing -->
+            <path id="teddy-heart" d="M100,180
+              C90,170 70,170 70,190
+              C70,210 100,230 100,230
+              C100,230 130,210 130,190
+              C130,170 110,170 100,180 Z" fill="#FFD700" />
+            <!-- Accessory (hat) – initially hidden -->
+            <path id="teddy-hat" d="M65,30 Q100,10 135,30 L125,45 Q100,35 75,45 Z" fill="#FFD700" style="display:none;" />
+          </svg>
+        </div>
+        <div class="teddy-options">
+          <h3>Customize Your Teddy</h3>
+          <label for="fur-color">Fur Color:</label>
+          <input type="color" id="fur-color" name="fur-color" value="#F5D6B3">
+          
+          <label for="eye-color">Eye Color:</label>
+          <input type="color" id="eye-color" name="eye-color" value="#000000">
+          
+          <label for="clothing-color">Clothing Color:</label>
+          <input type="color" id="clothing-color" name="clothing-color" value="#FFB6C1">
+          
+          <label for="accessory-select">Accessory:</label>
+          <select id="accessory-select" name="accessory-select">
+            <option value="none">None</option>
+            <option value="hat">Hat</option>
+            <option value="scarf">Scarf</option>
+          </select>
 
-                  <label for="animation-select">Animation:</label>
-                  <select id="animation-select" name="animation-select">
-                      <option value="none">None</option>
-                      <option value="flying-kiss">Flying Kiss</option>
-                      <option value="hug">Hug</option>
-                      <option value="wave">Wave</option>
-                  </select>
+          <label for="animation-select">Animation:</label>
+          <select id="animation-select" name="animation-select">
+            <option value="none">None</option>
+            <option value="flying-kiss">Flying Kiss</option>
+            <option value="hug">Hug</option>
+            <option value="wave">Wave</option>
+          </select>
 
-                  <!-- Updated buttons for improved interactivity -->
-                  <button id="apply-customization">Apply Customization</button>
-                  <button id="play-animation">Play Animation</button>
-                  <button id="save-teddy">Save Teddy</button>
-                  <button id="load-teddy">Load Teddy</button>
-                  <button id="randomize-teddy">Randomize Teddy</button>
-                  <button id="reset-customization">Reset Customization</button>
-              </div>
-          </div>
-          <!-- Comforting Teddy Lines -->
-          <div class="teddy-comforting-lines">
-              <p>"Every cuddle begins with a teddy bear hug."</p>
-              <p>"A teddy bear is a little piece of love you can hold forever."</p>
-              <p>"Keep calm and hug a teddy!"</p>
-          </div>
-      </section>
+          <!-- Updated buttons for improved interactivity -->
+          <button id="apply-customization">Apply Customization</button>
+          <button id="play-animation">Play Animation</button>
+          <button id="save-teddy">Save Teddy</button>
+          <button id="load-teddy">Load Teddy</button>
+          <button id="randomize-teddy">Randomize Teddy</button>
+          <button id="reset-customization">Reset Customization</button>
+        </div>
+      </div>
+      <!-- Comforting Teddy Lines -->
+      <div class="teddy-comforting-lines">
+        <p>"Every cuddle begins with a teddy bear hug."</p>
+        <p>"A teddy bear is a little piece of love you can hold forever."</p>
+        <p>"Keep calm and hug a teddy!"</p>
+      </div>
+    </section>
 
-      <!-- Mini Game Section -->
-      <section class="mini-game">
-          <h2>Teddy Hunt Game</h2>
-          <p>Click on the falling teddies to collect points!</p>
-          <div id="teddy-game-area" class="game-area"></div>
-          <div id="game-score">Score: 0</div>
-      </section>
+    <!-- Mini Game Section -->
+    <section class="mini-game">
+      <h2>Teddy Hunt Game</h2>
+      <p>Click on the falling teddies to collect points!</p>
+      <div id="teddy-game-area" class="game-area"></div>
+      <div id="game-score">Score: 0</div>
+    </section>
 
-      <!-- Love Notes Section -->
-      <section class="love-notes">
-          <h2>Love Notes For You</h2>
-          <div class="notes-container">
-              <div class="note sparkle">
-                  <p>You are as warm as a teddy hug! ❤️</p>
-              </div>
-              <div class="note sparkle">
-                  <p>Your love is my favorite cuddle! ❤️</p>
-              </div>
-              <div class="note sparkle">
-                  <p>Every moment with you is a snuggle-filled dream! ❤️</p>
-              </div>
-          </div>
-      </section>
-
-      <!-- Write Your Wish Section -->
-      <section class="write-wish">
-          <h2>Send Your Cuddle Wish</h2>
-          <form action="mailto:kautikshende@gmail.com" method="post" enctype="text/plain">
-              <textarea name="wish" placeholder="Write your wish here..."></textarea>
-              <button type="submit">Send Wish ❤️</button>
-          </form>
-      </section>
+    <!-- Love Notes Section -->
+    <section class="love-notes">
+      <h2>Love Notes For You</h2>
+      <div class="notes-container">
+        <div class="note sparkle">
+          <p>You are as warm as a teddy hug! ❤️</p>
+        </div>
+        <div class="note sparkle">
+          <p>Your love is my favorite cuddle! ❤️</p>
+        </div>
+        <div class="note sparkle">
+          <p>Every moment with you is a snuggle-filled dream! ❤️</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Love Letter Container -->
   <div id="love-letter-container">
-      <button id="love-letter-button" class="love-letter-button">💌</button>
-      <div id="love-letter" class="love-letter hidden">
-          <div class="love-letter-content">
-              <div class="love-letter-header">
-                  <h3>My Cuddly Teddy</h3>
-                  <button id="close-letter" class="close-letter">×</button>
-              </div>
-              <div class="love-letter-body">
-                  <p>Dearest,</p>
-                  <p>Just like a teddy bear, my love for you is soft, warm, and endless. Every cuddle, every smile, and every gentle moment reminds me how lucky I am to have you.</p>
-                  <p>Your presence fills my heart with comfort and joy—like the perfect teddy bear hug on a chilly day.</p>
-                  <p>May this Teddy Day bring you endless love and the sweetest cuddles!</p>
-                  <p class="love-letter-signature">Forever yours,<br>Your Cuddle Buddy</p>
-              </div>
-          </div>
+    <button id="love-letter-button" class="love-letter-button">💌</button>
+    <div id="love-letter" class="love-letter hidden">
+      <div class="love-letter-content">
+        <div class="love-letter-header">
+          <h3>My Cuddly Teddy</h3>
+          <button id="close-letter" class="close-letter">×</button>
+        </div>
+        <div class="love-letter-body">
+          <p>Dearest,</p>
+          <p>Just like a teddy bear, my love for you is soft, warm, and endless. Every cuddle, every smile, and every gentle moment reminds me how lucky I am to have you.</p>
+          <p>Your presence fills my heart with comfort and joy—like the perfect teddy bear hug on a chilly day.</p>
+          <p>May this Teddy Day bring you endless love and the sweetest cuddles!</p>
+          <p class="love-letter-signature">Forever yours,<br>Your Cuddle Buddy</p>
+        </div>
       </div>
+    </div>
   </div>
 
   <!-- Scripts -->
