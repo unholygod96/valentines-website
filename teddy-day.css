@@ -1,4 +1,3 @@
-/* Reset and General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,28 +6,29 @@
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background-color: #ffe4e1; /* Light Pink */
+    background-color: #fff0f5;
     color: #333;
     line-height: 1.6;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Header Styles */
 header {
     text-align: center;
     padding: 3rem 0;
-    background-color: #ffc0cb; /* Pink */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffc0cb;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
 h1 {
     font-size: 3rem;
-    color: #a52a2a; /* Brown */
+    color: #ff69b4;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -38,31 +38,18 @@ header p {
     font-size: 1.2rem;
 }
 
-/* Comfort Lines Section */
-.comfort-lines {
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.1rem;
-    color: #778899; /* Light Slate Gray */
-}
-
-/* Teddy Container Styles */
 .teddy-container {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem;
-    flex-grow: 1;
+    margin: 2rem 0;
 }
 
-/* Teddy Preview Styles */
 .teddy-preview {
     width: 400px;
     height: 400px;
     position: relative;
-    background-color: #f0e68c; /* Khaki */
+    background-color: #ffe4e1;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -84,14 +71,14 @@ header p {
 .ear {
     width: 100px;
     height: 100px;
-    background-color: #deb887; /* Dark Khaki */
+    background-color: #deb397;
     border-radius: 50%;
 }
 
 .teddy-body {
     width: 300px;
     height: 300px;
-    background-color: #a0522d; /* Sienna */
+    background-color: #8b4513;
     border-radius: 50%;
     position: absolute;
     top: 50px;
@@ -118,7 +105,6 @@ header p {
     z-index: 11;
 }
 
-/* Customization Panel Styles */
 .customization-panel {
     background-color: white;
     padding: 2rem;
@@ -132,7 +118,7 @@ header p {
 }
 
 h2 {
-    color: #a52a2a; /* Brown */
+    color: #ff69b4;
     font-size: 1.3rem;
     margin-bottom: 1rem;
 }
@@ -145,17 +131,17 @@ h2 {
 
 .expression-btn, .accessory-btn {
     padding: 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     border: none;
     border-radius: 12px;
-    background: #f8f8ff; /* Ghost White */
+    background: #fff0f5;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .expression-btn:hover, .accessory-btn:hover {
     transform: scale(1.1);
-    background-color: #ffb6c1; /* Light Pink */
+    background-color: #ffc0cb;
 }
 
 #color-picker {
@@ -169,7 +155,7 @@ h2 {
 #save-teddy {
     width: 100%;
     padding: 1rem;
-    background-color: #a52a2a; /* Brown */
+    background-color: #ff69b4;
     color: white;
     border: none;
     border-radius: 10px;
@@ -177,21 +163,25 @@ h2 {
     transition: background-color 0.3s;
     font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 #save-teddy:hover {
-    background-color: #8b4513; /* Saddle Brown */
+    background-color: #ff1493;
 }
 
-/* Memory Game Styles */
-.memory-game, .wish-section {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
+.comforting-messages, .memory-game, .wish-section {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#message-display {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .game-stats {
@@ -207,72 +197,40 @@ h2 {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
-    background: #a52a2a; /* Brown */
+    background: #ff69b4;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .reset-btn:hover {
-    background-color: #8b4513; /* Saddle Brown */
+    background-color: #ff1493;
 }
 
 .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 10px;
+    margin-top: 1rem;
 }
 
 .card {
-    height: 100px;
+    aspect-ratio: 1;
+    background-color: #ffc0cb;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
 }
 
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+.card:hover {
+    transform: scale(1.05);
 }
 
-.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    border-radius: 10px;
-}
-
-.card-front {
-    background-color: #f8f8ff; /* Ghost White */
-    color: #333;
-}
-
-.card-back {
-    background-color: #ffb6c1; /* Light Pink */
-    color: white;
-    transform: rotateY(180deg);
-}
-
-/* Wish Section Styles */
 textarea {
     width: 100%;
     height: 100px;
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #ffc0cb;
     border-radius: 10px;
     resize: vertical;
     margin-bottom: 1rem;
@@ -283,7 +241,7 @@ textarea {
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 5px;
-    background: #a52a2a; /* Brown */
+    background: #ff69b4;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -291,7 +249,7 @@ textarea {
 }
 
 .send-wish:hover {
-    background-color: #8b4513; /* Saddle Brown */
+    background-color: #ff1493;
 }
 
 .wishes-display {
@@ -300,30 +258,15 @@ textarea {
     overflow-y: auto;
 }
 
-.wish {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-}
-
-.wish p {
-    margin-bottom: 0.5rem;
-}
-
-.wish small {
-    color: #777;
-    font-size: 0.8rem;
-}
-
-/* Footer Styles */
 footer {
     text-align: center;
     padding: 2rem;
     color: #666;
-    background-color: #ffc0cb; /* Pink */
+    background-color: #ffc0cb;
+    border-radius: 15px;
+    margin-top: 2rem;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
     .teddy-container {
         flex-direction: column;
@@ -335,7 +278,24 @@ footer {
         max-width: 400px;
     }
 
-    .game-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .teddy-preview, .customization-panel {
+        width: 100%;
     }
+}
+
+.selected {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.save-confirmation {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
 }
