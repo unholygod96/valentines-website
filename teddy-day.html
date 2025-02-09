@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day</title>
+    <title>Build Your Teddy</title>
     <link rel="stylesheet" href="teddy-day.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <main>
+
         <header>
-            <h1>Happy Teddy Day</h1>
-            <p>Create your perfect teddy companion! 🐻</p>
+            <h1>Build Your Teddy 🧸</h1>
+            <p>Create & save your adorable teddy friend!</p>
         </header>
 
         <div class="teddy-container">
@@ -24,65 +26,55 @@
                 <div class="teddy-face"></div>
                 <div class="teddy-body"></div>
                 <div class="teddy-accessory"></div>
+                <div class="teddy-clothes"></div>
             </div>
 
             <!-- Customization Panel -->
             <div class="customization-panel">
                 <section class="option-section">
-                    <h2>Choose Expression</h2>
-                    <div class="expression-grid">
-                        <button class="expression-btn" data-expression="😊">😊</button>
-                        <button class="expression-btn" data-expression="🥰">🥰</button>
-                        <button class="expression-btn" data-expression="😍">😍</button>
-                        <button class="expression-btn" data-expression="🤗">🤗</button>
-                        <button class="expression-btn" data-expression="😎">😎</button>
-                        <button class="expression-btn" data-expression="🥳">🥳</button>
-                    </div>
+                    <h2>Choose Teddy Size</h2>
+                    <select id="size-picker">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                    </select>
                 </section>
 
                 <section class="option-section">
-                    <h2>Choose Color</h2>
-                    <input type="color" id="color-picker" value="#8b4513">
+                    <h2>Choose Fur Texture</h2>
+                    <input type="color" id="fur-color" value="#8b4513">
+                    <select id="fur-pattern">
+                        <option value="solid">Solid</option>
+                        <option value="fluffy">Fluffy</option>
+                        <option value="striped">Striped</option>
+                        <option value="spotted">Spotted</option>
+                    </select>
                 </section>
 
                 <section class="option-section">
-                    <h2>Add Accessory</h2>
-                    <div class="accessory-grid">
-                        <button class="accessory-btn" data-accessory="🎀">🎀</button>
-                        <button class="accessory-btn" data-accessory="👑">👑</button>
-                        <button class="accessory-btn" data-accessory="🎩">🎩</button>
-                        <button class="accessory-btn" data-accessory="🧣">🧣</button>
-                        <button class="accessory-btn" data-accessory="🕶️">🕶️</button>
-                        <button class="accessory-btn" data-accessory="🎸">🎸</button>
+                    <h2>Add Clothing</h2>
+                    <div class="clothing-grid">
+                        <button class="clothing-btn" data-clothing="🎽">Shirt</button>
+                        <button class="clothing-btn" data-clothing="👕">T-Shirt</button>
+                        <button class="clothing-btn" data-clothing="🎀">Bow Tie</button>
+                        <button class="clothing-btn" data-clothing="🎩">Hat</button>
+                        <button class="clothing-btn" data-clothing="🕶️">Glasses</button>
                     </div>
                 </section>
 
+                <button id="hug-teddy">Hug Me! 🤗</button>
                 <button id="save-teddy">Save My Teddy</button>
             </div>
         </div>
 
-        <section class="memory-game">
-            <h2>Teddy Memory Lane</h2>
-            <div class="game-stats">
-                <span class="moves">Moves: 0</span>
-                <span class="time">Time: 0:00</span>
-                <button class="reset-btn">Reset Game</button>
-            </div>
-            <div class="game-grid"></div>
+        <section class="saved-teddy-section">
+            <h2>My Saved Teddies</h2>
+            <div class="saved-teddy-container"></div>
         </section>
 
-        <section class="wish-section">
-            <h2>Send a Teddy Wish</h2>
-            <textarea placeholder="Write your teddy wish here..."></textarea>
-            <button class="send-wish">Send Wish</button>
-            <div class="wishes-display"></div>
-        </section>
-
-        <footer>
-            <p>Made with ❤️ for Teddy Day</p>
-        </footer>
     </main>
 
     <script src="teddy-day.js"></script>
+
 </body>
 </html>
