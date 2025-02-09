@@ -235,25 +235,48 @@ document.addEventListener('DOMContentLoaded', function() {
         const furColor = config.furColor || defaultFurColor;
         const eyeColor = config.eyeColor || defaultEyeColor;
 
-        // Draw the bear
+        // Draw the bear head and body
         ctx.fillStyle = furColor;
         ctx.beginPath();
-        ctx.ellipse(150, 200, 75, 100, 0, 0, 2 * Math.PI);
+        // Head
+        ctx.ellipse(150, 130, 60, 70, 0, 0, 2 * Math.PI);
+        // Body
+        ctx.ellipse(150, 270, 70, 90, 0, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Draw the ears
+        ctx.fillStyle = furColor;
+        ctx.beginPath();
+        ctx.arc(90, 90, 20, 0, 2 * Math.PI);  // Left ear
+        ctx.arc(210, 90, 20, 0, 2 * Math.PI); // Right ear
         ctx.fill();
 
         // Draw the eyes
         ctx.fillStyle = eyeColor;
         ctx.beginPath();
-        ctx.arc(120, 150, 10, 0, 2 * Math.PI);
-        ctx.arc(180, 150, 10, 0, 2 * Math.PI);
+        ctx.arc(120, 120, 8, 0, 2 * Math.PI); // Left eye
+        ctx.arc(180, 120, 8, 0, 2 * Math.PI); // Right eye
+        ctx.fill();
+
+        // Draw the nose
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.arc(150, 170, 5, 0, 2 * Math.PI);
         ctx.fill();
 
         // Smile
         ctx.strokeStyle = 'black';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.arc(150, 230, 40, 0, Math.PI);
+        ctx.arc(150, 190, 30, 0, Math.PI);
         ctx.stroke();
+
+        // Add paws
+        ctx.fillStyle = furColor;
+        ctx.beginPath();
+        ctx.arc(80, 300, 20, 0, 2 * Math.PI);  // Left paw
+        ctx.arc(220, 300, 20, 0, 2 * Math.PI); // Right paw
+        ctx.fill();
     }
 
     // Initial draw
