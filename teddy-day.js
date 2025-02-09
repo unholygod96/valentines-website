@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Reset Customization: revert to default values
   resetButton.addEventListener('click', function() {
-    furColorInput.value = "#D2B48C";
+    furColorInput.value = "#F5D6B3";
     eyeColorInput.value = "#000000";
     clothingColorInput.value = "#FFB6C1";
     accessorySelect.value = "none";
