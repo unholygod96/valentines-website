@@ -1,20 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Comforting Lines
-    const comfortingLines = [
-        "A teddy bear's hug lasts a lifetime.",
-        "Every teddy bear deserves a loving cuddle.",
-        "Teddies are the best listeners and never judge.",
-        "A teddy bear is a heart without the beat.",
-        "Life is better with a teddy bear by your side."
-    ];
-
-    function setRandomComfortText() {
-        const randomIndex = Math.floor(Math.random() * comfortingLines.length);
-        document.getElementById('comfort-text').textContent = comfortingLines[randomIndex];
-    }
-
-    setInterval(setRandomComfortText, 5000);
-
     const TeddyCreator = {
         init() {
             this.teddy = {
@@ -26,32 +10,33 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setupTeddy();
             this.setupEventListeners();
             this.loadSavedTeddy();
-            this.setupGoogleDriveButton();
+            this.setupComfortingMessages();
+            this.setupMemoryGame();
+            this.setupWishForm();
         },
 
         setupTeddy() {
-            this.teddy.face.textContent = '😊';
+            this.teddy.face.textContent = '(^‿^)';
         },
 
         setupEventListeners() {
             document.querySelectorAll('.expression-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    this.teddy.face.textContent = btn.textContent;
+                    const expression = btn.dataset.expression;
+                    this.setExpression(expression);
                     this.highlightButton(btn, '.expression-btn');
                 });
             });
 
             const colorPicker = document.getElementById('color-picker');
             colorPicker.addEventListener('input', (e) => {
-                this.teddy.body.style.backgroundColor = e.target.value;
-                this.teddy.ears.forEach(ear => {
-                    ear.style.backgroundColor = e.target.value;
-                });
+                this.setColor(e.target.value);
             });
 
             document.querySelectorAll('.accessory-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    this.teddy.accessory.textContent = btn.textContent;
+                    const accessory = btn.dataset.accessory;
+                    this.setAccessory(accessory);
                     this.highlightButton(btn, '.accessory-btn');
                 });
             });
@@ -59,6 +44,37 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('save-teddy').addEventListener('click', () => {
                 this.saveTeddy();
             });
+        },
+
+        setExpression(expression) {
+            const expressions = {
+                happy: '(^‿^)',
+                love: '(♥‿♥)',
+                shy: '(⁄ ⁄•⁄ω⁄•⁄ ⁄)',
+                excited: '(≧◡≦)',
+                cool: '(⌐■_■)',
+                sleepy: '(￣ω￣)'
+            };
+            this.teddy.face.textContent = expressions[expression] || '(^‿^)';
+        },
+
+        setColor(color) {
+            this.teddy.body.style.backgroundColor = color;
+            this.teddy.ears.forEach(ear => {
+                ear.style.backgroundColor = color;
+            });
+        },
+
+        setAccessory(accessory) {
+            const accessories = {
+                bow: '🎀',
+                crown: '👑',
+                hat: '🎩',
+                scarf: '🧣',
+                glasses: '👓',
+                guitar: '🎸'
+            };
+            this.teddy.accessory.textContent = accessories[accessory] || '';
         },
 
         highlightButton(selectedBtn, btnClass) {
@@ -76,16 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             localStorage.setItem('savedTeddy', JSON.stringify(teddyData));
             this.showSaveConfirmation();
+            this.uploadToGoogleDrive(teddyData);
         },
 
         loadSavedTeddy() {
             const savedTeddy = JSON.parse(localStorage.getItem('savedTeddy'));
             if (savedTeddy) {
                 this.teddy.face.textContent = savedTeddy.expression;
-                this.teddy.body.style.backgroundColor = savedTeddy.color;
-                this.teddy.ears.forEach(ear => {
-                    ear.style.backgroundColor = savedTeddy.color;
-                });
+                this.setColor(savedTeddy.color);
                 this.teddy.accessory.textContent = savedTeddy.accessory;
                 document.getElementById('color-picker').value = savedTeddy.color;
             }
@@ -95,186 +109,137 @@ document.addEventListener('DOMContentLoaded', function() {
             const toast = document.createElement('div');
             toast.className = 'save-confirmation';
             toast.textContent = 'Teddy saved successfully!';
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.left = '50%';
-            toast.style.transform = 'translateX(-50%)';
-            toast.style.backgroundColor = '#4CAF50';
-            toast.style.color = 'white';
-            toast.style.padding = '15px';
-            toast.style.borderRadius = '5px';
-            toast.style.zIndex = '1000';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         },
-        setupGoogleDriveButton() {
-            // document.getElementById('save-to-drive').addEventListener('click', () => {
-            //     this.saveTeddyToGoogleDrive();
-            // });
-        },
-        saveTeddyToGoogleDrive() {
-            // Placeholder for Google Drive integration.
-            // Implement OAuth 2.0 flow and Google Drive API to save the teddy data.
-            alert('Google Drive save functionality is not yet implemented.');
-        }
-    };
 
-    const MemoryGame = {
-        init() {
-            this.moves = 0;
-            this.time = 0;
-            this.timer = null;
-            this.cards = ['🐻', '🧸', '🎀', '🎈', '🎁', '❤️', '🍯', '🌈'];
-            this.cards = [...this.cards, ...this.cards];
-            this.flippedCards = [];
-            this.updateDisplay();
-            this.setupEventListeners();
-            this.createGameGrid();
+        uploadToGoogleDrive(teddyData) {
+            // Implement Google Drive API integration here
+            console.log('Uploading to Google Drive:', teddyData);
         },
 
-        updateDisplay() {
-            document.querySelector('.moves').textContent = `Moves: ${this.moves}`;
-            document.querySelector('.time').textContent = 
-                `Time: ${Math.floor(this.time / 60)}:${(this.time % 60).toString().padStart(2, '0')}`;
+        setupComfortingMessages() {
+            const messages = [
+                "You're my favorite teddy bear!",
+                "Sending you a big bear hug!",
+                "You make my heart feel warm and fuzzy.",
+                "Our love is as cuddly as a teddy bear.",
+                "You're beary special to me!",
+                "I love you more than all the teddy bears in the world."
+            ];
+            const messageDisplay = document.getElementById('message-display');
+            setInterval(() => {
+                messageDisplay.textContent = messages[Math.floor(Math.random() * messages.length)];
+            }, 5000);
         },
 
-        setupEventListeners() {
-            document.querySelector('.reset-btn').addEventListener('click', () => this.resetGame());
-        },
-
-        createGameGrid() {
+        setupMemoryGame() {
             const gameGrid = document.querySelector('.game-grid');
-            gameGrid.innerHTML = '';
-            this.shuffleCards();
-            this.cards.forEach((card, index) => {
-                const cardElement = document.createElement('div');
-                cardElement.classList.add('card');
-                cardElement.dataset.cardIndex = index;
-                cardElement.innerHTML = `
-                    <div class="card-inner">
-                        <div class="card-front">❓</div>
-                        <div class="card-back">${card}</div>
-                    </div>
-                `;
-                cardElement.addEventListener('click', () => this.flipCard(cardElement));
-                gameGrid.appendChild(cardElement);
+            const resetBtn = document.querySelector('.reset-btn');
+            const movesDisplay = document.querySelector('.moves');
+            const timeDisplay = document.querySelector('.time');
+            let cards = [];
+            let flippedCards = [];
+            let moves = 0;
+            let matchedPairs = 0;
+            let timer;
+
+            const cardImages = ['🧸', '🎀', '❤️', '🌟', '🍯', '🌼'];
+            const allCards = [...cardImages, ...cardImages];
+
+            function shuffleCards() {
+                for (let i = allCards.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
+                }
+            }
+
+            function createCard(cardImage) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.image = cardImage;
+                card.addEventListener('click', flipCard);
+                return card;
+            }
+
+            function flipCard() {
+                if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
+                    this.textContent = this.dataset.image;
+                    this.classList.add('flipped');
+                    flippedCards.push(this);
+                    if (flippedCards.length === 2) {
+                        moves++;
+                        movesDisplay.textContent = `Moves: ${moves}`;
+                        setTimeout(checkMatch, 500);
+                    }
+                }
+            }
+
+            function checkMatch() {
+                const [card1, card2] = flippedCards;
+                if (card1.dataset.image === card2.dataset.image) {
+                    matchedPairs++;
+                    if (matchedPairs === cardImages.length) {
+                        endGame();
+                    }
+                } else {
+                    card1.textContent = '';
+                    card2.textContent = '';
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                }
+                flippedCards = [];
+            }
+
+            function startGame() {
+                gameGrid.innerHTML = '';
+                shuffleCards();
+                allCards.forEach(cardImage => {
+                    const card = createCard(cardImage);
+                    gameGrid.appendChild(card);
+                });
+                moves = 0;
+                matchedPairs = 0;
+                movesDisplay.textContent = 'Moves: 0';
+                clearInterval(timer);
+                let seconds = 0;
+                timer = setInterval(() => {
+                    seconds++;
+                    timeDisplay.textContent = `Time: ${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+
+            function endGame() {
+                clearInterval(timer);
+                alert('Congratulations! You won the game!');
+            }
+
+            resetBtn.addEventListener('click', startGame);
+            startGame();
+        },
+
+        setupWishForm() {
+            const wishForm = document.getElementById('wish-form');
+            wishForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const wishText = document.getElementById('wish-text').value;
+                this.sendWish(wishText);
             });
         },
 
-        shuffleCards() {
-            for (let i = this.cards.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
-            }
-        },
+        sendWish(wishText) {
+            // In a real application, you would send this to a server
+            // For this example, we'll just display it on the page
+            const wishesDisplay = document.querySelector('.wishes-display');
+            const wishElement = document.createElement('p');
+            wishElement.textContent = wishText;
+            wishesDisplay.appendChild(wishElement);
+            document.getElementById('wish-text').value = '';
 
-        flipCard(card) {
-            if (card.classList.contains('flipped') || this.flippedCards.length === 2) return;
-            
-            card.classList.add('flipped');
-            this.flippedCards.push(card);
-
-            if (this.flippedCards.length === 2) {
-                this.moves++;
-                this.updateDisplay();
-                this.checkForMatch();
-            }
-
-            if (this.moves === 1) {
-                this.startTimer();
-            }
-        },
-
-        checkForMatch() {
-            const [card1, card2] = this.flippedCards;
-            const isMatch = this.cards[card1.dataset.cardIndex] === this.cards[card2.dataset.cardIndex];
-
-            if (isMatch) {
-                this.flippedCards = [];
-                if (this.checkForWin()) {
-                    this.endGame();
-                }
-            } else {
-                setTimeout(() => {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                    this.flippedCards = [];
-                }, 1000);
-            }
-        },
-
-        checkForWin() {
-            return document.querySelectorAll('.card.flipped').length === this.cards.length;
-        },
-
-        startTimer() {
-            this.timer = setInterval(() => {
-                this.time++;
-                this.updateDisplay();
-            }, 1000);
-        },
-
-        endGame() {
-            clearInterval(this.timer);
-            alert(`Congratulations! You won in ${this.moves} moves and ${this.time} seconds!`);
-        },
-
-        resetGame() {
-            clearInterval(this.timer);
-            this.moves = 0;
-            this.time = 0;
-            this.flippedCards = [];
-            this.updateDisplay();
-            this.createGameGrid();
-        }
-    };
-
-    const WishSender = {
-        init() {
-            this.wishInput = document.querySelector('.wish-section textarea');
-            this.sendButton = document.querySelector('.send-wish');
-            this.wishesDisplay = document.querySelector('.wishes-display');
-            this.setupEventListeners();
-            this.loadWishes();
-        },
-
-        setupEventListeners() {
-            this.sendButton.addEventListener('click', () => this.sendWish());
-        },
-
-        sendWish() {
-            const wishText = this.wishInput.value.trim();
-            if (wishText) {
-                const wish = { text: wishText, date: new Date().toLocaleString() };
-                this.saveWish(wish);
-                this.displayWish(wish);
-                this.wishInput.value = '';
-            }
-        },
-
-        saveWish(wish) {
-            const wishes = JSON.parse(localStorage.getItem('teddyWishes')) || [];
-            wishes.push(wish);
-            localStorage.setItem('teddyWishes', JSON.stringify(wishes));
-        },
-
-        loadWishes() {
-            const wishes = JSON.parse(localStorage.getItem('teddyWishes')) || [];
-            wishes.forEach(wish => this.displayWish(wish));
-        },
-
-        displayWish(wish) {
-            const wishElement = document.createElement('div');
-            wishElement.classList.add('wish');
-            wishElement.innerHTML = `
-                <p>${wish.text}</p>
-                <small>${wish.date}</small>
-            `;
-            this.wishesDisplay.prepend(wishElement);
+            // Simulating sending an email
+            console.log(`Sending wish to kautikshende@gmail.com: ${wishText}`);
         }
     };
 
     TeddyCreator.init();
-    MemoryGame.init();
-    WishSender.init();
 });
