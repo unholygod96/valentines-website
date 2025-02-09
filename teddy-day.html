@@ -1,94 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day</title>
-    <link rel="stylesheet" href="teddy-day.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuddly Teddy Day 🧸</title>
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Teddy Day Specific CSS -->
+  <link rel="stylesheet" href="teddy-day.css">
 </head>
-<body>
-    <main>
-        <header>
-            <h1>Happy Teddy Day, My Love!</h1>
-            <p>Create your perfect teddy companion and let's celebrate our love!</p>
-        </header>
+<body class="teddy-day-theme">
+  <!-- Menu Button -->
+  <button id="menu-button" class="menu-button">☰</button>
 
-        <div class="teddy-container">
-            <div class="teddy-preview">
-                <div class="teddy-ears">
-                    <div class="ear left"></div>
-                    <div class="ear right"></div>
-                </div>
-                <div class="teddy-face"></div>
-                <div class="teddy-body"></div>
-                <div class="teddy-accessory"></div>
-            </div>
+  <!-- Heart Rain -->
+  <div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+  </div>
 
-            <div class="customization-panel">
-                <section class="option-section">
-                    <h2>Choose Expression</h2>
-                    <div class="expression-grid">
-                        <button class="expression-btn" data-expression="happy">Happy</button>
-                        <button class="expression-btn" data-expression="love">Love</button>
-                        <button class="expression-btn" data-expression="shy">Shy</button>
-                        <button class="expression-btn" data-expression="excited">Excited</button>
-                        <button class="expression-btn" data-expression="cool">Cool</button>
-                        <button class="expression-btn" data-expression="sleepy">Sleepy</button>
-                    </div>
-                </section>
+  <!-- Teddy Falling Animation -->
+  <div class="teddies-falling">
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+  </div>
 
-                <section class="option-section">
-                    <h2>Choose Color</h2>
-                    <input type="color" id="color-picker" value="#8b4513">
-                </section>
+  <!-- Timer End Overlay -->
+  <div id="timer-end-overlay" class="overlay hidden">
+      <div class="overlay-content">
+          <h2 id="overlay-header"></h2>
+          <button id="close-overlay">Close ✨</button>
+      </div>
+  </div>
 
-                <section class="option-section">
-                    <h2>Add Accessory</h2>
-                    <div class="accessory-grid">
-                        <button class="accessory-btn" data-accessory="bow">Bow</button>
-                        <button class="accessory-btn" data-accessory="crown">Crown</button>
-                        <button class="accessory-btn" data-accessory="hat">Hat</button>
-                        <button class="accessory-btn" data-accessory="scarf">Scarf</button>
-                        <button class="accessory-btn" data-accessory="glasses">Glasses</button>
-                        <button class="accessory-btn" data-accessory="guitar">Guitar</button>
-                    </div>
-                </section>
+  <header class="teddy-day-header">
+      <h1>Cuddly Teddy Day! 🧸</h1>
+      <p class="header-subtitle">Wrapped in love, just like a warm teddy bear hug! ❤️</p>
+      
+      <!-- Message Animation Container -->
+      <div class="message-container">
+          <div id="message-display" class="message-text"></div>
+      </div>
 
-                <button id="save-teddy">Save My Teddy</button>
-            </div>
-        </div>
+      <div id="timer-container">
+          <h2 id="timer-header" contenteditable="true">Counting our cuddly moments! 💫</h2>
+          <div id="custom-timer">
+              <span id="custom-timer-display">00:00:00</span>
+          </div>
+          <input type="datetime-local" id="calendar-input" />
+          <button id="start-timer">Start ✨</button>
+          <button id="pause-timer">Pause 💫</button>
+          <button id="reset-timer">Reset 🌟</button>
+          <button id="set-timer">Set Timer 💖</button>
+      </div>
 
-        <section class="comforting-messages">
-            <h2>Teddy's Whispers of Love</h2>
-            <div id="message-display"></div>
-        </section>
+      <audio id="background-music" loop>
+          <!-- Replace with your preferred soft melody -->
+          <source src="soft-melody.mp3" type="audio/mpeg">
+      </audio>
+      <button id="toggle-music">🎵</button>
+  </header>
 
-        <section class="memory-game">
-            <h2>Teddy Memory Lane</h2>
-            <div class="game-stats">
-                <span class="moves">Moves: 0</span>
-                <span class="time">Time: 0:00</span>
-                <button class="reset-btn">Reset Game</button>
-            </div>
-            <div class="game-grid"></div>
-        </section>
+  <nav>
+      <ul>
+          <li><a href="index.html">Back to Our Journey 🏡</a></li>
+          <li><a href="rose-day.html">Rose Day 🌹</a></li>
+          <li><a href="propose-day.html">Propose Day 💍</a></li>
+          <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+          <li><a href="teddy-day.html" class="active">Teddy Day 🧸</a></li>
+          <li><a href="promise-day.html">Promise Day 🤝</a></li>
+          <li><a href="hug-day.html">Hug Day 🤗</a></li>
+          <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+          <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+      </ul>
+  </nav>
 
-        <section class="wish-section">
-            <h2>Send a Teddy Wish</h2>
-            <form id="wish-form">
-                <textarea id="wish-text" placeholder="Write your teddy wish here..."></textarea>
-                <button type="submit" class="send-wish">Send Wish</button>
-            </form>
-            <div class="wishes-display"></div>
-        </section>
+  <main class="teddy-day-main">
+      <!-- Build-A-Teddy Section -->
+      <section class="build-a-teddy">
+          <h2>Build Your Own Teddy Bear!</h2>
+          <div class="teddy-customizer">
+              <div class="teddy-preview" id="teddy-preview">
+                  <!-- A simple inline SVG teddy bear for customization -->
+                  <svg id="teddy-svg" width="200" height="300" viewBox="0 0 200 300">
+                      <!-- Teddy Body Parts -->
+                      <circle id="teddy-head" cx="100" cy="60" r="40" fill="#D2B48C" />
+                      <circle id="teddy-ear-left" cx="60" cy="40" r="15" fill="#D2B48C" />
+                      <circle id="teddy-ear-right" cx="140" cy="40" r="15" fill="#D2B48C" />
+                      <ellipse id="teddy-body" cx="100" cy="170" rx="50" ry="70" fill="#D2B48C" />
+                      <!-- Facial Features -->
+                      <circle id="teddy-eye-left" cx="85" cy="55" r="5" fill="#000" />
+                      <circle id="teddy-eye-right" cx="115" cy="55" r="5" fill="#000" />
+                      <circle id="teddy-nose" cx="100" cy="70" r="4" fill="#000" />
+                      <path id="teddy-mouth" d="M90,80 Q100,90 110,80" stroke="#000" fill="transparent" stroke-width="2"/>
+                      <!-- Clothing (shirt) -->
+                      <rect id="teddy-clothing" x="50" y="140" width="100" height="50" fill="none" />
+                      <!-- Accessory (hat) – initially hidden -->
+                      <path id="teddy-hat" d="M60,20 Q100,0 140,20 L140,30 Q100,10 60,30 Z" fill="none" style="display:none;" />
+                  </svg>
+              </div>
+              <div class="teddy-options">
+                  <h3>Customize Your Teddy</h3>
+                  <label for="fur-color">Fur Color:</label>
+                  <input type="color" id="fur-color" name="fur-color" value="#D2B48C">
+                  
+                  <label for="eye-color">Eye Color:</label>
+                  <input type="color" id="eye-color" name="eye-color" value="#000000">
+                  
+                  <label for="clothing-color">Clothing Color:</label>
+                  <input type="color" id="clothing-color" name="clothing-color" value="#FFB6C1">
+                  
+                  <label for="accessory-select">Accessory:</label>
+                  <select id="accessory-select" name="accessory-select">
+                      <option value="none">None</option>
+                      <option value="hat">Hat</option>
+                      <option value="scarf">Scarf</option>
+                  </select>
 
-        <footer>
-            <p>Made with love for you, my dear. Happy Teddy Day!</p>
-        </footer>
-    </main>
+                  <label for="animation-select">Animation:</label>
+                  <select id="animation-select" name="animation-select">
+                      <option value="none">None</option>
+                      <option value="flying-kiss">Flying Kiss</option>
+                      <option value="hug">Hug</option>
+                      <option value="wave">Wave</option>
+                  </select>
 
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="teddy-day.js"></script>
+                  <button id="apply-customization">Apply Customization</button>
+                  <button id="play-animation">Play Animation</button>
+                  <button id="save-teddy">Save Teddy</button>
+                  <button id="load-teddy">Load Teddy</button>
+              </div>
+          </div>
+          <!-- Comforting Teddy Lines -->
+          <div class="teddy-comforting-lines">
+              <p>"Every cuddle begins with a teddy bear hug."</p>
+              <p>"A teddy bear is a little piece of love you can hold forever."</p>
+              <p>"Keep calm and hug a teddy!"</p>
+          </div>
+      </section>
+
+      <!-- Mini Game Section -->
+      <section class="mini-game">
+          <h2>Teddy Hunt Game</h2>
+          <p>Click on the falling teddies to collect points!</p>
+          <div id="teddy-game-area" class="game-area"></div>
+          <div id="game-score">Score: 0</div>
+      </section>
+
+      <!-- Love Notes Section -->
+      <section class="love-notes">
+          <h2>Love Notes For You</h2>
+          <div class="notes-container">
+              <div class="note sparkle">
+                  <p>You are as warm as a teddy hug! ❤️</p>
+              </div>
+              <div class="note sparkle">
+                  <p>Your love is my favorite cuddle! ❤️</p>
+              </div>
+              <div class="note sparkle">
+                  <p>Every moment with you is a snuggle-filled dream! ❤️</p>
+              </div>
+          </div>
+      </section>
+
+      <!-- Write Your Wish Section -->
+      <section class="write-wish">
+          <h2>Send Your Cuddle Wish</h2>
+          <form action="mailto:kautikshende@gmail.com" method="post" enctype="text/plain">
+              <textarea name="wish" placeholder="Write your wish here..."></textarea>
+              <button type="submit">Send Wish ❤️</button>
+          </form>
+      </section>
+  </main>
+
+  <!-- Love Letter Container -->
+  <div id="love-letter-container">
+      <button id="love-letter-button" class="love-letter-button">💌</button>
+      <div id="love-letter" class="love-letter hidden">
+          <div class="love-letter-content">
+              <div class="love-letter-header">
+                  <h3>My Cuddly Teddy</h3>
+                  <button id="close-letter" class="close-letter">×</button>
+              </div>
+              <div class="love-letter-body">
+                  <p>Dearest,</p>
+                  <p>Just like a teddy bear, my love for you is soft, warm, and endless. Every cuddle, every smile, and every gentle moment reminds me how lucky I am to have you.</p>
+                  <p>Your presence fills my heart with comfort and joy—like the perfect teddy bear hug on a chilly day.</p>
+                  <p>May this Teddy Day bring you endless love and the sweetest cuddles!</p>
+                  <p class="love-letter-signature">Forever yours,<br>Your Cuddle Buddy</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="teddy-day.js"></script>
 </body>
 </html>
