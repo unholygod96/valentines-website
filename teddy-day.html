@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day!</title>
+    <title>Happy Teddy Day, My Love!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,14 +12,14 @@
     </header>
 
     <main>
-        <section id="bear-customizer">
+        <section id="bear-builder">
             <h2>Build Your Teddy Bear</h2>
             <div id="bear-canvas-container">
                 <canvas id="bear-canvas" width="400" height="400"></canvas>
             </div>
-            <div id="customization-options">
+            <div id="customization-menu">
                 <h3>Customize Your Bear</h3>
-                <div class="option-group">
+                <div class="customization-option">
                     <label for="fur-color">Fur Color:</label>
                     <select id="fur-color">
                         <option value="brown">Brown</option>
@@ -28,7 +28,7 @@
                         <option value="pink">Pink</option>
                     </select>
                 </div>
-                <div class="option-group">
+                <div class="customization-option">
                     <label for="eye-color">Eye Color:</label>
                     <select id="eye-color">
                         <option value="black">Black</option>
@@ -37,7 +37,7 @@
                         <option value="brown">Brown</option>
                     </select>
                 </div>
-                <div class="option-group">
+                <div class="customization-option">
                     <label for="clothing">Clothing:</label>
                     <select id="clothing">
                         <option value="none">None</option>
@@ -46,7 +46,7 @@
                         <option value="bowtie">Bowtie</option>
                     </select>
                 </div>
-                <div class="option-group">
+                <div class="customization-option">
                     <label for="accessory">Accessory:</label>
                     <select id="accessory">
                         <option value="none">None</option>
@@ -55,8 +55,8 @@
                         <option value="scarf">Scarf</option>
                     </select>
                 </div>
-                <button id="animate-bear">Animate Bear</button>
                 <button id="save-bear">Save Bear</button>
+                <button id="animate-bear">Animate Bear</button>
             </div>
         </section>
 
@@ -65,33 +65,46 @@
             <div id="gallery-container"></div>
         </section>
 
-        <section id="comforting-messages">
-            <h2>Teddy Bear Hugs</h2>
-            <div id="message-container"></div>
+        <section id="love-letter">
+            <h2>A Love Letter for You</h2>
+            <div id="letter-content">
+                <p>My Dearest,</p>
+                <p>On this special Teddy Day, I want to express how much you mean to me. Like a teddy bear, you bring comfort, warmth, and joy to my life. Your love wraps around me like a soft embrace, making me feel safe and cherished.</p>
+                <p>Every bear we create together is a symbol of our love - unique, special, and filled with memories. Just as we customize these virtual teddies, we're crafting our own beautiful story, one day at a time.</p>
+                <p>You are my favorite person to cuddle with, my go-to for comfort, and the one I want to share all my adventures with. Thank you for being my real-life teddy bear, always there to hold me tight and make everything better.</p>
+                <p>I love you more than all the teddy bears in the world combined!</p>
+                <p>Forever yours,</p>
+                <p>[Your Name]</p>
+            </div>
         </section>
 
         <section id="mini-games">
-            <h2>Teddy Bear Games</h2>
-            <div class="game-container">
-                <h3>Dress-Up Challenge</h3>
-                <div id="dress-up-game"></div>
-            </div>
-            <div class="game-container">
-                <h3>Bear Hug Catcher</h3>
-                <div id="bear-hug-game"></div>
+            <h2>Teddy Bear Mini-Games</h2>
+            <div id="game-container">
+                <div class="game" id="dress-up-challenge">
+                    <h3>Dress-Up Challenge</h3>
+                    <button class="start-game">Start Game</button>
+                </div>
+                <div class="game" id="bear-hug-catcher">
+                    <h3>Bear Hug Catcher</h3>
+                    <button class="start-game">Start Game</button>
+                </div>
+                <div class="game" id="memory-match">
+                    <h3>Memory Match</h3>
+                    <button class="start-game">Start Game</button>
+                </div>
             </div>
         </section>
 
-        <section id="love-notes">
-            <h2>Love Notes</h2>
-            <textarea id="love-note-input" placeholder="Write a love note..."></textarea>
-            <button id="save-note">Save Note</button>
-            <div id="love-notes-container"></div>
+        <section id="comforting-messages">
+            <h2>Teddy Bear Hugs & Wishes</h2>
+            <div id="message-container"></div>
+            <button id="new-message">New Message</button>
         </section>
     </main>
 
     <footer>
-        <p>Created with love for you, my dear. Happy Teddy Day!</p>
+        <p>Created with love for you, on Teddy Day 2025</p>
     </footer>
 
     <script src="script.js"></script>
