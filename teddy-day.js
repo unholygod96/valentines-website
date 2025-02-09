@@ -1,425 +1,384 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Sweet Messages Animation
-    const sweetMessages = [
-        "You're as cuddly as a teddy! 🧸",
-        "Life is cozy with you! ✨",
-        "My favorite hug is yours! 💝",
-        "Every moment with you is warm! 🌟",
-        "You make my heart feel safe! 💫",
-        "The best part of my day is you! 🧸"
-    ];
+document.addEventListener('DOMContentLoaded', function () {
+  // Sweet Messages Animation
+  const sweetMessages = [
+    "You're as cuddly as a teddy! 🧸",
+    "Life is cozy with you! ✨",
+    "My favorite hug is yours! 💝",
+    "Every moment with you is warm! 🌟",
+    "You make my heart feel safe! 💫",
+    "The best part of my day is you! 🧸"
+  ];
 
-    const messageElement = document.getElementById('message-display');
-    let currentIndex = 0;
+  const messageElement = document.getElementById('message-display');
+  let currentIndex = 0;
 
-    function showMessage() {
-        messageElement.style.opacity = '0';
-        messageElement.style.transform = 'translateY(20px)';
+  function showMessage() {
+    messageElement.style.opacity = '0';
+    messageElement.style.transform = 'translateY(20px)';
 
-        setTimeout(() => {
-            messageElement.textContent = sweetMessages[currentIndex];
-            messageElement.style.opacity = '1';
-            messageElement.style.transform = 'translateY(0)';
+    setTimeout(() => {
+      messageElement.textContent = sweetMessages[currentIndex];
+      messageElement.style.opacity = '1';
+      messageElement.style.transform = 'translateY(0)';
 
-            currentIndex = (currentIndex + 1) % sweetMessages.length;
+      currentIndex = (currentIndex + 1) % sweetMessages.length;
+      setTimeout(showMessage, 3000);
+    }, 500);
+  }
 
-            setTimeout(showMessage, 3000);
-        }, 500);
-    }
+  // Start message animation
+  showMessage();
 
-    // Start message animation
-    showMessage();
+  // Falling Teddies Animation
+  function createTeddy() {
+    const teddy = document.createElement('div');
+    teddy.className = 'teddy';
+    teddy.textContent = '🧸';
+    teddy.style.left = Math.random() * 100 + 'vw';
+    teddy.style.transform = `rotate(${Math.random() * 360}deg)`;
+    const duration = 7 + Math.random() * 5;
+    teddy.style.animationDuration = `${duration}s`;
+    document.querySelector('.teddies-falling').appendChild(teddy);
+    setTimeout(() => teddy.remove(), duration * 1000);
+  }
 
-    // Falling Teddies Animation
-    function createTeddy() {
-        const teddy = document.createElement('div');
-        teddy.className = 'teddy';
-        teddy.textContent = '🧸';
+  // Create teddies periodically
+  setInterval(createTeddy, 500);
 
-        teddy.style.left = Math.random() * 100 + 'vw';
-        teddy.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-        const duration = 7 + Math.random() * 5;
-        teddy.style.animationDuration = `${duration}s`;
-
-        document.querySelector('.teddies-falling').appendChild(teddy);
-
-        setTimeout(() => teddy.remove(), duration * 1000);
-    }
-
-    // Create teddies periodically
-    setInterval(createTeddy, 500);
-
-    //Memory Cards Animation
-    const memoryCards = document.querySelectorAll('.memory-card');
-    memoryCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            createMemorySparkles(this);
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+  // Memory Cards Animation
+  const memoryCards = document.querySelectorAll('.memory-card');
+  memoryCards.forEach(card => {
+    card.addEventListener('mouseenter', function () {
+      this.style.transform = 'translateY(-10px)';
+      createMemorySparkles(this);
     });
-
-    // Create Memory Sparkles
-    function createMemorySparkles(element) {
-        for (let i = 0; i < 8; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
-    }
-
-    //Interactive Teddy Animation
-    const magicTeddy = document.querySelector('.magic-teddy');
-    const wishText = document.querySelector('.wish-text');
-
-    magicTeddy.addEventListener('click', function() {
-        this.style.transform = 'scale(1.5) rotate(720deg)';
-        createMagicSparkles(this);
-
-        setTimeout(() => {
-            wishText.classList.remove('hidden');
-            wishText.classList.add('show');
-        }, 500);
-
-        setTimeout(() => {
-            this.style.transform = '';
-            wishText.classList.remove('show');
-            setTimeout(() => wishText.classList.add('hidden'), 300);
-        }, 3000);
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = 'translateY(0)';
     });
+  });
 
-    // Create Magic Sparkles
-    function createMagicSparkles(element) {
-        for (let i = 0; i < 12; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
-            sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
+  function createMemorySparkles(element) {
+    for (let i = 0; i < 8; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      element.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
     }
+  }
 
-    // Sweet Notes Hover Effect
-    const notes = document.querySelectorAll('.note');
-    notes.forEach(note => {
-        note.addEventListener('mouseenter', function() {
-            this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
-            createNoteSparkles(this);
-        });
+  // Interactive Teddy Animation
+  const magicTeddy = document.querySelector('.magic-teddy');
+  const wishText = document.querySelector('.wish-text');
 
-        note.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1) rotate(0deg)';
-        });
-    });
+  magicTeddy.addEventListener('click', function () {
+    this.style.transform = 'scale(1.5) rotate(720deg)';
+    createMagicSparkles(this);
+    setTimeout(() => {
+      wishText.classList.remove('hidden');
+      wishText.classList.add('show');
+    }, 500);
+    setTimeout(() => {
+      this.style.transform = '';
+      wishText.classList.remove('show');
+      setTimeout(() => wishText.classList.add('hidden'), 300);
+    }, 3000);
+  });
 
-    // Create Note Sparkles
-    function createNoteSparkles(element) {
-        for (let i = 0; i < 6; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
+  function createMagicSparkles(element) {
+    for (let i = 0; i < 12; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
+      sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
+      element.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
     }
+  }
 
-    //Love Letter Toggle
-    const loveLetterButton = document.getElementById('love-letter-button');
-    const loveLetter = document.getElementById('love-letter');
-    const closeLetter = document.getElementById('close-letter');
-
-    loveLetterButton.addEventListener('click', function() {
-        loveLetter.classList.add('show');
-        createLetterSparkles(loveLetter);
+  // Sweet Notes Hover Effect
+  const notes = document.querySelectorAll('.note');
+  notes.forEach(note => {
+    note.addEventListener('mouseenter', function () {
+      this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
+      createNoteSparkles(this);
     });
-
-    closeLetter.addEventListener('click', function() {
-        loveLetter.classList.remove('show');
+    note.addEventListener('mouseleave', function () {
+      this.style.transform = 'scale(1) rotate(0deg)';
     });
+  });
 
-    // Close letter when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!loveLetter.contains(event.target) &&
-            !loveLetterButton.contains(event.target) &&
-            loveLetter.classList.contains('show')) {
-            loveLetter.classList.remove('show');
-        }
-    });
-
-    // Create Letter Sparkles
-    function createLetterSparkles(element) {
-        for (let i = 0; i < 15; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            element.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1000);
-        }
+  function createNoteSparkles(element) {
+    for (let i = 0; i < 6; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      element.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
     }
+  }
 
-    // Background Music Toggle
-    const musicButton = document.getElementById('toggle-music');
-    const backgroundMusic = document.getElementById('background-music');
+  // Love Letter Toggle
+  const loveLetterButton = document.getElementById('love-letter-button');
+  const loveLetter = document.getElementById('love-letter');
+  const closeLetter = document.getElementById('close-letter');
 
-    musicButton.addEventListener('click', function() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-            musicButton.textContent = '🎵';
-        } else {
-            backgroundMusic.pause();
-            musicButton.textContent = '🔇';
-        }
-    });
+  loveLetterButton.addEventListener('click', function () {
+    loveLetter.classList.add('show');
+    createLetterSparkles(loveLetter);
+  });
 
-    //Timer Functions
-    const timerDisplay = document.getElementById('custom-timer-display');
-    const timerHeader = document.getElementById('timer-header');
-    let timerInterval;
-    let endTime;
+  closeLetter.addEventListener('click', function () {
+    loveLetter.classList.remove('show');
+  });
 
-    document.getElementById('set-timer').addEventListener('click', function() {
-        const input = document.getElementById('calendar-input');
-        if (input.value) {
-            endTime = new Date(input.value).getTime();
-            startTimer();
-        }
-    });
-
-    function startTimer() {
-        clearInterval(timerInterval);
-        timerInterval = setInterval(updateTimer, 1000);
+  document.addEventListener('click', function (event) {
+    if (!loveLetter.contains(event.target) &&
+        !loveLetterButton.contains(event.target) &&
+        loveLetter.classList.contains('show')) {
+      loveLetter.classList.remove('show');
     }
+  });
 
-    function updateTimer() {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-
-        if (distance <= 0) {
-            clearInterval(timerInterval);
-            timerDisplay.textContent = "Time's Up! 💝";
-            return;
-        }
-
-        const hours = Math.floor(distance / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerDisplay.textContent =
-            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  function createLetterSparkles(element) {
+    for (let i = 0; i < 15; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      element.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
     }
+  }
 
-    // Build-a-Bear Functionality
-    const bearCanvas = document.getElementById('bearCanvas');
-    const ctx = bearCanvas.getContext('2d');
-    let currentBearConfig = {};
+  // Background Music Toggle
+  const musicButton = document.getElementById('toggle-music');
+  const backgroundMusic = document.getElementById('background-music');
 
-    function drawBear(config) {
-        // Clear the canvas
-        ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
-
-        // Default configurations
-        const defaultFurColor = 'lightBrown';
-        const defaultEyeColor = 'black';
-        const defaultClothing = 'none';
-        const defaultAccessories = 'none';
-        const defaultExpression = 'smile';
-        const defaultAnimation = 'none';
-
-        // Use provided configurations or defaults
-        const furColor = config.furColor || defaultFurColor;
-        const eyeColor = config.eyeColor || defaultEyeColor;
-        const clothing = config.clothing || defaultClothing;
-        const accessories = config.accessories || defaultAccessories;
-        const expression = config.expression || defaultExpression;
-        const animation = config.animation || defaultAnimation;
-
-        // Draw the bear head and body
-        ctx.fillStyle = furColor;
-
-        // Body
-        ctx.beginPath();
-        ctx.ellipse(150, 200, 60, 80, 0, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Head
-        ctx.beginPath();
-        ctx.arc(150, 120, 40, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Ears
-        ctx.beginPath();
-        ctx.arc(110, 70, 20, 0, 2 * Math.PI);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(190, 70, 20, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Eyes
-        ctx.fillStyle = eyeColor;
-        ctx.beginPath();
-        ctx.arc(130, 110, 7, 0, 2 * Math.PI);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(170, 110, 7, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Nose
-        ctx.fillStyle = 'black';
-        ctx.beginPath();
-        ctx.arc(150, 140, 4, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Mouth (Expressions)
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        if (expression === 'smile') {
-            ctx.arc(150, 160, 20, 0, Math.PI);
-        } else if (expression === 'sad') {
-            ctx.arc(150, 180, 20, Math.PI, 2 * Math.PI);
-        } else if (expression === 'love') {
-            // Draw a heart-shaped mouth
-            ctx.moveTo(140, 160);
-            ctx.quadraticCurveTo(150, 170, 160, 160);
-            ctx.moveTo(140, 160);
-            ctx.quadraticCurveTo(150, 150, 160, 160);
-        }
-        ctx.stroke();
-
-        // Clothing
-        if (clothing === 'hat') {
-            ctx.fillStyle = 'red';
-            ctx.beginPath();
-            ctx.ellipse(150, 50, 30, 15, 0, 0, Math.PI);
-            ctx.fill();
-        } else if (clothing === 'shirt') {
-            ctx.fillStyle = 'blue';
-            ctx.fillRect(90, 170, 120, 50);
-        }
-
-        // Accessories
-        if (accessories === 'scarf') {
-            ctx.fillStyle = 'purple';
-            ctx.fillRect(90, 170, 120, 20);
-        }
-
-        // Animations (Simple Example)
-        if (animation === 'wave') {
-            // Waving paw
-            ctx.beginPath();
-            ctx.arc(80, 220, 15, 0.5 * Math.PI, 1.5 * Math.PI);
-            ctx.stroke();
-        }
+  musicButton.addEventListener('click', function () {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play();
+      musicButton.textContent = '🎵';
+    } else {
+      backgroundMusic.pause();
+      musicButton.textContent = '🔇';
     }
+  });
 
-    // Function to download data to a file
-    function download(filename, text) {
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename);
+  // Timer Functions
+  const timerDisplay = document.getElementById('custom-timer-display');
+  let timerInterval;
+  let endTime = null;
+  let remainingTime = null;
 
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
+  document.getElementById('set-timer').addEventListener('click', function () {
+    const input = document.getElementById('calendar-input');
+    if (input.value) {
+      endTime = new Date(input.value).getTime();
+      remainingTime = null;
+      startTimer();
     }
+  });
 
-    // Event listeners for customization options
-    document.getElementById('customizeButton').addEventListener('click', function() {
-        currentBearConfig = {
-            furColor: document.getElementById('furColor').value,
-            eyeColor: document.getElementById('eyeColor').value,
-            clothing: document.getElementById('clothing').value,
-            accessories: document.getElementById('accessories').value,
-            expression: document.getElementById('expression').value,
-            animation: document.getElementById('animation').value
-        };
-        drawBear(currentBearConfig);
-        saveBearConfig(); // Save the configuration after customizing
-    });
-
-    document.getElementById('submit-wish').addEventListener('click', function() {
-        const wishInput = document.getElementById('wish-input');
-        const wishText = wishInput.value;
-
-        // Send the wish to the email address
-        sendWishEmail(wishText);
-
-        // Clear the input field
-        wishInput.value = '';
-
-        // Show a confirmation message or perform any other actions
-        alert('Your wish has been sent!');
-    });
-
-    function sendWishEmail(wishText) {
-        // Construct the email body
-        const emailBody = `Wish: ${wishText}`;
-
-        // Construct the mailto link
-        const mailtoLink = `mailto:kautikshende@gmail.com?subject=New Wish&body=${encodeURIComponent(emailBody)}`;
-
-        // Open the mail client in a new tab
-        window.open(mailtoLink, '_blank');
+  document.getElementById('start-timer').addEventListener('click', function () {
+    if (remainingTime !== null) {
+      endTime = new Date().getTime() + remainingTime;
+      remainingTime = null;
+      startTimer();
     }
+  });
 
-    // Local PC Storage
-    document.getElementById('saveButton').addEventListener('click', function() {
-        const bearData = JSON.stringify(currentBearConfig);
-        download('bear_config.txt', bearData);
-    });
-
-    // Persistent saving to localStorage
-    function saveBearConfig() {
-        localStorage.setItem('bearConfig', JSON.stringify(currentBearConfig));
+  document.getElementById('pause-timer').addEventListener('click', function () {
+    if (endTime) {
+      remainingTime = endTime - new Date().getTime();
+      clearInterval(timerInterval);
     }
+  });
 
-    function loadBearConfig() {
-        const storedConfig = localStorage.getItem('bearConfig');
-        if (storedConfig) {
-            currentBearConfig = JSON.parse(storedConfig);
-            // Set select values to match stored config
-            document.getElementById('furColor').value = currentBearConfig.furColor || 'lightBrown';
-            document.getElementById('eyeColor').value = currentBearConfig.eyeColor || 'black';
-            document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
-            document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
-            document.getElementById('expression').value = currentBearConfig.expression || 'smile';
-            document.getElementById('animation').value = currentBearConfig.animation || 'none';
+  document.getElementById('reset-timer').addEventListener('click', function () {
+    clearInterval(timerInterval);
+    timerDisplay.textContent = "00:00:00";
+    endTime = null;
+    remainingTime = null;
+  });
 
-            drawBear(currentBearConfig);
-        }
+  function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = endTime - now;
+    if (distance <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "Time's Up! 💝";
+      return;
     }
+    const hours = Math.floor(distance / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    timerDisplay.textContent =
+      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
 
-    // Add more colors to select options
-    const furColorSelect = document.getElementById('furColor');
-    const colors = ['lightBrown', 'darkBrown', 'white', 'pink', 'blue', 'yellow', 'purple', 'gray', 'orange', 'green'];
+  // Build-a-Bear Functionality
+  const bearCanvas = document.getElementById('bearCanvas');
+  const ctx = bearCanvas.getContext('2d');
+  let currentBearConfig = {};
 
-    colors.forEach(color => {
-        const option = document.createElement('option');
-        option.value = color;
-        option.text = color.charAt(0).toUpperCase() + color.slice(1); // Capitalize first letter
-        furColorSelect.add(option);
-    });
+  function drawBear(config) {
+    ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
+    // Default configurations
+    const defaultFurColor = '#8B4513';
+    const defaultEyeColor = '#000000';
+    const defaultClothing = 'none';
+    const defaultAccessories = 'none';
+    const defaultExpression = 'smile';
+    const defaultAnimation = 'none';
 
-    // Initialize
-    loadBearConfig(); // Call loadBearConfig to load saved configuration on page load
-    createTeddy();
-    showMessage();
+    const furColor = config.furColor || defaultFurColor;
+    const eyeColor = config.eyeColor || defaultEyeColor;
+    const clothing = config.clothing || defaultClothing;
+    const accessories = config.accessories || defaultAccessories;
+    const expression = config.expression || defaultExpression;
+    const animation = config.animation || defaultAnimation;
+
+    // Draw bear body
+    ctx.fillStyle = furColor;
+    // Body
+    ctx.beginPath();
+    ctx.ellipse(150, 200, 60, 80, 0, 0, 2 * Math.PI);
+    ctx.fill();
+    // Head
+    ctx.beginPath();
+    ctx.arc(150, 120, 40, 0, 2 * Math.PI);
+    ctx.fill();
+    // Ears
+    ctx.beginPath();
+    ctx.arc(110, 70, 20, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(190, 70, 20, 0, 2 * Math.PI);
+    ctx.fill();
+    // Eyes
+    ctx.fillStyle = eyeColor;
+    ctx.beginPath();
+    ctx.arc(130, 110, 7, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(170, 110, 7, 0, 2 * Math.PI);
+    ctx.fill();
+    // Nose
+    ctx.fillStyle = 'black';
+    ctx.beginPath();
+    ctx.arc(150, 140, 4, 0, 2 * Math.PI);
+    ctx.fill();
+    // Mouth (Expressions)
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    if (expression === 'smile') {
+      ctx.arc(150, 160, 20, 0, Math.PI);
+    } else if (expression === 'sad') {
+      ctx.arc(150, 180, 20, Math.PI, 2 * Math.PI);
+    } else if (expression === 'love') {
+      ctx.moveTo(140, 160);
+      ctx.quadraticCurveTo(150, 170, 160, 160);
+      ctx.moveTo(140, 160);
+      ctx.quadraticCurveTo(150, 150, 160, 160);
+    }
+    ctx.stroke();
+    // Clothing
+    if (clothing === 'hat') {
+      ctx.fillStyle = 'red';
+      ctx.beginPath();
+      ctx.ellipse(150, 50, 30, 15, 0, 0, Math.PI);
+      ctx.fill();
+    } else if (clothing === 'shirt') {
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(90, 170, 120, 50);
+    }
+    // Accessories
+    if (accessories === 'scarf') {
+      ctx.fillStyle = 'purple';
+      ctx.fillRect(90, 170, 120, 20);
+    } else if (accessories === 'bow') {
+      // Simple bow near the ear
+      ctx.fillStyle = 'pink';
+      ctx.beginPath();
+      ctx.moveTo(200, 100);
+      ctx.lineTo(210, 110);
+      ctx.lineTo(200, 120);
+      ctx.closePath();
+      ctx.fill();
+    }
+    // Animation example: waving paw
+    if (animation === 'wave') {
+      ctx.beginPath();
+      ctx.arc(80, 220, 15, 0.5 * Math.PI, 1.5 * Math.PI);
+      ctx.stroke();
+    }
+  }
+
+  // Download function
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  document.getElementById('customizeButton').addEventListener('click', function () {
+    currentBearConfig = {
+      furColor: document.getElementById('furColor').value,
+      eyeColor: document.getElementById('eyeColor').value,
+      clothing: document.getElementById('clothing').value,
+      accessories: document.getElementById('accessories').value,
+      expression: document.getElementById('expression').value,
+      animation: document.getElementById('animation').value
+    };
+    drawBear(currentBearConfig);
+    saveBearConfig();
+  });
+
+  document.getElementById('saveButton').addEventListener('click', function () {
+    const bearData = JSON.stringify(currentBearConfig);
+    download('bear_config.txt', bearData);
+  });
+
+  function saveBearConfig() {
+    localStorage.setItem('bearConfig', JSON.stringify(currentBearConfig));
+  }
+
+  function loadBearConfig() {
+    const storedConfig = localStorage.getItem('bearConfig');
+    if (storedConfig) {
+      currentBearConfig = JSON.parse(storedConfig);
+      document.getElementById('furColor').value = currentBearConfig.furColor || '#8B4513';
+      document.getElementById('eyeColor').value = currentBearConfig.eyeColor || '#000000';
+      document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
+      document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
+      document.getElementById('expression').value = currentBearConfig.expression || 'smile';
+      document.getElementById('animation').value = currentBearConfig.animation || 'none';
+      drawBear(currentBearConfig);
+    }
+  }
+
+  // Add additional colors to the furColor select
+  const furColorSelect = document.getElementById('furColor');
+  const colors = ['#8B4513', '#654321', '#FFFFFF', '#FFC0CB', '#ADD8E6', '#FFFF00', '#800080', '#808080', '#FFA500', '#008000'];
+  colors.forEach(color => {
+    const option = document.createElement('option');
+    option.value = color;
+    option.text = color;
+    furColorSelect.add(option);
+  });
+
+  loadBearConfig();
 });
-
-
-
