@@ -2,6 +2,7 @@
 .teddy-day-theme {
     background: linear-gradient(135deg, #f8e8d8 0%, #e8d8f8 100%);
     color: #734a1d;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Teddy Day Header */
@@ -10,6 +11,7 @@
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .teddy-day-header h1 {
@@ -79,16 +81,24 @@
 .build-a-bear-section {
     padding: 3rem 2rem;
     background: #f8e8d8;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(115, 74, 29, 0.2);
+    margin: 2rem auto;
+    max-width: 1000px;
+}
+
+.build-a-bear-section h2 {
+    text-align: center;
+    color: #734a1d;
+    margin-bottom: 1.5rem;
 }
 
 .bear-customization-area {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     gap: 2rem;
     padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .bear-display {
@@ -100,6 +110,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+#bearCanvas {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .customization-options {
@@ -149,6 +165,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1rem;
+    width: 100%;
 }
 
 .customization-options button:hover {
@@ -159,6 +176,11 @@
 /* Sweet Memories */
 .sweet-memories {
     padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(115, 74, 29, 0.2);
+    margin: 2rem auto;
+    max-width: 1000px;
 }
 
 .memory-container {
@@ -170,7 +192,7 @@
 }
 
 .memory-card {
-    background: white;
+    background: #f8e8d8;
     padding: 1.5rem;
     border-radius: 15px;
     width: 300px;
@@ -185,6 +207,11 @@
 /* Teddy Facts */
 .teddy-facts {
     padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(115, 74, 29, 0.2);
+    margin: 2rem auto;
+    max-width: 1000px;
 }
 
 .facts-container {
@@ -196,7 +223,7 @@
 }
 
 .fact-bubble {
-    background: white;
+    background: #f8e8d8;
     padding: 1.5rem;
     border-radius: 25px;
     max-width: 300px;
@@ -207,6 +234,12 @@
 /* Interactive Teddy */
 .interactive-teddy {
     padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(115, 74, 29, 0.2);
+    margin: 2rem auto;
+    max-width: 1000px;
+    text-align: center;
 }
 
 .wish-container {
@@ -268,37 +301,14 @@
     box-shadow: 0 4px 10px rgba(115, 74, 29, 0.3);
 }
 
-/* Mini-Game Section */
-.mini-game-section {
-    padding: 3rem 2rem;
-    text-align: center;
-    background: #f8e8d8;
-}
-
-/* General Button Styles (You can move these to styles.css if needed) */
-.menu-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: #734a1d; /* Brown color */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
-}
-
-.menu-button:hover {
-    background-color: #5a3714; /* Darker brown on hover */
-}
-
 /* Sweet Notes */
 .sweet-notes {
     padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(115, 74, 29, 0.2);
+    margin: 2rem auto;
+    max-width: 1000px;
 }
 
 .notes-container {
@@ -310,7 +320,7 @@
 }
 
 .note {
-    background: white;
+    background: #f8e8d8;
     padding: 1.5rem;
     border-radius: 15px;
     width: 250px;
@@ -322,132 +332,7 @@
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Love Letter Styles (Same as Chocolate Day, but adjust colors if needed) */
-#love-letter-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.love-letter-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #c69b7b, #734a1d);
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 1001;
-}
-
-.love-letter-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.love-letter {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 350px;
-    background: #f8e8d8;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transform: translateY(20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.love-letter.show {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-}
-
-.love-letter-content {
-    padding: 20px;
-    max-height: 70vh;
-    overflow-y: auto;
-}
-
-.love-letter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(115, 74, 29, 0.2);
-}
-
-.love-letter-header h3 {
-    color: #734a1d;
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.close-letter {
-    background: none;
-    border: none;
-    color: #734a1d;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.close-letter:hover {
-    background: rgba(115, 74, 29, 0.1);
-}
-
-.love-letter-body {
-    color: #734a1d;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.love-letter-body p {
-    margin-bottom: 15px;
-}
-
-.love-letter-body ul {
-    margin: 15px 0;
-    padding-left: 20px;
-}
-
-.love-letter-body li {
-    margin-bottom: 10px;
-    list-style-type: none;
-    position: relative;
-    padding-left: 25px;
-}
-
-.love-letter-body li:before {
-    content: '🧸';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.love-letter-signature {
-    margin-top: 20px;
-    text-align: right;
-    font-style: italic;
-    color: #c69b7b;
-}
-
-/* Animations (Same as Chocolate Day, but adjust timing/details if needed) */
+/* Animations */
 @keyframes teddyFall {
     0% {
         opacity: 0;
@@ -470,70 +355,24 @@
     50% { transform: translateY(-10px); }
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-@keyframes bounceArrow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-}
-
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
 
-/* Teddy positioning */
-.teddy:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
-.teddy:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
-.teddy:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
-.teddy:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; }
-.teddy:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
-.teddy:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
-.teddy:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
-.teddy:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
-.teddy:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 2.7s; }
-.teddy:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 0.2s; }
-.teddy:nth-child(11) { left: 10%; animation-duration: 11s; animation-delay: 3s; }
-.teddy:nth-child(12) { left: 20%; animation-duration: 9s; animation-delay: 3.5s; }
-.teddy:nth-child(13) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
-.teddy:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
-.teddy:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
-
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
     .bear-customization-area {
-        flex-direction: column; /* Stack the bear display and options */
-        align-items: center; /* Center them horizontally */
+        flex-direction: column;
+        align-items: center;
     }
 
     .bear-display, .customization-options {
-        width: 80%; /* Make them take up more width */
-        max-width: 500px; /* But don't let them get too wide */
+        width: 100%;
+        max-width: 350px;
     }
 
-    .memory-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .teddy-day-header h1 {
-        font-size: 2.5rem;
-    }
-
-    .memory-container {
-        grid-template-columns: 1fr;
-    }
-
-    .fact-bubble {
-        max-width: 100%;
-    }
-
-    .notes-container {
-        flex-direction: column;
-        align-items: center;
+    .memory-card, .fact-bubble, .note {
+        width: 100%;
     }
 }
