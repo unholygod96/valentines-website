@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.timer = null;
             this.cards = ['🐻', '🧸', '🎀', '🎈', '🎁', '❤️', '🍯', '🌈'];
             this.cards = [...this.cards, ...this.cards];
+            this.flippedCards = [];
             this.updateDisplay();
             this.setupEventListeners();
             this.createGameGrid();
