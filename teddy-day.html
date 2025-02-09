@@ -3,88 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day</title>
-    <link rel="stylesheet" href="teddy-day.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Happy Teddy Day!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Happy Teddy Day, My Love!</h1>
+    </header>
+
     <main>
-        <header>
-            <h1>Happy Teddy Day</h1>
-            <p>Create your perfect teddy companion! 🐻</p>
-        </header>
-
-        <div class="teddy-container">
-            <!-- Teddy Preview -->
-            <div class="teddy-preview">
-                <div class="teddy-ears">
-                    <div class="ear left"></div>
-                    <div class="ear right"></div>
+        <section id="bear-customizer">
+            <h2>Build Your Teddy Bear</h2>
+            <div id="bear-canvas-container">
+                <canvas id="bear-canvas" width="400" height="400"></canvas>
+            </div>
+            <div id="customization-options">
+                <h3>Customize Your Bear</h3>
+                <div class="option-group">
+                    <label for="fur-color">Fur Color:</label>
+                    <select id="fur-color">
+                        <option value="brown">Brown</option>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                        <option value="pink">Pink</option>
+                    </select>
                 </div>
-                <div class="teddy-face"></div>
-                <div class="teddy-body"></div>
-                <div class="teddy-accessory"></div>
+                <div class="option-group">
+                    <label for="eye-color">Eye Color:</label>
+                    <select id="eye-color">
+                        <option value="black">Black</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="brown">Brown</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="clothing">Clothing:</label>
+                    <select id="clothing">
+                        <option value="none">None</option>
+                        <option value="shirt">Shirt</option>
+                        <option value="dress">Dress</option>
+                        <option value="bowtie">Bowtie</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="accessory">Accessory:</label>
+                    <select id="accessory">
+                        <option value="none">None</option>
+                        <option value="hat">Hat</option>
+                        <option value="glasses">Glasses</option>
+                        <option value="scarf">Scarf</option>
+                    </select>
+                </div>
+                <button id="animate-bear">Animate Bear</button>
+                <button id="save-bear">Save Bear</button>
             </div>
-
-            <!-- Customization Panel -->
-            <div class="customization-panel">
-                <section class="option-section">
-                    <h2>Choose Expression</h2>
-                    <div class="expression-grid">
-                        <button class="expression-btn" data-expression="😊">😊</button>
-                        <button class="expression-btn" data-expression="🥰">🥰</button>
-                        <button class="expression-btn" data-expression="😍">😍</button>
-                        <button class="expression-btn" data-expression="🤗">🤗</button>
-                        <button class="expression-btn" data-expression="😎">😎</button>
-                        <button class="expression-btn" data-expression="🥳">🥳</button>
-                    </div>
-                </section>
-
-                <section class="option-section">
-                    <h2>Choose Color</h2>
-                    <input type="color" id="color-picker" value="#8b4513">
-                </section>
-
-                <section class="option-section">
-                    <h2>Add Accessory</h2>
-                    <div class="accessory-grid">
-                        <button class="accessory-btn" data-accessory="🎀">🎀</button>
-                        <button class="accessory-btn" data-accessory="👑">👑</button>
-                        <button class="accessory-btn" data-accessory="🎩">🎩</button>
-                        <button class="accessory-btn" data-accessory="🧣">🧣</button>
-                        <button class="accessory-btn" data-accessory="🕶️">🕶️</button>
-                        <button class="accessory-btn" data-accessory="🎸">🎸</button>
-                    </div>
-                </section>
-
-                <button id="save-teddy">Save My Teddy</button>
-            </div>
-        </div>
-
-        <section class="memory-game">
-            <h2>Teddy Memory Lane</h2>
-            <div class="game-stats">
-                <span class="moves">Moves: 0</span>
-                <span class="time">Time: 0:00</span>
-                <button class="reset-btn">Reset Game</button>
-            </div>
-            <div class="game-grid"></div>
         </section>
 
-        <section class="wish-section">
-            <h2>Send a Teddy Wish</h2>
-            <textarea placeholder="Write your teddy wish here..."></textarea>
-            <button class="send-wish">Send Wish</button>
-            <div class="wishes-display"></div>
+        <section id="bear-gallery">
+            <h2>Your Teddy Bear Gallery</h2>
+            <div id="gallery-container"></div>
         </section>
 
-        <footer>
-            <p>Made with ❤️ for Teddy Day</p>
-        </footer>
+        <section id="comforting-messages">
+            <h2>Teddy Bear Hugs</h2>
+            <div id="message-container"></div>
+        </section>
+
+        <section id="mini-games">
+            <h2>Teddy Bear Games</h2>
+            <div class="game-container">
+                <h3>Dress-Up Challenge</h3>
+                <div id="dress-up-game"></div>
+            </div>
+            <div class="game-container">
+                <h3>Bear Hug Catcher</h3>
+                <div id="bear-hug-game"></div>
+            </div>
+        </section>
+
+        <section id="love-notes">
+            <h2>Love Notes</h2>
+            <textarea id="love-note-input" placeholder="Write a love note..."></textarea>
+            <button id="save-note">Save Note</button>
+            <div id="love-notes-container"></div>
+        </section>
     </main>
 
-    <script src="teddy-day.js"></script>
+    <footer>
+        <p>Created with love for you, my dear. Happy Teddy Day!</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
-
