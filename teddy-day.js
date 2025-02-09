@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => teddy.remove(), duration * 1000);
     }
 
-    // Create chocolates periodically
+    // Create teddies periodically
     setInterval(createTeddy, 500);
 
     //Memory Cards Animation
@@ -317,6 +317,30 @@ document.addEventListener('DOMContentLoaded', function() {
         currentBearConfig = JSON.parse(savedBearData);
         drawBear(currentBearConfig);
     }
+
+    // Additional comforting lines
+    const additionalComfortingLines = [
+        "A teddy is a hug made lovable.",
+        "May your day be filled with bear hugs and sweet moments.",
+        "Sending you a teddy and all my love."
+    ];
+
+    // Function to add more comforting lines dynamically
+    function addComfortingLines(lines) {
+        const sweetMemoriesSection = document.querySelector('.sweet-memories .memory-container');
+        lines.forEach(line => {
+            const memoryCard = document.createElement('div');
+            memoryCard.className = 'memory-card';
+            memoryCard.innerHTML = `
+                <h3>A Teddy to Remind You of My Love</h3>
+                <p>${line}</p>
+            `;
+            sweetMemoriesSection.appendChild(memoryCard);
+        });
+    }
+
+    // Call the function to add the lines
+    addComfortingLines(additionalComfortingLines);
 
     //Initialize
     createTeddy();
