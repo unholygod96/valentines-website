@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const playAnimationButton = document.getElementById('play-animation');
   const saveTeddyButton = document.getElementById('save-teddy');
   const loadTeddyButton = document.getElementById('load-teddy');
+  const randomizeButton = document.getElementById('randomize-teddy');
+  const resetButton = document.getElementById('reset-customization');
 
   const furColorInput = document.getElementById('fur-color');
   const eyeColorInput = document.getElementById('eye-color');
@@ -57,31 +59,32 @@ document.addEventListener('DOMContentLoaded', function() {
   const teddyClothing = document.getElementById('teddy-clothing');
   const teddyHat = document.getElementById('teddy-hat');
 
-  applyButton.addEventListener('click', function() {
-    // Apply fur color
+  // Function to update the teddy preview based on current input values
+  function updateTeddyPreview() {
     const furColor = furColorInput.value;
+    const eyeColor = eyeColorInput.value;
+    const clothingColor = clothingColorInput.value;
+    const accessory = accessorySelect.value;
+
+    // Update fur
     teddyHead.setAttribute('fill', furColor);
     teddyEarLeft.setAttribute('fill', furColor);
     teddyEarRight.setAttribute('fill', furColor);
     teddyBody.setAttribute('fill', furColor);
-    
-    // Apply eye color
-    const eyeColor = eyeColorInput.value;
+
+    // Update eyes
     teddyEyeLeft.setAttribute('fill', eyeColor);
     teddyEyeRight.setAttribute('fill', eyeColor);
-    
-    // Apply clothing color
-    const clothingColor = clothingColorInput.value;
+
+    // Update clothing color
     teddyClothing.setAttribute('fill', clothingColor);
-    
-    // Apply accessory
-    const accessory = accessorySelect.value;
+
+    // Update accessory display
     if (accessory === 'hat') {
       teddyHat.style.display = 'block';
       teddyHat.setAttribute('fill', clothingColor);
       teddyClothing.style.stroke = 'none';
     } else if (accessory === 'scarf') {
-      // For demonstration, add a red stroke to simulate a scarf effect.
       teddyHat.style.display = 'none';
       teddyClothing.style.stroke = '#FF0000';
       teddyClothing.style.strokeWidth = '4';
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
       teddyClothing.style.stroke = 'none';
     }
     
-    // Save configuration to a variable for later saving
+    // Update the current config variable (used for saving)
     currentTeddyConfig = {
       furColor: furColor,
       eyeColor: eyeColor,
@@ -98,8 +101,49 @@ document.addEventListener('DOMContentLoaded', function() {
       accessory: accessory,
       animation: animationSelect.value
     };
-    
+  }
+
+  // Live update: add event listeners to input fields so changes update the preview immediately
+  furColorInput.addEventListener('input', updateTeddyPreview);
+  eyeColorInput.addEventListener('input', updateTeddyPreview);
+  clothingColorInput.addEventListener('input', updateTeddyPreview);
+  accessorySelect.addEventListener('change', updateTeddyPreview);
+  animationSelect.addEventListener('change', updateTeddyPreview);
+
+  // Apply Customization button (also forces an update)
+  applyButton.addEventListener('click', function() {
+    updateTeddyPreview();
     displayTemporaryMessage("Your teddy is now as unique as our love!", 2000);
+  });
+
+  // Randomize Teddy: assign random colors and options
+  randomizeButton.addEventListener('click', function() {
+    // Random color generator in hex format
+    function getRandomColor() {
+      return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+    }
+    furColorInput.value = getRandomColor();
+    eyeColorInput.value = getRandomColor();
+    clothingColorInput.value = getRandomColor();
+    // Randomly pick an accessory from the options
+    const accessories = ['none', 'hat', 'scarf'];
+    accessorySelect.value = accessories[Math.floor(Math.random() * accessories.length)];
+    // Randomly pick an animation option
+    const animations = ['none', 'flying-kiss', 'hug', 'wave'];
+    animationSelect.value = animations[Math.floor(Math.random() * animations.length)];
+    updateTeddyPreview();
+    displayTemporaryMessage("Teddy randomized for extra charm!", 2000);
+  });
+
+  // Reset Customization: revert to default values
+  resetButton.addEventListener('click', function() {
+    furColorInput.value = "#D2B48C";
+    eyeColorInput.value = "#000000";
+    clothingColorInput.value = "#FFB6C1";
+    accessorySelect.value = "none";
+    animationSelect.value = "none";
+    updateTeddyPreview();
+    displayTemporaryMessage("Teddy reset to default!", 2000);
   });
 
   // Display a temporary message on the screen
@@ -121,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Teddy Animation Functionality
   playAnimationButton.addEventListener('click', function() {
     const animation = animationSelect.value;
-    // Add a temporary CSS class for animation on the SVG container
     const teddyContainer = document.getElementById('teddy-svg');
     if (animation === 'flying-kiss') {
       teddyContainer.classList.add('flying-kiss-animation');
@@ -136,7 +179,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Save teddy configuration (simulate saving to Google Drive)
-  // Here we simply create a downloadable JSON file.
   let currentTeddyConfig = {};
   saveTeddyButton.addEventListener('click', function() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentTeddyConfig));
@@ -147,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
     displayTemporaryMessage("Teddy saved! You can upload the file later.", 2000);
-    // For true Google Drive integration, you could integrate the Google Picker API here.
   });
 
   // Load teddy configuration (simulate loading)
@@ -165,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clothingColorInput.value = config.clothingColor;
         accessorySelect.value = config.accessory;
         animationSelect.value = config.animation;
-        applyButton.click();
+        updateTeddyPreview();
         displayTemporaryMessage("Teddy loaded!", 2000);
       };
       reader.readAsText(file);
