@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Sweet Messages Animation
+  /********************
+   * Sweet Messages Animation
+   ********************/
   const sweetMessages = [
     "You're as cuddly as a teddy! 🧸",
     "Life is cozy with you! ✨",
@@ -15,12 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function showMessage() {
     messageElement.style.opacity = '0';
     messageElement.style.transform = 'translateY(20px)';
-
     setTimeout(() => {
       messageElement.textContent = sweetMessages[currentIndex];
       messageElement.style.opacity = '1';
       messageElement.style.transform = 'translateY(0)';
-
       currentIndex = (currentIndex + 1) % sweetMessages.length;
       setTimeout(showMessage, 3000);
     }, 500);
@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Start message animation
   showMessage();
 
-  // Falling Teddies Animation
+  /********************
+   * Falling Teddies Animation
+   ********************/
   function createTeddy() {
     const teddy = document.createElement('div');
     teddy.className = 'teddy';
@@ -45,7 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Create teddies periodically
   setInterval(createTeddy, 500);
 
-  // Memory Cards Animation
+  /********************
+   * Memory Cards Animation
+   ********************/
   const memoryCards = document.querySelectorAll('.memory-card');
   memoryCards.forEach(card => {
     card.addEventListener('mouseenter', function () {
@@ -68,7 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Interactive Teddy Animation
+  /********************
+   * Interactive Teddy Animation
+   ********************/
   const magicTeddy = document.querySelector('.magic-teddy');
   const wishText = document.querySelector('.wish-text');
 
@@ -97,30 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Sweet Notes Hover Effect
-  const notes = document.querySelectorAll('.note');
-  notes.forEach(note => {
-    note.addEventListener('mouseenter', function () {
-      this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
-      createNoteSparkles(this);
-    });
-    note.addEventListener('mouseleave', function () {
-      this.style.transform = 'scale(1) rotate(0deg)';
-    });
-  });
-
-  function createNoteSparkles(element) {
-    for (let i = 0; i < 6; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = Math.random() * 100 + '%';
-      sparkle.style.top = Math.random() * 100 + '%';
-      element.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 1000);
-    }
-  }
-
-  // Love Letter Toggle
+  /********************
+   * Love Letter Toggle
+   ********************/
   const loveLetterButton = document.getElementById('love-letter-button');
   const loveLetter = document.getElementById('love-letter');
   const closeLetter = document.getElementById('close-letter');
@@ -153,7 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Background Music Toggle
+  /********************
+   * Background Music Toggle
+   ********************/
   const musicButton = document.getElementById('toggle-music');
   const backgroundMusic = document.getElementById('background-music');
 
@@ -167,7 +154,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Timer Functions
+  /********************
+   * Timer Functions
+   ********************/
   const timerDisplay = document.getElementById('custom-timer-display');
   let timerInterval;
   let endTime = null;
@@ -224,116 +213,139 @@ document.addEventListener('DOMContentLoaded', function () {
       `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   }
 
-  // Build-a-Bear Functionality
+  /********************
+   * Build-a-Bear Functionality with Enhanced Animations
+   ********************/
   const bearCanvas = document.getElementById('bearCanvas');
   const ctx = bearCanvas.getContext('2d');
   let currentBearConfig = {};
 
-  function drawBear(config) {
+  // Modified drawBear function that accepts a timestamp (t) for animations.
+  function drawBear(config, t) {
     ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
-    // Default configurations
-    const defaultFurColor = '#8B4513';
-    const defaultEyeColor = '#000000';
-    const defaultClothing = 'none';
-    const defaultAccessories = 'none';
-    const defaultExpression = 'smile';
-    const defaultAnimation = 'none';
 
-    const furColor = config.furColor || defaultFurColor;
-    const eyeColor = config.eyeColor || defaultEyeColor;
-    const clothing = config.clothing || defaultClothing;
-    const accessories = config.accessories || defaultAccessories;
-    const expression = config.expression || defaultExpression;
-    const animation = config.animation || defaultAnimation;
+    // Calculate bounce offset (for bounce animation)
+    let bounceOffset = 0;
+    if (config.animation === 'bounce') {
+      bounceOffset = 5 * Math.sin(t / 200);
+    }
 
-    // Draw bear body
-    ctx.fillStyle = furColor;
+    // Determine if we should blink (for blink animation)
+    let blink = false;
+    if (config.animation === 'blink') {
+      // Blink for 200ms every 3000ms
+      if (t % 3000 < 200) {
+        blink = true;
+      }
+    }
+
+    // Draw the bear body, head, and ears (with bounce offset)
+    ctx.fillStyle = config.furColor || '#8B4513';
     // Body
     ctx.beginPath();
-    ctx.ellipse(150, 200, 60, 80, 0, 0, 2 * Math.PI);
+    ctx.ellipse(150, 200 + bounceOffset, 60, 80, 0, 0, 2 * Math.PI);
     ctx.fill();
     // Head
     ctx.beginPath();
-    ctx.arc(150, 120, 40, 0, 2 * Math.PI);
+    ctx.arc(150, 120 + bounceOffset, 40, 0, 2 * Math.PI);
     ctx.fill();
     // Ears
     ctx.beginPath();
-    ctx.arc(110, 70, 20, 0, 2 * Math.PI);
+    ctx.arc(110, 70 + bounceOffset, 20, 0, 2 * Math.PI);
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(190, 70, 20, 0, 2 * Math.PI);
+    ctx.arc(190, 70 + bounceOffset, 20, 0, 2 * Math.PI);
     ctx.fill();
-    // Eyes
-    ctx.fillStyle = eyeColor;
-    ctx.beginPath();
-    ctx.arc(130, 110, 7, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(170, 110, 7, 0, 2 * Math.PI);
-    ctx.fill();
+
+    // Draw Eyes (blink effect)
+    if (blink) {
+      ctx.strokeStyle = config.eyeColor || '#000000';
+      ctx.lineWidth = 2;
+      // Left eye (line)
+      ctx.beginPath();
+      ctx.moveTo(123, 110 + bounceOffset);
+      ctx.lineTo(137, 110 + bounceOffset);
+      ctx.stroke();
+      // Right eye (line)
+      ctx.beginPath();
+      ctx.moveTo(163, 110 + bounceOffset);
+      ctx.lineTo(177, 110 + bounceOffset);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = config.eyeColor || '#000000';
+      ctx.beginPath();
+      ctx.arc(130, 110 + bounceOffset, 7, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(170, 110 + bounceOffset, 7, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
     // Nose
     ctx.fillStyle = 'black';
     ctx.beginPath();
-    ctx.arc(150, 140, 4, 0, 2 * Math.PI);
+    ctx.arc(150, 140 + bounceOffset, 4, 0, 2 * Math.PI);
     ctx.fill();
+
     // Mouth (Expressions)
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    if (expression === 'smile') {
-      ctx.arc(150, 160, 20, 0, Math.PI);
-    } else if (expression === 'sad') {
-      ctx.arc(150, 180, 20, Math.PI, 2 * Math.PI);
-    } else if (expression === 'love') {
-      ctx.moveTo(140, 160);
-      ctx.quadraticCurveTo(150, 170, 160, 160);
-      ctx.moveTo(140, 160);
-      ctx.quadraticCurveTo(150, 150, 160, 160);
+    if (config.expression === 'smile') {
+      ctx.arc(150, 160 + bounceOffset, 20, 0, Math.PI);
+    } else if (config.expression === 'sad') {
+      ctx.arc(150, 180 + bounceOffset, 20, Math.PI, 2 * Math.PI);
+    } else if (config.expression === 'love') {
+      ctx.moveTo(140, 160 + bounceOffset);
+      ctx.quadraticCurveTo(150, 170 + bounceOffset, 160, 160 + bounceOffset);
+      ctx.moveTo(140, 160 + bounceOffset);
+      ctx.quadraticCurveTo(150, 150 + bounceOffset, 160, 160 + bounceOffset);
     }
     ctx.stroke();
+
     // Clothing
-    if (clothing === 'hat') {
+    if (config.clothing === 'hat') {
       ctx.fillStyle = 'red';
       ctx.beginPath();
-      ctx.ellipse(150, 50, 30, 15, 0, 0, Math.PI);
+      ctx.ellipse(150, 50 + bounceOffset, 30, 15, 0, 0, Math.PI);
       ctx.fill();
-    } else if (clothing === 'shirt') {
+    } else if (config.clothing === 'shirt') {
       ctx.fillStyle = 'blue';
-      ctx.fillRect(90, 170, 120, 50);
+      ctx.fillRect(90, 170 + bounceOffset, 120, 50);
     }
+
     // Accessories
-    if (accessories === 'scarf') {
+    if (config.accessories === 'scarf') {
       ctx.fillStyle = 'purple';
-      ctx.fillRect(90, 170, 120, 20);
-    } else if (accessories === 'bow') {
-      // Simple bow near the ear
+      ctx.fillRect(90, 170 + bounceOffset, 120, 20);
+    } else if (config.accessories === 'bow') {
       ctx.fillStyle = 'pink';
       ctx.beginPath();
-      ctx.moveTo(200, 100);
-      ctx.lineTo(210, 110);
-      ctx.lineTo(200, 120);
+      ctx.moveTo(200, 100 + bounceOffset);
+      ctx.lineTo(210, 110 + bounceOffset);
+      ctx.lineTo(200, 120 + bounceOffset);
       ctx.closePath();
       ctx.fill();
     }
-    // Animation example: waving paw
-    if (animation === 'wave') {
+
+    // Existing wave animation remains
+    if (config.animation === 'wave') {
       ctx.beginPath();
-      ctx.arc(80, 220, 15, 0.5 * Math.PI, 1.5 * Math.PI);
+      ctx.arc(80, 220 + bounceOffset, 15, 0.5 * Math.PI, 1.5 * Math.PI);
       ctx.stroke();
     }
   }
 
-  // Download function
-  function download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+  // Continuous animation loop for the teddy bear
+  function animateBear(timestamp) {
+    // Only draw if a config exists; otherwise, draw default bear.
+    drawBear(currentBearConfig, timestamp);
+    requestAnimationFrame(animateBear);
   }
 
+  /********************
+   * Customization & Local Storage for Bear Configuration
+   ********************/
   document.getElementById('customizeButton').addEventListener('click', function () {
     currentBearConfig = {
       furColor: document.getElementById('furColor').value,
@@ -343,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
       expression: document.getElementById('expression').value,
       animation: document.getElementById('animation').value
     };
-    drawBear(currentBearConfig);
+    // Save configuration to localStorage
     saveBearConfig();
   });
 
@@ -366,11 +378,73 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
       document.getElementById('expression').value = currentBearConfig.expression || 'smile';
       document.getElementById('animation').value = currentBearConfig.animation || 'none';
-      drawBear(currentBearConfig);
+    } else {
+      // Set a default configuration if none is saved
+      currentBearConfig = {
+        furColor: '#8B4513',
+        eyeColor: '#000000',
+        clothing: 'none',
+        accessories: 'none',
+        expression: 'smile',
+        animation: 'none'
+      };
     }
   }
 
-  // Add additional colors to the furColor select
+  // Download function (for saving configuration as file)
+  function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  /********************
+   * Wish Saving Functionality (using localStorage)
+   ********************/
+  document.getElementById('submit-wish').addEventListener('click', function () {
+    const wishInput = document.getElementById('wish-input');
+    const wishText = wishInput.value.trim();
+    if (wishText.length > 0) {
+      let wishes = localStorage.getItem('wishes');
+      if (wishes) {
+        wishes = JSON.parse(wishes);
+      } else {
+        wishes = [];
+      }
+      wishes.push(wishText);
+      localStorage.setItem('wishes', JSON.stringify(wishes));
+      updateWishesDisplay();
+      wishInput.value = '';
+    }
+  });
+
+  function updateWishesDisplay() {
+    let wishes = localStorage.getItem('wishes');
+    const wishesList = document.getElementById('wishes-list');
+    wishesList.innerHTML = '';
+    if (wishes) {
+      wishes = JSON.parse(wishes);
+      wishes.forEach(function (wish) {
+        const li = document.createElement('li');
+        li.textContent = wish;
+        wishesList.appendChild(li);
+      });
+    }
+  }
+
+  /********************
+   * Initialize & Start Animations
+   ********************/
+  loadBearConfig();
+  updateWishesDisplay();
+  // Start the continuous animation loop for the teddy bear.
+  requestAnimationFrame(animateBear);
+
+  // (Optional) Add extra colors to the furColor select
   const furColorSelect = document.getElementById('furColor');
   const colors = ['#8B4513', '#654321', '#FFFFFF', '#FFC0CB', '#ADD8E6', '#FFFF00', '#800080', '#808080', '#FFA500', '#008000'];
   colors.forEach(color => {
@@ -379,6 +453,4 @@ document.addEventListener('DOMContentLoaded', function () {
     option.text = color;
     furColorSelect.add(option);
   });
-
-  loadBearConfig();
 });
