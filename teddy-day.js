@@ -230,53 +230,78 @@ document.addEventListener('DOMContentLoaded', function() {
         // Default configurations
         const defaultFurColor = 'lightBrown';
         const defaultEyeColor = 'black';
+        const defaultClothing = 'none';
+        const defaultAccessories = 'none';
+        const defaultExpression = 'smile';
 
         // Use provided configurations or defaults
         const furColor = config.furColor || defaultFurColor;
         const eyeColor = config.eyeColor || defaultEyeColor;
+        const clothing = config.clothing || defaultClothing;
+        const accessories = config.accessories || defaultAccessories;
+        const expression = config.expression || defaultExpression;
 
         // Draw the bear head and body
         ctx.fillStyle = furColor;
-        ctx.beginPath();
+
         // Head
-        ctx.ellipse(150, 130, 60, 70, 0, 0, 2 * Math.PI);
-        // Body
-        ctx.ellipse(150, 270, 70, 90, 0, 0, 2 * Math.PI);
-        ctx.fill();
-
-        // Draw the ears
-        ctx.fillStyle = furColor;
         ctx.beginPath();
-        ctx.arc(90, 90, 20, 0, 2 * Math.PI);  // Left ear
-        ctx.arc(210, 90, 20, 0, 2 * Math.PI); // Right ear
+        ctx.arc(150, 100, 50, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Draw the eyes
+        // Body
+        ctx.beginPath();
+        ctx.ellipse(150, 250, 60, 80, 0, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Ears
+        ctx.beginPath();
+        ctx.arc(100, 70, 20, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(200, 70, 20, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Eyes
         ctx.fillStyle = eyeColor;
         ctx.beginPath();
-        ctx.arc(120, 120, 8, 0, 2 * Math.PI); // Left eye
-        ctx.arc(180, 120, 8, 0, 2 * Math.PI); // Right eye
+        ctx.arc(130, 90, 7, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Draw the nose
+        ctx.beginPath();
+        ctx.arc(170, 90, 7, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Nose
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.arc(150, 170, 5, 0, 2 * Math.PI);
+        ctx.arc(150, 130, 4, 0, 2 * Math.PI);
         ctx.fill();
 
         // Smile
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
+
         ctx.beginPath();
-        ctx.arc(150, 190, 30, 0, Math.PI);
+        if (expression === 'smile') {
+            ctx.arc(150, 150, 20, 0, Math.PI);
+        } else if (expression === 'sad') {
+            ctx.arc(150, 170, 20, Math.PI, 2 * Math.PI);
+        }
         ctx.stroke();
 
-        // Add paws
-        ctx.fillStyle = furColor;
-        ctx.beginPath();
-        ctx.arc(80, 300, 20, 0, 2 * Math.PI);  // Left paw
-        ctx.arc(220, 300, 20, 0, 2 * Math.PI); // Right paw
-        ctx.fill();
+        // Clothing
+        if (clothing === 'shirt') {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(90, 170, 120, 50);
+        }
+
+        // Accessories
+        if (accessories === 'scarf') {
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(90, 170, 120, 20);
+        }
     }
 
     // Initial draw
@@ -293,6 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
             animation: document.getElementById('animation').value
         };
         drawBear(currentBearConfig);
+        saveBearConfig(); // Save the configuration after customizing
     });
 
     document.getElementById('submit-wish').addEventListener('click', function() {
@@ -320,26 +346,28 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(mailtoLink, '_blank');
     }
 
-    // Placeholder for Google Drive integration
-    document.getElementById('saveButton').addEventListener('click', function() {
-        // **IMPORTANT:** Replace this with actual Google Drive API code
-        // 1. Authenticate with Google Drive API
-        // 2. Convert bear configuration to JSON
-        // 3. Upload JSON to Google Drive
-        // 4. Store the Google Drive link somewhere (e.g., local storage)
-        const bearData = JSON.stringify(currentBearConfig);
-        console.log("Saving bear configuration:", bearData);
-        alert("Saving to Google Drive (Not fully implemented). Check console for data.");
-        // Placeholder for storing the configuration
-        localStorage.setItem('savedBear', bearData);
-    });
-
-    // Check if there's a saved bear configuration
-    const savedBearData = localStorage.getItem('savedBear');
-    if (savedBearData) {
-        currentBearConfig = JSON.parse(savedBearData);
-        drawBear(currentBearConfig);
+    // Persistent saving to localStorage
+    function saveBearConfig() {
+        localStorage.setItem('bearConfig', JSON.stringify(currentBearConfig));
     }
+
+    function loadBearConfig() {
+        const storedConfig = localStorage.getItem('bearConfig');
+        if (storedConfig) {
+            currentBearConfig = JSON.parse(storedConfig);
+            // Set select values to match stored config
+            document.getElementById('furColor').value = currentBearConfig.furColor || 'lightBrown';
+            document.getElementById('eyeColor').value = currentBearConfig.eyeColor || 'black';
+            document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
+            document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
+            document.getElementById('expression').value = currentBearConfig.expression || 'smile';
+
+            drawBear(currentBearConfig);
+        }
+    }
+
+    // Call loadBearConfig to load saved configuration on page load
+    loadBearConfig();
 
     // Additional comforting lines
     const additionalComfortingLines = [
