@@ -139,6 +139,12 @@
   background: #5a381e;
 }
 
+/* Mini Game Teddy Styles */
+.game-teddy {
+  pointer-events: auto;
+  z-index: 2;
+}
+
 /* Comforting Lines */
 .teddy-comforting-lines {
   text-align: center;
@@ -196,43 +202,7 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* Write Wish Section */
-.write-wish {
-  padding: 3rem 2rem;
-  background: #fcebd0;
-  text-align: center;
-}
-
-.write-wish form {
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.write-wish textarea {
-  width: 300px;
-  height: 100px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  resize: none;
-}
-
-.write-wish button {
-  display: block;
-  width: 150px;
-  padding: 10px;
-  margin: 10px auto;
-  background: #8b4513;
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.write-wish button:hover {
-  background: #5a381e;
-}
+/* Write Wish Section - REMOVED as per request */
 
 /* Love Letter Styles */
 #love-letter-container {
