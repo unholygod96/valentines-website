@@ -1,26 +1,25 @@
-/* Teddy Day Theme with a warm, cuddly gradient */
+/* Teddy Day Theme – Warm brownish gradient */
 .teddy-day-theme {
-  background: linear-gradient(135deg, #FADBD8 0%, #FDEBD0 100%);
-  color: #6D4C41;
+  background: linear-gradient(135deg, #A0522D 0%, #D2B48C 100%);
+  color: #fff;
+  font-family: sans-serif;
 }
 
 /* Teddy Day Header */
 .teddy-day-header {
-  background: linear-gradient(to bottom, #00838f 0%, #004d40 100%);
+  background: linear-gradient(to bottom, #5D4037 0%, #3E2723 100%);
   padding: 2rem;
   position: relative;
   overflow: hidden;
 }
-
 .teddy-day-header h1 {
   font-size: 3rem;
-  color: #e0f7fa;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #F5F5F5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   animation: floatText 3s ease-in-out infinite;
 }
-
 .header-subtitle {
-  color: #b2ebf2;
+  color: #FFECB3;
   font-size: 1.3rem;
   margin-top: 10px;
   opacity: 0.9;
@@ -35,14 +34,13 @@
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  background: rgba(0, 150, 136, 0.1);
+  background: rgba(94, 53, 177, 0.1);
   border-radius: 15px;
   overflow: hidden;
 }
-
 .message-text {
   font-size: 2rem;
-  color: #e0f7fa;
+  color: #F5F5F5;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   opacity: 0;
@@ -50,7 +48,6 @@
   transition: all 0.5s ease;
   padding: 10px;
 }
-
 .message-text.active {
   opacity: 1;
   transform: translateY(0);
@@ -66,15 +63,13 @@
   pointer-events: none;
   z-index: 1;
 }
-
 .teddy {
   position: absolute;
   font-size: 30px;
   opacity: 0;
   animation: teddyFall linear infinite;
-  filter: drop-shadow(0 0 5px rgba(0, 77, 64, 0.3));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
 }
-
 @keyframes teddyFall {
   0% {
     opacity: 0;
@@ -95,9 +90,8 @@
 /* Build a Bear Section */
 .build-bear {
   padding: 3rem 2rem;
-  background: #e0f7fa;
+  background: #D7CCC8;
 }
-
 .bear-builder {
   display: flex;
   flex-wrap: wrap;
@@ -105,12 +99,11 @@
   align-items: center;
   gap: 20px;
 }
-
 .bear-preview {
   width: 200px;
   height: 300px;
-  background: #ffffff;
-  border: 2px solid #004d40;
+  background: #FFF3E0;
+  border: 2px solid #3E2723;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -118,33 +111,47 @@
   position: relative;
 }
 
+/* Bear Face – improved look with radial gradient and shadow */
 .bear-face {
   width: 150px;
   height: 150px;
-  background: #ffcc80;
+  background: radial-gradient(circle at 50% 50%, #FAD6A5, #E0A96D);
   border-radius: 50%;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.bear-face.happy {
+  animation: happyBounce 0.5s ease;
+}
+@keyframes happyBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* Bear Ears */
 .bear-ears {
   position: absolute;
-  top: -30px;
-  left: 20px;
-  width: 30px;
-  height: 30px;
-  background: #ffcc80;
+  top: -20px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 50% 50%, #FAD6A5, #E0A96D);
   border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .bear-ears:after {
   content: '';
   position: absolute;
   top: 0;
-  right: -40px;
-  width: 30px;
-  height: 30px;
-  background: #ffcc80;
+  right: -50px;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 50% 50%, #FAD6A5, #E0A96D);
   border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 /* Bear Eyes */
@@ -160,8 +167,8 @@
 .bear-eyes::before,
 .bear-eyes::after {
   content: '';
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   background: #000;
   border-radius: 50%;
 }
@@ -170,14 +177,15 @@
 .bear-nose {
   position: absolute;
   top: 80px;
-  left: 60px;
-  width: 30px;
-  height: 20px;
-  background: #d32f2f;
+  left: 65px;
+  width: 20px;
+  height: 15px;
+  background: #D32F2F;
   border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Bear Mouth (Expression) */
+/* Bear Mouth */
 .bear-mouth {
   position: absolute;
   top: 110px;
@@ -185,10 +193,14 @@
   width: 40px;
   height: 20px;
   border-bottom: 3px solid #000;
-  border-radius: 50%;
+  border-radius: 0 0 40px 40px;
+  transition: border-bottom-color 0.3s ease;
+}
+.bear-mouth.no-smile {
+  border-bottom-color: transparent;
 }
 
-/* New Bear Hat */
+/* Bear Hat */
 .bear-hat {
   position: absolute;
   top: -40px;
@@ -198,6 +210,7 @@
   height: 40px;
   background: #6D4C41;
   border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .bear-hat::after {
   content: "";
@@ -209,6 +222,9 @@
   background: #6D4C41;
   border-radius: 0 0 10px 10px;
 }
+.hidden {
+  display: none;
+}
 
 /* Bear Controls */
 .bear-controls {
@@ -216,43 +232,38 @@
   flex-direction: column;
   gap: 10px;
 }
-
 .bear-controls button {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background: #00838f;
-  color: #e0f7fa;
+  background: #5D4037;
+  color: #FFF3E0;
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .bear-controls button:hover {
-  background: #004d40;
+  background: #3E2723;
 }
 
 /* Feelings Section */
 .cute-quotes {
   padding: 3rem 2rem;
-  background: #b2ebf2;
+  background: #A1887F;
 }
-
 .quotes-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
-
 .quote-card {
-  background: #ffffff;
+  background: #FFF3E0;
   padding: 1.5rem;
   border-radius: 15px;
   width: 300px;
-  box-shadow: 0 5px 15px rgba(0, 77, 64, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
-
 .quote-card:hover {
   transform: translateY(-10px);
 }
@@ -264,32 +275,29 @@
   right: 20px;
   z-index: 1000;
 }
-
 .love-letter-button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #00838f, #004d40);
+  background: linear-gradient(145deg, #5D4037, #3E2723);
   border: none;
-  color: #e0f7fa;
+  color: #FFF3E0;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   z-index: 1001;
 }
-
 .love-letter-button:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
-
 .love-letter {
   position: fixed;
   bottom: 90px;
   right: 20px;
   width: 350px;
-  background: #e0f7fa;
+  background: #FFF3E0;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transform: translateY(20px);
@@ -297,38 +305,33 @@
   visibility: hidden;
   transition: all 0.3s ease;
 }
-
 .love-letter.show {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
 }
-
 .love-letter-content {
   padding: 20px;
   max-height: 70vh;
   overflow-y: auto;
 }
-
 .love-letter-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgba(0, 77, 64, 0.2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
-
 .love-letter-header h3 {
-  color: #004d40;
+  color: #3E2723;
   margin: 0;
   font-size: 1.5rem;
 }
-
 .close-letter {
   background: none;
   border: none;
-  color: #004d40;
+  color: #3E2723;
   font-size: 24px;
   cursor: pointer;
   padding: 0;
@@ -340,33 +343,27 @@
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-
 .close-letter:hover {
-  background: rgba(0, 77, 64, 0.1);
+  background: rgba(62, 39, 35, 0.1);
 }
-
 .love-letter-body {
-  color: #004d40;
+  color: #3E2723;
   font-size: 1rem;
   line-height: 1.6;
 }
-
 .love-letter-body p {
   margin-bottom: 15px;
 }
-
 .love-letter-body ul {
   margin: 15px 0;
   padding-left: 20px;
 }
-
 .love-letter-body li {
   margin-bottom: 10px;
   list-style-type: none;
   position: relative;
   padding-left: 25px;
 }
-
 .love-letter-body li:before {
   content: '🧸';
   position: absolute;
@@ -374,12 +371,11 @@
   top: 50%;
   transform: translateY(-50%);
 }
-
 .love-letter-signature {
   margin-top: 20px;
   text-align: right;
   font-style: italic;
-  color: #00838f;
+  color: #5D4037;
 }
 
 /* Animations */
