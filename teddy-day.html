@@ -19,7 +19,6 @@
     <div class="teddy">🧸</div>
     <div class="teddy">🧸</div>
     <div class="teddy">🧸</div>
-    <!-- (Feel free to add a few static ones or let JS add them continuously) -->
   </div>
 
   <!-- Timer End Overlay -->
@@ -39,7 +38,7 @@
       <div id="message-display" class="message-text"></div>
     </div>
 
-    <!-- Timer Container (similar to Chocolate Day) -->
+    <!-- Timer Container -->
     <div id="timer-container">
       <h2 id="timer-header" contenteditable="true">Counting cuddles with you! 💫</h2>
       <div id="custom-timer">
@@ -84,41 +83,45 @@
             <div class="bear-eyes"></div>
             <div class="bear-nose"></div>
             <div class="bear-mouth"></div>
+            <!-- New hat element; hidden by default -->
+            <div class="bear-hat hidden"></div>
           </div>
         </div>
         <!-- Bear customization controls -->
         <div class="bear-controls">
           <button id="change-color">Change Color 🎨</button>
           <button id="change-expression">Change Expression 😊</button>
+          <button id="toggle-hat">Toggle Hat 🎩</button>
           <button id="reset-bear">Reset Bear 🔄</button>
+          <button id="save-bear">Save Bear 💾</button>
         </div>
       </div>
     </section>
 
-    <!-- Cute Quotes Section -->
+    <!-- Feelings Section (instead of "Cute Quotes") -->
     <section class="cute-quotes">
-      <h2>Cute Quotes to Warm Your Heart 💕</h2>
+      <h2>My Feelings For You 💕</h2>
       <div class="quotes-container">
         <div class="quote-card">
-          <p>"In your arms, I feel like the luckiest bear in the world." 🧸💖</p>
+          <p>Your hugs are the sweetest home I know. 🧸💖</p>
         </div>
         <div class="quote-card">
-          <p>"Your love is as soft as a teddy bear's hug." 🧸✨</p>
+          <p>Every cuddle with you fills my heart with joy. 🤗✨</p>
         </div>
         <div class="quote-card">
-          <p>"Every hug from you is a cuddle for my soul." 🧸💞</p>
+          <p>In your arms, I find my warmest refuge. 💕🧸</p>
         </div>
       </div>
     </section>
 
-    <!-- Love Letter Section (instructional) -->
+    <!-- Love Letter Section -->
     <section class="love-letter-section">
       <h2>Love Letter for You 💌</h2>
       <p>Click the button at the bottom-right corner to read your love letter!</p>
     </section>
   </main>
 
-  <!-- Love Letter Container (same as Chocolate Day, but with Teddy text) -->
+  <!-- Love Letter Container -->
   <div id="love-letter-container">
     <button id="love-letter-button" class="love-letter-button">💌</button>
     <div id="love-letter" class="love-letter hidden">
