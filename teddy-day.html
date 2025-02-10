@@ -1,134 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Teddy Day! 🧸</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="teddy-day.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teddy Day 🧸</title>
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Teddy Day Specific CSS -->
+  <link rel="stylesheet" href="teddy-day.css" />
 </head>
 <body class="teddy-day-theme">
+  <!-- Menu Button -->
+  <button id="menu-button" class="menu-button">☰</button>
 
-    <!-- Teddy Bear Rain -->
-    <div class="teddy-rain">
-        <!-- Teddy bears will be added here via JavaScript -->
+  <!-- Teddy Bears Falling Animation Container -->
+  <div class="teddy-falls">
+    <!-- Teddy bears will be created dynamically by JS -->
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <div class="teddy">🧸</div>
+    <!-- (Feel free to add a few static ones or let JS add them continuously) -->
+  </div>
+
+  <!-- Timer End Overlay -->
+  <div id="timer-end-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 id="overlay-header"></h2>
+      <button id="close-overlay">Close ✨</button>
+    </div>
+  </div>
+
+  <header class="teddy-day-header">
+    <h1>Hug Me, I'm Your Teddy! 🧸💖</h1>
+    <p class="header-subtitle">Wrapped in cuddles and love, just for you!</p>
+
+    <!-- Message Animation Container -->
+    <div class="message-container">
+      <div id="message-display" class="message-text"></div>
     </div>
 
-    <!-- Timer End Overlay -->
-    <div id="timer-end-overlay" class="overlay hidden">
-        <div class="overlay-content">
-            <h2 id="overlay-header"></h2>
-            <button id="close-overlay">Close ✨</button>
-        </div>
+    <!-- Timer Container (similar to Chocolate Day) -->
+    <div id="timer-container">
+      <h2 id="timer-header" contenteditable="true">Counting cuddles with you! 💫</h2>
+      <div id="custom-timer">
+        <span id="custom-timer-display">00:00:00</span>
+      </div>
+      <input type="datetime-local" id="calendar-input" />
+      <button id="start-timer">Start ✨</button>
+      <button id="pause-timer">Pause 💫</button>
+      <button id="reset-timer">Reset 🌟</button>
+      <button id="set-timer">Set Timer 💖</button>
     </div>
 
-    <header class="teddy-day-header">
-        <h1>Hugs and Teddies! 🧸💖</h1>
-        <p class="header-subtitle">Sending you a virtual teddy hug! 🤗</p>
+    <audio id="background-music" loop>
+      <source src="teddy-melody.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="toggle-music">🎵</button>
+  </header>
 
-        <div id="timer-container">
-            <h2 id="timer-header" contenteditable="true">Time until our next hug! 💖</h2>
-            <div id="custom-timer">
-                <span id="custom-timer-display">00:00:00</span>
-            </div>
-            <input type="datetime-local" id="calendar-input" />
-            <button id="start-timer">Start ✨</button>
-            <button id="pause-timer">Pause 💫</button>
-            <button id="reset-timer">Reset 🌟</button>
-            <button id="set-timer">Set Timer 💖</button>
+  <nav>
+    <ul>
+      <li><a href="index.html">Back to Our Journey 🏡</a></li>
+      <li><a href="rose-day.html">Rose Day 🌹</a></li>
+      <li><a href="propose-day.html">Propose Day 💍</a></li>
+      <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+      <li><a href="teddy-day.html" class="active">Teddy Day 🧸</a></li>
+      <li><a href="promise-day.html">Promise Day 🤝</a></li>
+      <li><a href="hug-day.html">Hug Day 🤗</a></li>
+      <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+      <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+    </ul>
+  </nav>
+
+  <main class="teddy-day-main">
+    <!-- Build a Bear Section -->
+    <section class="build-bear">
+      <h2>Build Your Own Bear! 🧸</h2>
+      <div class="bear-builder">
+        <!-- Bear preview -->
+        <div class="bear-preview">
+          <div class="bear-face">
+            <div class="bear-ears"></div>
+            <div class="bear-eyes"></div>
+            <div class="bear-nose"></div>
+            <div class="bear-mouth"></div>
+          </div>
         </div>
-
-        <audio id="background-music" loop>
-            <source src="double-take.mp3" type="audio/mpeg">
-        </audio>
-        <button id="toggle-music">🎵</button>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Back to Our Journey 🏡</a></li>
-            <li><a href="rose-day.html">Rose Day 🌹</a></li>
-            <li><a href="propose-day.html">Propose Day 💍</a></li>
-            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
-            <li><a href="teddy-day.html" class="active">Teddy Day 🧸</a></li>
-            <li><a href="promise-day.html">Promise Day 🤝</a></li>
-            <li><a href="hug-day.html">Hug Day 🤗</a></li>
-            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
-            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
-        </ul>
-    </nav>
-
-    <main class="teddy-day-main">
-        <section class="build-a-bear">
-            <h2>Build Your Teddy! 🧸</h2>
-            <p>Create the perfect teddy bear to send a virtual hug!</p>
-            <div class="bear-customization">
-                <div class="feature-selector">
-                    <h3>Fur Color:</h3>
-                    <select id="fur-color">
-                        <option value="brown">Brown</option>
-                        <option value="white">White</option>
-                        <option value="pink">Pink</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                </div>
-                <div class="feature-selector">
-                    <h3>Eye Color:</h3>
-                    <select id="eye-color">
-                        <option value="black">Black</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                    </select>
-                </div>
-                <div class="feature-selector">
-                    <h3>Add Accessory:</h3>
-                    <select id="accessory">
-                        <option value="none">None</option>
-                        <option value="bow">Bow</option>
-                        <option value="heart">Heart</option>
-                        <option value="hat">Hat</option>
-                    </select>
-                </div>
-            </div>
-            <div class="bear-preview">
-                <img id="bear" src="images/brown-bear.png" alt="Teddy Bear">
-                <img id="accessory-image" src="" alt="" class="accessory-image">
-            </div>
-            <button id="send-hug">Send a Hug! 🤗</button>
-        </section>
-
-        <section class="cute-quotes">
-            <h2>Cute Teddy Quotes 💖</h2>
-            <div class="quote-container">
-                <p id="quote">"A teddy bear is a friend who never judges, always comforts, and keeps all your secrets."</p>
-                <button id="new-quote">Get Another Quote</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Love Letter Container -->
-    <div id="love-letter-container">
-        <button id="love-letter-button" class="love-letter-button">💌</button>
-        <div id="love-letter" class="love-letter hidden">
-            <div class="love-letter-content">
-                <div class="love-letter-header">
-                    <h3>My Cuddly Teddy Bear 🧸</h3>
-                    <button id="close-letter" class="close-letter">×</button>
-                </div>
-                <div class="love-letter-body">
-                    <p>My dearest love,</p>
-                    <p>Sending you the biggest, warmest teddy bear hug on this Teddy Day! Just like a teddy bear, you bring comfort, joy, and endless cuddles into my life. You're my soft place to land, my constant companion, and the sweetest part of my day.</p>
-                    <p>Every time I think of you, it's like getting wrapped up in the fluffiest, most comforting embrace. Your love is like a teddy bear's hug - warm, secure, and always there when I need it.</p>
-                    <p>You fill my life with so much love, laughter, and happiness that every day feels like a cozy cuddle. You make every moment feel special and loved, and that means the world to me.</p>
-                    <p>So here’s a virtual teddy bear hug, filled with all the love in my heart. May it keep you warm until I can give you a real one!</p>
-                    <p>I love you more than words can say!</p>
-                    <p class="love-letter-signature">With all my love and cuddles,<br>Your Forever Teddy Bear</p>
-                </div>
-            </div>
+        <!-- Bear customization controls -->
+        <div class="bear-controls">
+          <button id="change-color">Change Color 🎨</button>
+          <button id="change-expression">Change Expression 😊</button>
+          <button id="reset-bear">Reset Bear 🔄</button>
         </div>
+      </div>
+    </section>
+
+    <!-- Cute Quotes Section -->
+    <section class="cute-quotes">
+      <h2>Cute Quotes to Warm Your Heart 💕</h2>
+      <div class="quotes-container">
+        <div class="quote-card">
+          <p>"In your arms, I feel like the luckiest bear in the world." 🧸💖</p>
+        </div>
+        <div class="quote-card">
+          <p>"Your love is as soft as a teddy bear's hug." 🧸✨</p>
+        </div>
+        <div class="quote-card">
+          <p>"Every hug from you is a cuddle for my soul." 🧸💞</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Letter Section (instructional) -->
+    <section class="love-letter-section">
+      <h2>Love Letter for You 💌</h2>
+      <p>Click the button at the bottom-right corner to read your love letter!</p>
+    </section>
+  </main>
+
+  <!-- Love Letter Container (same as Chocolate Day, but with Teddy text) -->
+  <div id="love-letter-container">
+    <button id="love-letter-button" class="love-letter-button">💌</button>
+    <div id="love-letter" class="love-letter hidden">
+      <div class="love-letter-content">
+        <div class="love-letter-header">
+          <h3>My Adorable Teddy 🧸</h3>
+          <button id="close-letter" class="close-letter">×</button>
+        </div>
+        <div class="love-letter-body">
+          <p>Dear Sweetheart,</p>
+          <p>
+            Just like a teddy bear, my arms are always open to give you the warmest hugs. Your smile lights up my world, and your love makes every day feel like a cuddly adventure. 🧸💖
+          </p>
+          <p>
+            I may not have fur or a button nose, but my love for you is as soft and comforting as a teddy bear’s embrace.
+          </p>
+          <p>
+            Every moment with you is a treasure, every hug a memory I cherish deeply. Let this bear be a symbol of my endless affection and warm cuddles!
+          </p>
+          <p class="love-letter-signature">
+            Forever cuddling,<br />
+            Your Teddy Love 💕
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-    <script src="teddy-day.js"></script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="teddy-day.js"></script>
 </body>
 </html>
