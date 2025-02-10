@@ -40,19 +40,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---- Build a Bear Interactive Controls ----
   const bearPreview = document.querySelector('.bear-preview .bear-face');
+  const bearMouth = document.querySelector('.bear-mouth');
+  const bearHat = document.querySelector('.bear-hat');
   const changeColorBtn = document.getElementById('change-color');
   const changeExpressionBtn = document.getElementById('change-expression');
+  const toggleHatBtn = document.getElementById('toggle-hat');
   const resetBearBtn = document.getElementById('reset-bear');
+  const saveBearBtn = document.getElementById('save-bear');
 
+  // Change the bear face color randomly
   changeColorBtn.addEventListener('click', function () {
-    // Randomize the bear face color
     const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     bearPreview.style.background = randomColor;
   });
 
+  // Toggle the bear's mouth expression (simulate smile)
   changeExpressionBtn.addEventListener('click', function () {
-    // Toggle bear mouth style to simulate an expression change
-    const bearMouth = document.querySelector('.bear-mouth');
     if (bearMouth.style.borderBottomColor === 'transparent') {
       bearMouth.style.borderBottomColor = '#000';
     } else {
@@ -60,12 +63,47 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  resetBearBtn.addEventListener('click', function () {
-    // Reset the bear’s face color and expression
-    bearPreview.style.background = '#ffcc80';
-    const bearMouth = document.querySelector('.bear-mouth');
-    bearMouth.style.borderBottomColor = '#000';
+  // Toggle the bear hat (show/hide)
+  toggleHatBtn.addEventListener('click', function () {
+    bearHat.classList.toggle('hidden');
   });
+
+  // Reset bear to default settings
+  resetBearBtn.addEventListener('click', function () {
+    bearPreview.style.background = '#ffcc80';
+    bearMouth.style.borderBottomColor = '#000';
+    bearHat.classList.add('hidden');
+  });
+
+  // Save bear configuration to localStorage
+  saveBearBtn.addEventListener('click', function () {
+    const bearConfig = {
+      faceColor: bearPreview.style.background,
+      mouthVisible: bearMouth.style.borderBottomColor !== 'transparent',
+      hatVisible: !bearHat.classList.contains('hidden')
+    };
+    localStorage.setItem('bearConfig', JSON.stringify(bearConfig));
+    alert("Bear configuration saved!");
+  });
+
+  // Load bear configuration if available
+  const savedConfig = localStorage.getItem('bearConfig');
+  if (savedConfig) {
+    const config = JSON.parse(savedConfig);
+    if (config.faceColor) {
+      bearPreview.style.background = config.faceColor;
+    }
+    if (config.mouthVisible === false) {
+      bearMouth.style.borderBottomColor = 'transparent';
+    } else {
+      bearMouth.style.borderBottomColor = '#000';
+    }
+    if (config.hatVisible) {
+      bearHat.classList.remove('hidden');
+    } else {
+      bearHat.classList.add('hidden');
+    }
+  }
 
   // ---- Love Letter Toggle ----
   const loveLetterButton = document.getElementById('love-letter-button');
