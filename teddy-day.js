@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  /* 1) Random Cute Quotes – updates every 5 seconds */
+  /* 1. Random Cute Quotes – Updates every 5 seconds */
   const cuteQuotes = [
     "You are the sweetest part of my day!",
     "Every hug from you feels like home.",
@@ -16,23 +16,22 @@ document.addEventListener('DOMContentLoaded', function () {
   updateQuote();
   setInterval(updateQuote, 5000);
 
-  /* 2) Falling Teddies Animation (kept as before) */
-  function createTeddy() {
+  /* 2. Falling Teddies (Rain Effect) */
+  function createFallingTeddy() {
     const teddy = document.createElement('div');
     teddy.className = 'teddy';
     teddy.textContent = '🧸';
     teddy.style.left = Math.random() * 100 + 'vw';
-    teddy.style.transform = `rotate(${Math.random() * 360}deg)`;
+    // Randomize the animation duration between 7 and 12 seconds
     const duration = 7 + Math.random() * 5;
-    teddy.style.animationDuration = `${duration}s`;
+    teddy.style.animationDuration = duration + 's';
     document.querySelector('.teddies-falling').appendChild(teddy);
     setTimeout(() => teddy.remove(), duration * 1000);
   }
-  setInterval(createTeddy, 500);
+  setInterval(createFallingTeddy, 500);
 
-  /* 3) Timer Functions (unchanged) */
+  /* 3. Timer Functions (if you are using them) */
   const timerDisplay = document.getElementById('custom-timer-display');
-  const timerHeader = document.getElementById('timer-header');
   let timerInterval, endTime;
   document.getElementById('set-timer').addEventListener('click', function () {
     const input = document.getElementById('calendar-input');
@@ -57,12 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     timerDisplay.textContent =
-      `${hours.toString().padStart(2, '0')}:${minutes
-        .toString()
-        .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   }
 
-  /* 4) Build-a-Bear Functionality (New Implementation) */
+  /* 4. Build-a-Bear Section – New Implementation */
   const bearCanvas = document.getElementById('bearCanvas');
   const ctx = bearCanvas.getContext('2d');
   let currentBearConfig = {
@@ -76,25 +73,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function drawBear() {
     ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
-    // Draw Head (a simple circle)
+    // Draw Head (circle)
     ctx.beginPath();
-    ctx.arc(200, 150, 100, 0, 2 * Math.PI);
+    ctx.arc(200, 150, 100, 0, Math.PI * 2);
     ctx.fillStyle = currentBearConfig.furColor;
     ctx.fill();
     // Draw Ears
     ctx.beginPath();
-    ctx.arc(120, 80, 30, 0, 2 * Math.PI);
+    ctx.arc(120, 80, 30, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(280, 80, 30, 0, 2 * Math.PI);
+    ctx.arc(280, 80, 30, 0, Math.PI * 2);
     ctx.fill();
     // Draw Eyes
     ctx.beginPath();
-    ctx.arc(170, 130, 10, 0, 2 * Math.PI);
+    ctx.arc(170, 130, 10, 0, Math.PI * 2);
     ctx.fillStyle = currentBearConfig.eyeColor;
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(230, 130, 10, 0, 2 * Math.PI);
+    ctx.arc(230, 130, 10, 0, Math.PI * 2);
     ctx.fill();
     // Draw Nose (triangle)
     ctx.beginPath();
@@ -133,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.fillStyle = 'purple';
       ctx.fillRect(150, 220, 100, 20);
     }
-    // Animation: Waving paw if selected
+    // Draw Animation: Waving paw if selected
     if (currentBearConfig.animation === 'wave') {
       const time = Date.now();
       const waveAngle = Math.sin(time / 500) * (Math.PI / 8);
@@ -142,20 +139,20 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.rotate(waveAngle);
       ctx.fillStyle = currentBearConfig.furColor;
       ctx.beginPath();
-      ctx.arc(0, 0, 15, 0, 2 * Math.PI);
+      ctx.arc(0, 0, 15, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     } else {
       // Static paw
       ctx.fillStyle = currentBearConfig.furColor;
       ctx.beginPath();
-      ctx.arc(150, 220, 15, 0, 2 * Math.PI);
+      ctx.arc(150, 220, 15, 0, Math.PI * 2);
       ctx.fill();
     }
   }
-  // Initial draw
+  // Initial draw of the bear
   drawBear();
-  // Update bear when options change
+  // Update bear when any customization option changes
   const customizationElements = [
     'furColor',
     'eyeColor',
@@ -170,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
       drawBear();
     });
   });
-  // "Customize Teddy" button also updates all settings.
+  // Also update bear when clicking the "Customize Teddy" button
   document.getElementById('customizeButton').addEventListener('click', function () {
     currentBearConfig = {
       furColor: document.getElementById('furColor').value,
@@ -182,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     drawBear();
   });
-  // Save Teddy configuration to a file
+  // Save Bear Configuration to a File
   document.getElementById('saveButton').addEventListener('click', function () {
     const bearData = JSON.stringify(currentBearConfig);
     const element = document.createElement('a');
@@ -197,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.removeChild(element);
   });
 
-  /* 5) Love Letter Toggle – Fixed Implementation */
+  /* 5. Love Letter Button Functionality */
   const loveLetterButton = document.getElementById('love-letter-button');
   const loveLetter = document.getElementById('love-letter');
   const closeLetter = document.getElementById('close-letter');
@@ -210,14 +207,13 @@ document.addEventListener('DOMContentLoaded', function () {
     e.stopPropagation();
     loveLetter.style.display = 'none';
   });
-  // Close love letter when clicking outside of it
   document.addEventListener('click', function (e) {
     if (!loveLetter.contains(e.target) && !loveLetterButton.contains(e.target)) {
       loveLetter.style.display = 'none';
     }
   });
 
-  /* 6) Background Music Toggle (unchanged) */
+  /* 6. Background Music Toggle */
   const musicButton = document.getElementById('toggle-music');
   const backgroundMusic = document.getElementById('background-music');
   musicButton.addEventListener('click', function () {
