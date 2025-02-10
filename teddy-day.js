@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
 
         // Default configurations
-        const defaultFurColor = '#8B4513'; // Brown
+        const defaultFurColor = 'lightBrown';
         const defaultEyeColor = 'black';
         const defaultClothing = 'none';
         const defaultAccessories = 'none';
@@ -243,50 +243,42 @@ document.addEventListener('DOMContentLoaded', function() {
         const expression = config.expression || defaultExpression;
         const animation = config.animation || defaultAnimation;
 
-       // Function to draw a rounded rectangle
-        function roundedRect(ctx, x, y, width, height, radius) {
-            ctx.beginPath();
-            ctx.moveTo(x + radius, y);
-            ctx.arcTo(x + width, y, x + width, y + height, radius);
-            ctx.arcTo(x + width, y + height, x, y + height, radius);
-            ctx.arcTo(x, y + height, x, y, radius);
-            ctx.arcTo(x, y, x + width, y, radius);
-            ctx.closePath();
-            ctx.fill();
-        }
+        // Draw the bear head and body
+        ctx.fillStyle = furColor;
 
         // Body
-        ctx.fillStyle = furColor;
-        roundedRect(ctx, 70, 150, 160, 180, 30);
+        ctx.beginPath();
+        ctx.ellipse(150, 200, 60, 80, 0, 0, 2 * Math.PI);
+        ctx.fill();
 
         // Head
-        ctx.fillStyle = furColor;
-        roundedRect(ctx, 80, 30, 140, 130, 40);
+        ctx.beginPath();
+        ctx.arc(150, 120, 40, 0, 2 * Math.PI);
+        ctx.fill();
 
         // Ears
-        ctx.fillStyle = furColor;
         ctx.beginPath();
-        ctx.arc(50, 50, 20, 0, 2 * Math.PI);
+        ctx.arc(110, 70, 20, 0, 2 * Math.PI);
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(250, 50, 20, 0, 2 * Math.PI);
+        ctx.arc(190, 70, 20, 0, 2 * Math.PI);
         ctx.fill();
 
         // Eyes
         ctx.fillStyle = eyeColor;
         ctx.beginPath();
-        ctx.arc(120, 70, 7, 0, 2 * Math.PI);
+        ctx.arc(130, 110, 7, 0, 2 * Math.PI);
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(180, 70, 7, 0, 2 * Math.PI);
+        ctx.arc(170, 110, 7, 0, 2 * Math.PI);
         ctx.fill();
 
         // Nose
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.ellipse(150, 110, 8, 5, 0, 0, 2 * Math.PI);
+        ctx.arc(150, 140, 4, 0, 2 * Math.PI);
         ctx.fill();
 
         // Mouth (Expressions)
@@ -294,42 +286,45 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.lineWidth = 2;
         ctx.beginPath();
         if (expression === 'smile') {
-            ctx.arc(150, 130, 15, 0, Math.PI / 2, false);
+            ctx.arc(150, 160, 20, 0, Math.PI);
         } else if (expression === 'sad') {
-            ctx.arc(150, 150, 15, Math.PI, Math.PI / 2 * 3, false);
+            ctx.arc(150, 180, 20, Math.PI, 2 * Math.PI);
         } else if (expression === 'love') {
-            ctx.moveTo(140, 130);
-            ctx.quadraticCurveTo(150, 140, 160, 130);
+            // Draw a heart-shaped mouth
+            ctx.moveTo(140, 160);
+            ctx.quadraticCurveTo(150, 170, 160, 160);
+            ctx.moveTo(140, 160);
+            ctx.quadraticCurveTo(150, 150, 160, 160);
         }
         ctx.stroke();
 
-         // Clothing
+        // Clothing
         if (clothing === 'hat') {
             ctx.fillStyle = 'red';
             ctx.beginPath();
-            ctx.ellipse(150, 30, 20, 10, 0, 0, Math.PI);
+            ctx.ellipse(150, 50, 30, 15, 0, 0, Math.PI);
             ctx.fill();
         } else if (clothing === 'shirt') {
             ctx.fillStyle = 'blue';
-            roundedRect(ctx, 80, 200, 140, 50, 10);
+            ctx.fillRect(90, 170, 120, 50);
         }
 
         // Accessories
         if (accessories === 'scarf') {
             ctx.fillStyle = 'purple';
-            ctx.fillRect(80, 200, 140, 10);
+            ctx.fillRect(90, 170, 120, 20);
         }
 
-         // Animations (Simple Example)
+        // Animations (Simple Example)
         if (animation === 'wave') {
             // Waving paw
             ctx.beginPath();
-            ctx.arc(50, 170, 10, 0.5 * Math.PI, 1.5 * Math.PI);
+            ctx.arc(80, 220, 15, 0.5 * Math.PI, 1.5 * Math.PI);
             ctx.stroke();
         }
     }
 
-     // Function to download data to a file
+    // Function to download data to a file
     function download(filename, text) {
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -398,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (storedConfig) {
             currentBearConfig = JSON.parse(storedConfig);
             // Set select values to match stored config
-            document.getElementById('furColor').value = currentBearConfig.furColor || '#8B4513';
+            document.getElementById('furColor').value = currentBearConfig.furColor || 'lightBrown';
             document.getElementById('eyeColor').value = currentBearConfig.eyeColor || 'black';
             document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
             document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
@@ -411,12 +406,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add more colors to select options
     const furColorSelect = document.getElementById('furColor');
-    const colors = ['#8B4513', '#FFFFFF', '#FFC0CB', '#ADD8E6', '#FFFF00', '#800080', '#808080', '#FFA500', '#008000'];
+    const colors = ['lightBrown', 'darkBrown', 'white', 'pink', 'blue', 'yellow', 'purple', 'gray', 'orange', 'green'];
 
     colors.forEach(color => {
         const option = document.createElement('option');
         option.value = color;
-        option.text = color;
+        option.text = color.charAt(0).toUpperCase() + color.slice(1); // Capitalize first letter
         furColorSelect.add(option);
     });
 
