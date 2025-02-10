@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // ---- Cute Messages Animation ----
+  /* --- Cute Messages Animation --- */
   const cuteMessages = [
     "You're as cuddly as a teddy bear! 🧸",
     "Hugs and cuddles, always! 💖",
@@ -7,10 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     "Every moment with you is a soft embrace! 🤗",
     "You're my favorite cuddle buddy! 🧸"
   ];
-
   const messageElement = document.getElementById('message-display');
   let currentIndex = 0;
-
   function showCuteMessage() {
     messageElement.style.opacity = '0';
     messageElement.style.transform = 'translateY(20px)';
@@ -24,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   showCuteMessage();
 
-  // ---- Falling Teddy Bears Animation ----
+  /* --- Falling Teddy Bears Animation --- */
   function createTeddy() {
     const teddy = document.createElement('div');
     teddy.className = 'teddy';
@@ -38,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   setInterval(createTeddy, 500);
 
-  // ---- Build a Bear Interactive Controls ----
-  const bearPreview = document.querySelector('.bear-preview .bear-face');
+  /* --- Build-a-Bear Interactive Controls --- */
+  const bearFace = document.querySelector('.bear-preview .bear-face');
   const bearMouth = document.querySelector('.bear-mouth');
   const bearHat = document.querySelector('.bear-hat');
   const changeColorBtn = document.getElementById('change-color');
@@ -48,78 +46,80 @@ document.addEventListener('DOMContentLoaded', function () {
   const resetBearBtn = document.getElementById('reset-bear');
   const saveBearBtn = document.getElementById('save-bear');
 
-  // Change the bear face color randomly
+  // Change face color using a set of brownish hues
   changeColorBtn.addEventListener('click', function () {
-    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    bearPreview.style.background = randomColor;
+    const browns = ['#A0522D', '#8B4513', '#D2691E', '#CD853F', '#F4A460'];
+    const randomColor = browns[Math.floor(Math.random() * browns.length)];
+    // Update the bear-face with a radial gradient for a warm effect
+    bearFace.style.background = `radial-gradient(circle at 50% 50%, ${randomColor}, #E0A96D)`;
   });
 
-  // Toggle the bear's mouth expression (simulate smile)
+  // Toggle smile (by adding or removing the "no-smile" class)
   changeExpressionBtn.addEventListener('click', function () {
-    if (bearMouth.style.borderBottomColor === 'transparent') {
-      bearMouth.style.borderBottomColor = '#000';
-    } else {
-      bearMouth.style.borderBottomColor = 'transparent';
-    }
+    bearMouth.classList.toggle('no-smile');
   });
 
-  // Toggle the bear hat (show/hide)
+  // Toggle the hat's visibility
   toggleHatBtn.addEventListener('click', function () {
     bearHat.classList.toggle('hidden');
   });
 
-  // Reset bear to default settings
+  // Reset bear to default appearance
   resetBearBtn.addEventListener('click', function () {
-    bearPreview.style.background = '#ffcc80';
-    bearMouth.style.borderBottomColor = '#000';
+    bearFace.style.background = 'radial-gradient(circle at 50% 50%, #FAD6A5, #E0A96D)';
+    bearMouth.classList.remove('no-smile');
     bearHat.classList.add('hidden');
   });
 
   // Save bear configuration to localStorage
   saveBearBtn.addEventListener('click', function () {
-    const bearConfig = {
-      faceColor: bearPreview.style.background,
-      mouthVisible: bearMouth.style.borderBottomColor !== 'transparent',
-      hatVisible: !bearHat.classList.contains('hidden')
+    const config = {
+      faceColor: bearFace.style.background,
+      smile: !bearMouth.classList.contains('no-smile'),
+      hat: !bearHat.classList.contains('hidden')
     };
-    localStorage.setItem('bearConfig', JSON.stringify(bearConfig));
-    alert("Bear configuration saved!");
+    localStorage.setItem('bearConfig', JSON.stringify(config));
+    alert('Bear configuration saved!');
   });
 
-  // Load bear configuration if available
+  // Load saved bear configuration (if it exists)
   const savedConfig = localStorage.getItem('bearConfig');
   if (savedConfig) {
     const config = JSON.parse(savedConfig);
     if (config.faceColor) {
-      bearPreview.style.background = config.faceColor;
+      bearFace.style.background = config.faceColor;
     }
-    if (config.mouthVisible === false) {
-      bearMouth.style.borderBottomColor = 'transparent';
+    if (!config.smile) {
+      bearMouth.classList.add('no-smile');
     } else {
-      bearMouth.style.borderBottomColor = '#000';
+      bearMouth.classList.remove('no-smile');
     }
-    if (config.hatVisible) {
+    if (config.hat) {
       bearHat.classList.remove('hidden');
     } else {
       bearHat.classList.add('hidden');
     }
   }
 
-  // ---- Love Letter Toggle ----
+  // Add a click animation on the bear face for extra interactivity
+  bearFace.addEventListener('click', function () {
+    bearFace.classList.add('happy');
+    setTimeout(() => {
+      bearFace.classList.remove('happy');
+    }, 500);
+  });
+
+  /* --- Love Letter Toggle --- */
   const loveLetterButton = document.getElementById('love-letter-button');
   const loveLetter = document.getElementById('love-letter');
   const closeLetter = document.getElementById('close-letter');
-
   loveLetterButton.addEventListener('click', function () {
     loveLetter.classList.add('show');
     createLetterSparkles(loveLetter);
   });
-
   closeLetter.addEventListener('click', function () {
     loveLetter.classList.remove('show');
   });
-
-  // Close the letter when clicking outside of it
   document.addEventListener('click', function (event) {
     if (
       !loveLetter.contains(event.target) &&
@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
       loveLetter.classList.remove('show');
     }
   });
-
   function createLetterSparkles(element) {
     for (let i = 0; i < 15; i++) {
       const sparkle = document.createElement('div');
@@ -141,10 +140,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ---- Background Music Toggle ----
+  /* --- Background Music Toggle --- */
   const musicButton = document.getElementById('toggle-music');
   const backgroundMusic = document.getElementById('background-music');
-
   musicButton.addEventListener('click', function () {
     if (backgroundMusic.paused) {
       backgroundMusic.play();
@@ -155,11 +153,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // ---- Timer Functions (Similar to your Chocolate Day page) ----
+  /* --- Timer Functions (similar to Chocolate Day) --- */
   const timerDisplay = document.getElementById('custom-timer-display');
   let timerInterval;
   let endTime;
-
   document.getElementById('set-timer').addEventListener('click', function () {
     const input = document.getElementById('calendar-input');
     if (input.value) {
@@ -167,26 +164,21 @@ document.addEventListener('DOMContentLoaded', function () {
       startTimer();
     }
   });
-
   function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(updateTimer, 1000);
   }
-
   function updateTimer() {
     const now = new Date().getTime();
     const distance = endTime - now;
-
     if (distance <= 0) {
       clearInterval(timerInterval);
       timerDisplay.textContent = "Time's Up! 💖";
       return;
     }
-
     const hours = Math.floor(distance / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
     timerDisplay.textContent =
       `${hours.toString().padStart(2, '0')}:` +
       `${minutes.toString().padStart(2, '0')}:` +
