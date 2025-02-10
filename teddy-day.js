@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create teddies periodically
     setInterval(createTeddy, 500);
 
-    //Memory Cards Animation
+    // Memory Cards Animation
     const memoryCards = document.querySelectorAll('.memory-card');
     memoryCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    //Interactive Teddy Animation
+    // Interactive Teddy Animation
     const magicTeddy = document.querySelector('.magic-teddy');
     const wishText = document.querySelector('.wish-text');
 
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    //Love Letter Toggle
+    // Love Letter Toggle
     const loveLetterButton = document.getElementById('love-letter-button');
     const loveLetter = document.getElementById('love-letter');
     const closeLetter = document.getElementById('close-letter');
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //Timer Functions
+    // Timer Functions
     const timerDisplay = document.getElementById('custom-timer-display');
     const timerHeader = document.getElementById('timer-header');
     let timerInterval;
@@ -218,92 +218,93 @@ document.addEventListener('DOMContentLoaded', function() {
             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    // Build-a-Bear Functionality
+    // ==============================
+    // Build-a-Bear Functionality (Animated Version)
+    // ==============================
     const bearCanvas = document.getElementById('bearCanvas');
     const ctx = bearCanvas.getContext('2d');
-    let currentBearConfig = {};
+    let currentBearConfig = {
+        furColor: '#8B4513',
+        eyeColor: 'black',
+        clothing: 'none',
+        accessories: 'none',
+        expression: 'smile',
+        animation: 'none'
+    };
 
-    function drawBear(config) {
-        // Clear the canvas
+    // Helper function to draw a rounded rectangle.
+    function drawRoundedRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.arcTo(x + width, y, x + width, y + height, radius);
+        ctx.arcTo(x + width, y + height, x, y + height, radius);
+        ctx.arcTo(x, y + height, x, y, radius);
+        ctx.arcTo(x, y, x + width, y, radius);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    // Draw the bear with the current configuration and current time for animation.
+    function drawBear(config, time) {
         ctx.clearRect(0, 0, bearCanvas.width, bearCanvas.height);
 
-        // Default configurations
-        const defaultFurColor = '#8B4513'; // Brown
-        const defaultEyeColor = 'black';
-        const defaultClothing = 'none';
-        const defaultAccessories = 'none';
-        const defaultExpression = 'smile';
-        const defaultAnimation = 'none';
+        const furColor = config.furColor || '#8B4513';
+        const eyeColor = config.eyeColor || 'black';
+        const clothing = config.clothing || 'none';
+        const accessories = config.accessories || 'none';
+        const expression = config.expression || 'smile';
+        const animation = config.animation || 'none';
 
-        // Use provided configurations or defaults
-        const furColor = config.furColor || defaultFurColor;
-        const eyeColor = config.eyeColor || defaultEyeColor;
-        const clothing = config.clothing || defaultClothing;
-        const accessories = config.accessories || defaultAccessories;
-        const expression = config.expression || defaultExpression;
-        const animation = config.animation || defaultAnimation;
+        // Draw Body with a gradient for extra appeal.
+        const bodyGradient = ctx.createLinearGradient(70, 150, 230, 330);
+        bodyGradient.addColorStop(0, furColor);
+        bodyGradient.addColorStop(1, '#FFFFFF');
+        ctx.fillStyle = bodyGradient;
+        drawRoundedRect(ctx, 70, 150, 160, 180, 30);
 
-       // Function to draw a rounded rectangle
-        function roundedRect(ctx, x, y, width, height, radius) {
-            ctx.beginPath();
-            ctx.moveTo(x + radius, y);
-            ctx.arcTo(x + width, y, x + width, y + height, radius);
-            ctx.arcTo(x + width, y + height, x, y + height, radius);
-            ctx.arcTo(x, y + height, x, y, radius);
-            ctx.arcTo(x, y, x + width, y, radius);
-            ctx.closePath();
-            ctx.fill();
-        }
-
-        // Body
+        // Draw Head.
         ctx.fillStyle = furColor;
-        roundedRect(ctx, 70, 150, 160, 180, 30);
+        drawRoundedRect(ctx, 80, 30, 140, 130, 40);
 
-        // Head
-        ctx.fillStyle = furColor;
-        roundedRect(ctx, 80, 30, 140, 130, 40);
-
-        // Ears
+        // Draw Ears.
         ctx.fillStyle = furColor;
         ctx.beginPath();
         ctx.arc(50, 50, 20, 0, 2 * Math.PI);
         ctx.fill();
-
         ctx.beginPath();
         ctx.arc(250, 50, 20, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Eyes
+        // Draw Eyes.
         ctx.fillStyle = eyeColor;
         ctx.beginPath();
         ctx.arc(120, 70, 7, 0, 2 * Math.PI);
         ctx.fill();
-
         ctx.beginPath();
         ctx.arc(180, 70, 7, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Nose
+        // Draw Nose.
         ctx.fillStyle = 'black';
         ctx.beginPath();
         ctx.ellipse(150, 110, 8, 5, 0, 0, 2 * Math.PI);
         ctx.fill();
 
-        // Mouth (Expressions)
+        // Draw Mouth (with basic expressions).
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 2;
         ctx.beginPath();
         if (expression === 'smile') {
-            ctx.arc(150, 130, 15, 0, Math.PI / 2, false);
+            ctx.arc(150, 130, 15, 0, Math.PI, false);
         } else if (expression === 'sad') {
-            ctx.arc(150, 150, 15, Math.PI, Math.PI / 2 * 3, false);
+            ctx.arc(150, 145, 15, Math.PI, 2 * Math.PI, false);
         } else if (expression === 'love') {
             ctx.moveTo(140, 130);
             ctx.quadraticCurveTo(150, 140, 160, 130);
         }
         ctx.stroke();
 
-         // Clothing
+        // Draw Clothing.
         if (clothing === 'hat') {
             ctx.fillStyle = 'red';
             ctx.beginPath();
@@ -311,39 +312,52 @@ document.addEventListener('DOMContentLoaded', function() {
             ctx.fill();
         } else if (clothing === 'shirt') {
             ctx.fillStyle = 'blue';
-            roundedRect(ctx, 80, 200, 140, 50, 10);
+            drawRoundedRect(ctx, 80, 200, 140, 50, 10);
         }
 
-        // Accessories
+        // Draw Accessories.
         if (accessories === 'scarf') {
             ctx.fillStyle = 'purple';
             ctx.fillRect(80, 200, 140, 10);
         }
 
-         // Animations (Simple Example)
+        // Animated Feature: Waving Paw.
         if (animation === 'wave') {
-            // Waving paw
+            const waveAngle = Math.sin(time / 500) * (Math.PI / 8); // Oscillates between ±22.5°
+            ctx.save();
+            ctx.translate(90, 200); // Pivot point.
+            ctx.rotate(waveAngle);
+            ctx.fillStyle = furColor;
             ctx.beginPath();
-            ctx.arc(50, 170, 10, 0.5 * Math.PI, 1.5 * Math.PI);
-            ctx.stroke();
+            ctx.arc(0, 0, 12, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.restore();
+        } else {
+            // Draw fixed-position paw.
+            ctx.fillStyle = furColor;
+            ctx.beginPath();
+            ctx.arc(90, 200, 12, 0, 2 * Math.PI);
+            ctx.fill();
         }
     }
 
-     // Function to download data to a file
-    function download(filename, text) {
-        var element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename);
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
+    // Animation loop.
+    function animateBear(time) {
+        drawBear(currentBearConfig, time);
+        requestAnimationFrame(animateBear);
     }
+    requestAnimationFrame(animateBear);
 
-    // Event listeners for customization options
+    // Update configuration immediately when any option changes.
+    const customizationElements = ['furColor', 'eyeColor', 'clothing', 'accessories', 'expression', 'animation'];
+    customizationElements.forEach(id => {
+        document.getElementById(id).addEventListener('change', function() {
+            currentBearConfig[id] = this.value;
+            saveBearConfig();
+        });
+    });
+
+    // "Customize Teddy" button also updates all settings.
     document.getElementById('customizeButton').addEventListener('click', function() {
         currentBearConfig = {
             furColor: document.getElementById('furColor').value,
@@ -353,75 +367,23 @@ document.addEventListener('DOMContentLoaded', function() {
             expression: document.getElementById('expression').value,
             animation: document.getElementById('animation').value
         };
-        drawBear(currentBearConfig);
-        saveBearConfig(); // Save the configuration after customizing
+        saveBearConfig();
     });
 
-    document.getElementById('submit-wish').addEventListener('click', function() {
-        const wishInput = document.getElementById('wish-input');
-        const wishText = wishInput.value;
-
-        // Send the wish to the email address
-        sendWishEmail(wishText);
-
-        // Clear the input field
-        wishInput.value = '';
-
-        // Show a confirmation message or perform any other actions
-        alert('Your wish has been sent!');
-    });
-
-    function sendWishEmail(wishText) {
-        // Construct the email body
-        const emailBody = `Wish: ${wishText}`;
-
-        // Construct the mailto link
-        const mailtoLink = `mailto:kautikshende@gmail.com?subject=New Wish&body=${encodeURIComponent(emailBody)}`;
-
-        // Open the mail client in a new tab
-        window.open(mailtoLink, '_blank');
-    }
-
-    // Local PC Storage
-    document.getElementById('saveButton').addEventListener('click', function() {
-        const bearData = JSON.stringify(currentBearConfig);
-        download('bear_config.txt', bearData);
-    });
-
-    // Persistent saving to localStorage
+    // Save the bear configuration persistently.
     function saveBearConfig() {
         localStorage.setItem('bearConfig', JSON.stringify(currentBearConfig));
     }
 
+    // Load saved bear configuration.
     function loadBearConfig() {
         const storedConfig = localStorage.getItem('bearConfig');
         if (storedConfig) {
             currentBearConfig = JSON.parse(storedConfig);
-            // Set select values to match stored config
-            document.getElementById('furColor').value = currentBearConfig.furColor || '#8B4513';
-            document.getElementById('eyeColor').value = currentBearConfig.eyeColor || 'black';
-            document.getElementById('clothing').value = currentBearConfig.clothing || 'none';
-            document.getElementById('accessories').value = currentBearConfig.accessories || 'none';
-            document.getElementById('expression').value = currentBearConfig.expression || 'smile';
-            document.getElementById('animation').value = currentBearConfig.animation || 'none';
-
-            drawBear(currentBearConfig);
+            customizationElements.forEach(id => {
+                document.getElementById(id).value = currentBearConfig[id] || document.getElementById(id).value;
+            });
         }
     }
-
-    // Add more colors to select options
-    const furColorSelect = document.getElementById('furColor');
-    const colors = ['#8B4513', '#FFFFFF', '#FFC0CB', '#ADD8E6', '#FFFF00', '#800080', '#808080', '#FFA500', '#008000'];
-
-    colors.forEach(color => {
-        const option = document.createElement('option');
-        option.value = color;
-        option.text = color;
-        furColorSelect.add(option);
-    });
-
-    // Initialize
-    loadBearConfig(); // Call loadBearConfig to load saved configuration on page load
-    createTeddy();
-    showMessage();
+    loadBearConfig();
 });
