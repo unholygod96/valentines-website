@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sweet Messages Animation
     const sweetMessages = [
-        "You're sweeter than chocolate! 🍫",
-        "Life is delicious with you! ✨",
-        "My favorite treat is your smile! 💝",
-        "Every moment with you is sweet! 🌟",
-        "You melt my heart! 💫",
-        "Sweeter than any dessert! 🍫"
+        "I promise to always cherish you! 💖",
+        "Our love is my greatest promise. ✨",
+        "I promise to be your biggest supporter! 💝",
+        "With you, every promise is a joy! 🌟",
+        "I promise to always listen with my heart! 💫",
+        "Our promises light up my life! 🍫"
     ];
 
     const messageElement = document.getElementById('message-display');
@@ -110,18 +110,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Display the selected promise with animation
         promiseCardContainer.classList.add('reveal');
-        
+        promiseCardContainer.classList.add('open-animation'); // Add open animation class
+
         setTimeout(() => {
             promiseTextElement.textContent = selectedPromise;
             promiseTextElement.classList.add('show');
-            
+
             setTimeout(() => {
-                // Hide the card after a few seconds
+                // Hide the card after 7 seconds
                 promiseCardContainer.classList.remove('reveal');
+                promiseCardContainer.classList.remove('open-animation'); //remove open animation class
+                promiseCardContainer.classList.add('close-animation'); // Add close animation class
                 promiseTextElement.classList.remove('show');
-                setTimeout(() => (promiseTextElement.textContent = ''), 300);
-            }, 4000);
-            
+                setTimeout(() => {
+                    promiseTextElement.textContent = '';
+                    promiseCardContainer.classList.remove('close-animation'); // Remove close animation class after it completes
+
+                }, 300);
+            }, 7000); // 7000 milliseconds = 7 seconds
+
         }, 500);
     });
 
