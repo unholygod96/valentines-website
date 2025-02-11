@@ -209,12 +209,12 @@
     transform: scale(0.8);
     transition: all 0.5s ease-out;
     transform-style: preserve-3d;
-    transform-origin: center left;
+    transform-origin: center right;
 }
 
 .promise-card-container.open {
     opacity: 1;
-    transform: translateX(100%) rotateY(180deg);
+    transform: translateX(-100%) rotateY(-180deg);
 }
 
 .promise-card-container.close {
@@ -229,7 +229,6 @@
     display: block;
     font-size: 1.5rem;
     color: #336699;
-    transform: scaleX(-1); /* Apply horizontal flip */
 }
 
 /* Sweet Notes Section */
