@@ -3,205 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heartfelt Promise Day 💖</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="promise-day.css">
+    <title>A Special Question 💝</title>
+    <style>
+        /* Existing styles from the provided landing.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #FF69B4;
+            opacity: 0;
+            animation: heartFall linear infinite;
+        }
+
+        .question-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(109, 40, 217, 0.2);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .question {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .question.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: #7C3AED;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: #6D28D9;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .option-btn {
+            background: linear-gradient(145deg, #8B5CF6, #7C3AED);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .moving-btn {
+            position: relative;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup.show {
+            display: block;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes heartFall {
+            0% {
+                opacity: 0;
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+    </style>
 </head>
-<body class="promise-day-theme">
-    <!-- Menu Button -->
-    <button id="menu-button" class="menu-button">☰</button>
-
-    <!-- Confetti Animation -->
-    <div class="confetti-falling">
-        <div class="confetti">✨</div>
-        <div class="confetti">💖</div>
-        <div class="confetti">🤝</div>
-        <div class="confetti">💙</div>
+<body>
+    <div class="hearts">
+        <!-- Hearts will be added dynamically -->
     </div>
 
-    <header class="promise-day-header">
-        <h1>A Promise of Forever! 💖✨</h1>
-        <p class="header-subtitle">Sealing our bond with heartfelt promises! 🤝</p>
-
-        <!-- Message Animation Container -->
-        <div class="message-container">
-            <div id="message-display" class="message-text"></div>
+    <div class="question-container">
+        <!-- Question 1 -->
+        <div class="question active" id="q1">
+            <h2>Hey Cutie! 💝</h2>
+            <p>I've been meaning to ask you something...</p>
+            <p>But first, do you know how special you are?</p>
+            <div class="options">
+                <button class="option-btn" onclick="nextQuestion(2)">Of course!</button>
+                <button class="option-btn" onclick="nextQuestion(2)">Maybe... 🙈</button>
+            </div>
         </div>
 
-        <div id="timer-container">
-            <h2 id="timer-header" contenteditable="true">Counting moments until our promises come true! 💫</h2>
-            <div id="custom-timer">
-                <span id="custom-timer-display">00:00:00</span>
+        <!-- Question 2 -->
+        <div class="question" id="q2">
+            <h2>Perfect! ✨</h2>
+            <p>You make my heart skip a beat every time you smile..., you are just so adorable.</p>
+            <p>Do you feel the same butterflies?</p>
+            <div class="options">
+                <button class="option-btn" onclick="nextQuestion(3)">Yes! 🦋</button>
+                <button class="option-btn moving-btn" onmouseover="moveButton(this)">No</button>
             </div>
-            <input type="datetime-local" id="calendar-input" />
-            <button id="start-timer">Start ✨</button>
-            <button id="pause-timer">Pause 💫</button>
-            <button id="reset-timer">Reset 🌟</button>
-            <button id="set-timer">Set Timer 💖</button>
+            <p>Why did you look at the no button? Do you not even love me anymore? I see how it is.</p>
+            <p>Just kidding you can't click the no button either ways</p>
         </div>
 
-        <audio id="background-music" loop>
-            <source src="double-take.mp3" type="audio/mpeg">
-        </audio>
-        <button id="toggle-music">🎵</button>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Back to Our Journey 🏡</a></li>
-            <li><a href="rose-day.html">Rose Day 🌹</a></li>
-            <li><a href="propose-day.html">Propose Day 💍</a></li>
-            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
-            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
-            <li><a href="promise-day.html" class="active">Promise Day 🤝</a></li>
-            <li><a href="hug-day.html">Hug Day 🤗</a></li>
-            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
-            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
-        </ul>
-    </nav>
-
-    <main class="promise-day-main">
-        <section class="welcome-message">
-            <div class="message-bubble bounce">
-                <h2>Hey Sweetie! 💖</h2>
-                <p>A day for promises held close to the heart...</p>
-                <div class="bounce-arrow">↓</div>
+        <!-- Question 3 -->
+        <div class="question" id="q3">
+            <h2>One More Thing... 💫</h2>
+            <p>If I told you you're the sweetest person I've ever met...</p>
+            <p>Would you believe me?</p>
+            <div class="options">
+                <button class="option-btn" onclick="nextQuestion(4)">I do! 🥰</button>
+                <button class="option-btn moving-btn" onmouseover="moveButton(this)">I'm shy...</button>
             </div>
-        </section>
+            <p>I know you are shy either ways, and I have tasted you so, You are very very sweet.</p>
+        </div>
 
-        <section class="promise-cards">
-            <h2>Our Promises to Each Other 🎁</h2>
-            <div class="cards-container">
-                <div class="promise-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Always Listening</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>I promise to always lend an ear and understand. 💘</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="promise-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Unwavering Support</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>I promise to support your dreams, big or small. ✨</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="promise-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Endless Patience</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>I promise to be patient, even when things get tough. 💝</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="promise-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Forever Honest</h3>
-                        </div>
-                        <div class="card-back">
-                            <p>I promise to always be honest, with love and care. 🌟</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="sweet-memories">
-            <h2>💖 Promises Made, Moments Cherished 💖</h2>
-            <div class="memory-container">
-                <div class="memory-card">
-                    <h3>The Day We Promised Forever</h3>
-                    <p>Remember when we promised to always be there for each other? That promise still shines bright.</p>
-                </div>
-                <div class="memory-card">
-                    <h3>Through Thick and Thin</h3>
-                    <p>We promised to face everything together, and every challenge has only strengthened our bond.</p>
-                </div>
-                <div class="memory-card">
-                    <h3>A Future of Promises</h3>
-                    <p>I look forward to making and keeping countless more promises with you. </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="promise-facts">
-            <h2>Heartfelt Facts About Our Promises! 💖</h2>
-            <div class="facts-container">
-                <div class="fact-bubble">
-                    <p>Our promises are the foundation of our love! ✨</p>
-                </div>
-                <div class="fact-bubble">
-                    <p>Every promise we keep brings us closer together! 💖</p>
-                </div>
-                <div class="fact-bubble">
-                    <p>Our love grows stronger with every promise fulfilled! 🤝</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="promise-jar">
-            <h2>Pull a Promise from the Jar! 🤝</h2>
-            <div id="promise-jar-container">
-                <button id="promise-jar-button" class="promise-jar-button">🫙 Pull a Promise</button>
-                <div id="promise-card-container" class="promise-card-container">
-                    <p id="promise-text" class="hidden"></p>
-                </div>
-            </div>
-        </section>
-
-        <section class="sweet-notes">
-            <h2>Sweet Notes of Promise 💖</h2>
-            <div class="notes-container">
-                <div class="note sparkle">
-                    <p>I promise to be your rock! 💖</p>
-                </div>
-                <div class="note sparkle">
-                    <p>I promise to make you smile every day! ✨</p>
-                </div>
-                <div class="note sparkle">
-                    <p>I promise to love you unconditionally! 🤝</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Love Letter Container -->
-    <div id="love-letter-container" class="love-letter-container">
-        <button id="love-letter-button" class="love-letter-button">💌</button>
-        <div id="love-letter" class="love-letter hidden">
-            <div class="love-letter-content">
-                <div class="love-letter-header">
-                    <h3>My Forever Promise 💖</h3>
-                    <button id="close-letter" class="close-letter">×</button>
-                </div>
-                <div class="love-letter-body">
-                    <p>Dearest Sweetheart,</p>
-                    <p>On this Promise Day, I want to remind you of the promises I hold close to my heart – promises of unwavering love, endless support, and a lifetime of happiness together. 💖✨</p>
-                    <p>Like the strongest bonds, our promises are the threads that weave our hearts together:</p>
-                    <ul>
-                        <li>A promise to always cherish your dreams 💖</li>
-                        <li>A promise to hold your hand through every storm 🤝</li>
-                        <li>A promise to love you unconditionally, always and forever 💫</li>
-                    </ul>
-                    <p>You're my favorite promise come true, the sweetest melody in my life, and the most precious gift I could ever ask for!</p>
-                    <p>Thank you for being the keeper of my heart, my partner in every adventure, and the love of my life. You're everything I've ever wished for and more! 💖</p>
-                    <p>May our promises always guide us, strengthen us, and fill our lives with endless joy and love. Happy Promise Day, my darling!</p>
-                    <p class="love-letter-signature">Forever yours,<br>Your Promise Keeper 💕</p>
-                </div>
+        <!-- Final Question -->
+        <div class="question" id="q4">
+            <h2>The Big Question! 💝</h2>
+            <p>Now that you know how special you are to me...</p>
+            <p>Will You Be My Valentine, My princess?</p>
+            <div class="options">
+                <button class="option-btn" onclick="showConfirmation()">Yes! 💖</button>
+                <button class="option-btn moving-btn" onmouseover="moveButton(this)">Yes but in pink 💝</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <script src="promise-day.js"></script>
+    <!-- Confirmation Popup -->
+    <div class="popup" id="confirmPopup">
+        <h2>Are you sure? 💝</h2>
+        <p>This will make me the happiest person ever!</p>
+        <div class="options">
+            <button class="option-btn" onclick="finalConfirmation()">Absolutely! 💖</button>
+            <button class="option-btn" onclick="finalConfirmation()">100% Sure! ✨</button>
+        </div>
+    </div>
+
+    <script>
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.querySelector('.hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Question Navigation
+        function nextQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => {
+                q.classList.remove('active');
+            });
+            document.getElementById('q' + num).classList.add('active');
+        }
+
+        // Moving Button
+        function moveButton(btn) {
+            const container = document.querySelector('.question-container');
+            const rect = container.getBoundingClientRect();
+            
+            btn.style.position = 'absolute';
+            btn.style.left = Math.random() * (rect.width - 100) + 'px';
+            btn.style.top = Math.random() * (rect.height - 50) + 'px';
+        }
+
+        // Show Confirmation
+        function showConfirmation() {
+            document.getElementById('confirmPopup').classList.add('show');
+        }
+
+        // Final Confirmation
+        function finalConfirmation() {
+            localStorage.setItem('valentineAsked', 'true');
+            window.location.href = 'index.html';
+        }
+
+        // Check if user has already been asked
+        window.onload = function() {
+            if (localStorage.getItem('valentineAsked') === 'true') {
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 </body>
 </html>
