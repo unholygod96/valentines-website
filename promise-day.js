@@ -91,16 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "I promise to never take you for granted.",
         "I promise to always respect your opinions.",
         "I promise to surprise you with little joys.",
-        "I promise to be patient and understanding.",
-        "I promise to grow with you.",
-        "I promise to be your partner in all of life's adventures.",
-        "I promise to comfort you in times of sorrow.",
-        "I promise to celebrate your successes.",
-        "I promise to be your safe haven.",
-        "I promise to always communicate openly with you.",
-        "I promise to work through challenges together.",
-        "I promise to keep the romance alive.",
-        "I promise to be your best friend and lover."
+        // Add more promises here...
     ];
 
     promiseJarButton.addEventListener('click', function () {
@@ -165,55 +156,4 @@ document.addEventListener('DOMContentLoaded', function () {
             musicButton.textContent = '🔇';
         }
     });
-
-    // Timer Functionality
-    const timerDisplay = document.getElementById('custom-timer-display');
-    const timerHeader = document.getElementById('timer-header');
-    let timerInterval;
-    let endTime;
-
-    document.getElementById('set-timer').addEventListener('click', function() {
-        const input = document.getElementById('calendar-input');
-        if (input.value) {
-            endTime = new Date(input.value).getTime();
-            startTimer();
-        }
-    });
-
-    document.getElementById('start-timer').addEventListener('click', startTimer);
-    document.getElementById('pause-timer').addEventListener('click', pauseTimer);
-    document.getElementById('reset-timer').addEventListener('click', resetTimer);
-
-    function startTimer() {
-        clearInterval(timerInterval);
-        timerInterval = setInterval(updateTimer, 1000);
-    }
-
-    function pauseTimer() {
-        clearInterval(timerInterval);
-    }
-
-    function resetTimer() {
-        clearInterval(timerInterval);
-        timerDisplay.textContent = "00:00:00";
-        endTime = null;
-    }
-
-    function updateTimer() {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-
-        if (distance <= 0) {
-            clearInterval(timerInterval);
-            timerDisplay.textContent = "Time's Up! 💖";
-            return;
-        }
-
-        const hours = Math.floor(distance / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerDisplay.textContent = 
-            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
 });
