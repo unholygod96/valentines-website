@@ -209,12 +209,12 @@
     transform: scale(0.8);
     transition: all 0.5s ease-out;
     transform-style: preserve-3d;
-    transform-origin: center right;
+    transform-origin: center left;
 }
 
 .promise-card-container.open {
     opacity: 1;
-    transform: translateX(-100%) rotateY(-180deg);
+    transform: translateX(100%) rotateY(180deg);
 }
 
 .promise-card-container.close {
