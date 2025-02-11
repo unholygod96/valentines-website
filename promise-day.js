@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Promise Day related messages
-    const promiseDayMessages = [
-        "Every promise strengthens our bond! 💖",
-        "Our love is built on promises kept! 🤝",
-        "Promises are the foundation of our future! ✨",
-        "Each day with you is a promise of forever! 💑",
-        "Our promises are the threads of our love story! 📖",
-        "Together, we promise a lifetime of happiness! 🌟"
+    // Sweet Messages Animation
+    const sweetMessages = [
+        "You're sweeter than chocolate! 🍫",
+        "Life is delicious with you! ✨",
+        "My favorite treat is your smile! 💝",
+        "Every moment with you is sweet! 🌟",
+        "You melt my heart! 💫",
+        "Sweeter than any dessert! 🍫"
     ];
 
     const messageElement = document.getElementById('message-display');
@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
         messageElement.style.transform = 'translateY(20px)';
 
         setTimeout(() => {
-            messageElement.textContent = promiseDayMessages[currentIndex];
+            messageElement.textContent = sweetMessages[currentIndex];
             messageElement.style.opacity = '1';
             messageElement.style.transform = 'translateY(0)';
 
-            currentIndex = (currentIndex + 1) % promiseDayMessages.length;
+            currentIndex = (currentIndex + 1) % sweetMessages.length;
 
             setTimeout(showMessage, 3000);
         }, 500);
@@ -91,7 +91,16 @@ document.addEventListener('DOMContentLoaded', function () {
         "I promise to never take you for granted.",
         "I promise to always respect your opinions.",
         "I promise to surprise you with little joys.",
-        // Add more promises here...
+        "I promise to always stand by your side.",
+        "I promise to cherish every moment with you.",
+        "I promise to make your happiness my priority.",
+        "I promise to grow old with you gracefully.",
+        "I promise to never stop learning about you.",
+        "I promise to always protect our love.",
+        "I promise to be patient and understanding.",
+        "I promise to celebrate your successes as my own.",
+        "I promise to share all my secrets with you.",
+        "I promise to never let go of your hand."
     ];
 
     promiseJarButton.addEventListener('click', function () {
@@ -100,34 +109,29 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedPromise = promisesList[randomIndex];
 
         // Display the selected promise with animation
-        promiseCardContainer.classList.add('open');
+        promiseCardContainer.classList.add('reveal');
         
         setTimeout(() => {
             promiseTextElement.textContent = selectedPromise;
             promiseTextElement.classList.add('show');
             
             setTimeout(() => {
-                // Close the paper after 7 seconds
-                promiseCardContainer.classList.remove('open');
-                promiseCardContainer.classList.add('close');
-                
-                setTimeout(() => {
-                    promiseTextElement.classList.remove('show');
-                    promiseCardContainer.classList.remove('close');
-                    promiseTextElement.textContent = '';
-                }, 500);
-            }, 7000);
+                // Hide the card after a few seconds
+                promiseCardContainer.classList.remove('reveal');
+                promiseTextElement.classList.remove('show');
+                setTimeout(() => (promiseTextElement.textContent = ''), 300);
+            }, 4000);
             
         }, 500);
     });
 
     // Love Letter Toggle
     const loveLetterButton = document.getElementById('love-letter-button');
-    const loveLetterContainer = document.getElementById('love-letter-container');
+    const loveLetterContainer = document.getElementById('love-letter');
     const closeLoveLetterButton = document.getElementById('close-letter');
 
     loveLetterButton.addEventListener('click', function () {
-        loveLetterContainer.classList.toggle('show');
+        loveLetterContainer.classList.add('show');
     });
 
     closeLoveLetterButton.addEventListener('click', function () {
