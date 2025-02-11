@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartfelt Promise Day 💖</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="promise-day.css">
+</head>
+<body class="promise-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Confetti Animation -->
+    <div class="confetti-falling">
+        <div class="confetti">✨</div>
+        <div class="confetti">💖</div>
+        <div class="confetti">🤝</div>
+        <div class="confetti">💙</div>
+    </div>
+
+    <header class="promise-day-header">
+        <h1>A Promise of Forever! 💖✨</h1>
+        <p class="header-subtitle">Sealing our bond with heartfelt promises! 🤝</p>
+
+        <!-- Message Animation Container -->
+        <div class="message-container">
+            <div id="message-display" class="message-text"></div>
+        </div>
+
+        <div id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Counting moments until our promises come true! 💫</h2>
+            <div id="custom-timer">
+                <span id="custom-timer-display">00:00:00</span>
+            </div>
+            <input type="datetime-local" id="calendar-input" />
+            <button id="start-timer">Start ✨</button>
+            <button id="pause-timer">Pause 💫</button>
+            <button id="reset-timer">Reset 🌟</button>
+            <button id="set-timer">Set Timer 💖</button>
+        </div>
+
+        <audio id="background-music" loop>
+            <source src="double-take.mp3" type="audio/mpeg">
+        </audio>
+        <button id="toggle-music">🎵</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Our Journey 🏡</a></li>
+            <li><a href="rose-day.html">Rose Day 🌹</a></li>
+            <li><a href="propose-day.html">Propose Day 💍</a></li>
+            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
+            <li><a href="promise-day.html" class="active">Promise Day 🤝</a></li>
+            <li><a href="hug-day.html">Hug Day 🤗</a></li>
+            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+        </ul>
+    </nav>
+
+    <main class="promise-day-main">
+        <section class="welcome-message">
+            <div class="message-bubble bounce">
+                <h2>Hey Sweetie! 💖</h2>
+                <p>A day for promises held close to the heart...</p>
+                <div class="bounce-arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="promise-cards">
+            <h2>Our Promises to Each Other 🎁</h2>
+            <div class="cards-container">
+                <div class="promise-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Always Listening</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>I promise to always lend an ear and understand. 💘</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promise-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Unwavering Support</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>I promise to support your dreams, big or small. ✨</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promise-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Endless Patience</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>I promise to be patient, even when things get tough. 💝</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promise-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Forever Honest</h3>
+                        </div>
+                        <div class="card-back">
+                            <p>I promise to always be honest, with love and care. 🌟</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-memories">
+            <h2>💖 Promises Made, Moments Cherished 💖</h2>
+            <div class="memory-container">
+                <div class="memory-card">
+                    <h3>The Day We Promised Forever</h3>
+                    <p>Remember when we promised to always be there for each other? That promise still shines bright.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Through Thick and Thin</h3>
+                    <p>We promised to face everything together, and every challenge has only strengthened our bond.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>A Future of Promises</h3>
+                    <p>I look forward to making and keeping countless more promises with you. </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="promise-facts">
+            <h2>Heartfelt Facts About Our Promises! 💖</h2>
+            <div class="facts-container">
+                <div class="fact-bubble">
+                    <p>Our promises are the foundation of our love! ✨</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>Every promise we keep brings us closer together! 💖</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>Our love grows stronger with every promise fulfilled! 🤝</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-promise">
+            <h2>Unlock a Special Promise! ✨</h2>
+            <div class="promise-container">
+                <div class="magic-promise">🤝</div>
+                <div class="promise-text hidden">
+                    <p>I promise to always cherish and love you! 💫</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-notes">
+            <h2>Sweet Notes of Promise 💖</h2>
+            <div class="notes-container">
+                <div class="note sparkle">
+                    <p>I promise to be your rock! 💖</p>
+                </div>
+                <div class="note sparkle">
+                    <p>I promise to make you smile every day! ✨</p>
+                </div>
+                <div class="note sparkle">
+                    <p>I promise to love you unconditionally! 🤝</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Love Letter Container -->
+    <div id="love-letter-container">
+        <button id="love-letter-button" class="love-letter-button">💌</button>
+        <div id="love-letter" class="love-letter hidden">
+            <div class="love-letter-content">
+                <div class="love-letter-header">
+                    <h3>My Forever Promise 💖</h3>
+                    <button id="close-letter" class="close-letter">×</button>
+                </div>
+                <div class="love-letter-body">
+                    <p>Dearest Sweetheart,</p>
+                    <p>On this Promise Day, I want to remind you of the promises I hold close to my heart – promises of unwavering love, endless support, and a lifetime of happiness together. 💖✨</p>
+                    <p>Like the strongest bonds, our promises are the threads that weave our hearts together:</p>
+                    <ul>
+                        <li>A promise to always cherish your dreams 💖</li>
+                        <li>A promise to hold your hand through every storm 🤝</li>
+                        <li>A promise to love you unconditionally, always and forever 💫</li>
+                    </ul>
+                    <p>You're my favorite promise come true, the sweetest melody in my life, and the most precious gift I could ever ask for!</p>
+                    <p>Thank you for being the keeper of my heart, my partner in every adventure, and the love of my life. You're everything I've ever wished for and more! 💖</p>
+                    <p>May our promises always guide us, strengthen us, and fill our lives with endless joy and love. Happy Promise Day, my darling!</p>
+                    <p class="love-letter-signature">Forever yours,<br>Your Promise Keeper 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="promise-day.js"></script>
+</body>
+</html>
