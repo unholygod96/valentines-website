@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Sweet Messages Animation
-    const sweetMessages = [
-        "You're sweeter than chocolate! 🍫",
-        "Life is delicious with you! ✨",
-        "My favorite treat is your smile! 💝",
-        "Every moment with you is sweet! 🌟",
-        "You melt my heart! 💫",
-        "Sweeter than any dessert! 🍫"
+    // Promise Day related messages
+    const promiseDayMessages = [
+        "Every promise strengthens our bond! 💖",
+        "Our love is built on promises kept! 🤝",
+        "Promises are the foundation of our future! ✨",
+        "Each day with you is a promise of forever! 💑",
+        "Our promises are the threads of our love story! 📖",
+        "Together, we promise a lifetime of happiness! 🌟"
     ];
 
     const messageElement = document.getElementById('message-display');
@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
         messageElement.style.transform = 'translateY(20px)';
 
         setTimeout(() => {
-            messageElement.textContent = sweetMessages[currentIndex];
+            messageElement.textContent = promiseDayMessages[currentIndex];
             messageElement.style.opacity = '1';
             messageElement.style.transform = 'translateY(0)';
 
-            currentIndex = (currentIndex + 1) % sweetMessages.length;
+            currentIndex = (currentIndex + 1) % promiseDayMessages.length;
 
             setTimeout(showMessage, 3000);
         }, 500);
@@ -91,16 +91,16 @@ document.addEventListener('DOMContentLoaded', function () {
         "I promise to never take you for granted.",
         "I promise to always respect your opinions.",
         "I promise to surprise you with little joys.",
-        "I promise to always stand by your side.",
-        "I promise to cherish every moment with you.",
-        "I promise to make your happiness my priority.",
-        "I promise to grow old with you gracefully.",
-        "I promise to never stop learning about you.",
-        "I promise to always protect our love.",
         "I promise to be patient and understanding.",
-        "I promise to celebrate your successes as my own.",
-        "I promise to share all my secrets with you.",
-        "I promise to never let go of your hand."
+        "I promise to grow with you.",
+        "I promise to be your partner in all of life's adventures.",
+        "I promise to comfort you in times of sorrow.",
+        "I promise to celebrate your successes.",
+        "I promise to be your safe haven.",
+        "I promise to always communicate openly with you.",
+        "I promise to work through challenges together.",
+        "I promise to keep the romance alive.",
+        "I promise to be your best friend and lover."
     ];
 
     promiseJarButton.addEventListener('click', function () {
@@ -109,29 +109,34 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedPromise = promisesList[randomIndex];
 
         // Display the selected promise with animation
-        promiseCardContainer.classList.add('reveal');
+        promiseCardContainer.classList.add('open');
         
         setTimeout(() => {
             promiseTextElement.textContent = selectedPromise;
             promiseTextElement.classList.add('show');
             
             setTimeout(() => {
-                // Hide the card after a few seconds
-                promiseCardContainer.classList.remove('reveal');
-                promiseTextElement.classList.remove('show');
-                setTimeout(() => (promiseTextElement.textContent = ''), 300);
-            }, 4000);
+                // Close the paper after 7 seconds
+                promiseCardContainer.classList.remove('open');
+                promiseCardContainer.classList.add('close');
+                
+                setTimeout(() => {
+                    promiseTextElement.classList.remove('show');
+                    promiseCardContainer.classList.remove('close');
+                    promiseTextElement.textContent = '';
+                }, 500);
+            }, 7000);
             
         }, 500);
     });
 
     // Love Letter Toggle
     const loveLetterButton = document.getElementById('love-letter-button');
-    const loveLetterContainer = document.getElementById('love-letter');
+    const loveLetterContainer = document.getElementById('love-letter-container');
     const closeLoveLetterButton = document.getElementById('close-letter');
 
     loveLetterButton.addEventListener('click', function () {
-        loveLetterContainer.classList.add('show');
+        loveLetterContainer.classList.toggle('show');
     });
 
     closeLoveLetterButton.addEventListener('click', function () {
@@ -160,4 +165,55 @@ document.addEventListener('DOMContentLoaded', function () {
             musicButton.textContent = '🔇';
         }
     });
+
+    // Timer Functionality
+    const timerDisplay = document.getElementById('custom-timer-display');
+    const timerHeader = document.getElementById('timer-header');
+    let timerInterval;
+    let endTime;
+
+    document.getElementById('set-timer').addEventListener('click', function() {
+        const input = document.getElementById('calendar-input');
+        if (input.value) {
+            endTime = new Date(input.value).getTime();
+            startTimer();
+        }
+    });
+
+    document.getElementById('start-timer').addEventListener('click', startTimer);
+    document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+    document.getElementById('reset-timer').addEventListener('click', resetTimer);
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timerDisplay.textContent = "00:00:00";
+        endTime = null;
+    }
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance <= 0) {
+            clearInterval(timerInterval);
+            timerDisplay.textContent = "Time's Up! 💖";
+            return;
+        }
+
+        const hours = Math.floor(distance / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerDisplay.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
 });
