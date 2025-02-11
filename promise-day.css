@@ -113,7 +113,8 @@
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -177,28 +178,6 @@
     transform: translateY(-10px);
 }
 
-/* Promise Facts Section */
-.promise-facts {
-    padding: 3rem 2rem;
-    background: #e6f7ff;
-}
-
-.facts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.fact-bubble {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-}
-
 /* Promise Jar Section */
 .promise-jar {
     text-align: center;
@@ -226,15 +205,64 @@
     padding: 2rem;
     border-radius: 15px;
     background: white;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    transform: scale(0.8);
+    transform-origin: top center;
+    /* Set the transform origin */
     transition: all 0.5s ease-out;
 }
 
 .promise-card-container.reveal {
     opacity: 1;
     transform: scale(1);
+}
+
+/* Keyframes for the opening animation */
+@keyframes openPage {
+    0% {
+        transform: rotateX(-90deg);
+        /* Start with the card folded */
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: rotateX(0deg);
+        /* End with the card open */
+        opacity: 1;
+    }
+}
+
+/* Keyframes for the closing animation */
+@keyframes closePage {
+    0% {
+        transform: rotateX(0deg);
+        /* Start with the card open */
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: rotateX(-90deg);
+        /* End with the card folded */
+        opacity: 0;
+    }
+}
+
+.promise-card-container.open-animation {
+    animation: openPage 0.7s ease-out forwards;
+    /* Use the animation */
+}
+
+.promise-card-container.close-animation {
+    animation: closePage 0.7s ease-in forwards;
+    /* Use the animation */
 }
 
 #promise-text.hidden {
@@ -404,12 +432,15 @@
         opacity: 0;
         transform: translateY(-5vh) rotate(0deg);
     }
+
     10% {
         opacity: 0.8;
     }
+
     90% {
         opacity: 0.8;
     }
+
     100% {
         opacity: 0;
         transform: translateY(105vh) rotate(720deg);
@@ -417,8 +448,15 @@
 }
 
 @keyframes floatText {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Responsive Design */
@@ -437,7 +475,8 @@
         grid-template-columns: 1fr;
     }
 
-    .fact-bubble, .note {
+    .fact-bubble,
+    .note {
         width: 100%;
     }
 
