@@ -1,5 +1,21 @@
  document.addEventListener('DOMContentLoaded', function() {
-     // Sweet Messages Animation
+     // ----- Configuration -----
+     const animationDuration = 800; // milliseconds
+     const sparkleCount = 10;
+ 
+     // ----- Helper Functions -----
+     const getRandom = (min, max) => Math.random() * (max - min) + min;
+ 
+     const createSparkle = (parent) => {
+         const sparkle = document.createElement('div');
+         sparkle.className = 'sparkle';
+         sparkle.style.left = `${getRandom(0, 100)}%`;
+         sparkle.style.top = `${getRandom(0, 100)}%`;
+         parent.appendChild(sparkle);
+         setTimeout(() => sparkle.remove(), animationDuration);
+     };
+ 
+     // ----- Sweet Messages -----
      const sweetMessages = [
          "You're warmer than a hug! 🤗",
          "Life is cozier with you! ✨",
@@ -9,197 +25,125 @@
          "Sweeter than any embrace! 🥰"
      ];
  
-     const messageElement = document.getElementById('message-display');
-     let currentIndex = 0;
+     let messageIndex = 0;
+     const messageDisplay = document.getElementById('message-display');
  
-     function showMessage() {
-         messageElement.style.opacity = '0';
-         messageElement.style.transform = 'translateY(20px)';
+     const animateMessage = () => {
+         messageDisplay.style.opacity = 0;
+         messageDisplay.style.transform = 'translateY(20px)';
  
          setTimeout(() => {
-             messageElement.textContent = sweetMessages[currentIndex];
-             messageElement.style.opacity = '1';
-             messageElement.style.transform = 'translateY(0)';
+             messageDisplay.textContent = sweetMessages[messageIndex];
+             messageDisplay.style.opacity = 1;
+             messageDisplay.style.transform = 'translateY(0)';
  
-             currentIndex = (currentIndex + 1) % sweetMessages.length;
+             messageIndex = (messageIndex + 1) % sweetMessages.length;
+             setTimeout(animateMessage, 3000);
+         }, animationDuration / 4);
+     };
  
-             setTimeout(showMessage, 3000);
-         }, 500);
-     }
+     animateMessage();
  
-     // Start message animation
-     showMessage();
+     // ----- Falling Hearts -----
+     const heartsContainer = document.querySelector('.hearts');
  
-     // Falling Hearts Animation
-     function createHeart() {
+     const createHeart = () => {
          const heart = document.createElement('div');
          heart.className = 'heart';
          heart.textContent = '❤';
  
-         heart.style.left = Math.random() * 100 + 'vw';
-         heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+         heart.style.left = `${getRandom(0, 100)}vw`;
+         heart.style.transform = `rotate(${getRandom(0, 360)}deg)`;
+         heart.style.animationDuration = `${getRandom(7, 12)}s`;
  
-         const duration = 7 + Math.random() * 5;
-         heart.style.animationDuration = `${duration}s`;
+         heartsContainer.appendChild(heart);
+         setTimeout(() => heart.remove(), 12000);
+     };
  
-         document.querySelector('.hearts').appendChild(heart);
- 
-         setTimeout(() => heart.remove(), duration * 1000);
-     }
- 
-     // Create hearts periodically
      setInterval(createHeart, 500);
  
-     // Interactive Hug Box
+     // ----- Hug Box -----
      const hugPieces = document.querySelectorAll('.hug-piece');
  
      hugPieces.forEach(piece => {
-         piece.addEventListener('mouseenter', function() {
-             createHugSparkles(this);
+         piece.addEventListener('mouseenter', () => {
+             for (let i = 0; i < sparkleCount; i++) createSparkle(piece);
+             piece.classList.add('active');
          });
  
-         piece.addEventListener('mouseleave', function() {
-             // Remove any remaining sparkles
-             const sparkles = this.querySelectorAll('.sparkle');
-             sparkles.forEach(sparkle => sparkle.remove());
+         piece.addEventListener('mouseleave', () => {
+             piece.classList.remove('active');
          });
      });
  
-     // Create Hug Sparkles
-     function createHugSparkles(element) {
-         for (let i = 0; i < 10; i++) {
-             const sparkle = document.createElement('div');
-             sparkle.className = 'sparkle';
-             sparkle.style.left = Math.random() * 100 + '%';
-             sparkle.style.top = Math.random() * 100 + '%';
-             sparkle.style.animationDelay = Math.random() * 500 + 'ms';
-             element.appendChild(sparkle);
-             setTimeout(() => sparkle.remove(), 1000);
-         }
-     }
- 
-     // Memory Cards Animation
+     // ----- Sweet Memories -----
      const memoryCards = document.querySelectorAll('.memory-card');
+ 
      memoryCards.forEach(card => {
-         card.addEventListener('mouseenter', function() {
-             this.style.transform = 'translateY(-10px)';
-             createMemorySparkles(this);
+         card.addEventListener('mouseenter', () => {
+             for (let i = 0; i < sparkleCount / 2; i++) createSparkle(card);
+             card.classList.add('active');
          });
  
-         card.addEventListener('mouseleave', function() {
-             this.style.transform = 'translateY(0)';
+         card.addEventListener('mouseleave', () => {
+             card.classList.remove('active');
          });
      });
  
-     // Create Memory Sparkles
-     function createMemorySparkles(element) {
-         for (let i = 0; i < 8; i++) {
-             const sparkle = document.createElement('div');
-             sparkle.className = 'sparkle';
-             sparkle.style.left = Math.random() * 100 + '%';
-             sparkle.style.top = Math.random() * 100 + '%';
-             element.appendChild(sparkle);
-             setTimeout(() => sparkle.remove(), 1000);
-         }
-     }
- 
-     // Interactive Magic Hug
+     // ----- Interactive Hug -----
      const magicHug = document.querySelector('.magic-hug');
      const wishText = document.querySelector('.wish-text');
  
-     magicHug.addEventListener('click', function() {
-         this.style.transform = 'scale(1.5) rotate(720deg)';
-         createMagicSparkles(this);
+     const showWish = () => {
+         wishText.classList.add('show');
+         setTimeout(() => wishText.classList.remove('show'), 3000);
+     };
+ 
+     magicHug.addEventListener('click', () => {
+         magicHug.classList.add('active');
+         for (let i = 0; i < sparkleCount * 2; i++) createSparkle(magicHug);
  
          setTimeout(() => {
-             wishText.classList.remove('hidden');
-             wishText.classList.add('show');
-         }, 500);
- 
-         setTimeout(() => {
-             this.style.transform = '';
-             wishText.classList.remove('show');
-             setTimeout(() => wishText.classList.add('hidden'), 300);
-         }, 3000);
+             magicHug.classList.remove('active');
+             showWish();
+         }, animationDuration);
      });
  
-     // Create Magic Sparkles
-     function createMagicSparkles(element) {
-         for (let i = 0; i < 12; i++) {
-             const sparkle = document.createElement('div');
-             sparkle.className = 'sparkle';
-             sparkle.style.left = 50 + (Math.random() - 0.5) * 100 + '%';
-             sparkle.style.top = 50 + (Math.random() - 0.5) * 100 + '%';
-             element.appendChild(sparkle);
-             setTimeout(() => sparkle.remove(), 1000);
-         }
-     }
- 
-     // Sweet Notes Hover Effect
+     // ----- Sweet Notes -----
      const notes = document.querySelectorAll('.note');
+ 
      notes.forEach(note => {
-         note.addEventListener('mouseenter', function() {
-             this.style.transform = `scale(1.1) rotate(${Math.random() * 10 - 5}deg)`;
-             createNoteSparkles(this);
+         note.addEventListener('mouseenter', () => {
+             for (let i = 0; i < sparkleCount / 3; i++) createSparkle(note);
+             note.classList.add('active');
          });
  
-         note.addEventListener('mouseleave', function() {
-             this.style.transform = 'scale(1) rotate(0deg)';
+         note.addEventListener('mouseleave', () => {
+             note.classList.remove('active');
          });
      });
  
-     // Create Note Sparkles
-     function createNoteSparkles(element) {
-         for (let i = 0; i < 6; i++) {
-             const sparkle = document.createElement('div');
-             sparkle.className = 'sparkle';
-             sparkle.style.left = Math.random() * 100 + '%';
-             sparkle.style.top = Math.random() * 100 + '%';
-             element.appendChild(sparkle);
-             setTimeout(() => sparkle.remove(), 1000);
-         }
-     }
- 
-     // Love Letter Toggle
+     // ----- Love Letter -----
      const loveLetterButton = document.getElementById('love-letter-button');
      const loveLetter = document.getElementById('love-letter');
      const closeLetter = document.getElementById('close-letter');
  
-     loveLetterButton.addEventListener('click', function() {
-         loveLetter.classList.add('show');
-         createLetterSparkles(loveLetter);
-     });
+     const toggleLetter = () => loveLetter.classList.toggle('show');
  
-     closeLetter.addEventListener('click', function() {
-         loveLetter.classList.remove('show');
-     });
+     loveLetterButton.addEventListener('click', toggleLetter);
+     closeLetter.addEventListener('click', toggleLetter);
  
-     // Close letter when clicking outside
-     document.addEventListener('click', function(event) {
-         if (!loveLetter.contains(event.target) &&
-             !loveLetterButton.contains(event.target) &&
-             loveLetter.classList.contains('show')) {
-             loveLetter.classList.remove('show');
+     document.addEventListener('click', (event) => {
+         if (!loveLetter.contains(event.target) && !loveLetterButton.contains(event.target) && loveLetter.classList.contains('show')) {
+             toggleLetter();
          }
      });
  
-     // Create Letter Sparkles
-     function createLetterSparkles(element) {
-         for (let i = 0; i < 15; i++) {
-             const sparkle = document.createElement('div');
-             sparkle.className = 'sparkle';
-             sparkle.style.left = Math.random() * 100 + '%';
-             sparkle.style.top = Math.random() * 100 + '%';
-             element.appendChild(sparkle);
-             setTimeout(() => sparkle.remove(), 1000);
-         }
-     }
- 
-     // Background Music Toggle
+     // ----- Background Music -----
      const musicButton = document.getElementById('toggle-music');
      const backgroundMusic = document.getElementById('background-music');
  
-     musicButton.addEventListener('click', function() {
+     musicButton.addEventListener('click', () => {
          if (backgroundMusic.paused) {
              backgroundMusic.play();
              musicButton.textContent = '🎵';
@@ -209,7 +153,7 @@
          }
      });
  
-     // Timer Functions
+     // ----- Timer -----
      const timerDisplay = document.getElementById('custom-timer-display');
      const timerHeader = document.getElementById('timer-header');
      const timerEndOverlay = document.getElementById('timer-end-overlay');
@@ -218,42 +162,7 @@
      let timerInterval;
      let endTime;
  
-     document.getElementById('set-timer').addEventListener('click', function() {
-         const input = document.getElementById('calendar-input');
-         if (input.value) {
-             endTime = new Date(input.value).getTime();
-             startTimer();
-         }
-     });
- 
-     document.getElementById('start-timer').addEventListener('click', function() {
-         startTimer();
-     });
- 
-     document.getElementById('pause-timer').addEventListener('click', function() {
-         pauseTimer();
-     });
- 
-     document.getElementById('reset-timer').addEventListener('click', function() {
-         resetTimer();
-     });
- 
-     function startTimer() {
-         clearInterval(timerInterval);
-         timerInterval = setInterval(updateTimer, 1000);
-     }
- 
-     function pauseTimer() {
-         clearInterval(timerInterval);
-     }
- 
-     function resetTimer() {
-         clearInterval(timerInterval);
-         timerDisplay.textContent = "00:00:00";
-         timerEndOverlay.classList.add('hidden');
-     }
- 
-     function updateTimer() {
+     const updateTimer = () => {
          const now = new Date().getTime();
          const distance = endTime - now;
  
@@ -269,22 +178,41 @@
          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
  
-         timerDisplay.textContent =
-             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-     }
+         timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+     };
  
-     closeOverlayButton.addEventListener('click', function() {
+     const startTimer = () => {
+         clearInterval(timerInterval);
+         timerInterval = setInterval(updateTimer, 1000);
+     };
+ 
+     const pauseTimer = () => clearInterval(timerInterval);
+ 
+     const resetTimer = () => {
+         clearInterval(timerInterval);
+         timerDisplay.textContent = "00:00:00";
          timerEndOverlay.classList.add('hidden');
+     };
+ 
+     document.getElementById('set-timer').addEventListener('click', () => {
+         const input = document.getElementById('calendar-input');
+         if (input.value) {
+             endTime = new Date(input.value).getTime();
+             startTimer();
+         }
      });
  
-     // Menu Button Functionality
+     document.getElementById('start-timer').addEventListener('click', startTimer);
+     document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+     document.getElementById('reset-timer').addEventListener('click', resetTimer);
+     closeOverlayButton.addEventListener('click', () => timerEndOverlay.classList.add('hidden'));
+ 
+     // ----- Menu -----
      const menuButton = document.getElementById('menu-button');
      const nav = document.querySelector('nav');
-     menuButton.addEventListener('click', function() {
-         nav.classList.toggle('show');
-     });
  
-     // Initialize
+     menuButton.addEventListener('click', () => nav.classList.toggle('show'));
+ 
+     // ----- Initialize -----
      createHeart();
-     showMessage();
  });
