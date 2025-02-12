@@ -1,258 +1,259 @@
- <!DOCTYPE html>
- <html lang="en">
- 
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>A Warm Hug For You! 🤗</title>
-     <!-- Common CSS -->
-     <link rel="stylesheet" href="styles.css">
-     <!-- Hug Day Specific CSS -->
-     <link rel="stylesheet" href="hug.css">
- </head>
- 
- <body class="hug-day-theme">
-     <!-- Menu Button -->
-     <button id="menu-button" class="menu-button">☰</button>
- 
-     <!-- Heart Rain -->
-     <div class="hearts">
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-         <div class="heart">❤</div>
-     </div>
- 
-     <!-- Hugging Bears Animation -->
-     <div class="hugging-bears">
-         <img src="images/bear1.png" alt="Bear 1" class="bear bear1">
-         <img src="images/bear2.png" alt="Bear 2" class="bear bear2">
-     </div>
- 
-     <!-- Timer End Overlay -->
-     <div id="timer-end-overlay" class="overlay hidden">
-         <div class="overlay-content">
-             <h2 id="overlay-header"></h2>
-             <button id="close-overlay">Close ✨</button>
-         </div>
-     </div>
- 
-     <header class="hug-day-header">
-         <h1>A Big Warm Hug For You! 🤗</h1>
-         <p class="header-subtitle">Sending you the warmest hug on this special day! 💖</p>
- 
-         <!-- Message Animation Container -->
-         <div class="message-container">
-             <div id="message-display" class="message-text"></div>
-         </div>
- 
-         <div id="timer-container">
-             <h2 id="timer-header" contenteditable="true">Counting sweet moments with you! 💫</h2>
-             <div id="custom-timer">
-                 <span id="custom-timer-display">00:00:00</span>
-             </div>
-             <input type="datetime-local" id="calendar-input" />
-             <button id="start-timer">Start ✨</button>
-             <button id="pause-timer">Pause 💫</button>
-             <button id="reset-timer">Reset 🌟</button>
-             <button id="set-timer">Set Timer 💖</button>
-         </div>
- 
-         <audio id="background-music" loop>
-             <source src="bensound-tenderness.mp3" type="audio/mpeg">
-         </audio>
-         <button id="toggle-music">🎵</button>
-     </header>
- 
-     <nav>
-         <ul>
-             <li><a href="index.html">Back to Our Journey 🏡</a></li>
-             <li><a href="rose-day.html">Rose Day 🌹</a></li>
-             <li><a href="propose-day.html">Propose Day 💍</a></li>
-             <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
-             <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
-             <li><a href="promise-day.html">Promise Day 🤝</a></li>
-             <li><a href="hug-day.html" class="active">Hug Day 🤗</a></li>
-             <li><a href="kiss-day.html">Kiss Day 💋</a></li>
-             <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
-         </ul>
-     </nav>
- 
-     <main class="hug-day-main">
-         <section class="welcome-message">
-             <div class="message-bubble bounce">
-                 <h2>Hey Sweetie! 🤗</h2>
-                 <p>I've got a warm hug for you...</p>
-                 <div class="bounce-arrow">↓</div>
-             </div>
-         </section>
- 
-         <section class="hug-box">
-             <h2>Your Box of Hugs! 🎁</h2>
-             <div class="box-container">
-                 <div class="hug-piece">
-                     <div class="hug-inner">
-                         <div class="hug-front">
-                             <div class="corner-decoration"></div>
-                             <h3>Warm & Cozy Hug</h3>
-                         </div>
-                         <div class="hug-back">
-                             <p>Like wrapping you in a blanket of love! 💖</p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="hug-piece">
-                     <div class="hug-inner">
-                         <div class="hug-front">
-                             <div class="corner-decoration"></div>
-                             <h3>Tight Squeeze Hug</h3>
-                         </div>
-                         <div class="hug-back">
-                             <p>A hug that says, "I'm so glad you're here!" ✨</p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="hug-piece">
-                     <div class="hug-inner">
-                         <div class="hug-front">
-                             <div class="corner-decoration"></div>
-                             <h3>Gentle & Sweet Hug</h3>
-                         </div>
-                         <div class="hug-back">
-                             <p>A hug that whispers, "Everything's alright." 😌</p>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="hug-piece">
-                     <div class="hug-inner">
-                         <div class="hug-front">
-                             <div class="corner-decoration"></div>
-                             <h3>Long & Lingering Hug</h3>
-                         </div>
-                         <div class="hug-back">
-                             <p>A hug that never wants to let go! 🥰</p>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </section>
- 
-         <section class="sweet-memories">
-             <h2>💖 Hugs, Like Love, Travel Any Distance 🤗</h2>
-             <div class="memory-container">
-                 <div class="memory-card">
-                     <h3>Sending You a Virtual Hug from Miles Away</h3>
-                     <p>Even though we're apart, I'm sending you the warmest virtual hug! Can you feel it? 💫</p>
-                 </div>
-                 <div class="memory-card">
-                     <h3>Different Places, Same Warmth</h3>
-                     <p>Every time I think of you, it's like a warm hug wrapping around my heart. Distance can't diminish the love! ✨</p>
-                 </div>
-                 <div class="memory-card">
-                     <h3>One Day, Real Hugs, No More Screens</h3>
-                     <p>For now, we share hugs through screens. But one day, I'll be able to give you the real thing! 🥰</p>
-                 </div>
-             </div>
-         </section>
- 
-         <section class="hug-facts">
-             <h2>Sweet Facts About Hugs! 💖</h2>
-             <div class="facts-container">
-                 <div class="fact-bubble">
-                     <p>Hugs make everything better! ✨</p>
-                 </div>
-                 <div class="fact-bubble">
-                     <p>You melt into my arms like a warm hug! 🥰</p>
-                 </div>
-                 <div class="fact-bubble">
-                     <p>Life is cozier with you and hugs! 🤗</p>
-                 </div>
-             </div>
-         </section>
- 
-         <section class="interactive-hug">
-             <h2>Send a Sweet Hug Wish! ✨</h2>
-             <div class="wish-container">
-                 <div class="magic-hug">🤗</div>
-                 <div class="wish-text hidden">
-                     <p>Your wish is as warm as a hug! 💫</p>
-                 </div>
-             </div>
-         </section>
- 
-         <section class="sweet-notes">
-             <h2>Sweet Notes With a Hug 💝</h2>
-             <div class="notes-container">
-                 <div class="note sparkle">
-                     <p>You're warmer than a hug! 🤗</p>
-                 </div>
-                 <div class="note sparkle">
-                     <p>My life's sweetest comfort is you! ✨</p>
-                 </div>
-                 <div class="note sparkle">
-                     <p>You make every day cozy! 💖</p>
-                 </div>
-             </div>
-         </section>
-     </main>
- 
- 
-     <!-- Love Letter Container -->
-     <div id="love-letter-container">
-         <button id="love-letter-button" class="love-letter-button">💌</button>
-         <div id="love-letter" class="love-letter hidden">
-             <div class="love-letter-content">
-                 <div class="love-letter-header">
-                     <h3>My Warm Hug 💖</h3>
-                     <button id="close-letter" class="close-letter">×</button>
-                 </div>
-                 <div class="love-letter-body">
-                     <p>Dearest Sweetheart,</p>
-                     <p>Just like a hug warms the soul, your presence warms my heart every time I think of you. You're the coziest part of my life, making every moment wonderfully special! 🤗✨</p>
-                     <p>Like different kinds of hugs, you bring so many comforting touches to my life:</p>
-                     <ul>
-                         <li>Warm Hug - for the depth of our love 💝</li>
-                         <li>Tight Squeeze - for the comforting moments you create ✨</li>
-                         <li>Gentle Embrace - for the pure joy you give me 🌟</li>
-                     </ul>
-                     <p>You're warmer than all the hugs in the world, and I'm so lucky to have you in my life! Every moment with you is like receiving the most comforting hug - sweet, exciting, and leaves me longing for more!</p>
-                     <p>Just like how hugs come in different forms, you bring different kinds of warmth to my life - your smile, your laugh, your adorable messages, everything about you is simply delightful! 💖</p>
-                     <p>You're my favorite form of comfort, my sweetest dream come true, and the most precious embrace I could ever ask for!</p>
-                     <p class="love-letter-signature">Forever yours,<br>Your Hugging Heart 💕</p>
-                 </div>
-             </div>
-         </div>
-     </div>
- 
-     <!-- Scripts -->
-     <script src="script.js"></script>
-     <script src="hug.js"></script>
- </body>
- 
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warm Hug Day 🤗</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Hug Day Specific CSS -->
+    <link rel="stylesheet" href="hug-day.css">
+</head>
+<body class="hug-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Heart Rain -->
+    <div class="hearts">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
+    <!-- Teddy Bear Animation -->
+    <div class="teddies-falling">
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+        <div class="teddy">🧸</div>
+    </div>
+
+    <header class="hug-day-header">
+        <h1>A Warm Hug For You! 🤗✨</h1>
+        <p class="header-subtitle">Because you deserve all the warmth in the world! 💖</p>
+        
+        <!-- Message Animation Container -->
+        <div class="message-container">
+            <div id="message-display" class="message-text"></div>
+        </div>
+
+        <div id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Counting sweet moments with you! 💫</h2>
+            <div id="custom-timer">
+                <span id="custom-timer-display">00:00:00</span>
+            </div>
+            <input type="datetime-local" id="calendar-input" />
+            <button id="start-timer">Start ✨</button>
+            <button id="pause-timer">Pause 💫</button>
+            <button id="reset-timer">Reset 🌟</button>
+            <button id="set-timer">Set Timer 💖</button>
+        </div>
+
+        <audio id="background-music" loop>
+            <source src="double-take.mp3" type="audio/mpeg">
+        </audio>
+        <button id="toggle-music">🎵</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Our Journey 🏡</a></li>
+            <li><a href="rose-day.html">Rose Day 🌹</a></li>
+            <li><a href="propose-day.html">Propose Day 💍</a></li>
+            <li><a href="chocolate-day.html">Chocolate Day 🍫</a></li>
+            <li><a href="teddy-day.html">Teddy Day 🧸</a></li>
+            <li><a href="promise-day.html">Promise Day 🤝</a></li>
+            <li><a href="hug-day.html" class="active">Hug Day 🤗</a></li>
+            <li><a href="kiss-day.html">Kiss Day 💋</a></li>
+            <li><a href="valentines-day.html">Valentine's Day ❤️</a></li>
+        </ul>
+    </nav>
+
+    <main class="hug-day-main">
+        <section class="welcome-message">
+            <div class="message-bubble bounce">
+                <h2>Hey Sweetie! 🤗</h2>
+                <p>Sending you a warm hug...</p>
+                <div class="bounce-arrow">↓</div>
+            </div>
+        </section>
+
+        <section class="hug-box">
+            <h2>Your Box of Hugs! 🎁</h2>
+            <div class="box-container">
+                <div class="hug-piece">
+                    <div class="hug-inner">
+                        <div class="hug-front">
+                            <div class="corner-decoration"></div>
+                            <h3>Warm Embrace</h3>
+                        </div>
+                        <div class="hug-back">
+                            <p>Warm like my love for you! 💖</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hug-piece">
+                    <div class="hug-inner">
+                        <div class="hug-front">
+                            <div class="corner-decoration"></div>
+                            <h3>Soft Cuddle</h3>
+                        </div>
+                        <div class="hug-back">
+                            <p>Soft like your touch! ✨</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hug-piece">
+                    <div class="hug-inner">
+                        <div class="hug-front">
+                            <div class="corner-decoration"></div>
+                            <h3>Tight Squeeze</h3>
+                        </div>
+                        <div class="hug-back">
+                            <p>Tight like our bond! 💝</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hug-piece">
+                    <div class="hug-inner">
+                        <div class="hug-front">
+                            <div class="corner-decoration"></div>
+                            <h3>Gentle Hug</h3>
+                        </div>
+                        <div class="hug-back">
+                            <p>Gentle like your heart! 🌟</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-memories">
+            <h2>💖 Love, Like a Hug, Travels Any Distance 🤗</h2>
+            <div class="memory-container">
+                <div class="memory-card">
+                    <h3>Saving You a Hug… Even From Miles Away</h3>
+                    <p>If I could, I’d send you a hug in an envelope—because some things are only special when shared.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>Different Places, Same Feeling</h3>
+                    <p>Every time I think of hugging you, it’s not just the warmth I feel—it’s the thought of you, somewhere far away, doing the same. And for a moment, the distance feels smaller.</p>
+                </div>
+                <div class="memory-card">
+                    <h3>One Day, No More ‘Wish You Were Here’—Just ‘Embrace Me’</h3>
+                    <p>For now, we share hugs through screens. But one day, I’ll embrace you right in my arms.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="hug-facts">
+            <h2>Sweet Facts About Us! 🤗</h2>
+            <div class="facts-container">
+                <div class="fact-bubble">
+                    <p>Your hug makes everything better! ✨</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>I could hug you forever! 💖</p>
+                </div>
+                <div class="fact-bubble">
+                    <p>A hug from you is the best feeling! 🤗</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-hug">
+            <h2>Send a Virtual Hug! ✨</h2>
+            <div class="wish-container">
+                <div class="magic-hug">🤗</div>
+                <div class="wish-text hidden">
+                    <p>Sending you a big warm hug! 💫</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sweet-notes">
+            <h2>Sweet Notes For You 💖</h2>
+            <div class="notes-container">
+                <div class="note sparkle">
+                    <p>You're my favorite hug! 🤗</p>
+                </div>
+                <div class="note sparkle">
+                    <p>Hugging you makes my day! ✨</p>
+                </div>
+                <div class="note sparkle">
+                    <p>Sending you lots of love and hugs! 💖</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Love Letter Container -->
+    <div id="love-letter-container">
+        <button id="love-letter-button" class="love-letter-button">💌</button>
+        <div id="love-letter" class="love-letter hidden">
+            <div class="love-letter-content">
+                <div class="love-letter-header">
+                    <h3>My Sweet Hug 🤗</h3>
+                    <button id="close-letter" class="close-letter">×</button>
+                </div>
+                <div class="love-letter-body">
+                    <p>Dearest Sweetheart,</p>
+                    <p>Just like a hug wraps you in warmth, my heart melts every time I think of you. You're the warmest part of my life, making every moment special! 🤗✨</p>
+                    <p>Like different kinds of hugs, you bring so many wonderful feelings to my life:</p>
+                    <ul>
+                        <li>Tight Hug - for the depth of our love 💖</li>
+                        <li>Soft Hug - for the smoothness you bring to my days ✨</li>
+                        <li>Gentle Hug - for the pure joy you give me 🌟</li>
+                    </ul>
+                    <p>You're sweeter than all the hugs in the world, and I'm so lucky to have you in my life! Every moment with you is like receiving the most comforting hug - sweet, exciting, and leaves me wanting more!</p>
+                    <p>Just like how hugs come in different forms, you bring different kinds of warmth to my life - your smile, your laugh, your cute little messages, everything about you is simply wonderful! 💝</p>
+                    <p>You're my favorite kind of hug, my sweetest dream come true, and the most precious treat I could ever ask for!</p>
+                    <p class="love-letter-signature">Forever yours,<br>Your Hugging Love 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="hug-day.js"></script>
+</body>
+</html>
