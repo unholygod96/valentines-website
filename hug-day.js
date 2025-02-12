@@ -220,6 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.getElementById('menu-button');
     const nav = document.querySelector('nav');
 
+    loveLetterButton.addEventListener('click', function() {
+        console.log("Love letter button clicked!");  // Add this line
+        loveLetter.classList.add('show');
+    });
+
+
     menuButton.addEventListener('click', function() {
         nav.classList.toggle('show');
     });
