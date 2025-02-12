@@ -80,7 +80,7 @@ body {
     font-size: 24px;
     opacity: 0;
     animation: teddyFall linear infinite;
-    filter: drop-shadow(0 0 5px rgba(121, 85, 72, 0.3)); /* Shadow color matches text color */
+    filter: drop-shadow(0 0 5px rgba(121, 85, 72, 0.3));
 }
 
 /* Hug Box Section */
@@ -179,7 +179,7 @@ body {
     border-radius: 30px;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
     animation: bounce 2s ease-in-out infinite;
 }
 
@@ -235,6 +235,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 1002;
 }
 
 .love-letter.show {
@@ -255,7 +256,7 @@ body {
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid rgba(121, 85, 72, 0.2); /* Border color matches text color */
+    border-bottom: 2px solid rgba(121, 85, 72, 0.2);
 }
 
 .love-letter-header h3 {
@@ -339,7 +340,7 @@ body {
     padding: 1.5rem;
     border-radius: 15px;
     width: 300px;
-    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
     transition: transform 0.3s ease;
 }
 
@@ -365,7 +366,7 @@ body {
     padding: 1.5rem;
     border-radius: 25px;
     max-width: 300px;
-    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
     animation: float 3s ease-in-out infinite;
 }
 
@@ -420,7 +421,7 @@ body {
     padding: 1.5rem;
     border-radius: 15px;
     width: 250px;
-    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -523,3 +524,28 @@ body {
     }
 }
 
+@media (max-width: 480px) {
+    .hug-day-header h1 {
+        font-size: 2rem;
+    }
+
+    .hug-day-header p {
+        font-size: 1rem;
+    }
+
+    .box-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .hug-piece {
+        height: 150px;
+    }
+
+    .memory-card, 
+    .fact-bubble, 
+    .note {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
