@@ -1,909 +1,525 @@
- /* General Styles */
- body {
-     font-family: 'Arial', sans-serif;
-     line-height: 1.6;
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     overflow-x: hidden;
- }
- 
- /* Hug Day Theme */
- .hug-day-theme {
-     background-color: #f8f0e3;
-     color: #665c53;
- }
- 
- /* Hug Day Header */
- .hug-day-header {
-     background-color: #f8f0e3;
-     padding: 2rem;
-     position: relative;
-     overflow: hidden;
-     text-align: center;
-     border-bottom: 2px solid #dfd3c3;
- }
- 
- .hug-day-header h1 {
-     font-size: 3.5rem;
-     color: #665c53;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-     animation: floatText 5s ease-in-out infinite;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- .header-subtitle {
-     color: #7a6a5f;
-     font-size: 1.5rem;
-     margin-top: 10px;
-     opacity: 0.9;
-     font-style: italic;
- }
- 
- /* Message Container */
- .message-container {
-     position: relative;
-     height: 80px;
-     width: 100%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     margin: 20px 0;
-     background: rgba(255, 255, 255, 0.1);
-     border-radius: 15px;
-     overflow: hidden;
- }
- 
- .message-text {
-     font-size: 2rem;
-     color: #7a6a5f;
-     text-align: center;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-     opacity: 0;
-     transform: translateY(20px);
-     transition: all 0.5s ease;
-     padding: 10px;
- }
- 
- .message-text.active {
-     opacity: 1;
-     transform: translateY(0);
- }
- 
- /* Falling Hearts Animation */
- .hearts {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     pointer-events: none;
-     z-index: 1;
- }
- 
- .heart {
-     position: absolute;
-     font-size: 24px;
-     opacity: 0;
-     animation: heartFall linear infinite;
-     filter: drop-shadow(0 0 5px rgba(106, 90, 205, 0.3));
-     color: #e91e63;
- }
- 
- @keyframes heartFall {
-     0% {
-         opacity: 0;
-         transform: translateY(-10vh) rotate(0deg);
-     }
- 
-     10% {
-         opacity: 0.7;
-     }
- 
-     90% {
-         opacity: 0.7;
-     }
- 
-     100% {
-         opacity: 0;
-         transform: translateY(110vh) rotate(720deg);
-     }
- }
- 
- /* Hugging Bears Animation */
- .hugging-bears {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     pointer-events: none;
-     z-index: 1;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .bear {
-     width: 150px;
-     height: auto;
-     position: absolute;
- }
- 
- .bear1 {
-     left: 20%;
-     animation: moveBear1 6s linear infinite alternate;
- }
- 
- .bear2 {
-     right: 20%;
-     animation: moveBear2 6s linear infinite alternate;
- }
- 
- @keyframes moveBear1 {
-     0% {
-         transform: translateX(0);
-     }
- 
-     100% {
-         transform: translateX(-20px);
-     }
- }
- 
- @keyframes moveBear2 {
-     0% {
-         transform: translateX(0);
-     }
- 
-     100% {
-         transform: translateX(20px);
-     }
- }
- 
- /* Hug Box Section */
- .hug-box {
-     padding: 3rem 2rem;
-     background: #f3e5f5;
-     border-radius: 20px;
-     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-     margin: 2rem auto;
-     max-width: 1200px;
- }
- 
- .box-container {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-     gap: 20px;
-     width: 100%;
-     padding: 20px;
-     justify-content: center;
-     align-items: center;
- }
- 
- .hug-piece {
-     background: transparent;
-     height: 200px;
-     perspective: 1000px;
-     cursor: pointer;
-     transition: transform 0.3s ease;
- }
- 
- .hug-inner {
-     position: relative;
-     width: 100%;
-     height: 100%;
-     text-align: center;
-     transition: transform 0.8s;
-     transform-style: preserve-3d;
- }
- 
- .hug-piece:hover .hug-inner {
-     transform: rotateY(180deg);
- }
- 
- .hug-front,
- .hug-back {
-     position: absolute;
-     width: 100%;
-     height: 100%;
-     backface-visibility: hidden;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     padding: 20px;
-     border-radius: 15px;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- .hug-front {
-     background: linear-gradient(145deg, #a9927d, #877566);
-     color: white;
-     font-size: 1.3rem;
- }
- 
- .hug-back {
-     background: linear-gradient(145deg, #877566, #a9927d);
-     color: white;
-     transform: rotateY(180deg);
-     font-size: 1.1rem;
- }
- 
- .hug-front h3 {
-     font-size: 1.5rem;
-     margin-bottom: 1rem;
-     color: #fff;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
- }
- 
- .hug-back p {
-     font-size: 1.2rem;
-     color: #fff;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
- }
- 
- .corner-decoration {
-     position: absolute;
-     top: 0;
-     right: 0;
-     width: 40px;
-     height: 40px;
-     background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
-     transform-origin: top right;
- }
- 
- /* Love Letter Styles */
- #love-letter-container {
-     position: fixed;
-     bottom: 20px;
-     right: 20px;
-     z-index: 1000;
- }
- 
- .love-letter-button {
-     width: 60px;
-     height: 60px;
-     border-radius: 50%;
-     background: linear-gradient(145deg, #a9927d, #877566);
-     border: none;
-     color: white;
-     font-size: 24px;
-     cursor: pointer;
-     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-     transition: all 0.3s ease;
-     z-index: 1001;
- }
- 
- .love-letter-button:hover {
-     transform: scale(1.1);
-     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
- }
- 
- .love-letter {
-     position: fixed;
-     bottom: 90px;
-     right: 20px;
-     width: 350px;
-     background: #f8f0e3;
-     border-radius: 20px;
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-     transform: translateY(20px);
-     opacity: 0;
-     visibility: hidden;
-     transition: all 0.3s ease;
- }
- 
- .love-letter.show {
-     transform: translateY(0);
-     opacity: 1;
-     visibility: visible;
- }
- 
- .love-letter-content {
-     padding: 20px;
-     max-height: 70vh;
-     overflow-y: auto;
- }
- 
- .love-letter-header {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     margin-bottom: 15px;
-     padding-bottom: 10px;
-     border-bottom: 2px solid rgba(149, 125, 218, 0.3);
- }
- 
- .love-letter-header h3 {
-     color: #665c53;
-     margin: 0;
-     font-size: 1.5rem;
- }
- 
- .close-letter {
-     background: none;
-     border: none;
-     color: #665c53;
-     font-size: 24px;
-     cursor: pointer;
-     padding: 0;
-     width: 30px;
-     height: 30px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     border-radius: 50%;
-     transition: all 0.3s ease;
- }
- 
- .close-letter:hover {
-     background: rgba(149, 125, 218, 0.1);
- }
- 
- .love-letter-body {
-     color: #665c53;
-     font-size: 1rem;
-     line-height: 1.6;
- }
- 
- .love-letter-body p {
-     margin-bottom: 15px;
- }
- 
- .love-letter-body ul {
-     margin: 15px 0;
-     padding-left: 20px;
- }
- 
- .love-letter-body li {
-     margin-bottom: 10px;
-     list-style-type: none;
-     position: relative;
-     padding-left: 25px;
- }
- 
- .love-letter-body li:before {
-     content: '❤';
-     position: absolute;
-     left: 0;
-     top: 50%;
-     transform: translateY(-50%);
- }
- 
- .love-letter-signature {
-     margin-top: 20px;
-     text-align: right;
-     font-style: italic;
-     color: #7e57c2;
- }
- 
- /* Welcome Message */
- .welcome-message {
-     padding: 2rem;
-     margin-top: 2rem;
-     text-align: center;
- }
- 
- .message-bubble {
-     background: white;
-     padding: 2rem;
-     border-radius: 30px;
-     max-width: 600px;
-     margin: 0 auto;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-     animation: bounce 3s ease-in-out infinite;
- }
- 
- .message-bubble h2 {
-     color: #7e57c2;
-     font-size: 2.2rem;
-     margin-bottom: 1rem;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- .message-bubble p {
-     font-size: 1.2rem;
-     color: #665c53;
- }
- 
- .bounce-arrow {
-     font-size: 2rem;
-     color: #7e57c2;
-     animation: bounceArrow 2s ease-in-out infinite;
-     margin-top: 1rem;
- }
- 
- /* Sweet Memories */
- .sweet-memories {
-     padding: 3rem 2rem;
- }
- 
- .memory-container {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 2rem;
-     padding: 2rem;
- }
- 
- .memory-card {
-     background: white;
-     padding: 1.5rem;
-     border-radius: 15px;
-     width: 300px;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- .memory-card:hover {
-     transform: translateY(-10px);
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
- }
- 
- .memory-card h3 {
-     color: #7e57c2;
-     margin-bottom: 1rem;
- }
- 
- .memory-card p {
-     color: #665c53;
- }
- 
- /* Hug Facts */
- .hug-facts {
-     padding: 3rem 2rem;
-     text-align: center;
- }
- 
- .facts-container {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 2rem;
-     padding: 2rem;
- }
- 
- .fact-bubble {
-     background: white;
-     padding: 1.5rem;
-     border-radius: 25px;
-     max-width: 300px;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-     animation: float 4s ease-in-out infinite;
-     font-style: italic;
-     color: #7e57c2;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- /* Interactive Hug */
- .interactive-hug {
-     padding: 3rem 2rem;
-     text-align: center;
- }
- 
- .wish-container {
-     text-align: center;
- }
- 
- .magic-hug {
-     font-size: 5rem;
-     cursor: pointer;
-     transition: transform 0.5s ease, color 0.3s ease;
-     animation: pulse 3s ease-in-out infinite;
-     display: inline-block;
-     color: #665c53;
- }
- 
- .magic-hug:hover {
-     transform: scale(1.2) rotate(360deg);
-     color: #7e57c2;
- }
- 
- .wish-text {
-     margin-top: 2rem;
-     opacity: 0;
-     transform: translateY(20px);
-     transition: all 0.3s ease;
-     color: #7e57c2;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
- 
- .wish-text.show {
-     opacity: 1;
-     transform: translateY(0);
- }
- 
- /* Sweet Notes */
- .sweet-notes {
-     padding: 3rem 2rem;
-     text-align: center;
- }
- 
- .notes-container {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 2rem;
-     padding: 2rem;
- }
- 
- .note {
-     background: white;
-     padding: 1.5rem;
-     border-radius: 15px;
-     width: 250px;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-     transition: all 0.3s ease;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     color: #665c53;
-     position: relative;
-     overflow: hidden;
- }
- 
- .note:hover {
-     transform: scale(1.1) rotate(5deg);
- }
- 
- /* Sparkle Effect */
- .sparkle {
-     position: absolute;
-     width: 5px;
-     height: 5px;
-     background: white;
-     border-radius: 50%;
-     opacity: 0;
-     animation: sparkleEffect 1s ease-out;
- }
- 
- @keyframes sparkleEffect {
-     0% {
-         transform: scale(0);
-         opacity: 0;
-     }
- 
-     20% {
-         transform: scale(1);
-         opacity: 1;
-     }
- 
-     80% {
-         transform: scale(1);
-         opacity: 1;
-     }
- 
-     100% {
-         transform: scale(0);
-         opacity: 0;
-     }
- }
- 
- /* Animations */
- @keyframes floatText {
-     0%,
-     100% {
-         transform: translateY(0);
-     }
- 
-     50% {
-         transform: translateY(-10px);
-     }
- }
- 
- @keyframes bounce {
-     0%,
-     100% {
-         transform: translateY(0);
-     }
- 
-     50% {
-         transform: translateY(-15px);
-     }
- }
- 
- @keyframes bounceArrow {
-     0%,
-     100% {
-         transform: translateY(0);
-     }
- 
-     50% {
-         transform: translateY(10px);
-     }
- }
- 
- @keyframes float {
-     0%,
-     100% {
-         transform: translateY(0);
-     }
- 
-     50% {
-         transform: translateY(-20px);
-     }
- }
- 
- @keyframes pulse {
-     0% {
-         transform: scale(1);
-     }
- 
-     50% {
-         transform: scale(1.1);
-     }
- 
-     100% {
-         transform: scale(1);
-     }
- }
- 
- /* Bear positioning */
- .bear:nth-child(1) {
-     left: 5%;
-     animation-duration: 11s;
-     animation-delay: 0s;
- }
- 
- .bear:nth-child(2) {
-     left: 15%;
-     animation-duration: 13s;
-     animation-delay: 1s;
- }
- 
- .bear:nth-child(3) {
-     left: 25%;
-     animation-duration: 10s;
-     animation-delay: 2s;
- }
- 
- .bear:nth-child(4) {
-     left: 35%;
-     animation-duration: 12s;
-     animation-delay: 0.5s;
- }
- 
- .bear:nth-child(5) {
-     left: 45%;
-     animation-duration: 11s;
-     animation-delay: 1.5s;
- }
- 
- .bear:nth-child(6) {
-     left: 55%;
-     animation-duration: 13s;
-     animation-delay: 2.5s;
- }
- 
- .bear:nth-child(7) {
-     left: 65%;
-     animation-duration: 10s;
-     animation-delay: 0.7s;
- }
- 
- .bear:nth-child(8) {
-     left: 75%;
-     animation-duration: 12s;
-     animation-delay: 1.7s;
- }
- 
- .bear:nth-child(9) {
-     left: 85%;
-     animation-duration: 11s;
-     animation-delay: 2.7s;
- }
- 
- .bear:nth-child(10) {
-     left: 95%;
-     animation-duration: 13s;
-     animation-delay: 0.2s;
- }
- 
- .bear:nth-child(11) {
-     left: 10%;
-     animation-duration: 12s;
-     animation-delay: 3s;
- }
- 
- .bear:nth-child(12) {
-     left: 20%;
-     animation-duration: 10s;
-     animation-delay: 3.5s;
- }
- 
- .bear:nth-child(13) {
-     left: 30%;
-     animation-duration: 11s;
-     animation-delay: 4s;
- }
- 
- .bear:nth-child(14) {
-     left: 40%;
-     animation-duration: 13s;
-     animation-delay: 4.5s;
- }
- 
- .bear:nth-child(15) {
-     left: 50%;
-     animation-duration: 12s;
-     animation-delay: 5s;
- }
- 
- /* Responsive Design */
- @media (max-width: 1200px) {
-     .box-container {
-         grid-template-columns: repeat(2, 1fr);
-     }
- }
- 
- @media (max-width: 768px) {
-     .hug-day-header h1 {
-         font-size: 2.5rem;
-     }
- 
-     .box-container {
-         grid-template-columns: 1fr;
-     }
- 
-     .memory-container {
-         flex-direction: column;
-         align-items: center;
-     }
- 
-     .memory-card {
-         width: 90%;
-     }
- 
-     .fact-bubble {
-         width: 90%;
-     }
- 
-     .note {
-         width: 90%;
-     }
- }
- 
- /* Menu Button Styles */
- .menu-button {
-     position: fixed;
-     top: 20px;
-     left: 20px;
-     background: rgba(255, 255, 255, 0.2);
-     border: none;
-     color: #665c53;
-     font-size: 24px;
-     padding: 10px 15px;
-     cursor: pointer;
-     border-radius: 5px;
-     z-index: 1000;
-     transition: background 0.3s ease, transform 0.3s ease;
- }
- 
- .menu-button:hover {
-     background: rgba(255, 255, 255, 0.4);
-     transform: scale(1.1);
- }
- 
- /* Navigation Styles */
- nav {
-     position: fixed;
-     top: 0;
-     left: -250px;
-     width: 250px;
-     height: 100%;
-     background: rgba(0, 0, 0, 0.8);
-     z-index: 999;
-     transition: left 0.3s ease;
-     overflow-y: auto;
-     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
- }
- 
- nav.show {
-     left: 0;
- }
- 
- nav ul {
-     list-style: none;
-     padding: 0;
-     margin: 0;
- }
- 
- nav ul li {
-     padding: 15px;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
- }
- 
- nav ul li a {
-     color: white;
-     text-decoration: none;
-     display: block;
-     transition: background 0.3s ease, color 0.3s ease;
-     padding: 10px;
-     border-radius: 5px;
- }
- 
- nav ul li a:hover,
- nav ul li a.active {
-     background: rgba(255, 255, 255, 0.1);
-     color: #a38fc9;
- }
- 
- /* Timer Styles */
- #timer-container {
-     text-align: center;
-     margin-top: 20px;
-     background: rgba(255, 255, 255, 0.1);
-     padding: 15px;
-     border-radius: 10px;
-     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-     animation: fadeIn 2s ease-out;
- }
- 
- @keyframes fadeIn {
-     from {
-         opacity: 0;
-         transform: translateY(-20px);
-     }
- 
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
- 
- #timer-header {
-     color: #7a6a5f;
-     font-size: 1.5rem;
-     margin-bottom: 10px;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-style: normal;
- }
- 
- #custom-timer {
-     font-size: 2rem;
-     color: #7a6a5f;
-     font-weight: bold;
-     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
- }
- 
- /* Overlay Styles */
- .overlay {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background: rgba(0, 0, 0, 0.7);
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     z-index: 1001;
- }
- 
- .overlay-content {
-     background: white;
-     padding: 20px;
-     border-radius: 10px;
-     text-align: center;
-     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
- }
- 
- #close-overlay {
-     background: #a38fc9;
-     color: white;
-     border: none;
-     padding: 10px 20px;
-     border-radius: 5px;
-     cursor: pointer;
-     transition: background 0.3s ease, transform 0.3s ease;
- }
- 
- #close-overlay:hover {
-     background: #7e57c2;
-     transform: scale(1.05);
- }
- 
- /* Hidden Class */
- .hidden {
-     display: none;
- }
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hug Day Theme */
+.hug-day-theme {
+    background: linear-gradient(135deg, #f8f0e3 0%, #e6d9c2 100%);
+    color: #795548; /* Brownish color for text */
+}
+
+/* Header */
+.hug-day-header {
+    background: linear-gradient(to bottom, #a1887f 0%, #795548 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hug-day-header h1 {
+    font-size: 3rem;
+    color: #f8f0e3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #e6d9c2;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Message Container */
+.message-container {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.message-text {
+    font-size: 2rem;
+    color: #f8f0e3;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    padding: 10px;
+}
+
+.message-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Falling Teddies Animation */
+.teddies-falling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.teddy {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    animation: teddyFall linear infinite;
+    filter: drop-shadow(0 0 5px rgba(121, 85, 72, 0.3)); /* Shadow color matches text color */
+}
+
+/* Hug Box Section */
+.hug-box {
+    padding: 3rem 2rem;
+    background: #f8f0e3;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hug-piece {
+    background: transparent;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.hug-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.hug-piece:hover .hug-inner {
+    transform: rotateY(180deg);
+}
+
+.hug-front, .hug-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hug-front {
+    background: linear-gradient(145deg, #795548, #a1887f);
+    color: white;
+}
+
+.hug-back {
+    background: linear-gradient(145deg, #a1887f, #795548);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.hug-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hug-back p {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.corner-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+    transform-origin: top right;
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #795548;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    color: #795548;
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    margin-top: 1rem;
+}
+
+/* Love Letter Styles */
+#love-letter-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.love-letter-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #a1887f, #795548);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.love-letter-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.love-letter {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    background: #f8f0e3;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.love-letter.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.love-letter-content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.love-letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(121, 85, 72, 0.2); /* Border color matches text color */
+}
+
+.love-letter-header h3 {
+    color: #795548;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-letter {
+    background: none;
+    border: none;
+    color: #795548;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-letter:hover {
+    background: rgba(121, 85, 72, 0.1);
+}
+
+.love-letter-body {
+    color: #795548;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.love-letter-body p {
+    margin-bottom: 15px;
+}
+
+.love-letter-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.love-letter-body li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    position: relative;
+    padding-left: 25px;
+}
+
+.love-letter-body li:before {
+    content: '🤗';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.love-letter-signature {
+    margin-top: 20px;
+    text-align: right;
+    font-style: italic;
+    color: #a1887f;
+}
+
+/* Sweet Memories */
+.sweet-memories {
+    padding: 3rem 2rem;
+}
+
+.memory-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.memory-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Hug Facts */
+.hug-facts {
+    padding: 3rem 2rem;
+}
+
+.facts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.fact-bubble {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 25px;
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Interactive Hug */
+.interactive-hug {
+    padding: 3rem 2rem;
+}
+
+.wish-container {
+    text-align: center;
+}
+
+.magic-hug {
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: float 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.magic-hug:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.wish-text {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.wish-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sweet Notes */
+.sweet-notes {
+    padding: 3rem 2rem;
+}
+
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.note {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2); /* Shadow color matches text color */
+    transition: all 0.3s ease;
+}
+
+.note:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animations */
+@keyframes teddyFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(720deg);
+    }
+}
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Teddy positioning */
+.teddy:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+.teddy:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
+.teddy:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+.teddy:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; }
+.teddy:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
+.teddy:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
+.teddy:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
+.teddy:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
+.teddy:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 2.7s; }
+.teddy:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 0.2s; }
+.teddy:nth-child(11) { left: 10%; animation-duration: 11s; animation-delay: 3s; }
+.teddy:nth-child(12) { left: 20%; animation-duration: 9s; animation-delay: 3.5s; }
+.teddy:nth-child(13) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+.teddy:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
+.teddy:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hug-day-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .memory-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .memory-card {
+        width: 80%;
+    }
+
+    .facts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fact-bubble {
+        max-width: 80%;
+    }
+
+    .notes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .note {
+        width: 80%;
+    }
+}
+
