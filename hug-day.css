@@ -10,30 +10,30 @@
  
  /* Hug Day Theme */
  .hug-day-theme {
-     background: linear-gradient(135deg, #f8e8ff 0%, #e6ccff 100%);
-     color: #5a4f77;
+     background-color: #f8f0e3;
+     color: #665c53;
  }
  
  /* Hug Day Header */
  .hug-day-header {
-     background: linear-gradient(to bottom, #d0bfff 0%, #a38fc9 100%);
+     background-color: #f8f0e3;
      padding: 2rem;
      position: relative;
      overflow: hidden;
      text-align: center;
-     border-bottom: 2px solid #c4b7d7;
+     border-bottom: 2px solid #dfd3c3;
  }
  
  .hug-day-header h1 {
      font-size: 3.5rem;
-     color: #fff;
+     color: #665c53;
      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
      animation: floatText 5s ease-in-out infinite;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
  
  .header-subtitle {
-     color: #fff;
+     color: #7a6a5f;
      font-size: 1.5rem;
      margin-top: 10px;
      opacity: 0.9;
@@ -56,7 +56,7 @@
  
  .message-text {
      font-size: 2rem;
-     color: #fff;
+     color: #7a6a5f;
      text-align: center;
      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
      opacity: 0;
@@ -87,7 +87,7 @@
      opacity: 0;
      animation: heartFall linear infinite;
      filter: drop-shadow(0 0 5px rgba(106, 90, 205, 0.3));
-     color: #f06292;
+     color: #e91e63;
  }
  
  @keyframes heartFall {
@@ -218,13 +218,13 @@
  }
  
  .hug-front {
-     background: linear-gradient(145deg, #957dad, #ba68c8);
+     background: linear-gradient(145deg, #a9927d, #877566);
      color: white;
      font-size: 1.3rem;
  }
  
  .hug-back {
-     background: linear-gradient(145deg, #ba68c8, #957dad);
+     background: linear-gradient(145deg, #877566, #a9927d);
      color: white;
      transform: rotateY(180deg);
      font-size: 1.1rem;
@@ -265,7 +265,7 @@
      width: 60px;
      height: 60px;
      border-radius: 50%;
-     background: linear-gradient(145deg, #ba68c8, #957dad);
+     background: linear-gradient(145deg, #a9927d, #877566);
      border: none;
      color: white;
      font-size: 24px;
@@ -285,7 +285,7 @@
      bottom: 90px;
      right: 20px;
      width: 350px;
-     background: #f3e5f5;
+     background: #f8f0e3;
      border-radius: 20px;
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
      transform: translateY(20px);
@@ -316,7 +316,7 @@
  }
  
  .love-letter-header h3 {
-     color: #5a4f77;
+     color: #665c53;
      margin: 0;
      font-size: 1.5rem;
  }
@@ -324,7 +324,7 @@
  .close-letter {
      background: none;
      border: none;
-     color: #5a4f77;
+     color: #665c53;
      font-size: 24px;
      cursor: pointer;
      padding: 0;
@@ -342,7 +342,7 @@
  }
  
  .love-letter-body {
-     color: #5a4f77;
+     color: #665c53;
      font-size: 1rem;
      line-height: 1.6;
  }
@@ -404,7 +404,7 @@
  
  .message-bubble p {
      font-size: 1.2rem;
-     color: #5a4f77;
+     color: #665c53;
  }
  
  .bounce-arrow {
@@ -448,7 +448,7 @@
  }
  
  .memory-card p {
-     color: #5a4f77;
+     color: #665c53;
  }
  
  /* Hug Facts */
@@ -493,7 +493,7 @@
      transition: transform 0.5s ease, color 0.3s ease;
      animation: pulse 3s ease-in-out infinite;
      display: inline-block;
-     color: #ba68c8;
+     color: #665c53;
  }
  
  .magic-hug:hover {
@@ -537,7 +537,7 @@
      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
      transition: all 0.3s ease;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     color: #7e57c2;
+     color: #665c53;
      position: relative;
      overflow: hidden;
  }
@@ -770,7 +770,7 @@
      left: 20px;
      background: rgba(255, 255, 255, 0.2);
      border: none;
-     color: #7e57c2;
+     color: #665c53;
      font-size: 24px;
      padding: 10px 15px;
      cursor: pointer;
@@ -852,7 +852,7 @@
  }
  
  #timer-header {
-     color: #fff;
+     color: #7a6a5f;
      font-size: 1.5rem;
      margin-bottom: 10px;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -861,7 +861,7 @@
  
  #custom-timer {
      font-size: 2rem;
-     color: #fff;
+     color: #7a6a5f;
      font-weight: bold;
      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
  }
