@@ -223,10 +223,488 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.love-letter {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    background: #f8f0e3;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1002;
+}
+
 .love-letter.show {
     transform: translateY(0);
-    opacity: 1 !important;
-    visibility: visible !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+.love-letter-content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.love-letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(121, 85, 72, 0.2);
+}
+
+.love-letter-header h3 {
+    color: #795548;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-letter {
+    background: none;
+    border: none;
+    color: #795548;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-letter:hover {
+    background: rgba(121, 85, 72, 0.1);
+}
+
+.love-letter-body {
+    color: #795548;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.love-letter-body p {
+    margin-bottom: 15px;
+}
+
+.love-letter-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.love-letter-body li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    position: relative;
+    padding-left: 25px;
+}
+
+.love-letter-body li:before {
+    content: '🤗';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.love-letter-signature {
+    margin-top: 20px;
+    text-align: right;
+    font-style: italic;
+    color: #a1887f;
+}
+
+/* Sweet Memories */
+.sweet-memories {
+    padding: 3rem 2rem;
+}
+
+.memory-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.memory-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Hug Facts */
+.hug-facts {
+    padding: 3rem 2rem;
+}
+
+.facts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.fact-bubble {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 25px;
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Interactive Hug */
+.interactive-hug {
+    padding: 3rem 2rem;
+}
+
+.wish-container {
+    text-align: center;
+}
+
+.magic-hug {
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: float 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.magic-hug:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.wish-text {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.wish-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sweet Notes */
+.sweet-notes {
+    padding: 3rem 2rem;
+}
+
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.note {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
+    transition: all 0.3s ease;
+}
+
+.note:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animations */
+@keyframes teddyFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(720deg);
+    }
+}
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Teddy positioning */
+.teddy:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+.teddy:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
+.teddy:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+.teddy:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; }
+.teddy:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
+.teddy:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
+.teddy:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
+.teddy:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
+.teddy:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 2.7s; }
+.teddy:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 0.2s; }
+.teddy:nth-child(11) { left: 10%; animation-duration: 11s; animation-delay: 3s; }
+.teddy:nth-child(12) { left: 20%; animation-duration: 9s; animation-delay: 3.5s; }
+.teddy:nth-child(13) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+.teddy:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay:
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hug Day Theme */
+.hug-day-theme {
+    background: linear-gradient(135deg, #f8f0e3 0%, #e6d9c2 100%);
+    color: #795548; /* Brownish color for text */
+}
+
+/* Header */
+.hug-day-header {
+    background: linear-gradient(to bottom, #a1887f 0%, #795548 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hug-day-header h1 {
+    font-size: 3rem;
+    color: #f8f0e3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #e6d9c2;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Message Container */
+.message-container {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.message-text {
+    font-size: 2rem;
+    color: #f8f0e3;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    padding: 10px;
+}
+
+.message-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Falling Teddies Animation */
+.teddies-falling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.teddy {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    animation: teddyFall linear infinite;
+    filter: drop-shadow(0 0 5px rgba(121, 85, 72, 0.3));
+}
+
+/* Hug Box Section */
+.hug-box {
+    padding: 3rem 2rem;
+    background: #f8f0e3;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hug-piece {
+    background: transparent;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.hug-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.hug-piece:hover .hug-inner {
+    transform: rotateY(180deg);
+}
+
+.hug-front, .hug-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hug-front {
+    background: linear-gradient(145deg, #795548, #a1887f);
+    color: white;
+}
+
+.hug-back {
+    background: linear-gradient(145deg, #a1887f, #795548);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.hug-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hug-back p {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.corner-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+    transform-origin: top right;
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(121, 85, 72, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #795548;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    color: #795548;
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    margin-top: 1rem;
+}
+
+/* Love Letter Styles */
+#love-letter-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.love-letter-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #a1887f, #795548);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.love-letter-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .love-letter {
