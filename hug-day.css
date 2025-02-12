@@ -1,0 +1,318 @@
+/* Hug Day Theme */
+.hug-day-theme {
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffcce6 100%);
+    color: #e91e63;
+}
+
+/* Hug Day Header */
+.hug-day-header {
+    background: linear-gradient(to bottom, #ff4081 0%, #e91e63 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hug-day-header h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #ffe6f2;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Message Text */
+.message-text {
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hugging Bears Animation */
+.hugging-bears {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bear {
+    width: 150px;
+    height: auto;
+    position: absolute;
+}
+
+.bear1 {
+    left: 30%;
+    animation: moveBear1 5s linear infinite alternate;
+}
+
+.bear2 {
+    right: 30%;
+    animation: moveBear2 5s linear infinite alternate;
+}
+
+@keyframes moveBear1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-20px); }
+}
+
+@keyframes moveBear2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+/* Virtual Hug Section */
+.virtual-hug {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.hug-animation {
+    margin-top: 2rem;
+}
+
+.arms {
+    width: 150px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.arm {
+    width: 40px;
+    height: 80px;
+    background-color: #ffb3c6;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+}
+
+.left-arm {
+    left: 0;
+    transform-origin: top right;
+    animation: hugLeft 2s ease-in-out infinite alternate;
+}
+
+.right-arm {
+    right: 0;
+    transform-origin: top left;
+    animation: hugRight 2s ease-in-out infinite alternate;
+}
+
+.body {
+    width: 70px;
+    height: 100px;
+    background-color: #ff69b4;
+    border-radius: 35px;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    top: 0;
+}
+
+@keyframes hugLeft {
+    0% { transform: rotate(-30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes hugRight {
+    0% { transform: rotate(30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Why Hugs Section */
+.why-hugs {
+    padding: 3rem 2rem;
+}
+
+.reasons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.reason {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+    text-align: center;
+}
+
+.reason h3 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+}
+
+/* Hug Coupon Section */
+.hug-coupon {
+    padding: 3rem 2rem;
+}
+
+.coupon {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.coupon-header {
+    background: #ff69b4;
+    color: #fff;
+    padding: 1rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.coupon-body {
+    padding: 2rem;
+    color: #e91e63;
+}
+
+.coupon-footer {
+    background: #ffb3c6;
+    color: #fff;
+    padding: 1rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Hug Quotes Section */
+.hug-quotes {
+    padding: 3rem 2rem;
+}
+
+.quote-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.quote {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+    text-align: center;
+    font-style: italic;
+    color: #e91e63;
+}
+
+/* Animations */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Heart Rain */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #ff69b4;
+    animation: heartFall linear infinite;
+}
+
+@keyframes heartFall {
+    0% {
+        top: -10%;
+        opacity: 0;
+        transform: translateX(var(--random-x)) rotate(var(--random-rotate));
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(var(--random-x)) rotate(var(--random-rotate));
+    }
+}
+
+/* Heart positioning */
+.heart:nth-child(1) { --random-x: 10vw; --random-rotate: 20deg; animation-duration: 10s; animation-delay: 0s; }
+.heart:nth-child(2) { --random-x: 20vw; --random-rotate: -10deg; animation-duration: 12s; animation-delay: 1s; }
+.heart:nth-child(3) { --random-x: 30vw; --random-rotate: 30deg; animation-duration: 9s; animation-delay: 2s; }
+.heart:nth-child(4) { --random-x: 40vw; --random-rotate: -20deg; animation-duration: 11s; animation-delay: 0.5s; }
+.heart:nth-child(5) { --random-x: 50vw; --random-rotate: 10deg; animation-duration: 10s; animation-delay: 1.5s; }
+.heart:nth-child(6) { --random-x: 60vw; --random-rotate: -30deg; animation-duration: 12s; animation-delay: 2.5s; }
+.heart:nth-child(7) { --random-x: 70vw; --random-rotate: 20deg; animation-duration: 9s; animation-delay: 0.7s; }
+.heart:nth-child(8) { --random-x: 80vw; --random-rotate: -10deg; animation-duration: 11s; animation-delay: 1.7s; }
+.heart:nth-child(9) { --random-x: 90vw; --random-rotate: 30deg; animation-duration: 10s; animation-delay: 2.7s; }
+.heart:nth-child(10) { --random-x: 5vw; --random-rotate: -20deg; animation-duration: 12s; animation-delay: 0.2s; }
+.heart:nth-child(11) { --random-x: 15vw; --random-rotate: 10deg; animation-duration: 11s; animation-delay: 3s; }
+.heart:nth-child(12) { --random-x: 25vw; --random-rotate: -30deg; animation-duration: 9s; animation-delay: 3.5s; }
+.heart:nth-child(13) { --random-x: 35vw; --random-rotate: 20deg; animation-duration: 10s; animation-delay: 4s; }
+.heart:nth-child(14) { --random-x: 45vw; --random-rotate: -10deg; animation-duration: 12s; animation-delay: 4.5s; }
+.heart:nth-child(15) { --random-x: 55vw; --random-rotate: 30deg; animation-duration: 11s; animation-delay: 5s; }
+.heart:nth-child(16) { --random-x: 65vw; --random-rotate: -20deg; animation-duration: 10s; animation-delay: 5.5s; }
+.heart:nth-child(17) { --random-x: 75vw; --random-rotate: 10deg; animation-duration: 12s; animation-delay: 6s; }
+.heart:nth-child(18) { --random-x: 85vw; --random-rotate: -30deg; animation-duration: 9s; animation-delay: 6.5s; }
+.heart:nth-child(19) { --random-x: 95vw; --random-rotate: 20deg; animation-duration: 11s; animation-delay: 7s; }
+.heart:nth-child(20) { --random-x: 2vw; --random-rotate: -10deg; animation-duration: 10s; animation-delay: 7.5s; }
+.heart:nth-child(21) { --random-x: 12vw; --random-rotate: 30deg; animation-duration: 12s; animation-delay: 8s; }
+.heart:nth-child(22) { --random-x: 22vw; --random-rotate: -20deg; animation-duration: 9s; animation-delay: 8.5s; }
+.heart:nth-child(23) { --random-x: 32vw; --random-rotate: 10deg; animation-duration: 11s; animation-delay: 9s; }
+.heart:nth-child(24) { --random-x: 42vw; --random-rotate: -30deg; animation-duration: 10s; animation-delay: 9.5s; }
+.heart:nth-child(25) { --random-x: 52vw; --random-rotate: 20deg; animation-duration: 12s; animation-delay: 10s; }
+.heart:nth-child(26) { --random-x: 62vw; --random-rotate: -10deg; animation-duration: 9s; animation-delay: 10.5s; }
+.heart:nth-child(27) { --random-x: 72vw; --random-rotate: 30deg; animation-duration: 11s; animation-delay: 11s; }
+.heart:nth-child(28) { --random-x: 82vw; --random-rotate: -20deg; animation-duration: 10s; animation-delay: 11.5s; }
+.heart:nth-child(29) { --random-x: 92vw; --random-rotate: 10deg; animation-duration: 12s; animation-delay: 12s; }
+.heart:nth-child(30) { --random-x: 7vw; --random-rotate: -30deg; animation-duration: 9s; animation-delay: 12.5s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hug-day-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .bear {
+        width: 100px;
+    }
+
+    .reason {
+        width: 100%;
+    }
+}
