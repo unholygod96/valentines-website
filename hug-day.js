@@ -123,11 +123,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeLetter = document.getElementById('close-letter');
 
     loveLetterButton.addEventListener('click', function() {
+        console.log('Love letter button clicked'); // Debugging log
         loveLetter.classList.add('show');
+        loveLetter.classList.remove('hidden');
     });
 
     closeLetter.addEventListener('click', function() {
+        console.log('Close letter button clicked'); // Debugging log
         loveLetter.classList.remove('show');
+        loveLetter.classList.add('hidden');
     });
 
     // Background Music
@@ -219,12 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu Button Functionality
     const menuButton = document.getElementById('menu-button');
     const nav = document.querySelector('nav');
-
-    loveLetterButton.addEventListener('click', function() {
-        console.log("Love letter button clicked!");  // Add this line
-        loveLetter.classList.add('show');
-    });
-
 
     menuButton.addEventListener('click', function() {
         nav.classList.toggle('show');
