@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Kiss Day 💋</title>
+    <title>Sweet Kiss Day 💋</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles.css">
     <!-- Kiss Day Specific CSS -->
     <link rel="stylesheet" href="kiss-day.css">
 </head>
 <body class="kiss-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Heart Rain -->
+    <div class="hearts">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
     <!-- Kiss Animation -->
     <div class="kisses-falling">
         <div class="kiss">💋</div>
@@ -18,20 +57,33 @@
         <div class="kiss">💋</div>
         <div class="kiss">💋</div>
         <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
     </div>
 
-    <!-- Header Section -->
-    <header class="kiss-day-header">
-        <h1>Sealed With A Kiss! 💋✨</h1>
-        <p class="header-subtitle">Sending you all my love and kisses! 💝</p>
+    <!-- Timer End Overlay -->
+    <div id="timer-end-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2 id="overlay-header"></h2>
+            <button id="close-overlay">Close ✨</button>
+        </div>
+    </div>
 
+    <header class="kiss-day-header">
+        <h1>Sealed With a Kiss! 💋✨</h1>
+        <p class="header-subtitle">Sending you virtual kisses because you deserve all the love! 💖</p>
+        
         <!-- Message Animation Container -->
         <div class="message-container">
             <div id="message-display" class="message-text"></div>
         </div>
 
-        <!-- Timer Section -->
-        <section id="timer-container">
+        <div id="timer-container">
             <h2 id="timer-header" contenteditable="true">Counting sweet moments with you! 💫</h2>
             <div id="custom-timer">
                 <span id="custom-timer-display">00:00:00</span>
@@ -41,18 +93,14 @@
             <button id="pause-timer">Pause 💫</button>
             <button id="reset-timer">Reset 🌟</button>
             <button id="set-timer">Set Timer 💖</button>
-        </section>
+        </div>
 
-        <!-- Background Music -->
         <audio id="background-music" loop>
             <source src="double-take.mp3" type="audio/mpeg">
-            Your browser does not support audio.
         </audio>
-        <!-- Music Toggle Button -->
-        <button id="toggle-music">🎵 Play Music!</button>
+        <button id="toggle-music">🎵</button>
     </header>
 
-    <!-- Navigation Menu -->
     <nav>
         <ul>
             <li><a href="index.html">Back to Our Journey 🏡</a></li>
@@ -71,47 +119,58 @@
         <section class="welcome-message">
             <div class="message-bubble bounce">
                 <h2>Hey Sweetie! 💋</h2>
-                <p>Sending you a virtual kiss!</p>
+                <p>Sending you lots of love and kisses...</p>
                 <div class="bounce-arrow">↓</div>
             </div>
         </section>
 
         <section class="kiss-facts">
-            <h2>Sweet Facts About Kisses! 💋</h2>
+            <h2>Fun Kiss Facts! 💖</h2>
             <div class="facts-container">
                 <div class="fact-bubble">
-                    <p>A kiss can burn calories! ✨</p>
+                    <p>Kissing releases endorphins, making you happier! ✨</p>
                 </div>
                 <div class="fact-bubble">
-                    <p>Kisses release happy hormones! 💝</p>
+                    <p>A long kiss can burn calories! 😉</p>
                 </div>
                 <div class="fact-bubble">
-                    <p>Kissing can reduce stress! 💋</p>
+                    <p>Kissing can reduce stress. Relax and enjoy! 💋</p>
                 </div>
             </div>
         </section>
 
         <section class="interactive-kiss">
-            <h2>Send a Virtual Kiss! ✨</h2>
+            <h2>Give a Virtual Kiss! 😘</h2>
             <div class="wish-container">
                 <div class="magic-kiss">💋</div>
                 <div class="wish-text hidden">
-                    <p>Your kiss is on its way! 💫</p>
+                    <p>Sending you a big, sweet kiss! 💖</p>
                 </div>
             </div>
         </section>
 
         <section class="sweet-notes">
-            <h2>Sweet Notes For You 💝</h2>
+            <h2>Sweet Notes For You 💖</h2>
             <div class="notes-container">
                 <div class="note sparkle">
-                    <p>Sending you a big kiss! 💋</p>
+                    <p>Every kiss is a sweet memory with you! 💋</p>
                 </div>
                 <div class="note sparkle">
-                    <p>You're the best kisser! ✨</p>
+                    <p>Your kisses make my day brighter! ✨</p>
                 </div>
                 <div class="note sparkle">
-                    <p>Every kiss is magic! 💖</p>
+                    <p>Sending you a virtual kiss filled with love! 💖</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="kiss-game">
+            <h2>Kissing Booth Game! 💋</h2>
+            <p>Click the booth to get a virtual kiss!</p>
+            <div class="booth-container">
+                <div class="kissing-booth">
+                    <div class="curtain"></div>
+                    <div class="kiss-message hidden">💋</div>
                 </div>
             </div>
         </section>
@@ -123,28 +182,28 @@
         <div id="love-letter" class="love-letter hidden">
             <div class="love-letter-content">
                 <div class="love-letter-header">
-                    <h3>My Sweet Kiss 💋</h3>
+                    <h3>My Sweetest Kiss 💋</h3>
                     <button id="close-letter" class="close-letter">×</button>
                 </div>
                 <div class="love-letter-body">
-                    <p>Dearest Sweetheart,</p>
-                    <p>Every kiss we share is a memory I treasure. Your kisses are like a sweet melody that plays in my heart all day long. 💋✨</p>
-                    <p>Like different types of kisses, you bring so many wonderful feelings to my life:</p>
+                    <p>My Dearest Love,</p>
+                    <p>On this Kiss Day, I wanted to express how much your kisses mean to me. They are like little sparks of joy that light up my world. Every kiss is a reminder of our deep connection and the love we share. 💋✨</p>
+                    <p>Your kisses are:</p>
                     <ul>
-                        <li>A gentle kiss - for the tenderness of our love 💝</li>
-                        <li>A passionate kiss - for the fire you ignite in me ✨</li>
-                        <li>A playful kiss - for the joy you bring to my days 🌟</li>
+                        <li>A gentle morning greeting 💖</li>
+                        <li>A sweet promise in the afternoon ✨</li>
+                        <li>A warm goodnight blessing 🌟</li>
                     </ul>
-                    <p>You're sweeter than any kiss I could ever imagine, and I'm so grateful to have you in my life! Every moment with you is like the perfect kiss - sweet, exciting, and leaves me wanting more!</p>
-                    <p>Just like how kisses come in different forms, you bring different kinds of sweetness to my life - your smile, your laugh, your cute little messages, everything about you is simply wonderful! 💝</p>
-                    <p>You're my favorite type of happiness, my sweetest dream come true, and the most precious gift I could ever ask for!</p>
-                    <p class="love-letter-signature">Forever yours,<br>Your Kissing Love 💕</p>
+                    <p>With every kiss, my love for you grows stronger. You are the sweetest part of my life, and I cherish every moment we spend together. Just like a kiss seals a promise, my heart is forever sealed with your love. You are my favorite person, and I’m so grateful to have you in my life!</p>
+                    <p>Thank you for all the love and happiness you bring. Each kiss is a treasure, and I'm forever grateful to have you by my side. 💖</p>
+                    <p class="love-letter-signature">Forever and Always,<br>Your Loving Partner 💕</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="script.js"></script>
     <script src="kiss-day.js"></script>
 </body>
 </html>
