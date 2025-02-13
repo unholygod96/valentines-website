@@ -1,0 +1,214 @@
+/* Common styles (styles.css) */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8e5e5;
+}
+
+nav {
+    background-color: #e63946;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+/* Kiss Day specific styles (kiss-day.css) */
+.kiss-day-theme {
+    background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
+    color: #e63946;
+}
+
+.kiss-day-header {
+    background: linear-gradient(to bottom, #e63946 0%, #9d0208 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.kiss-day-header h1 {
+    font-size: 3rem;
+    color: #fff5e6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #ffe6cc;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Falling Kisses Animation */
+.kisses-falling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.kiss {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0;
+    animation: kissFall linear infinite;
+    filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.3));
+}
+
+/* Interactive Kiss */
+.interactive-kiss {
+    padding: 3rem 2rem;
+}
+
+.wish-container {
+    text-align: center;
+}
+
+.magic-kiss {
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: float 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.magic-kiss:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.wish-text {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.wish-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sweet Notes */
+.sweet-notes {
+    padding: 3rem 2rem;
+}
+
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.note {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    transition: all 0.3s ease;
+}
+
+.note:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Animations */
+@keyframes kissFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-5vh) rotate(0deg);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(720deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatText {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Kiss positioning */
+.kiss:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+.kiss:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; }
+.kiss:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+.kiss:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; }
+.kiss:nth-child(5) { left: 45%; animation-duration: 10s; animation-delay: 1.5s; }
+.kiss:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
+.kiss:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
+.kiss:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .kiss-day-header h1 {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 1rem;
+    }
+
+    .notes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .note {
+        width: 90%;
+    }
+}
