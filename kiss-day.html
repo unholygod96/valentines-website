@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Kiss Day 💋</title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Kiss Day Specific CSS -->
+    <link rel="stylesheet" href="kiss-day.css">
+</head>
+<body class="kiss-day-theme">
+    <!-- Menu Button -->
+    <button id="menu-button" class="menu-button">☰</button>
+
+    <!-- Heart Rain -->
+    <div class="hearts">
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+        <div class="heart">💋</div>
+    </div>
+
+    <!-- Kiss Animation -->
+    <div class="kisses-falling">
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+        <div class="kiss">💋</div>
+    </div>
+
+    <!-- Timer End Overlay -->
+    <div id="timer-end-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2 id="overlay-header"></h2>
+            <button id="close-overlay">Close ✨</button>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="kiss-day-header">
+        <h1>Sealed With A Kiss! 💋✨</h1>
+        <p class="header-subtitle">Sending you all my love and kisses! 💝</p>
+
+        <!-- Message Animation Container -->
+        <div class="message-container">
+            <div id="message-display" class="message-text"></div>
+        </div>
+
+        <!-- Timer Section -->
+        <section id="timer-container">
+            <h2 id="timer-header" contenteditable="true">Counting sweet moments with you! 💫</h2>
+            <span id="custom-timer-display">00:00:00</span><br />
+            <!-- Timer Controls -->
+            <input type="datetime-local" id="calendar-input" />
+            <button id="start-timer">Start ✨</button>
+            <button id="pause-timer">Pause 💫</button>
+            <button id="reset-timer">Reset 🌟</button>
+            <button id="set-timer">Set Timer 💖</button>
+        </section>
+
+        <!-- Background Music -->
+        <audio id="background-music" loop>
+            <source src="./double-take.mp3" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+        <!-- Music Toggle Button -->
+        <button id="toggle-music" title="">🎵 Play Music!</button>
+
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <!-- Navigation Links -->
+            <li><a href="./index.html" title="">Back to Our Journey 🏡!</a></li>
