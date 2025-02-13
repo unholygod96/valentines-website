@@ -1,72 +1,59 @@
-/* kiss-day.css - Consolidated styles */
-
-/* Base styles */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
+/* Kiss Day Theme */
+.kiss-day-theme {
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffcce0 100%);
     color: #e63946;
 }
 
-/* Header styles */
-header {
-    text-align: center;
+/* Kiss Day Header */
+.kiss-day-header {
+    background: linear-gradient(to bottom, #e63946 0%, #cc2936 100%);
     padding: 2rem;
-    background: linear-gradient(to bottom, #e63946 0%, #9d0208 100%);
     position: relative;
     overflow: hidden;
 }
 
-header h1 {
+.kiss-day-header h1 {
     font-size: 3rem;
-    color: #fff5e6;
+    color: #fff5f9;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     animation: floatText 3s ease-in-out infinite;
 }
 
 .header-subtitle {
-    color: #ffe6cc;
+    color: #ffcce0;
     font-size: 1.3rem;
     margin-top: 10px;
     opacity: 0.9;
 }
 
-/* Navigation styles */
-nav {
-    background-color: #e63946;
-    padding: 1rem;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
+/* Message Container */
+.message-container {
+    position: relative;
+    height: 80px;
+    width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-nav ul li {
-    margin: 0 1rem;
+.message-text {
+    font-size: 2rem;
+    color: #fff5f9;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    padding: 10px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a.active {
-    text-decoration: underline;
-}
-
-/* Main content area */
-main {
-    flex-grow: 1;
-    padding: 2rem;
+.message-text.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Falling Kisses Animation */
@@ -88,88 +75,64 @@ main {
     filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.3));
 }
 
-/* Welcome Message */
-.welcome-message {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.welcome-message h2 {
-    font-size: 2.5rem;
-    color: #e63946;
-}
-
-/* Kiss Facts */
+/* Kiss Facts Section */
 .kiss-facts {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 3rem 2rem;
 }
 
 .facts-container {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .fact-bubble {
-    background-color: #ffb3ba;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-    margin: 1rem;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.fact-bubble:hover {
-    transform: scale(1.1);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 25px;
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+    animation: float 3s ease-in-out infinite;
 }
 
 /* Interactive Kiss */
 .interactive-kiss {
+    padding: 3rem 2rem;
+}
+
+.wish-container {
     text-align: center;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    margin-bottom: 2rem;
 }
 
 .magic-kiss {
     font-size: 5rem;
     cursor: pointer;
     transition: transform 0.3s ease;
+    animation: float 2s ease-in-out infinite;
     display: inline-block;
 }
 
 .magic-kiss:hover {
-    transform: scale(1.2) rotate(15deg);
+    transform: scale(1.2) rotate(360deg);
 }
 
 .wish-text {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    color: #e63946;
+    margin-top: 2rem;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
 }
 
 .wish-text.show {
     opacity: 1;
+    transform: translateY(0);
 }
 
 /* Sweet Notes */
 .sweet-notes {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 2rem;
+    padding: 3rem 2rem;
 }
 
 .notes-container {
@@ -177,72 +140,231 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    padding: 2rem;
 }
 
 .note {
-    background: #ffb3ba;
+    background: white;
     padding: 1.5rem;
     border-radius: 15px;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    width: 250px;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+    transition: all 0.3s ease;
 }
 
 .note:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.1) rotate(5deg);
 }
 
-/* Timer Styles */
-#timer-container {
-    background-color: rgba(255, 255, 255, 0.8);
+/* Kissing Booth Game */
+.kiss-game {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.booth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kissing-booth {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.kissing-booth:hover {
+    transform: scale(1.1);
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #e63946, #cc2936);
+    transition: transform 0.5s ease;
+}
+
+.kissing-booth.open .curtain {
+    transform: translateY(-100%);
+}
+
+.kiss-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.kissing-booth.open .kiss-message {
+    opacity: 1;
+}
+
+/* Love Letter Styles */
+#love-letter-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.love-letter-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e63946, #cc2936);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.love-letter-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.love-letter {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    background: #fff5f9;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.love-letter.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.love-letter-content {
     padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
-#custom-timer-display {
-    font-size: 2em;
-    font-weight: bold;
+.love-letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(230, 57, 70, 0.2);
+}
+
+.love-letter-header h3 {
     color: #e63946;
+    margin: 0;
+    font-size: 1.5rem;
 }
 
-#calendar-input {
-    margin-bottom: 10px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-#timer-container button {
-    background-color: #e63946;
-    color: white;
-    padding: 10px 15px;
+.close-letter {
+    background: none;
     border: none;
-    border-radius: 5px;
+    color: #e63946;
+    font-size: 24px;
     cursor: pointer;
-    margin-right: 5px;
-    transition: background-color 0.3s ease;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
-#timer-container button:hover {
-    background-color: #9d0208;
+.close-letter:hover {
+    background: rgba(230, 57, 70, 0.1);
 }
 
-/* Music Toggle Button */
-#toggle-music {
-    background-color: #e63946;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.love-letter-body {
+    color: #e63946;
     font-size: 1rem;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    line-height: 1.6;
 }
 
-#toggle-music:hover {
-    background-color: #9d0208;
+.love-letter-body p {
+    margin-bottom: 15px;
+}
+
+.love-letter-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.love-letter-body li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    position: relative;
+    padding-left: 25px;
+}
+
+.love-letter-body li:before {
+    content: '💋';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.love-letter-signature {
+    margin-top: 20px;
+    text-align: right;
+    font-style: italic;
+    color: #cc2936;
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.message-bubble {
+    background: white;
+    padding: 2rem;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.message-bubble h2 {
+    color: #e63946;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    color: #e63946;
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    margin-top: 1rem;
 }
 
 /* Animations */
@@ -264,12 +386,23 @@ main {
 }
 
 @keyframes floatText {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
 /* Kiss positioning */
@@ -281,10 +414,17 @@ main {
 .kiss:nth-child(6) { left: 55%; animation-duration: 12s; animation-delay: 2.5s; }
 .kiss:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0.7s; }
 .kiss:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 1.7s; }
+.kiss:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 2.7s; }
+.kiss:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 0.2s; }
+.kiss:nth-child(11) { left: 10%; animation-duration: 11s; animation-delay: 3s; }
+.kiss:nth-child(12) { left: 20%; animation-duration: 9s; animation-delay: 3.5s; }
+.kiss:nth-child(13) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+.kiss:nth-child(14) { left: 40%; animation-duration: 12s; animation-delay: 4.5s; }
+.kiss:nth-child(15) { left: 50%; animation-duration: 11s; animation-delay: 5s; }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
-    header h1 {
+    .kiss-day-header h1 {
         font-size: 2rem;
     }
 
@@ -292,31 +432,7 @@ main {
         font-size: 1rem;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 0.5rem 0;
-    }
-
-    .facts-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .fact-bubble {
-        width: 120px;
-        height: 120px;
-        font-size: 0.9rem;
-    }
-
-    .note {
-        width: 90%;
-    }
-
-    #timer-container button {
-        margin-bottom: 10px;
+    .message-text {
+        font-size: 1.5rem;
     }
 }
