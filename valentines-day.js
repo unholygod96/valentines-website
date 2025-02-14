@@ -96,4 +96,55 @@ document.addEventListener('DOMContentLoaded', function () {
             musicButton.textContent = '🔇';
         }
     });
+
+    // Floating Hearts
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('floating-heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createFloatingHeart, 300);
+
+    // Love Meter
+    const loveMeter = `
+        <div class="love-meter">
+            <h3>Our Love Meter</h3>
+            <div class="meter-container">
+                <div class="meter-fill"></div>
+            </div>
+        </div>
+    `;
+
+    document.querySelector('.valentines-main').insertAdjacentHTML('beforeend', loveMeter);
+
+    function updateLoveMeter() {
+        const meterFill = document.querySelector('.meter-fill');
+        let width = 0;
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+            } else {
+                width++;
+                meterFill.style.width = width + '%';
+            }
+        }, 50);
+    }
+
+    updateLoveMeter();
+
+    // Photo Album Tilt Effect
+    VanillaTilt.init(document.querySelectorAll(".photo-card"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.5,
+    });
 });
