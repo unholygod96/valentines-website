@@ -1,0 +1,410 @@
+/* Valentine's Day Theme */
+.valentines-day-theme {
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffcce6 100%);
+    color: #e91e63;
+}
+
+/* Valentine's Header */
+.valentines-header {
+    background: linear-gradient(to bottom, #ffb3d9 0%, #e91e63 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.valentines-header h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: floatText 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Message Container */
+.message-container {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.message-text {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    padding: 10px;
+}
+
+.message-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Timer Container */
+#timer-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+#timer-header {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#custom-timer {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#calendar-input {
+    margin-top: 10px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+#set-timer {
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#set-timer:hover {
+    background-color: #c2185b;
+}
+
+/* Heart Rain */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #e91e63;
+    opacity: 0;
+    animation: heartFall linear infinite;
+}
+
+/* Photo Album */
+.photo-album {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.album-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.photo-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    padding: 1rem;
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Love Story */
+.love-story {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.story-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Interactive Heart */
+.interactive-heart {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.heart-container {
+    cursor: pointer;
+}
+
+.big-heart {
+    font-size: 5rem;
+    color: #e91e63;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+#hug-message {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #e91e63;
+}
+
+/* Reasons to Love */
+.reasons-to-love {
+    padding: 3rem 2rem;
+}
+
+.reasons-list {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    list-style-type: decimal;
+    font-size: 1.2rem;
+    color: #e91e63;
+}
+
+.reasons-list li {
+    margin-bottom: 1rem;
+}
+
+/* Love Letter */
+.love-letter {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.letter-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #e91e63;
+}
+
+.signature {
+    margin-top: 2rem;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Future Plans */
+.future-plans {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.plans-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #e91e63;
+}
+
+/* Footer */
+footer {
+    background: #e91e63;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Animations */
+@keyframes floatText {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes heartFall {
+    0% {
+        top: -10%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    90% {
+        opacity: 0.9;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(
+                calc(var(--random-x) * 1vw)
+            ) rotate(360deg);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Heart Positioning */
+.heart:nth-child(1) {
+    left: 5%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+    --random-x: -5;
+}
+
+.heart:nth-child(2) {
+    left: 15%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+    --random-x: 7;
+}
+
+.heart:nth-child(3) {
+    left: 25%;
+    animation-duration: 7s;
+    animation-delay: 2s;
+    --random-x: -3;
+}
+
+.heart:nth-child(4) {
+    left: 35%;
+    animation-duration: 8s;
+    animation-delay: 0.5s;
+    --random-x: 5;
+}
+
+.heart:nth-child(5) {
+    left: 45%;
+    animation-duration: 9s;
+    animation-delay: 1.5s;
+    --random-x: -7;
+}
+
+.heart:nth-child(6) {
+    left: 55%;
+    animation-duration: 7s;
+    animation-delay: 2.5s;
+    --random-x: 3;
+}
+
+.heart:nth-child(7) {
+    left: 65%;
+    animation-duration: 8s;
+    animation-delay: 0.7s;
+    --random-x: -5;
+}
+
+.heart:nth-child(8) {
+    left: 75%;
+    animation-duration: 9s;
+    animation-delay: 1.7s;
+    --random-x: 7;
+}
+
+.heart:nth-child(9) {
+    left: 85%;
+    animation-duration: 7s;
+    animation-delay: 2.7s;
+    --random-x: -3;
+}
+
+.heart:nth-child(10) {
+    left: 95%;
+    animation-duration: 8s;
+    animation-delay: 0.2s;
+    --random-x: 5;
+}
+
+.heart:nth-child(11) {
+    left: 10%;
+    animation-duration: 7s;
+    animation-delay: 3s;
+    --random-x: -7;
+}
+
+.heart:nth-child(12) {
+    left: 20%;
+    animation-duration: 8s;
+    animation-delay: 3.5s;
+    --random-x: 3;
+}
+
+.heart:nth-child(13) {
+    left: 30%;
+    animation-duration: 9s;
+    animation-delay: 4s;
+    --random-x: -5;
+}
+
+.heart:nth-child(14) {
+    left: 40%;
+    animation-duration: 7s;
+    animation-delay: 4.5s;
+    --random-x: 7;
+}
+
+.heart:nth-child(15) {
+    left: 50%;
+    animation-duration: 8s;
+    animation-delay: 5s;
+    --random-x: -3;
+}
