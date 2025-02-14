@@ -120,6 +120,40 @@
     animation: heartFall linear infinite;
 }
 
+/* Navigation */
+nav {
+    background-color: #ffb3d9;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #e91e63;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #c2185b;
+}
+
+nav ul li a.active {
+    color: #c2185b;
+    border-bottom: 2px solid #c2185b;
+}
+
 /* Photo Album */
 .photo-album {
     padding: 3rem 2rem;
@@ -267,6 +301,50 @@ footer {
     padding: 1rem;
 }
 
+/* Animations */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes heartFall {
+    0% {
+        top: -10%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% { opacity: 0.9; }
+    90% { opacity: 0.9; }
+    100% {
+        top: 100%;
+        opacity: 0;
+        transform: translateX(calc(var(--random-x) * 1vw)) rotate(360deg);
+    }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Heart Positioning */
+.heart:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; --random-x: -5; }
+.heart:nth-child(2) { left: 15%; animation-duration: 9s; animation-delay: 1s; --random-x: 7; }
+.heart:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 2s; --random-x: -3; }
+.heart:nth-child(4) { left: 35%; animation-duration: 8s; animation-delay: 0.5s; --random-x: 5; }
+.heart:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 1.5s; --random-x: -7; }
+.heart:nth-child(6) { left: 55%; animation-duration: 7s; animation-delay: 2.5s; --random-x: 3; }
+.heart:nth-child(7) { left: 65%; animation-duration: 8s; animation-delay: 0.7s; --random-x: -5; }
+.heart:nth-child(8) { left: 75%; animation-duration: 9s; animation-delay: 1.7s; --random-x: 7; }
+.heart:nth-child(9) { left: 85%; animation-duration: 7s; animation-delay: 2.7s; --random-x: -3; }
+.heart:nth-child(10) { left: 95%; animation-duration: 8s; animation-delay: 0.2s; --random-x: 5; }
+.heart:nth-child(11) { left: 10%; animation-duration: 7s; animation-delay: 3s; --random-x: -7; }
+.heart:nth-child(12) { left: 20%; animation-duration: 8s; animation-delay: 3.5s; --random-x: 3; }
+.heart:nth-child(13) { left: 30%; animation-duration: 9s; animation-delay: 4s; --random-x: -5; }
+.heart:nth-child(14) { left: 40%; animation-duration: 7s; animation-delay: 4.5s; --random-x: 7; }
+.heart:nth-child(15) { left: 50%; animation-duration: 8s; animation-delay: 5s; --random-x: -3; }
+
 /* Floating Hearts */
 .floating-heart {
     position: fixed;
@@ -275,6 +353,20 @@ footer {
     pointer-events: none;
     animation: floatUp 4s ease-in-out infinite;
     opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+    }
 }
 
 /* Love Meter */
@@ -307,78 +399,6 @@ footer {
     transition: width 1s ease-in-out;
 }
 
-/* Animations */
-@keyframes floatText {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes heartFall {
-    0% {
-        top: -10%;
-        opacity: 0;
-        transform: translateX(0) rotate(0deg);
-    }
-    10% {
-        opacity: 0.9;
-    }
-    90% {
-        opacity: 0.9;
-    }
-    100% {
-        top: 100%;
-        opacity: 0;
-        transform: translateX(calc(var(--random-x) * 1vw)) rotate(360deg);
-    }
-}
-
-@keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) scale(1);
-        opacity: 0;
-    }
-}
-
-/* Heart Positioning */
-.heart:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; --random-x: -5; }
-.heart:nth-child(2) { left: 15%; animation-duration: 9s; animation-delay: 1s; --random-x: 7; }
-.heart:nth-child(3) { left: 25%; animation-duration: 7s; animation-delay: 2s; --random-x: -3; }
-.heart:nth-child(4) { left: 35%; animation-duration: 8s; animation-delay: 0.5s; --random-x: 5; }
-.heart:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 1.5s; --random-x: -7; }
-.heart:nth-child(6) { left: 55%; animation-duration: 7s; animation-delay: 2.5s; --random-x: 3; }
-.heart:nth-child(7) { left: 65%; animation-duration: 8s; animation-delay: 0.7s; --random-x: -5; }
-.heart:nth-child(8) { left: 75%; animation-duration: 9s; animation-delay: 1.7s; --random-x: 7; }
-.heart:nth-child(9) { left: 85%; animation-duration: 7s; animation-delay: 2.7s; --random-x: -3; }
-.heart:nth-child(10) { left: 95%; animation-duration: 8s; animation-delay: 0.2s; --random-x: 5; }
-.heart:nth-child(11) { left: 10%; animation-duration: 7s; animation-delay: 3s; --random-x: -7; }
-.heart:nth-child(12) { left: 20%; animation-duration: 8s; animation-delay: 3.5s; --random-x: 3; }
-.heart:nth-child(13) { left: 30%; animation-duration: 9s; animation-delay: 4s; --random-x: -5; }
-.heart:nth-child(14) { left: 40%; animation-duration: 7s; animation-delay: 4.5s; --random-x: 7; }
-.heart:nth-child(15) { left: 50%; animation-duration: 8s; animation-delay: 5s; --random-x: -3; }
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .valentines-header h1 {
@@ -392,4 +412,29 @@ footer {
     .reasons-list, .letter-container, .plans-container {
         padding: 1rem;
     }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+/* Music Toggle Button */
+#toggle-music {
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-music:hover {
+    background-color: #c2185b;
 }
